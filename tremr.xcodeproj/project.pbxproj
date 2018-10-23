@@ -1,0 +1,607 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */; };
+		E0FEE122217EB76B00C72D7C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE121217EB76B00C72D7C /* MainViewController.swift */; };
+		E0FEE125217EB76B00C72D7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FEE123217EB76B00C72D7C /* Main.storyboard */; };
+		E0FEE127217EB76D00C72D7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0FEE126217EB76D00C72D7C /* Assets.xcassets */; };
+		E0FEE12A217EB76D00C72D7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FEE128217EB76D00C72D7C /* LaunchScreen.storyboard */; };
+		E0FEE135217EB76D00C72D7C /* tremrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE134217EB76D00C72D7C /* tremrTests.swift */; };
+		E0FEE140217EB76D00C72D7C /* tremrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE13F217EB76D00C72D7C /* tremrUITests.swift */; };
+		E0FEE14E217ECB4300C72D7C /* MeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE14D217ECB4300C72D7C /* MeasureViewController.swift */; };
+		E0FEE152217ECCE900C72D7C /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE151217ECCE900C72D7C /* ExerciseViewController.swift */; };
+		E0FEE154217ECD1000C72D7C /* MedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE153217ECD1000C72D7C /* MedicationViewController.swift */; };
+		E0FEE156217ECD5A00C72D7C /* ViewDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE155217ECD5A00C72D7C /* ViewDataViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E0FEE131217EB76D00C72D7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0FEE114217EB76B00C72D7C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0FEE11B217EB76B00C72D7C;
+			remoteInfo = tremr;
+		};
+		E0FEE13C217EB76D00C72D7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0FEE114217EB76B00C72D7C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0FEE11B217EB76B00C72D7C;
+			remoteInfo = tremr;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E0FEE11C217EB76B00C72D7C /* tremr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tremr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E0FEE121217EB76B00C72D7C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E0FEE124217EB76B00C72D7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E0FEE126217EB76D00C72D7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E0FEE129217EB76D00C72D7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E0FEE12B217EB76D00C72D7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0FEE130217EB76D00C72D7C /* tremrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tremrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0FEE134217EB76D00C72D7C /* tremrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tremrTests.swift; sourceTree = "<group>"; };
+		E0FEE136217EB76D00C72D7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0FEE13B217EB76D00C72D7C /* tremrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tremrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0FEE13F217EB76D00C72D7C /* tremrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tremrUITests.swift; sourceTree = "<group>"; };
+		E0FEE141217EB76D00C72D7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0FEE14D217ECB4300C72D7C /* MeasureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureViewController.swift; sourceTree = "<group>"; };
+		E0FEE151217ECCE900C72D7C /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
+		E0FEE153217ECD1000C72D7C /* MedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationViewController.swift; sourceTree = "<group>"; };
+		E0FEE155217ECD5A00C72D7C /* ViewDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDataViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E0FEE119217EB76B00C72D7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0FEE12D217EB76D00C72D7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0FEE138217EB76D00C72D7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E0FEE113217EB76B00C72D7C = {
+			isa = PBXGroup;
+			children = (
+				E0FEE11E217EB76B00C72D7C /* tremr */,
+				E0FEE133217EB76D00C72D7C /* tremrTests */,
+				E0FEE13E217EB76D00C72D7C /* tremrUITests */,
+				E0FEE11D217EB76B00C72D7C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E0FEE11D217EB76B00C72D7C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E0FEE11C217EB76B00C72D7C /* tremr.app */,
+				E0FEE130217EB76D00C72D7C /* tremrTests.xctest */,
+				E0FEE13B217EB76D00C72D7C /* tremrUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E0FEE11E217EB76B00C72D7C /* tremr */ = {
+			isa = PBXGroup;
+			children = (
+				E0FEE158217ECDF800C72D7C /* ViewControllers */,
+				E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */,
+				E0FEE123217EB76B00C72D7C /* Main.storyboard */,
+				E0FEE126217EB76D00C72D7C /* Assets.xcassets */,
+				E0FEE128217EB76D00C72D7C /* LaunchScreen.storyboard */,
+				E0FEE12B217EB76D00C72D7C /* Info.plist */,
+			);
+			path = tremr;
+			sourceTree = "<group>";
+		};
+		E0FEE133217EB76D00C72D7C /* tremrTests */ = {
+			isa = PBXGroup;
+			children = (
+				E0FEE134217EB76D00C72D7C /* tremrTests.swift */,
+				E0FEE136217EB76D00C72D7C /* Info.plist */,
+			);
+			path = tremrTests;
+			sourceTree = "<group>";
+		};
+		E0FEE13E217EB76D00C72D7C /* tremrUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E0FEE13F217EB76D00C72D7C /* tremrUITests.swift */,
+				E0FEE141217EB76D00C72D7C /* Info.plist */,
+			);
+			path = tremrUITests;
+			sourceTree = "<group>";
+		};
+		E0FEE158217ECDF800C72D7C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E0FEE155217ECD5A00C72D7C /* ViewDataViewController.swift */,
+				E0FEE121217EB76B00C72D7C /* MainViewController.swift */,
+				E0FEE14D217ECB4300C72D7C /* MeasureViewController.swift */,
+				E0FEE153217ECD1000C72D7C /* MedicationViewController.swift */,
+				E0FEE151217ECCE900C72D7C /* ExerciseViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E0FEE11B217EB76B00C72D7C /* tremr */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E0FEE144217EB76D00C72D7C /* Build configuration list for PBXNativeTarget "tremr" */;
+			buildPhases = (
+				E0FEE118217EB76B00C72D7C /* Sources */,
+				E0FEE119217EB76B00C72D7C /* Frameworks */,
+				E0FEE11A217EB76B00C72D7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tremr;
+			productName = tremr;
+			productReference = E0FEE11C217EB76B00C72D7C /* tremr.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E0FEE12F217EB76D00C72D7C /* tremrTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E0FEE147217EB76D00C72D7C /* Build configuration list for PBXNativeTarget "tremrTests" */;
+			buildPhases = (
+				E0FEE12C217EB76D00C72D7C /* Sources */,
+				E0FEE12D217EB76D00C72D7C /* Frameworks */,
+				E0FEE12E217EB76D00C72D7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E0FEE132217EB76D00C72D7C /* PBXTargetDependency */,
+			);
+			name = tremrTests;
+			productName = tremrTests;
+			productReference = E0FEE130217EB76D00C72D7C /* tremrTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E0FEE13A217EB76D00C72D7C /* tremrUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E0FEE14A217EB76D00C72D7C /* Build configuration list for PBXNativeTarget "tremrUITests" */;
+			buildPhases = (
+				E0FEE137217EB76D00C72D7C /* Sources */,
+				E0FEE138217EB76D00C72D7C /* Frameworks */,
+				E0FEE139217EB76D00C72D7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E0FEE13D217EB76D00C72D7C /* PBXTargetDependency */,
+			);
+			name = tremrUITests;
+			productName = tremrUITests;
+			productReference = E0FEE13B217EB76D00C72D7C /* tremrUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E0FEE114217EB76B00C72D7C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = CO.DEsign;
+				TargetAttributes = {
+					E0FEE11B217EB76B00C72D7C = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					E0FEE12F217EB76D00C72D7C = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = E0FEE11B217EB76B00C72D7C;
+					};
+					E0FEE13A217EB76D00C72D7C = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = E0FEE11B217EB76B00C72D7C;
+					};
+				};
+			};
+			buildConfigurationList = E0FEE117217EB76B00C72D7C /* Build configuration list for PBXProject "tremr" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E0FEE113217EB76B00C72D7C;
+			productRefGroup = E0FEE11D217EB76B00C72D7C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E0FEE11B217EB76B00C72D7C /* tremr */,
+				E0FEE12F217EB76D00C72D7C /* tremrTests */,
+				E0FEE13A217EB76D00C72D7C /* tremrUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E0FEE11A217EB76B00C72D7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0FEE12A217EB76D00C72D7C /* LaunchScreen.storyboard in Resources */,
+				E0FEE127217EB76D00C72D7C /* Assets.xcassets in Resources */,
+				E0FEE125217EB76B00C72D7C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0FEE12E217EB76D00C72D7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0FEE139217EB76D00C72D7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E0FEE118217EB76B00C72D7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0FEE14E217ECB4300C72D7C /* MeasureViewController.swift in Sources */,
+				E0FEE122217EB76B00C72D7C /* MainViewController.swift in Sources */,
+				E0FEE154217ECD1000C72D7C /* MedicationViewController.swift in Sources */,
+				E0FEE156217ECD5A00C72D7C /* ViewDataViewController.swift in Sources */,
+				E0FEE152217ECCE900C72D7C /* ExerciseViewController.swift in Sources */,
+				E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0FEE12C217EB76D00C72D7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0FEE135217EB76D00C72D7C /* tremrTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0FEE137217EB76D00C72D7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0FEE140217EB76D00C72D7C /* tremrUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E0FEE132217EB76D00C72D7C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0FEE11B217EB76B00C72D7C /* tremr */;
+			targetProxy = E0FEE131217EB76D00C72D7C /* PBXContainerItemProxy */;
+		};
+		E0FEE13D217EB76D00C72D7C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0FEE11B217EB76B00C72D7C /* tremr */;
+			targetProxy = E0FEE13C217EB76D00C72D7C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E0FEE123217EB76B00C72D7C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E0FEE124217EB76B00C72D7C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E0FEE128217EB76D00C72D7C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E0FEE129217EB76D00C72D7C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E0FEE142217EB76D00C72D7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E0FEE143217EB76D00C72D7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E0FEE145217EB76D00C72D7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = tremr/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codesign.tremr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E0FEE146217EB76D00C72D7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = tremr/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codesign.tremr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E0FEE148217EB76D00C72D7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = tremrTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codesign.tremrTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tremr.app/tremr";
+			};
+			name = Debug;
+		};
+		E0FEE149217EB76D00C72D7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = tremrTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codesign.tremrTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tremr.app/tremr";
+			};
+			name = Release;
+		};
+		E0FEE14B217EB76D00C72D7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = tremrUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codesign.tremrUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = tremr;
+			};
+			name = Debug;
+		};
+		E0FEE14C217EB76D00C72D7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = tremrUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codesign.tremrUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = tremr;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E0FEE117217EB76B00C72D7C /* Build configuration list for PBXProject "tremr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0FEE142217EB76D00C72D7C /* Debug */,
+				E0FEE143217EB76D00C72D7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E0FEE144217EB76D00C72D7C /* Build configuration list for PBXNativeTarget "tremr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0FEE145217EB76D00C72D7C /* Debug */,
+				E0FEE146217EB76D00C72D7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E0FEE147217EB76D00C72D7C /* Build configuration list for PBXNativeTarget "tremrTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0FEE148217EB76D00C72D7C /* Debug */,
+				E0FEE149217EB76D00C72D7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E0FEE14A217EB76D00C72D7C /* Build configuration list for PBXNativeTarget "tremrUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0FEE14B217EB76D00C72D7C /* Debug */,
+				E0FEE14C217EB76D00C72D7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E0FEE114217EB76B00C72D7C /* Project object */;
+}
