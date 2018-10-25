@@ -18,8 +18,7 @@ class PosturalViewController: UIViewController {
         motion.addMotionObserver(observer: {(gyro: Double, accel: Double) -> Void in
             
             self.motionValues.append((gyro, accel))
-            
-           // print(summary);
+
             if IS_DEBUG { print("Motion: \((gyro, accel))") }
         })
         
