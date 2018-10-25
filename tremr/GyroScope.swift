@@ -2,7 +2,7 @@
 //  GyroScope.swift
 //  tremr
 //
-//  Created by Devansh Chopra on 2018-10-24.
+//
 //  Copyright © 2018 CO.DEsign. All rights reserved.
 //
 
@@ -16,8 +16,7 @@ class MotionObservable {
     let motionManager: CMMotionManager
     let updateInterval: Double = Fps60
     
-    var gyroObservers = [(Double, Double, Double) -> Void]()
-    var accelerometerObservers = [(Double, Double, Double) -> Void]()
+    var motionObservers = [(Double, Double) -> Void]()
     
     // MARK: Public interface
     
@@ -26,30 +25,20 @@ class MotionObservable {
         initMotionEvents()
     }
     
-    func addGyroObserver(observer: @escaping (Double, Double, Double) -> Void) {
-        gyroObservers.append(observer)
-    }
-    
-    func addAccelerometerObserver(observer: @escaping (Double, Double, Double) -> Void) {
-        accelerometerObservers.append(observer)
-    }
+        func addMotionObserver(observer: @escaping (Double, Double) -> Void) {
+          motionObservers.append(observer)
+       }
+  
     
     func clearObservers() {
-        gyroObservers.removeAll()
-        accelerometerObservers.removeAll()
+        motionObservers.removeAll()
     }
     
     // MARK: Internal methods
     
-    private func notifyGyroObservers(x: Double, y: Double, z: Double) {
-        for observer in gyroObservers {
-            observer(x, y, z)
-        }
-    }
-    
-    private func notifyAccelerometerObservers(x: Double, y: Double, z: Double) {
-        for observer in accelerometerObservers {
-            observer(x, y, z)
+    private func notifyMotionObservers(gyro: Double, accel: Double) {
+        for observer in motionObservers {
+            observer(gyro, accel)
         }
     }
     
@@ -58,47 +47,50 @@ class MotionObservable {
     }
     
     private func initMotionEvents() {
-        if motionManager.isGyroAvailable || motionManager.isAccelerometerAvailable {
-            motionManager.deviceMotionUpdateInterval = updateInterval;
-            motionManager.startDeviceMotionUpdates()
-        }
+        motionManager.deviceMotionUpdateInterval = updateInterval
+        motionManager.startDeviceMotionUpdates()
         
-        
-        // Gyro
-        if motionManager.isGyroAvailable {
-            motionManager.gyroUpdateInterval = updateInterval
-            motionManager.startGyroUpdates(to: OperationQueue.current!, withHandler: { (gyroData: CMGyroData?, NSError) -> Void in
-                let rotation = gyroData!.rotationRate
-                let x = self.roundDouble(value: rotation.x)
-                let y = self.roundDouble(value: rotation.y)
-                let z = self.roundDouble(value: rotation.z)
-                self.notifyGyroObservers(x: x, y: y, z: z)
-                
-                if (NSError != nil){
-                    print("\(String(describing: NSError))")
-                }
-            })
-        } else {
-            print("No gyro available")
-        }
-        
-        // Accelerometer
-        if motionManager.isAccelerometerAvailable {
-            motionManager.accelerometerUpdateInterval = updateInterval
-            motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (accelerometerData: CMAccelerometerData?, NSError) -> Void in
-                
-                if let acceleration = accelerometerData?.acceleration {
-                    let x = self.roundDouble(value: acceleration.x)
-                    let y = self.roundDouble(value: acceleration.y)
-                    let z = self.roundDouble(value: acceleration.z)
-                    self.notifyAccelerometerObservers(x: x, y: y, z: z)
-                }
-                if(NSError != nil) {
-                    print("\(String(describing: NSError))")
-                }
+        motionManager.startDeviceMotionUpdates(to: OperationQueue(), withHandler: { (motionData: CMDeviceMotion?, NSError) -> Void in
+            let rotation = motionData!.rotationRate
+            let x = self.roundDouble(value: rotation.x)
+            let y = self.roundDouble(value: rotation.y)
+            let z = self.roundDouble(value: rotation.z)
+            let gyro = abs(x) + abs(y) + abs(z)
+            
+            let acceleration = motionData!.userAcceleration
+            
+            let x1 = self.roundDouble(value: acceleration.x)
+            let y1 = self.roundDouble(value: acceleration.y)
+            let z1 = self.roundDouble(value: acceleration.z)
+            let accel = abs(x1) + abs(y1) + abs(z1)
+            
+            
+            
+            
+            self.notifyMotionObservers(gyro: gyro, accel: accel)
+            
+            if (NSError != nil){
+                print("\(String(describing: NSError))")
             }
-        } else {
-            print("No accelerometer available")
-        }
+        })
+        
+//        // Accelerometer
+//        if motionManager.isAccelerometerAvailable {
+//            motionManager.accelerometerUpdateInterval = updateInterval
+//            motionManager.startAccelerometerUpdates(to: OperationQueue(), withHandler:{(accelerometerData: CMAccelerometerData?, NSError) -> Void in
+//
+//                if let acceleration = accelerometerData?.acceleration {
+//                    let x = self.roundDouble(value: acceleration.x)
+//                    let y = self.roundDouble(value: acceleration.y)
+//                    let z = self.roundDouble(value: acceleration.z)
+//                    self.notifyAccelerometerObservers(x: x, y: y, z: z)
+//                }
+//                if(NSError != nil) {
+//                    print("\(String(describing: NSError))")
+//                }
+//            })
+//        } else {
+//            print("No accelerometer available")
+//        }
     }
 }

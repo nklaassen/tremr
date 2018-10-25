@@ -10,35 +10,23 @@ import UIKit
 
 class PosturalViewController: UIViewController {
     
-    var gyroValues = Array<Int>()
-    var accelValues = Array<Int>()
+    var motionValues = Array<(Double, Double)>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        motion.addGyroObserver(observer: {(x: Double, y: Double, z: Double) -> Void in
-            let summary = Int(abs(x) + abs(y) + abs(z));
+        motion.addMotionObserver(observer: {(gyro: Double, accel: Double) -> Void in
             
-            self.gyroValues.append(summary)
+            self.motionValues.append((gyro, accel))
             
-            print(summary);
-            if IS_DEBUG { print("Gyro: \(summary)") }
-        })
-        
-        motion.addAccelerometerObserver(observer: {(x: Double, y: Double, z: Double) -> Void in
-            let summary = Int(abs(x) + abs(y) + abs(z));
-            
-            self.accelValues.append(summary)
-            
-            print(summary);
-            if IS_DEBUG { print("Accelerometer: \(summary)") }
+           // print(summary);
+            if IS_DEBUG { print("Motion: \((gyro, accel))") }
         })
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
             motion.clearObservers()
             
-            print("Got \(gyroValues.count) gyroscope values")
-            print("Got \(accelValues.count) accelerometer values")
+            print("Got \(self.motionValues.count) motion values")
         })
 
         // Do any additional setup after loading the view.
