@@ -13,9 +13,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        //Examples of how to use the dbManager
+        //Uncomment the following if you want to try it out. It prints to the XCode console.
+        /*
+        dbManager.addUser(name: "John Doe", email: "johnny@aol.net")
+        
+        let users = dbManager.getUsers()
+        for user in users {
+            print(user)
+            dbManager.addTremor(restingSeverity: 4.2, posturalSeverity: 7.6, UID: user.UID)
+        }
+        
+        let tremors = dbManager.getTremors()
+        for tremor in tremors {
+            print(tremor)
+        }
+        */
+        
         return true
     }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0C590922181444900B7AC0F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C590912181444900B7AC0F /* DatabaseManager.swift */; };
+		E0C5909521816C2F00B7AC0F /* types.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C5909421816C2F00B7AC0F /* types.swift */; };
 		E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */; };
 		E0FEE122217EB76B00C72D7C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE121217EB76B00C72D7C /* MainViewController.swift */; };
 		E0FEE125217EB76B00C72D7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FEE123217EB76B00C72D7C /* Main.storyboard */; };
@@ -37,7 +39,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E0C5909021813FF900B7AC0F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		E0C5907221813F9B00B7AC0F /* SQLite.swift-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "SQLite.swift-master"; sourceTree = SOURCE_ROOT; };
+		E0C590912181444900B7AC0F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		E0C5909421816C2F00B7AC0F /* types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = types.swift; sourceTree = "<group>"; };
 		E0FEE11C217EB76B00C72D7C /* tremr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tremr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0FEE121217EB76B00C72D7C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +100,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E0C5908A21813FD600B7AC0F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E0FEE113217EB76B00C72D7C = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +114,8 @@
 				E0FEE133217EB76D00C72D7C /* tremrTests */,
 				E0FEE13E217EB76D00C72D7C /* tremrUITests */,
 				E0FEE11D217EB76B00C72D7C /* Products */,
+				E0C5907221813F9B00B7AC0F /* SQLite.swift-master */,
+				E0C5908A21813FD600B7AC0F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +138,8 @@
 				E0FEE126217EB76D00C72D7C /* Assets.xcassets */,
 				E0FEE128217EB76D00C72D7C /* LaunchScreen.storyboard */,
 				E0FEE12B217EB76D00C72D7C /* Info.plist */,
+				E0C590912181444900B7AC0F /* DatabaseManager.swift */,
+				E0C5909421816C2F00B7AC0F /* types.swift */,
 			);
 			path = tremr;
 			sourceTree = "<group>";
@@ -155,6 +184,7 @@
 				E0FEE118217EB76B00C72D7C /* Sources */,
 				E0FEE119217EB76B00C72D7C /* Frameworks */,
 				E0FEE11A217EB76B00C72D7C /* Resources */,
+				E0C5909021813FF900B7AC0F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -279,9 +309,11 @@
 				E0FEE14E217ECB4300C72D7C /* MeasureViewController.swift in Sources */,
 				E0FEE122217EB76B00C72D7C /* MainViewController.swift in Sources */,
 				E0FEE154217ECD1000C72D7C /* MedicationViewController.swift in Sources */,
+				E0C5909521816C2F00B7AC0F /* types.swift in Sources */,
 				E0FEE156217ECD5A00C72D7C /* ViewDataViewController.swift in Sources */,
 				E0FEE152217ECCE900C72D7C /* ExerciseViewController.swift in Sources */,
 				E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */,
+				E0C590922181444900B7AC0F /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,8 +485,10 @@
 		E0FEE145217EB76D00C72D7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z2GEL28KXD;
 				INFOPLIST_FILE = tremr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -470,8 +504,10 @@
 		E0FEE146217EB76D00C72D7C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z2GEL28KXD;
 				INFOPLIST_FILE = tremr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
