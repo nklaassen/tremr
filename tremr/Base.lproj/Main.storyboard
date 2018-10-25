@@ -22,7 +22,7 @@
                                 <rect key="frame" x="20" y="40" width="335" height="607"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCN-QQ-5XZ">
-                                        <rect key="frame" x="8" y="8" width="319" height="291"/>
+                                        <rect key="frame" x="8" y="8" width="319" height="191"/>
                                         <attributedString key="attributedText">
                                             <fragment content="TREMR">
                                                 <attributes>
@@ -34,7 +34,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZn-eO-Mql">
-                                        <rect key="frame" x="8" y="299" width="319" height="100"/>
+                                        <rect key="frame" x="8" y="199" width="319" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Xmu-Gy-5rg"/>
                                         </constraints>
@@ -44,13 +44,23 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dL-4h-8fV">
-                                        <rect key="frame" x="8" y="399" width="319" height="100"/>
+                                        <rect key="frame" x="8" y="299" width="319" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="aqZ-ey-wwu"/>
                                         </constraints>
                                         <state key="normal" title="Medication"/>
                                         <connections>
                                             <segue destination="8l9-YL-xlN" kind="show" id="ts2-cP-Yrc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6s-uu-8Vb">
+                                        <rect key="frame" x="8" y="399" width="319" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="uEy-yb-9mx"/>
+                                        </constraints>
+                                        <state key="normal" title="Exercies"/>
+                                        <connections>
+                                            <segue destination="068-er-gBn" kind="show" id="L57-Lt-DZJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COa-xF-CtB">
