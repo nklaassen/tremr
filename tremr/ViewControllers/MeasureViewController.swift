@@ -8,10 +8,19 @@
 
 import UIKit
 
+
+
 class MeasureViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        motion.addGyroObserver(observer: {(x: Double, y: Double, z: Double) -> Void in
+//            let summary = Int(abs(x) + abs(y) + abs(z));
+//
+//            print(summary);
+//            //if IS_DEBUG { print("Gyro: \(summary)") }
+//        })
 
         // Do any additional setup after loading the view.
     }
@@ -21,15 +30,13 @@ class MeasureViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
+//-------------------------------GyroScope-------------------------------------------------
+//    func initAccelGyro() {
+//
+//
+//    }
 }
+    
+

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80EF89CB21814DA400872F5B /* GyroScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CA21814DA400872F5B /* GyroScope.swift */; };
+		80EF89CD2181638700872F5B /* InstructionsForTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */; };
+		80EF89D12181650A00872F5B /* PosturalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89D02181650A00872F5B /* PosturalViewController.swift */; };
 		E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */; };
 		E0FEE122217EB76B00C72D7C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE121217EB76B00C72D7C /* MainViewController.swift */; };
 		E0FEE125217EB76B00C72D7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FEE123217EB76B00C72D7C /* Main.storyboard */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		80EF89CA21814DA400872F5B /* GyroScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroScope.swift; sourceTree = "<group>"; };
+		80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsForTrackingViewController.swift; sourceTree = "<group>"; };
+		80EF89D02181650A00872F5B /* PosturalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosturalViewController.swift; sourceTree = "<group>"; };
 		E0FEE11C217EB76B00C72D7C /* tremr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tremr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0FEE121217EB76B00C72D7C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +117,7 @@
 				E0FEE126217EB76D00C72D7C /* Assets.xcassets */,
 				E0FEE128217EB76D00C72D7C /* LaunchScreen.storyboard */,
 				E0FEE12B217EB76D00C72D7C /* Info.plist */,
+				80EF89CA21814DA400872F5B /* GyroScope.swift */,
 			);
 			path = tremr;
 			sourceTree = "<group>";
@@ -141,6 +148,8 @@
 				E0FEE14D217ECB4300C72D7C /* MeasureViewController.swift */,
 				E0FEE153217ECD1000C72D7C /* MedicationViewController.swift */,
 				E0FEE151217ECCE900C72D7C /* ExerciseViewController.swift */,
+				80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */,
+				80EF89D02181650A00872F5B /* PosturalViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -280,6 +289,9 @@
 				E0FEE122217EB76B00C72D7C /* MainViewController.swift in Sources */,
 				E0FEE154217ECD1000C72D7C /* MedicationViewController.swift in Sources */,
 				E0FEE156217ECD5A00C72D7C /* ViewDataViewController.swift in Sources */,
+				80EF89CD2181638700872F5B /* InstructionsForTrackingViewController.swift in Sources */,
+				80EF89D12181650A00872F5B /* PosturalViewController.swift in Sources */,
+				80EF89CB21814DA400872F5B /* GyroScope.swift in Sources */,
 				E0FEE152217ECCE900C72D7C /* ExerciseViewController.swift in Sources */,
 				E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */,
 			);
@@ -454,7 +466,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z2GEL28KXD;
 				INFOPLIST_FILE = tremr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -462,6 +476,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = codesign.tremr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -471,7 +486,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z2GEL28KXD;
 				INFOPLIST_FILE = tremr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -479,6 +496,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = codesign.tremr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
