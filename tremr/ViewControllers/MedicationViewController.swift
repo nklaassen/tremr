@@ -16,7 +16,8 @@ class MedicationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // Put query for that day's medications here
+         
         // Do any additional setup after loading the view.
     }
 
