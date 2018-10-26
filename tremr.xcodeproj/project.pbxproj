@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		80EF89CB21814DA400872F5B /* GyroScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CA21814DA400872F5B /* GyroScope.swift */; };
 		80EF89CD2181638700872F5B /* InstructionsForTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */; };
-		80EF89D12181650A00872F5B /* PosturalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89D02181650A00872F5B /* PosturalViewController.swift */; };
+		80EF89D12181650A00872F5B /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89D02181650A00872F5B /* RecordingViewController.swift */; };
+		E04F6FD32182979C000AF2F6 /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */; };
 		E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */; };
 		E0FEE122217EB76B00C72D7C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE121217EB76B00C72D7C /* MainViewController.swift */; };
 		E0FEE125217EB76B00C72D7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FEE123217EB76B00C72D7C /* Main.storyboard */; };
@@ -43,7 +44,9 @@
 /* Begin PBXFileReference section */
 		80EF89CA21814DA400872F5B /* GyroScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroScope.swift; sourceTree = "<group>"; };
 		80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsForTrackingViewController.swift; sourceTree = "<group>"; };
-		80EF89D02181650A00872F5B /* PosturalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosturalViewController.swift; sourceTree = "<group>"; };
+		80EF89D02181650A00872F5B /* RecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
+		E04F6FCF21827276000AF2F6 /* holding-phone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "holding-phone.jpg"; sourceTree = "<group>"; };
+		E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
 		E0FEE11C217EB76B00C72D7C /* tremr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tremr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0FEE121217EB76B00C72D7C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +118,7 @@
 				E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */,
 				E0FEE123217EB76B00C72D7C /* Main.storyboard */,
 				E0FEE126217EB76D00C72D7C /* Assets.xcassets */,
+				E04F6FCF21827276000AF2F6 /* holding-phone.jpg */,
 				E0FEE128217EB76D00C72D7C /* LaunchScreen.storyboard */,
 				E0FEE12B217EB76D00C72D7C /* Info.plist */,
 				80EF89CA21814DA400872F5B /* GyroScope.swift */,
@@ -149,7 +153,8 @@
 				E0FEE153217ECD1000C72D7C /* MedicationViewController.swift */,
 				E0FEE151217ECCE900C72D7C /* ExerciseViewController.swift */,
 				80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */,
-				80EF89D02181650A00872F5B /* PosturalViewController.swift */,
+				80EF89D02181650A00872F5B /* RecordingViewController.swift */,
+				E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -290,7 +295,8 @@
 				E0FEE154217ECD1000C72D7C /* MedicationViewController.swift in Sources */,
 				E0FEE156217ECD5A00C72D7C /* ViewDataViewController.swift in Sources */,
 				80EF89CD2181638700872F5B /* InstructionsForTrackingViewController.swift in Sources */,
-				80EF89D12181650A00872F5B /* PosturalViewController.swift in Sources */,
+				80EF89D12181650A00872F5B /* RecordingViewController.swift in Sources */,
+				E04F6FD32182979C000AF2F6 /* CountdownViewController.swift in Sources */,
 				80EF89CB21814DA400872F5B /* GyroScope.swift in Sources */,
 				E0FEE152217ECCE900C72D7C /* ExerciseViewController.swift in Sources */,
 				E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */,
