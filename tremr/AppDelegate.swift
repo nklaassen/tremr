@@ -8,6 +8,10 @@
 
 import UIKit
 
+internal let IS_DEBUG = true
+
+internal let motion = MotionObservable(); // gyroscope
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
