@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w9c-1m-vE8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w9c-1m-vE8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -102,7 +102,7 @@
         <!--Postural-->
         <scene sceneID="swE-p3-1HC">
             <objects>
-                <viewController title="Postural" id="hQh-L1-UuH" customClass="RecordingViewController" customModule="tremr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Postural" id="hQh-L1-UuH" customClass="RecordPosturalViewController" customModule="tremr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l7J-cZ-CRl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -143,7 +143,7 @@
                         <viewLayoutGuide key="safeArea" id="2fq-py-5mz"/>
                     </view>
                     <connections>
-                        <outlet property="posturalNextButton" destination="yKZ-mx-xeI" id="R5g-1S-WzN"/>
+                        <outlet property="Next" destination="yKZ-mx-xeI" id="a3D-kb-4C8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7CU-Ak-cr5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -195,10 +195,10 @@
             </objects>
             <point key="canvasLocation" x="3810" y="-1039"/>
         </scene>
-        <!--Postural-->
+        <!--Resting-->
         <scene sceneID="vbD-x0-YBi">
             <objects>
-                <viewController title="Postural" id="fUa-9z-35A" customClass="RecordingViewController" customModule="tremr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Resting" id="fUa-9z-35A" customClass="RecordRestingViewController" customModule="tremr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wec-Uz-fEc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -239,7 +239,7 @@
                         <viewLayoutGuide key="safeArea" id="L7M-d8-ihi"/>
                     </view>
                     <connections>
-                        <outlet property="restingNextButton" destination="WKM-Kg-Qso" id="8Gd-g2-oOL"/>
+                        <outlet property="Next" destination="WKM-Kg-Qso" id="t48-WW-tnw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LCk-FF-uPx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -249,7 +249,7 @@
         <!--RecordingResults-->
         <scene sceneID="mEL-a4-g1D">
             <objects>
-                <viewController title="RecordingResults" id="EwS-5N-Z2f" sceneMemberID="viewController">
+                <viewController title="RecordingResults" id="EwS-5N-Z2f" customClass="DisplaySeverityViewController" customModule="tremr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B6d-Za-gw7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -258,8 +258,44 @@
                                 <rect key="frame" x="20" y="40" width="335" height="607"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Job!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVi-fx-Im9">
-                                        <rect key="frame" x="128" y="0.0" width="79.5" height="507"/>
+                                        <rect key="frame" x="128" y="0.0" width="79.5" height="207"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postural" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sif-8j-QEr">
+                                        <rect key="frame" x="136" y="207" width="63" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="W3j-D7-Wfj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAc-yV-GBM">
+                                        <rect key="frame" x="132" y="257" width="71" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="d88-Uo-eRJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPR-5B-cQ7">
+                                        <rect key="frame" x="139" y="357" width="57.5" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="0ql-Fy-h9Y"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zt-eF-vPE">
+                                        <rect key="frame" x="138" y="407" width="59.5" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Y3s-Uu-AG5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -289,6 +325,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nre-nf-YVV"/>
                     </view>
+                    <connections>
+                        <outlet property="PosturalLabel" destination="dAc-yV-GBM" id="h7x-ln-XD7"/>
+                        <outlet property="RestingLabel" destination="2zt-eF-vPE" id="SMh-zm-Igg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J7v-6A-Xch" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

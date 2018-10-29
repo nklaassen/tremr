@@ -12,6 +12,8 @@ internal let IS_DEBUG = true
 
 internal let motion = MotionObservable(); // gyroscope
 
+internal let Tremr = TremorController(); // Tremor Object for getting info
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
