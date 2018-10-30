@@ -8,6 +8,8 @@
 
 import UIKit
 
+let db = DatabaseManager()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Database example
+        /*
+        db.addUser(name: "nic", email: "nic@gmail.com")
+        db.addTremor(restingSeverity: 4.2, posturalSeverity: 3.6, UID: 0)
+        for user in db.getUsers() {
+            print("name \(user.name), email: \(user.email)")
+        }
+        for tremor in db.getTremors() {
+            print("resting: \(tremor.restingSeverity), postural: \(tremor.posturalSeverity)")
+        }
+         */
+        
         return true
     }
 
