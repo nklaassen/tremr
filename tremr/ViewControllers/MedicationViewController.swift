@@ -19,6 +19,12 @@ class MedicationViewController: UIViewController {
         db.addMedicine(UID: 1, name: "Advil", dosage: "1 pill", frequency: "mon wed", reminder: true, start_date: Date.init(), end_date: Date.init())
     }
     
+    @IBAction func QueryMedicineTest(_ sender: UIButton) {
+        for medicine in db.getMedicine() {
+            print("medicine \(medicine.name)")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Put query for that day's medications here
@@ -31,7 +37,6 @@ class MedicationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 

@@ -78,6 +78,9 @@
                                 <rect key="frame" x="59" y="117" width="53" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="L Arrow"/>
+                                <connections>
+                                    <action selector="QueryMedicineTest:" destination="8l9-YL-xlN" eventType="touchUpInside" id="Ebf-2o-VZA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Co-vw-bq6">
                                 <rect key="frame" x="107" y="588" width="146" height="30"/>
