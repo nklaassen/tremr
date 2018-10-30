@@ -13,7 +13,6 @@
 		A5B4C6A82183D68000A71E9B /* Medicine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C6A72183D68000A71E9B /* Medicine.storyboard */; };
 		E0BF93E1218692640097767F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BF93DF218692640097767F /* DatabaseManager.swift */; };
 		E0BF93E2218692640097767F /* types.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BF93E0218692640097767F /* types.swift */; };
-		E0BF93E3218692810097767F /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0BF93D2218691E10097767F /* SQLite.framework */; };
 		E0BF93E4218692870097767F /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0BF93D2218691E10097767F /* SQLite.framework */; };
 		E0BF93E5218692870097767F /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0BF93D2218691E10097767F /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */; };
@@ -149,7 +148,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0BF93E4218692870097767F /* SQLite.framework in Frameworks */,
-				E0BF93E3218692810097767F /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
