@@ -60,13 +60,15 @@ class DatabaseManager
             // Create the Medicine table
             try db.run(Medicine.create(ifNotExists: true) { t in
                 t.column(MID, primaryKey: true)
-                // t.column(UID, foreignKey: true)
+                //t.column(UID)
                 t.column(name)
                 t.column(dosage)
                 t.column(frequency)
                 t.column(reminder)
                 t.column(start_date)
                 t.column(end_date)
+                t.primaryKey(MID)
+                t.foreignKey(UID, references: Users, Delete: .setNull)
             })
             
             // Create the Tremors table

@@ -16,8 +16,7 @@ class MedicationViewController: UIViewController {
     }
     
     @IBAction func QueryTest(_ sender: UIButton) {
-        addMedicine()
-        
+        db.addMedicine(UID: 1, name: "Advil", dosage: "1 pill", frequency: "mon wed", reminder: true, start_date: Date.init(), end_date: Date.init())
     }
     
     override func viewDidLoad() {
