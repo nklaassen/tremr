@@ -17,13 +17,10 @@ class RecordRestingViewController: UIViewController {
         disableInput()
         Tremr.recordResting() {
             self.enableInput()
-            
         }
     }
     
-    
     @IBOutlet weak var Next: UIButton!
-    
     
     private func disableInput() {
         Next.isEnabled=false
@@ -34,8 +31,6 @@ class RecordRestingViewController: UIViewController {
         Next.isEnabled=true
         view.isUserInteractionEnabled = true
     }
-    
-
 }
 
 
