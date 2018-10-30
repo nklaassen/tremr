@@ -27,6 +27,15 @@ class DatabaseManager
     let posturalSeverity = Expression<Int>("posturalSeverity")
     let restingSeverity = Expression<Int>("restingSeverity")
     let completed = Expression<Bool>("completed")
+    
+    let Medicine = Table("Medicine")
+    let MID = Expression<Int64>("MID")
+    // let name = Expression<String>("name") We'll use the one defined in Users table
+    let dosage = Expression<String>("dosage")
+    let frequency = Expression<String>("frequency")
+    let reminder = Expression<Bool>("reminder")
+    let start_date = Expression<Date>("start_date")
+    let end_date = Expression<Date>("end_date")
 
     init() {
         do {
@@ -47,7 +56,19 @@ class DatabaseManager
                 t.column(email, unique: true)                     //     "email" TEXT UNIQUE NOT NULL,
                 t.column(name)                                    //     "name" TEXT NOT NULL
             })                                                    // )
-
+            
+            // Create the Medicine table
+            try db.run(Medicine.create(ifNotExists: true) { t in
+                t.column(MID, primaryKey: true)
+                // t.column(UID, foreignKey: true)
+                t.column(name)
+                t.column(dosage)
+                t.column(frequency)
+                t.column(reminder)
+                t.column(start_date)
+                t.column(end_date)
+            })
+            
             // Create the Tremors table
             try db.run(Tremors.create(ifNotExists: true) { t in              // CREATE TABLE "Tremors" (
                 t.column(TID, primaryKey: true)                              //     "TID" INTEGER PRIMARY KEY NOT NULL,
@@ -114,4 +135,38 @@ class DatabaseManager
         }
         return tremors
     }
+    
+    func addMedicine(UID : Int64, name : String, dosage : String, frequency : String, reminder : Bool, start_date : Date, end_date : Date) {
+        print("Trying to add medcine \(name) \(dosage)")
+        let query = Medicine.select(name)
+        print(query)
+        do {
+            try db.run(Medicine.insert(self.UID <- UID,
+                                      self.name <- name,
+                                      self.dosage <- dosage,
+                                      self.frequency <- frequency,
+                                      self.reminder <- reminder,
+                                      self.start_date <- start_date,
+                                      self.end_date <- end_date ))
+            print("Inserted medicine!")
+        } catch {
+            print("Failed to insert medicine: \(error)")
+        }
+    }
+    /*
+    func getMedicine() -> Array<Medicine> {
+        var medicine = Array<Medicine>()
+        do {
+            for medicine in try db.prepare(Medicine) {
+                medicine.append(Medicine(UID: medicine[self.UID],
+                                         name: Float(medicine[self.posturalSeverity]) / 10.0,
+                                         restingSeverity: Float(medicine[self.restingSeverity]) / 10.0,
+                                         completed: medicine[self.completed]))
+            }
+        } catch {
+            print(error)
+        }
+        return tremors
+    }
+ */
 }

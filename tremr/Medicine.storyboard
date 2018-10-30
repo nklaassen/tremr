@@ -70,6 +70,9 @@
                                 <rect key="frame" x="271" y="117" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="R Arrow"/>
+                                <connections>
+                                    <action selector="QueryTest:" destination="8l9-YL-xlN" eventType="touchUpInside" id="DXA-63-mcl"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U56-7X-3xN">
                                 <rect key="frame" x="59" y="117" width="53" height="30"/>

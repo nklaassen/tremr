@@ -10,8 +10,14 @@ import UIKit
 
 class MedicationViewController: UIViewController {
 
+    //MARK: Actions
     @IBAction func mainViewTransition(_ sender: Any) {
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func QueryTest(_ sender: UIButton) {
+        addMedicine()
+        
     }
     
     override func viewDidLoad() {
