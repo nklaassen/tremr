@@ -14,8 +14,18 @@ class DisplaySeverityViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        PosturalLabel.text = String(Tremr.GetPosturalScore())
-        RestingLabel.text = String(Tremr.GetRestingScore())
+        let postural = Tremr.GetPosturalScore()
+        let resting = Tremr.GetRestingScore()
+        PosturalLabel.text = String(format: "%.1f", Tremr.GetPosturalScore())
+        RestingLabel.text = String(format: "%.1f", Tremr.GetRestingScore())
+        db.addTremor(restingSeverity: resting, posturalSeverity: postural)
+        
+        // debug output
+        /*
+        for tremor in db.getTremors() {
+            print("tremor: resting=\(tremor.restingSeverity), postural=\(tremor.posturalSeverity), date=\(tremor.date)")
+        }
+         */
     }
     
     @IBOutlet weak var PosturalLabel: UILabel!
