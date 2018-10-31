@@ -10,10 +10,20 @@ import UIKit
 
 class MedicationViewController: UIViewController {
 
+    var mondayFlag: Bool = false
+    var tuesdayFlag: Bool = false
+    var wednesdayFlag: Bool = false
+    var thursdayFlag: Bool = false
+    var fridayFlag: Bool = false
+    var saturdayFlag: Bool = false
+    var sundayFlag: Bool = false
+    var date: Date = Date()
+    
     @IBAction func mainViewTransition(_ sender: Any) {
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
    
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var medicineTextField: UITextField!
     @IBOutlet weak var dosageTextField: UITextField!
     
@@ -22,25 +32,43 @@ class MedicationViewController: UIViewController {
         let dosageValue: String = dosageTextField.text!
         
         // Need to determine UID to insert in subsequent versions
-        db.addMedicine(UID: 1, name: "\(medicineName)", dosage: "\(dosageValue)", monday: false, tuesday: false, wednesday: false, thursday: false, friday: false, saturday: false, sunday: false, reminder: true, start_date: Date.init(), end_date: Date.init())
+        db.addMedicine(UID: 1, name: "\(medicineName)", dosage: "\(dosageValue)", monday: mondayFlag, tuesday: tuesdayFlag, wednesday: wednesdayFlag, thursday: thursdayFlag, friday: fridayFlag, saturday: saturdayFlag, sunday: sundayFlag, reminder: true, start_date: Date.init(), end_date: Date.init())
     }
     
-    
-    
-    /*
     @IBAction func queryMedicineDatabase(_ sender: Any) {
         for medicine in db.getMedicine() {
             print("\(medicine.UID), \(medicine.MID), \(medicine.name), \(medicine.dosage)")
             print("\(medicine.monday.description)")
-            
         }
     }
-    */
+    
+    @IBAction func mondayButton(_ sender: Any) {
+        mondayFlag = !mondayFlag
+    }
+    @IBAction func tuesdayButton(_ sender: Any) {
+        tuesdayFlag = !tuesdayFlag
+    }
+    @IBAction func wednesdayButton(_ sender: Any) {
+        wednesdayFlag = !wednesdayFlag
+    }
+    @IBAction func thursdayButton(_ sender: Any) {
+        thursdayFlag = !thursdayFlag
+    }
+    @IBAction func fridayButton(_ sender: Any) {
+        fridayFlag = !fridayFlag
+    }
+    @IBAction func saturdayButton(_ sender: Any) {
+        saturdayFlag = !saturdayFlag
+    }
+    @IBAction func sundayButton(_ sender: Any) {
+        sundayFlag = !sundayFlag
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Put query for that day's medications here
         // Do any additional setup after loading the view.
-        
+        dateLabel.text = date.toString(dateFormat: "dd-MM")
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +86,16 @@ class MedicationViewController: UIViewController {
     }
     */
 
+}
+
+extension Date
+{
+    func toString( dateFormat format  : String ) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
 }
 
 extension UIViewController : UITextFieldDelegate {
