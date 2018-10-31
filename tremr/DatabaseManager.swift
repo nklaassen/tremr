@@ -63,6 +63,8 @@ class DatabaseManager
                 t.column(name)                                    //     "name" TEXT NOT NULL
             })                                                    // )
             
+            try db.run(Medicines.drop(ifExists: true))
+            
             // Create the Medicine table
             try db.run(Medicines.create(ifNotExists: true) { t in
                 t.column(MID, primaryKey: true)

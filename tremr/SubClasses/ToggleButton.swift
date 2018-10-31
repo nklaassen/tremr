@@ -22,7 +22,7 @@ class ToggleButton: UIButton {
     }
     
     func initButton() {
-        layer.borderWidth = 2.0
+        layer.borderWidth = 1.0
         layer.borderColor = UIColor.black.cgColor
         layer.cornerRadius = frame.size.height/2
         

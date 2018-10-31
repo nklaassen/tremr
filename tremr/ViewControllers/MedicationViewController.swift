@@ -25,6 +25,8 @@ class MedicationViewController: UIViewController {
         db.addMedicine(UID: 1, name: "\(medicineName)", dosage: "\(dosageValue)", monday: false, tuesday: false, wednesday: false, thursday: false, friday: false, saturday: false, sunday: false, reminder: true, start_date: Date.init(), end_date: Date.init())
     }
     
+    
+    
     /*
     @IBAction func queryMedicineDatabase(_ sender: Any) {
         for medicine in db.getMedicine() {
