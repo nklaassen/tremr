@@ -40,7 +40,13 @@ struct Medicine {
     var MID : Int64
     var name : String
     var dosage : String
-    var frequency : String
+    var monday : Bool
+    var tuesday : Bool
+    var wednesday : Bool
+    var thursday : Bool
+    var friday : Bool
+    var saturday : Bool
+    var sunday : Bool
     var reminder : Bool
     var start_date : Date
     var end_date : Date

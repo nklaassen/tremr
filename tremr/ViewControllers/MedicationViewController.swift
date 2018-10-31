@@ -10,40 +10,35 @@ import UIKit
 
 class MedicationViewController: UIViewController {
 
-    //MARK: Actions
     @IBAction func mainViewTransition(_ sender: Any) {
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
-    
-    @IBAction func addMedicineTest(_ sender: UIButton) {
-        db.addMedicine(UID: 1, name: "Advil", dosage: "1 pill", frequency: "mon wed", reminder: true, start_date: Date.init(), end_date: Date.init())
-    }
-    
-    @IBAction func queryMedicineTest(_ sender: UIButton) {
-        for medicine in db.getMedicine() {
-            print("medicine \(medicine.name)")
-        }
-    }
    
-    /*
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var medicineTextField: UITextField!
+    @IBOutlet weak var dosageTextField: UITextField!
     
-    @IBAction func addToDatabaseTest(_ sender: UIButton) {
-        let medicineName = nameTextFieldToString()
-        db.addMedicine(UID: 1, name: "\(medicineName)", dosage: "1 pill", frequency: "mon wed", reminder: true, start_date: Date.init(), end_date: Date.init())
+    @IBAction func addMedicineButton(_ sender: Any) {
+        let medicineName: String = medicineTextField.text!
+        let dosageValue: String = dosageTextField.text!
+        
+        // Need to determine UID to insert in subsequent versions
+        db.addMedicine(UID: 1, name: "\(medicineName)", dosage: "\(dosageValue)", monday: false, tuesday: false, wednesday: false, thursday: false, friday: false, saturday: false, sunday: false, reminder: true, start_date: Date.init(), end_date: Date.init())
     }
     
-    func nameTextFieldToString() -> String {
-        let medicineName: String = nameTextField.text!
-        print(medicineName)
-        return medicineName
+    /*
+    @IBAction func queryMedicineDatabase(_ sender: Any) {
+        for medicine in db.getMedicine() {
+            print("\(medicine.UID), \(medicine.MID), \(medicine.name), \(medicine.dosage)")
+            print("\(medicine.monday.description)")
+            
+        }
     }
     */
     override func viewDidLoad() {
         super.viewDidLoad()
         // Put query for that day's medications here
-         
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,5 +55,13 @@ class MedicationViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+extension UIViewController : UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
 }

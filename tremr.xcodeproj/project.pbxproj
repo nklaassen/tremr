@@ -11,6 +11,7 @@
 		A5B4C6A32183D65700A71E9B /* Exercise.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C6A22183D65700A71E9B /* Exercise.storyboard */; };
 		A5B4C6A62183D67000A71E9B /* ViewData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C6A42183D67000A71E9B /* ViewData.storyboard */; };
 		A5B4C6A82183D68000A71E9B /* Medicine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C6A72183D68000A71E9B /* Medicine.storyboard */; };
+		A5E1D110218955D3001D8814 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1D10F218955D3001D8814 /* ToggleButton.swift */; };
 		E0BF93E1218692640097767F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BF93DF218692640097767F /* DatabaseManager.swift */; };
 		E0BF93E2218692640097767F /* types.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BF93E0218692640097767F /* types.swift */; };
 		E0BF93E4218692870097767F /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0BF93D2218691E10097767F /* SQLite.framework */; };
@@ -120,6 +121,7 @@
 		A5B4C6A22183D65700A71E9B /* Exercise.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exercise.storyboard; sourceTree = "<group>"; };
 		A5B4C6A52183D67000A71E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = tremr/Base.lproj/ViewData.storyboard; sourceTree = "<group>"; };
 		A5B4C6A72183D68000A71E9B /* Medicine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Medicine.storyboard; sourceTree = "<group>"; };
+		A5E1D10F218955D3001D8814 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		E0BF93C7218691E10097767F /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "libraries/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		E0BF93DF218692640097767F /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		E0BF93E0218692640097767F /* types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = types.swift; sourceTree = "<group>"; };
@@ -168,6 +170,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A5E1D108218955B4001D8814 /* SubClasses */ = {
+			isa = PBXGroup;
+			children = (
+				A5E1D10F218955D3001D8814 /* ToggleButton.swift */,
+			);
+			path = SubClasses;
+			sourceTree = "<group>";
+		};
 		E0BF93AD21868DBE0097767F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +224,7 @@
 		E0FEE11E217EB76B00C72D7C /* tremr */ = {
 			isa = PBXGroup;
 			children = (
+				A5E1D108218955B4001D8814 /* SubClasses */,
 				E0BF93DF218692640097767F /* DatabaseManager.swift */,
 				E0BF93E0218692640097767F /* types.swift */,
 				E0FEE158217ECDF800C72D7C /* ViewControllers */,
@@ -459,6 +470,7 @@
 				E0FEE122217EB76B00C72D7C /* MainViewController.swift in Sources */,
 				E0FEE154217ECD1000C72D7C /* MedicationViewController.swift in Sources */,
 				E0BF93E2218692640097767F /* types.swift in Sources */,
+				A5E1D110218955D3001D8814 /* ToggleButton.swift in Sources */,
 				E0FEE156217ECD5A00C72D7C /* ViewDataViewController.swift in Sources */,
 				E0FEE152217ECCE900C72D7C /* ExerciseViewController.swift in Sources */,
 				E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */,

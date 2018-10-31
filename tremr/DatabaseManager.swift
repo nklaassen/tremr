@@ -32,7 +32,13 @@ class DatabaseManager
     let MID = Expression<Int64>("MID")
     // let name = Expression<String>("name") We'll use the one defined in Users table
     let dosage = Expression<String>("dosage")
-    let frequency = Expression<String>("frequency")
+    let monday = Expression<Bool>("monday")
+    let tuesday = Expression<Bool>("tuesday")
+    let wednesday = Expression<Bool>("wednesday")
+    let thursday = Expression<Bool>("thursday")
+    let friday = Expression<Bool>("friday")
+    let saturday = Expression<Bool>("saturday")
+    let sunday = Expression<Bool>("sunday")
     let reminder = Expression<Bool>("reminder")
     let start_date = Expression<Date>("start_date")
     let end_date = Expression<Date>("end_date")
@@ -63,7 +69,13 @@ class DatabaseManager
                 t.column(UID)
                 t.column(name)
                 t.column(dosage)
-                t.column(frequency)
+                t.column(monday)
+                t.column(tuesday)
+                t.column(wednesday)
+                t.column(thursday)
+                t.column(friday)
+                t.column(saturday)
+                t.column(sunday)
                 t.column(reminder)
                 t.column(start_date)
                 t.column(end_date)
@@ -137,15 +149,21 @@ class DatabaseManager
         return tremors
     }
     
-    func addMedicine(UID : Int64, name : String, dosage : String, frequency : String, reminder : Bool, start_date : Date, end_date : Date) {
-        print("Trying to add medcine \(name) \(dosage)")
+    func addMedicine(UID : Int64, name : String, dosage : String, monday : Bool, tuesday : Bool, wednesday : Bool, thursday : Bool, friday : Bool, saturday : Bool, sunday : Bool, reminder : Bool, start_date : Date, end_date : Date) {
+        print("Trying to add medicine \(name) \(dosage)")
         let query = Medicines.select(name)
         print(query)
         do {
             try db.run(Medicines.insert(self.UID <- UID,
                                       self.name <- name,
                                       self.dosage <- dosage,
-                                      self.frequency <- frequency,
+                                      self.monday <- monday,
+                                      self.tuesday <- tuesday,
+                                      self.wednesday <- wednesday,
+                                      self.thursday <- thursday,
+                                      self.friday <- friday,
+                                      self.saturday <- saturday,
+                                      self.sunday <- sunday,
                                       self.reminder <- reminder,
                                       self.start_date <- start_date,
                                       self.end_date <- end_date ))
@@ -163,7 +181,13 @@ class DatabaseManager
                                           MID: medicine[self.MID],
                                           name: medicine[self.name],
                                           dosage: medicine[self.dosage],
-                                          frequency: medicine[self.frequency],
+                                          monday: medicine[self.monday],
+                                          tuesday: medicine[self.tuesday],
+                                          wednesday: medicine[self.wednesday],
+                                          thursday: medicine[self.thursday],
+                                          friday: medicine[self.friday],
+                                          saturday: medicine[self.saturday],
+                                          sunday: medicine[self.sunday],
                                           reminder: medicine[self.reminder],
                                           start_date: medicine[self.start_date],
                                           end_date:medicine[self.end_date]))
