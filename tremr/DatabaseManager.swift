@@ -41,7 +41,7 @@ class DatabaseManager
     let sunday = Expression<Bool>("sunday")
     let reminder = Expression<Bool>("reminder")
     let start_date = Expression<Date>("start_date")
-    let end_date = Expression<Date>("end_date")
+    let end_date = Expression<Date?>("end_date") //optional
 
     init() {
         do {
@@ -151,7 +151,7 @@ class DatabaseManager
         return tremors
     }
     
-    func addMedicine(UID : Int64, name : String, dosage : String, monday : Bool, tuesday : Bool, wednesday : Bool, thursday : Bool, friday : Bool, saturday : Bool, sunday : Bool, reminder : Bool, start_date : Date, end_date : Date) {
+    func addMedicine(UID : Int64, name : String, dosage : String, monday : Bool, tuesday : Bool, wednesday : Bool, thursday : Bool, friday : Bool, saturday : Bool, sunday : Bool, reminder : Bool, start_date : Date, end_date : Date?) {
         print("Trying to add medicine \(name) \(dosage)")
         let query = Medicines.select(name)
         print(query)

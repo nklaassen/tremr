@@ -24,17 +24,6 @@ struct Tremor {
     var completed : Bool
 }
 
-// Select days of week for exercise/medication schedule
-struct days_of_week {
-    var Mo : Bool
-    var Tu : Bool
-    var We : Bool
-    var Th : Bool
-    var Fr : Bool
-    var Sa : Bool
-    var Su : Bool
-}
-
 struct Medicine {
     var UID : Int64
     var MID : Int64
@@ -49,5 +38,5 @@ struct Medicine {
     var sunday : Bool
     var reminder : Bool
     var start_date : Date
-    var end_date : Date
+    var end_date : Date?
 }

@@ -9,8 +9,7 @@
 import UIKit
 
 let db = DatabaseManager()
-var myDate: Date = Date.init()
-
+var myDate = Date()
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -33,10 +32,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          */
         
         // Fill in some test data for medicine database
-        db.addMedicine(UID: 1, name: "medicine1", dosage: "100", monday: true, tuesday: true, wednesday: true, thursday: true, friday: false, saturday: false, sunday: false, reminder: false, start_date: Date().addingTimeInterval(60*60*24), end_date: Date.init())
-        db.addMedicine(UID: 2, name: "medicine2", dosage: "100", monday: true, tuesday: true, wednesday: true, thursday: true, friday: false, saturday: false, sunday: false, reminder: false, start_date: Date().addingTimeInterval(-60*60*24), end_date: Date.init())
-        db.addMedicine(UID: 1, name: "medicine3", dosage: "100", monday: true, tuesday: true, wednesday: true, thursday: true, friday: false, saturday: false, sunday: false, reminder: false, start_date: Date().addingTimeInterval(-3*60*60*24), end_date: Date.init())
-        db.addMedicine(UID: 1, name: "medicine4", dosage: "400", monday: true, tuesday: true, wednesday: true, thursday: false, friday: false, saturday: false, sunday: false, reminder: false, start_date: myDate, end_date: Date.init())
+        let day = TimeInterval(60*60*24) //Number of seconds in a day
+        db.addMedicine(UID: 1,
+                       name: "medicine1",
+                       dosage: "100",
+                       monday: true,
+                       tuesday: true,
+                       wednesday: true,
+                       thursday: true,
+                       friday: false,
+                       saturday: false,
+                       sunday: false,
+                       reminder: false,
+                       start_date: Date().addingTimeInterval(day),
+                       end_date: nil)
+        db.addMedicine(UID: 1,
+                       name: "medicine2",
+                       dosage: "100",
+                       monday: true,
+                       tuesday: true,
+                       wednesday: true,
+                       thursday: true,
+                       friday: false,
+                       saturday: false,
+                       sunday: false,
+                       reminder: false,
+                       start_date: Date().addingTimeInterval(-day),
+                       end_date: nil)
+        db.addMedicine(UID: 1,
+                       name: "medicine3",
+                       dosage: "100",
+                       monday: true,
+                       tuesday: true,
+                       wednesday: true,
+                       thursday: true,
+                       friday: false,
+                       saturday: false,
+                       sunday: false,
+                       reminder: false,
+                       start_date: Date().addingTimeInterval(-3*day),
+                       end_date: Date().addingTimeInterval(-day))
+        db.addMedicine(UID: 1,
+                       name: "medicine4",
+                       dosage: "400",
+                       monday: true,
+                       tuesday: true,
+                       wednesday: true,
+                       thursday: false,
+                       friday: false,
+                       saturday: false,
+                       sunday: false,
+                       reminder: false,
+                       start_date: Date(),
+                       end_date: Date())
         
         db.testFunctionality()
         return true
