@@ -11,6 +11,9 @@
 		A5B4C6A32183D65700A71E9B /* Exercise.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C6A22183D65700A71E9B /* Exercise.storyboard */; };
 		A5B4C6A62183D67000A71E9B /* ViewData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C6A42183D67000A71E9B /* ViewData.storyboard */; };
 		A5B4C6A82183D68000A71E9B /* Medicine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C6A72183D68000A71E9B /* Medicine.storyboard */; };
+		E0B1033C218B720D00F0B96E /* libraries in Resources */ = {isa = PBXBuildFile; fileRef = E0B10335218B720D00F0B96E /* libraries */; };
+		E0B10353218B77D500F0B96E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B10343218B724600F0B96E /* Charts.framework */; };
+		E0B10354218B77D500F0B96E /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0B10343218B724600F0B96E /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E0BF93E1218692640097767F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BF93DF218692640097767F /* DatabaseManager.swift */; };
 		E0BF93E2218692640097767F /* types.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BF93E0218692640097767F /* types.swift */; };
 		E0BF93E4218692870097767F /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0BF93D2218691E10097767F /* SQLite.framework */; };
@@ -29,6 +32,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E0B10342218B724600F0B96E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0B1033D218B724600F0B96E /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		E0B10344218B724600F0B96E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0B1033D218B724600F0B96E /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
+		E0B10355218B77D500F0B96E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0B1033D218B724600F0B96E /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A58A4ED274A941CA248EA921;
+			remoteInfo = Charts;
+		};
 		E0BF93D1218691E10097767F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E0BF93C7218691E10097767F /* SQLite.xcodeproj */;
@@ -109,6 +133,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				E0BF93E5218692870097767F /* SQLite.framework in Embed Frameworks */,
+				E0B10354218B77D500F0B96E /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,6 +145,8 @@
 		A5B4C6A22183D65700A71E9B /* Exercise.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exercise.storyboard; sourceTree = "<group>"; };
 		A5B4C6A52183D67000A71E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = tremr/Base.lproj/ViewData.storyboard; sourceTree = "<group>"; };
 		A5B4C6A72183D68000A71E9B /* Medicine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Medicine.storyboard; sourceTree = "<group>"; };
+		E0B10335218B720D00F0B96E /* libraries */ = {isa = PBXFileReference; lastKnownFileType = folder; path = libraries; sourceTree = "<group>"; };
+		E0B1033D218B724600F0B96E /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = libraries/charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		E0BF93C7218691E10097767F /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "libraries/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		E0BF93DF218692640097767F /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		E0BF93E0218692640097767F /* types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = types.swift; sourceTree = "<group>"; };
@@ -148,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0BF93E4218692870097767F /* SQLite.framework in Frameworks */,
+				E0B10353218B77D500F0B96E /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,9 +196,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E0B1033E218B724600F0B96E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E0B10343218B724600F0B96E /* Charts.framework */,
+				E0B10345218B724600F0B96E /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E0BF93AD21868DBE0097767F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E0B1033D218B724600F0B96E /* Charts.xcodeproj */,
 				E0BF93C7218691E10097767F /* SQLite.xcodeproj */,
 			);
 			name = Frameworks;
@@ -193,6 +231,7 @@
 		E0FEE113217EB76B00C72D7C = {
 			isa = PBXGroup;
 			children = (
+				E0B10335218B720D00F0B96E /* libraries */,
 				E0FEE11E217EB76B00C72D7C /* tremr */,
 				E0FEE133217EB76D00C72D7C /* tremrTests */,
 				E0FEE13E217EB76D00C72D7C /* tremrUITests */,
@@ -276,6 +315,7 @@
 			);
 			dependencies = (
 				E0BF93E7218692870097767F /* PBXTargetDependency */,
+				E0B10356218B77D500F0B96E /* PBXTargetDependency */,
 			);
 			name = tremr;
 			productName = tremr;
@@ -354,6 +394,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = E0B1033E218B724600F0B96E /* Products */;
+					ProjectRef = E0B1033D218B724600F0B96E /* Charts.xcodeproj */;
+				},
+				{
 					ProductGroup = E0BF93C8218691E10097767F /* Products */;
 					ProjectRef = E0BF93C7218691E10097767F /* SQLite.xcodeproj */;
 				},
@@ -368,6 +412,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		E0B10343218B724600F0B96E /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = E0B10342218B724600F0B96E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E0B10345218B724600F0B96E /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = E0B10344218B724600F0B96E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		E0BF93D2218691E10097767F /* SQLite.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -430,6 +488,7 @@
 				E0FEE125217EB76B00C72D7C /* Main.storyboard in Resources */,
 				A5B4C6A12183D63B00A71E9B /* Measure.storyboard in Resources */,
 				A5B4C6A82183D68000A71E9B /* Medicine.storyboard in Resources */,
+				E0B1033C218B720D00F0B96E /* libraries in Resources */,
 				A5B4C6A62183D67000A71E9B /* ViewData.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +544,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E0B10356218B77D500F0B96E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = E0B10355218B77D500F0B96E /* PBXContainerItemProxy */;
+		};
 		E0BF93E7218692870097767F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SQLite iOS";
