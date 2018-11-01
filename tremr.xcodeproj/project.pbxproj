@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80EF89CB21814DA400872F5B /* GyroScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CA21814DA400872F5B /* GyroScope.swift */; };
+		80EF89CD2181638700872F5B /* InstructionsForTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */; };
 		A5B4C6A12183D63B00A71E9B /* Measure.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C69F2183D63B00A71E9B /* Measure.storyboard */; };
 		A5B4C6A32183D65700A71E9B /* Exercise.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C6A22183D65700A71E9B /* Exercise.storyboard */; };
 		A5B4C6A62183D67000A71E9B /* ViewData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C6A42183D67000A71E9B /* ViewData.storyboard */; };
 		A5B4C6A82183D68000A71E9B /* Medicine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C6A72183D68000A71E9B /* Medicine.storyboard */; };
+		E04F6FD32182979C000AF2F6 /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */; };
 		E0BF93E1218692640097767F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BF93DF218692640097767F /* DatabaseManager.swift */; };
 		E0BF93E2218692640097767F /* types.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BF93E0218692640097767F /* types.swift */; };
 		E0BF93E4218692870097767F /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0BF93D2218691E10097767F /* SQLite.framework */; };
 		E0BF93E5218692870097767F /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0BF93D2218691E10097767F /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E0D5F0E52188CA32008BFC97 /* TremorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5F0E42188CA32008BFC97 /* TremorController.swift */; };
+		E0D5F0E92188CAE4008BFC97 /* RecordRestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5F0E62188CAE4008BFC97 /* RecordRestingViewController.swift */; };
+		E0D5F0EA2188CAE4008BFC97 /* DisplaySeverityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5F0E72188CAE4008BFC97 /* DisplaySeverityViewController.swift */; };
+		E0D5F0EB2188CAE4008BFC97 /* RecordPosturalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5F0E82188CAE4008BFC97 /* RecordPosturalViewController.swift */; };
 		E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */; };
 		E0FEE122217EB76B00C72D7C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE121217EB76B00C72D7C /* MainViewController.swift */; };
 		E0FEE125217EB76B00C72D7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FEE123217EB76B00C72D7C /* Main.storyboard */; };
@@ -116,13 +123,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		80EF89CA21814DA400872F5B /* GyroScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroScope.swift; sourceTree = "<group>"; };
+		80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsForTrackingViewController.swift; sourceTree = "<group>"; };
 		A5B4C6A02183D63B00A71E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = tremr/Base.lproj/Measure.storyboard; sourceTree = "<group>"; };
 		A5B4C6A22183D65700A71E9B /* Exercise.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exercise.storyboard; sourceTree = "<group>"; };
 		A5B4C6A52183D67000A71E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = tremr/Base.lproj/ViewData.storyboard; sourceTree = "<group>"; };
 		A5B4C6A72183D68000A71E9B /* Medicine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Medicine.storyboard; sourceTree = "<group>"; };
+		E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
 		E0BF93C7218691E10097767F /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "libraries/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		E0BF93DF218692640097767F /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		E0BF93E0218692640097767F /* types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = types.swift; sourceTree = "<group>"; };
+		E0D5F0E42188CA32008BFC97 /* TremorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TremorController.swift; sourceTree = "<group>"; };
+		E0D5F0E62188CAE4008BFC97 /* RecordRestingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordRestingViewController.swift; sourceTree = "<group>"; };
+		E0D5F0E72188CAE4008BFC97 /* DisplaySeverityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplaySeverityViewController.swift; sourceTree = "<group>"; };
+		E0D5F0E82188CAE4008BFC97 /* RecordPosturalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPosturalViewController.swift; sourceTree = "<group>"; };
 		E0FEE11C217EB76B00C72D7C /* tremr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tremr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0FEE121217EB76B00C72D7C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -214,10 +228,11 @@
 		E0FEE11E217EB76B00C72D7C /* tremr */ = {
 			isa = PBXGroup;
 			children = (
-				E0BF93DF218692640097767F /* DatabaseManager.swift */,
-				E0BF93E0218692640097767F /* types.swift */,
 				E0FEE158217ECDF800C72D7C /* ViewControllers */,
 				E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */,
+				E0BF93E0218692640097767F /* types.swift */,
+				E0BF93DF218692640097767F /* DatabaseManager.swift */,
+				E0D5F0E42188CA32008BFC97 /* TremorController.swift */,
 				E0FEE123217EB76B00C72D7C /* Main.storyboard */,
 				E0FEE126217EB76D00C72D7C /* Assets.xcassets */,
 				A5B4C69F2183D63B00A71E9B /* Measure.storyboard */,
@@ -226,6 +241,7 @@
 				A5B4C6A42183D67000A71E9B /* ViewData.storyboard */,
 				E0FEE128217EB76D00C72D7C /* LaunchScreen.storyboard */,
 				E0FEE12B217EB76D00C72D7C /* Info.plist */,
+				80EF89CA21814DA400872F5B /* GyroScope.swift */,
 			);
 			path = tremr;
 			sourceTree = "<group>";
@@ -251,11 +267,16 @@
 		E0FEE158217ECDF800C72D7C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E0D5F0E72188CAE4008BFC97 /* DisplaySeverityViewController.swift */,
+				E0D5F0E82188CAE4008BFC97 /* RecordPosturalViewController.swift */,
+				E0D5F0E62188CAE4008BFC97 /* RecordRestingViewController.swift */,
 				E0FEE155217ECD5A00C72D7C /* ViewDataViewController.swift */,
 				E0FEE121217EB76B00C72D7C /* MainViewController.swift */,
 				E0FEE14D217ECB4300C72D7C /* MeasureViewController.swift */,
 				E0FEE153217ECD1000C72D7C /* MedicationViewController.swift */,
 				E0FEE151217ECCE900C72D7C /* ExerciseViewController.swift */,
+				80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */,
+				E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -459,7 +480,14 @@
 				E0FEE122217EB76B00C72D7C /* MainViewController.swift in Sources */,
 				E0FEE154217ECD1000C72D7C /* MedicationViewController.swift in Sources */,
 				E0BF93E2218692640097767F /* types.swift in Sources */,
+				E0D5F0E92188CAE4008BFC97 /* RecordRestingViewController.swift in Sources */,
 				E0FEE156217ECD5A00C72D7C /* ViewDataViewController.swift in Sources */,
+				E0D5F0EA2188CAE4008BFC97 /* DisplaySeverityViewController.swift in Sources */,
+				80EF89CD2181638700872F5B /* InstructionsForTrackingViewController.swift in Sources */,
+				E0D5F0EB2188CAE4008BFC97 /* RecordPosturalViewController.swift in Sources */,
+				E0D5F0E52188CA32008BFC97 /* TremorController.swift in Sources */,
+				E04F6FD32182979C000AF2F6 /* CountdownViewController.swift in Sources */,
+				80EF89CB21814DA400872F5B /* GyroScope.swift in Sources */,
 				E0FEE152217ECCE900C72D7C /* ExerciseViewController.swift in Sources */,
 				E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */,
 				E0BF93E1218692640097767F /* DatabaseManager.swift in Sources */,

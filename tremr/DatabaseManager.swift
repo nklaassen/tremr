@@ -27,6 +27,7 @@ class DatabaseManager
     let posturalSeverity = Expression<Int>("posturalSeverity")
     let restingSeverity = Expression<Int>("restingSeverity")
     let completed = Expression<Bool>("completed")
+    let date = Expression<Date>("date")
 
     init() {
         do {
@@ -51,11 +52,12 @@ class DatabaseManager
             // Create the Tremors table
             try db.run(Tremors.create(ifNotExists: true) { t in              // CREATE TABLE "Tremors" (
                 t.column(TID, primaryKey: true)                              //     "TID" INTEGER PRIMARY KEY NOT NULL,
-                t.column(UID)                                                //     "UID" INTEGER NOT NULL,
+                //t.column(UID)                                                //     "UID" INTEGER NOT NULL,
                 t.column(posturalSeverity)                                   //     "posturalSeverity" INT NOT NULL,
                 t.column(restingSeverity)                                    //     "restingSeverity" INT NOT NULL,
                 t.column(completed)                                          //     "completed" BOOL NOT NULL
-                t.foreignKey(UID, references: Users, UID, delete: .setNull)  //     FOREIGN KEY("UID") REFERENCES "Users"("UID") ON DELETE SET NULL,
+                t.column(date)                                               //     "date" DATETIME NOT NULL
+                //t.foreignKey(UID, references: Users, UID, delete: .setNull)  //     FOREIGN KEY("UID") REFERENCES "Users"("UID") ON DELETE SET NULL,
             })                                                               // )
         } catch {
             print("Failed to init DB: \(error)")
@@ -86,13 +88,13 @@ class DatabaseManager
         return users
     }
 
-    func addTremor(restingSeverity : Float, posturalSeverity : Float, UID : Int64) {
+    func addTremor(restingSeverity : Double, posturalSeverity : Double, date : Date = Date()) {
         print("Trying to add tremor \(restingSeverity) \(posturalSeverity)")
         do {
             try db.run(Tremors.insert(self.restingSeverity <- Int(restingSeverity * 10),
                                       self.posturalSeverity <- Int(posturalSeverity * 10),
-                                      self.UID <- UID,
-                                      self.completed <- true))
+                                      self.completed <- true,
+                                      self.date <- date))
             print("Inserted tremor!")
         } catch {
             print("Failed to insert tremor: \(error)")
@@ -104,10 +106,11 @@ class DatabaseManager
         do {
             for tremor in try db.prepare(Tremors) {
                 tremors.append(Tremor(TID: tremor[self.TID],
-                                      UID: tremor[self.UID],
-                                      posturalSeverity: Float(tremor[self.posturalSeverity]) / 10.0,
-                                      restingSeverity: Float(tremor[self.restingSeverity]) / 10.0,
-                                      completed: tremor[self.completed]))
+                                      //UID: tremor[self.UID],
+                                      posturalSeverity: Double(tremor[self.posturalSeverity]) / 10.0,
+                                      restingSeverity: Double(tremor[self.restingSeverity]) / 10.0,
+                                      completed: tremor[self.completed],
+                                      date: tremor[self.date]))
             }
         } catch {
             print(error)
