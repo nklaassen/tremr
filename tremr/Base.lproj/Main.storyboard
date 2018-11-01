@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Lt1-ft-0iZ">
-                                <rect key="frame" x="20" y="40" width="335" height="607"/>
+                                <rect key="frame" x="19.5" y="40" width="335" height="607"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCN-QQ-5XZ">
                                         <rect key="frame" x="8" y="8" width="319" height="191"/>
@@ -43,22 +43,22 @@
                                             <segue destination="Ken-eg-4N4" kind="show" id="6YN-XR-auF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dL-4h-8fV">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Ij-MNg">
                                         <rect key="frame" x="8" y="299" width="319" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="aqZ-ey-wwu"/>
+                                            <constraint firstAttribute="height" constant="100" id="gq0-SG-qby"/>
                                         </constraints>
-                                        <state key="normal" title="Medication"/>
+                                        <state key="normal" title="Exercise"/>
                                         <connections>
                                             <segue destination="D1k-0f-wmF" kind="show" id="GiE-xf-84w"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6s-uu-8Vb">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dL-4h-8fV">
                                         <rect key="frame" x="8" y="399" width="319" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="uEy-yb-9mx"/>
+                                            <constraint firstAttribute="height" constant="100" id="aqZ-ey-wwu"/>
                                         </constraints>
-                                        <state key="normal" title="Exercies"/>
+                                        <state key="normal" title="Medication"/>
                                         <connections>
                                             <segue destination="yuo-ma-Qjc" kind="show" id="ts2-cP-Yrc"/>
                                         </connections>
@@ -89,7 +89,6 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="904" y="42"/>
         </scene>
         <!--MeasureViewController-->
         <scene sceneID="Wak-st-lpO">
@@ -97,7 +96,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="MeasureViewController" storyboardName="Measure" referencedIdentifier="MeasureViewController" id="Ken-eg-4N4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbK-VK-0n7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1701.5999999999999" y="-1039.4302848575712"/>
+            <point key="canvasLocation" x="1702" y="-1039"/>
         </scene>
         <!--Exercise-->
         <scene sceneID="eHc-gj-1ar">

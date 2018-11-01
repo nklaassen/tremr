@@ -129,7 +129,6 @@
 		A5B4C6A22183D65700A71E9B /* Exercise.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exercise.storyboard; sourceTree = "<group>"; };
 		A5B4C6A52183D67000A71E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = tremr/Base.lproj/ViewData.storyboard; sourceTree = "<group>"; };
 		A5B4C6A72183D68000A71E9B /* Medicine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Medicine.storyboard; sourceTree = "<group>"; };
-		E04F6FCF21827276000AF2F6 /* holding-phone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "holding-phone.jpg"; sourceTree = "<group>"; };
 		E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
 		E0BF93C7218691E10097767F /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "libraries/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		E0BF93DF218692640097767F /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -240,7 +239,6 @@
 				A5B4C6A22183D65700A71E9B /* Exercise.storyboard */,
 				A5B4C6A72183D68000A71E9B /* Medicine.storyboard */,
 				A5B4C6A42183D67000A71E9B /* ViewData.storyboard */,
-				E04F6FCF21827276000AF2F6 /* holding-phone.jpg */,
 				E0FEE128217EB76D00C72D7C /* LaunchScreen.storyboard */,
 				E0FEE12B217EB76D00C72D7C /* Info.plist */,
 				80EF89CA21814DA400872F5B /* GyroScope.swift */,
