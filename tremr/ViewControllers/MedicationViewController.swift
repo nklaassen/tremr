@@ -68,7 +68,7 @@ class MedicationViewController: UIViewController {
         super.viewDidLoad()
         // Put query for that day's medications here
         // Do any additional setup after loading the view.
-        dateLabel.text = date.toString(dateFormat: "dd-MM")
+        //dateLabel.text = date.toString(dateFormat: "dd-MM")
     }
 
     override func didReceiveMemoryWarning() {
