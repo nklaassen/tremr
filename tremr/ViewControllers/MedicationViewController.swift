@@ -10,6 +10,7 @@ import UIKit
 
 class MedicationViewController: UIViewController {
 
+    // Add Medicine Page Variables
     var mondayFlag: Bool = false
     var tuesdayFlag: Bool = false
     var wednesdayFlag: Bool = false
@@ -17,7 +18,7 @@ class MedicationViewController: UIViewController {
     var fridayFlag: Bool = false
     var saturdayFlag: Bool = false
     var sundayFlag: Bool = false
-    var date: Date = Date()
+    var reminderFlag: Bool = false
     
     @IBAction func mainViewTransition(_ sender: Any) {
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
@@ -32,13 +33,12 @@ class MedicationViewController: UIViewController {
         let dosageValue: String = dosageTextField.text!
         
         // Need to determine UID to insert in subsequent versions
-        db.addMedicine(UID: 1, name: "\(medicineName)", dosage: "\(dosageValue)", monday: mondayFlag, tuesday: tuesdayFlag, wednesday: wednesdayFlag, thursday: thursdayFlag, friday: fridayFlag, saturday: saturdayFlag, sunday: sundayFlag, reminder: true, start_date: Date.init(), end_date: Date.init())
+        db.addMedicine(UID: 1, name: "\(medicineName)", dosage: "\(dosageValue)", monday: mondayFlag, tuesday: tuesdayFlag, wednesday: wednesdayFlag, thursday: thursdayFlag, friday: fridayFlag, saturday: saturdayFlag, sunday: sundayFlag, reminder: reminderFlag, start_date: myDate, end_date: Date.init())
     }
     
     @IBAction func queryMedicineDatabase(_ sender: Any) {
         for medicine in db.getMedicine() {
-            print("\(medicine.UID), \(medicine.MID), \(medicine.name), \(medicine.dosage)")
-            print("\(medicine.monday.description)")
+            print("\(medicine.UID), \(medicine.MID), \(medicine.name), \(medicine.dosage)", "\(medicine.saturday.description)","\(medicine.monday.description)", "\(medicine.tuesday.description)", "\(medicine.wednesday.description)", "\(medicine.thursday.description)", "\(medicine.friday.description)",  "\(medicine.sunday.description)", "\(medicine.reminder.description)", "\(medicine.start_date)", "\(medicine.end_date)")
         }
     }
     
@@ -63,12 +63,25 @@ class MedicationViewController: UIViewController {
     @IBAction func sundayButton(_ sender: Any) {
         sundayFlag = !sundayFlag
     }
+    @IBAction func reminderButton(_ sender: Any) {
+        reminderFlag = !reminderFlag
+    }
+    
+    @IBAction func prevDateButton(_ sender: Any) {
+        myDate = Calendar.current.date(byAdding: .day, value: -1, to: myDate)!
+        dateLabel.text = myDate.toString(dateFormat: "MM-dd-yyyy")
+    }
+    
+    @IBAction func nextDateButton(_ sender: Any) {
+        myDate = Calendar.current.date(byAdding: .day, value: 1, to: myDate)!
+        dateLabel.text = myDate.toString(dateFormat: "MM-dd-yyyy")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Put query for that day's medications here
         // Do any additional setup after loading the view.
-        //dateLabel.text = date.toString(dateFormat: "dd-MM")
+        myDate = Date.init()
     }
 
     override func didReceiveMemoryWarning() {

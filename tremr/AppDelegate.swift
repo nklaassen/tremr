@@ -9,6 +9,7 @@
 import UIKit
 
 let db = DatabaseManager()
+var myDate: Date = Date.init()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,6 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("resting: \(tremor.restingSeverity), postural: \(tremor.posturalSeverity)")
         }
          */
+        
+        // Fill in some test data for medicine database
+        db.addMedicine(UID: 1, name: "medicine1", dosage: "100", monday: true, tuesday: true, wednesday: true, thursday: false, friday: false, saturday: false, sunday: false, reminder: false, start_date: myDate, end_date: Date.init())
+        db.addMedicine(UID: 1, name: "medicine2", dosage: "100", monday: true, tuesday: true, wednesday: true, thursday: false, friday: false, saturday: false, sunday: false, reminder: false, start_date: myDate, end_date: Date.init())
+        db.addMedicine(UID: 1, name: "medicine1", dosage: "100", monday: true, tuesday: true, wednesday: true, thursday: false, friday: false, saturday: false, sunday: false, reminder: false, start_date: myDate, end_date: Date.init())
+        db.addMedicine(UID: 1, name: "medicine3", dosage: "400", monday: true, tuesday: true, wednesday: true, thursday: false, friday: false, saturday: false, sunday: false, reminder: false, start_date: myDate, end_date: Date.init())
+        
         
         return true
     }
