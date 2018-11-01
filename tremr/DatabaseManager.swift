@@ -59,6 +59,16 @@ class DatabaseManager
                 t.column(date)                                               //     "date" DATETIME NOT NULL
                 //t.foreignKey(UID, references: Users, UID, delete: .setNull)  //     FOREIGN KEY("UID") REFERENCES "Users"("UID") ON DELETE SET NULL,
             })                                                               // )
+
+            // Initialize the DB with some dummy data
+            if getTremors().count == 0 {
+                for i in 0...365 {
+                    addTremor(restingSeverity: Double(arc4random_uniform(50)) / 10.0 + 2.5,
+                              posturalSeverity: Double(arc4random_uniform(50)) / 10.0 + 2.5,
+                              date: Calendar.current.date(byAdding: .day, value: -1 * i, to: Date())!)
+                }
+            }
+
         } catch {
             print("Failed to init DB: \(error)")
         }
