@@ -177,6 +177,8 @@ class DatabaseManager
     
     func getMedicine() -> Array<Medicine> {
         var medicines = Array<Medicine>()
+        
+        
         do {
             for medicine in try db.prepare(Medicines) {
                 medicines.append(Medicine(UID: medicine[self.UID],
@@ -198,5 +200,46 @@ class DatabaseManager
             print(error)
         }
         return medicines
+    }
+    
+    func testFunctionality() {
+        //weekDay is a number. 1-sunday, 2-monday, ... 7-saturday
+        let date: Date = Date.init()
+        let weekDay = Calendar.current.component(.weekday, from: date)
+        print("today's weekDay is \(weekDay)")
+        var targetWeekDay :Expression<Bool>
+        switch weekDay {
+        case 1: //Sunday
+            targetWeekDay = sunday
+        case 2: //Monday
+            targetWeekDay = monday
+        case 3: //Tuesday
+            targetWeekDay = tuesday
+        case 4: //Wednesday
+            targetWeekDay = wednesday
+        case 5: //Thursday
+            targetWeekDay = thursday
+        case 6: //Friday
+            targetWeekDay = friday
+        default: //Saturday
+            targetWeekDay = saturday
+        //default: //Any day
+            //targetWeekDay = nil
+        }
+        var query = Medicines.filter(targetWeekDay == true) // Weekday matches weekday recorded for
+        query = query.filter(start_date <= Date())   // Ensure searching within valid timeframe
+                            //.filter(end_date >= Date())
+        
+        do {
+            for med in try db.prepare(query) {
+                do {
+                    print("name: \(try med.get(name))")
+                } catch {
+                    fatalError("Query didn't print")
+                }
+            }
+        } catch {
+            fatalError("Query didn't execute at all")
+        }
     }
 }
