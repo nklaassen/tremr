@@ -43,7 +43,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggz-at-OGn">
-                                <rect key="frame" x="41" y="489" width="287" height="64"/>
+                                <rect key="frame" x="41" y="473" width="287" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="aX0-IT-und"/>
                                 </constraints>
@@ -59,14 +59,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Co-vw-bq6">
-                                <rect key="frame" x="107" y="588" width="146" height="30"/>
+                                <rect key="frame" x="107" y="572" width="146" height="46"/>
                                 <state key="normal" title="Edit/Add Medications"/>
                                 <connections>
                                     <segue destination="cxd-6L-6ks" kind="show" id="MBT-G3-LF5"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvC-Ua-Rf4">
-                                <rect key="frame" x="55" y="330" width="254" height="64"/>
+                                <rect key="frame" x="55" y="314" width="254" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="zg5-u5-J7o"/>
                                 </constraints>
@@ -82,24 +82,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="aav-BE-AqZ">
-                                <rect key="frame" x="65" y="141" width="254" height="50"/>
+                                <rect key="frame" x="65" y="141" width="254" height="34"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0O-Fj-jNx">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <state key="normal" image="icons8-left-50.png"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="71" height="34"/>
+                                        <state key="normal" title="L-Button">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
                                         <connections>
                                             <action selector="prevDateButton:" destination="8l9-YL-xlN" eventType="touchUpInside" id="OEK-XI-jtD"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSI-7K-WCf">
-                                        <rect key="frame" x="104" y="0.0" width="46" height="50"/>
+                                        <rect key="frame" x="102.5" y="0.0" width="46" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSB-2R-DIK">
-                                        <rect key="frame" x="204" y="0.0" width="50" height="50"/>
-                                        <state key="normal" image="icons8-right-50.png"/>
+                                        <rect key="frame" x="180" y="0.0" width="74" height="34"/>
+                                        <state key="normal" title="R-Button">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
                                         <connections>
                                             <action selector="nextDateButton:" destination="8l9-YL-xlN" eventType="touchUpInside" id="poZ-o3-M1P"/>
                                         </connections>
@@ -557,8 +561,4 @@
             <point key="canvasLocation" x="3160.8000000000002" y="408.84557721139436"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="icons8-left-50.png" width="50" height="50"/>
-        <image name="icons8-right-50.png" width="50" height="50"/>
-    </resources>
 </document>

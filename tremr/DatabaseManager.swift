@@ -229,14 +229,10 @@ class DatabaseManager
         var query = Medicines.filter(targetWeekDay == true) // Weekday matches weekday recorded for
         query = query.filter(start_date <= Date())   // Ensure searching within valid timeframe
                             //.filter(end_date >= Date())
-        
+                
         do {
             for med in try db.prepare(query) {
-                do {
-                    print("name: \(try med.get(name))")
-                } catch {
-                    fatalError("Query didn't print")
-                }
+                print("name: \(try med.get(name))")
             }
         } catch {
             fatalError("Query didn't execute at all")
