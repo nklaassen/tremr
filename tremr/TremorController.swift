@@ -65,14 +65,22 @@ class TremorController {
         var severity = 0.0
         // don't crash if we don't get any values (eg in the simulator)
         if (gyroValues.count > 2) {
+            
             var sum = 0.0
+           
             for i in 0...gyroValues.count-2 {
                 sum += abs(gyroValues[i+1] - gyroValues[i])
             }
+            
             for i in 0...accelValues.count-2 {
                 sum += abs(self.accelValues[i+1] - accelValues[i])
             }
-            severity = log2((sum)/Double(accelValues.count-1))
+            
+            severity = 1.8 * log2((sum)/Double(accelValues.count-1)+1)
+            
+            if (severity > 10){
+                severity = 10
+            }
         }
         print("severity: \(severity)")
         return severity
