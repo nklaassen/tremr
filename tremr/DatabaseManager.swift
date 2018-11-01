@@ -225,9 +225,9 @@ class DatabaseManager
         var tremors = Array<Tremor>()
         let startOfDay = Calendar.current.startOfDay(for: Date())
         var components = DateComponents()
-        components.day = -7
+        components.day = -6
         let lastWeek = Calendar.current.date(byAdding: components, to: startOfDay)!
-        let tremorsForLastWeek = Tremors.filter(self.date >= lastWeek)
+        let tremorsForLastWeek = Tremors.filter(self.date >= lastWeek).order(self.date.asc)
         do {
             for tremor in try db.prepare(tremorsForLastWeek) {
                 tremors.append(Tremor(TID: tremor[self.TID],

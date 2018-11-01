@@ -42,6 +42,7 @@
 		E0D5F0E92188CAE4008BFC97 /* RecordRestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5F0E62188CAE4008BFC97 /* RecordRestingViewController.swift */; };
 		E0D5F0EA2188CAE4008BFC97 /* DisplaySeverityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5F0E72188CAE4008BFC97 /* DisplaySeverityViewController.swift */; };
 		E0D5F0EB2188CAE4008BFC97 /* RecordPosturalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5F0E82188CAE4008BFC97 /* RecordPosturalViewController.swift */; };
+		E0FB4C5F218BB93E0018A237 /* DbTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FB4C5E218BB93E0018A237 /* DbTest.swift */; };
 		E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */; };
 		E0FEE122217EB76B00C72D7C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE121217EB76B00C72D7C /* MainViewController.swift */; };
 		E0FEE125217EB76B00C72D7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FEE123217EB76B00C72D7C /* Main.storyboard */; };
@@ -204,6 +205,7 @@
 		E0D5F0E62188CAE4008BFC97 /* RecordRestingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordRestingViewController.swift; sourceTree = "<group>"; };
 		E0D5F0E72188CAE4008BFC97 /* DisplaySeverityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplaySeverityViewController.swift; sourceTree = "<group>"; };
 		E0D5F0E82188CAE4008BFC97 /* RecordPosturalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPosturalViewController.swift; sourceTree = "<group>"; };
+		E0FB4C5E218BB93E0018A237 /* DbTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTest.swift; sourceTree = "<group>"; };
 		E0FEE11C217EB76B00C72D7C /* tremr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tremr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0FEE121217EB76B00C72D7C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				E0FEE134217EB76D00C72D7C /* tremrTests.swift */,
 				A83CF0B5218D4995002C3E50 /* MedicationTests.swift */,
 				E0FEE136217EB76D00C72D7C /* Info.plist */,
+				E0FB4C5E218BB93E0018A237 /* DbTest.swift */,
 			);
 			path = tremrTests;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 			files = (
 				A83CF0B6218D4995002C3E50 /* MedicationTests.swift in Sources */,
 				E0FEE135217EB76D00C72D7C /* tremrTests.swift in Sources */,
+				E0FB4C5F218BB93E0018A237 /* DbTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
