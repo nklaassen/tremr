@@ -12,6 +12,8 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
     
     //MARK: Properties
     @IBOutlet weak var medTableView: UITableView!
+    @IBOutlet weak var dateLabel: UILabel!
+    
     
     var medications = [Medicine]()
     
@@ -72,6 +74,20 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
     */
     
     //MARK: Actions
+    @IBAction func mainViewTransition(_ sender: Any) {
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func leftArrowButton(_ sender: UIButton) {
+        myDate = Calendar.current.date(byAdding: .day, value: -1, to: myDate)!
+        dateLabel.text = myDate.toString(dateFormat: "MM-dd-yyyy")
+    }
+    
+    @IBAction func rightArrowButton(_ sender: UIButton) {
+        myDate = Calendar.current.date(byAdding: .day, value: 1, to: myDate)!
+        dateLabel.text = myDate.toString(dateFormat: "MM-dd-yyyy")
+    }
+    
     @IBAction func addMedication(_ sender: UIButton) {
         db.addMedicine(UID: 5, name: "advil", dosage: "4 pills", monday: true, tuesday: true, wednesday: true, thursday: true, friday: true, saturday: true, sunday: true, reminder: true, start_date: Date.init(), end_date: Date.init())
         print("I just added a medicine")

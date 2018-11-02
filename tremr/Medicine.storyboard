@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8l9-YL-xlN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yPi-wK-DSa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -147,103 +147,129 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicine" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFF-CV-x7N">
-                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="y4y-6c-KiK"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="y0n-NX-XLP">
-                                <rect key="frame" x="68" y="78" width="238" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Erx-1Z-ZkT">
+                                <rect key="frame" x="16" y="20" width="343" height="587"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiY-sd-93p">
-                                        <rect key="frame" x="0.0" y="0.0" width="55" height="30"/>
-                                        <state key="normal" title="L-Arrow"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzy-e1-8AX">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                        <state key="normal" title="Go to Previous View"/>
+                                        <connections>
+                                            <action selector="mainViewTransition:" destination="yPi-wK-DSa" eventType="touchUpInside" id="xg7-QD-wpl"/>
+                                        </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8N-sv-Hq0">
-                                        <rect key="frame" x="95" y="0.0" width="46" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicine" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFF-CV-x7N">
+                                        <rect key="frame" x="0.0" y="38" width="343" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="y4y-6c-KiK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="y0n-NX-XLP">
+                                        <rect key="frame" x="52.5" y="96" width="238" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiY-sd-93p">
+                                                <rect key="frame" x="0.0" y="0.0" width="55" height="30"/>
+                                                <state key="normal" title="L-Arrow"/>
+                                                <connections>
+                                                    <action selector="leftArrowButton:" destination="yPi-wK-DSa" eventType="touchUpInside" id="MMM-cM-lTx"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8N-sv-Hq0">
+                                                <rect key="frame" x="95" y="0.0" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91y-sj-CkU">
+                                                <rect key="frame" x="181" y="0.0" width="57" height="30"/>
+                                                <state key="normal" title="R-Arrow"/>
+                                                <connections>
+                                                    <action selector="rightArrowButton:" destination="yPi-wK-DSa" eventType="touchUpInside" id="A57-xU-XJX"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x0c-PX-CUu">
+                                        <rect key="frame" x="0.0" y="134" width="343" height="386.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MedicationTableViewCell" id="jRx-Yk-Zcn" customClass="MedicationTableViewCell" customModule="tremr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jRx-Yk-Zcn" id="2bf-dd-ssx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Med Dosage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Wm-rC-rPj">
+                                                            <rect key="frame" x="231" y="0.0" width="112" height="44"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="112" id="ahu-oh-piT"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Med Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sY-4L-U2F">
+                                                            <rect key="frame" x="24" y="0.0" width="140" height="44"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="6sY-4L-U2F" firstAttribute="firstBaseline" secondItem="7Wm-rC-rPj" secondAttribute="firstBaseline" id="3Ns-hW-gdd"/>
+                                                        <constraint firstItem="7Wm-rC-rPj" firstAttribute="leading" secondItem="6sY-4L-U2F" secondAttribute="trailing" constant="67" id="4Ut-pE-c5H"/>
+                                                        <constraint firstAttribute="trailing" secondItem="7Wm-rC-rPj" secondAttribute="trailing" id="4ft-UI-zGE"/>
+                                                        <constraint firstItem="6sY-4L-U2F" firstAttribute="leading" secondItem="2bf-dd-ssx" secondAttribute="leadingMargin" constant="16" id="Jud-iF-ych"/>
+                                                        <constraint firstItem="6sY-4L-U2F" firstAttribute="centerY" secondItem="2bf-dd-ssx" secondAttribute="centerY" id="NOD-Jo-jfn"/>
+                                                        <constraint firstItem="6sY-4L-U2F" firstAttribute="baseline" secondItem="7Wm-rC-rPj" secondAttribute="baseline" id="py9-VK-83F"/>
+                                                        <constraint firstItem="6sY-4L-U2F" firstAttribute="top" secondItem="2bf-dd-ssx" secondAttribute="top" id="ren-1v-1al"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="medDosageLabel" destination="7Wm-rC-rPj" id="j2h-ej-eyE"/>
+                                                    <outlet property="medNameLabel" destination="6sY-4L-U2F" id="nWL-MV-FhD"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap a medication you've taken today! " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvk-Je-9VZ">
+                                        <rect key="frame" x="28" y="528.5" width="287" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91y-sj-CkU">
-                                        <rect key="frame" x="181" y="0.0" width="57" height="30"/>
-                                        <state key="normal" title="R-Arrow"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHB-Bz-dVc">
+                                        <rect key="frame" x="98.5" y="557" width="146" height="30"/>
+                                        <state key="normal" title="Edit/Add Medications"/>
+                                        <connections>
+                                            <action selector="addMedication:" destination="yPi-wK-DSa" eventType="touchUpInside" id="GeT-CC-Xmf"/>
+                                            <segue destination="cxd-6L-6ks" kind="show" id="MmQ-BZ-YRC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="x0c-PX-CUu" firstAttribute="leading" secondItem="oFF-CV-x7N" secondAttribute="leading" id="BYN-P4-dhI"/>
+                                    <constraint firstItem="Wzy-e1-8AX" firstAttribute="leading" secondItem="Erx-1Z-ZkT" secondAttribute="leading" id="FLT-3U-THf"/>
+                                    <constraint firstAttribute="trailing" secondItem="oFF-CV-x7N" secondAttribute="trailing" id="JKh-jl-my1"/>
+                                    <constraint firstItem="oFF-CV-x7N" firstAttribute="leading" secondItem="Erx-1Z-ZkT" secondAttribute="leading" id="hhn-lG-Htb"/>
+                                    <constraint firstItem="Wzy-e1-8AX" firstAttribute="top" secondItem="Erx-1Z-ZkT" secondAttribute="top" id="uVB-sQ-ZhX"/>
+                                </constraints>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x0c-PX-CUu">
-                                <rect key="frame" x="16" y="116" width="343" height="453"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MedicationTableViewCell" id="jRx-Yk-Zcn" customClass="MedicationTableViewCell" customModule="tremr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jRx-Yk-Zcn" id="2bf-dd-ssx">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Med Dosage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Wm-rC-rPj">
-                                                    <rect key="frame" x="231" y="0.0" width="112" height="44"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="112" id="ahu-oh-piT"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Med Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sY-4L-U2F">
-                                                    <rect key="frame" x="32" y="0.0" width="132" height="44"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="6sY-4L-U2F" firstAttribute="firstBaseline" secondItem="7Wm-rC-rPj" secondAttribute="firstBaseline" id="3Ns-hW-gdd"/>
-                                                <constraint firstItem="7Wm-rC-rPj" firstAttribute="leading" secondItem="6sY-4L-U2F" secondAttribute="trailing" constant="67" id="4Ut-pE-c5H"/>
-                                                <constraint firstAttribute="trailing" secondItem="7Wm-rC-rPj" secondAttribute="trailing" id="4ft-UI-zGE"/>
-                                                <constraint firstItem="6sY-4L-U2F" firstAttribute="leading" secondItem="2bf-dd-ssx" secondAttribute="leadingMargin" constant="16" id="Jud-iF-ych"/>
-                                                <constraint firstItem="6sY-4L-U2F" firstAttribute="centerY" secondItem="2bf-dd-ssx" secondAttribute="centerY" id="NOD-Jo-jfn"/>
-                                                <constraint firstItem="6sY-4L-U2F" firstAttribute="baseline" secondItem="7Wm-rC-rPj" secondAttribute="baseline" id="py9-VK-83F"/>
-                                                <constraint firstItem="6sY-4L-U2F" firstAttribute="top" secondItem="2bf-dd-ssx" secondAttribute="top" id="ren-1v-1al"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="medDosageLabel" destination="7Wm-rC-rPj" id="j2h-ej-eyE"/>
-                                            <outlet property="medNameLabel" destination="6sY-4L-U2F" id="nWL-MV-FhD"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHB-Bz-dVc">
-                                <rect key="frame" x="164" y="586" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="addMedication:" destination="yPi-wK-DSa" eventType="touchUpInside" id="GeT-CC-Xmf"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="oFF-CV-x7N" firstAttribute="centerX" secondItem="y0n-NX-XLP" secondAttribute="centerX" id="5h9-QD-Dze"/>
-                            <constraint firstItem="ZHB-Bz-dVc" firstAttribute="top" secondItem="x0c-PX-CUu" secondAttribute="bottom" constant="17" id="7rh-35-Qzj"/>
-                            <constraint firstItem="y0n-NX-XLP" firstAttribute="top" secondItem="oFF-CV-x7N" secondAttribute="bottom" constant="8" symbolic="YES" id="8Ur-fR-pbv"/>
-                            <constraint firstItem="x0c-PX-CUu" firstAttribute="centerX" secondItem="ZHB-Bz-dVc" secondAttribute="centerX" id="BDm-RJ-XrR"/>
-                            <constraint firstItem="fSj-6Y-1Yy" firstAttribute="bottom" secondItem="ZHB-Bz-dVc" secondAttribute="bottom" constant="51" id="GjN-el-53i"/>
-                            <constraint firstItem="x0c-PX-CUu" firstAttribute="top" secondItem="y0n-NX-XLP" secondAttribute="bottom" constant="8" symbolic="YES" id="NVg-nb-EDl"/>
-                            <constraint firstItem="y0n-NX-XLP" firstAttribute="centerX" secondItem="x0c-PX-CUu" secondAttribute="centerX" id="QNC-uy-4tV"/>
-                            <constraint firstItem="oFF-CV-x7N" firstAttribute="top" secondItem="fSj-6Y-1Yy" secondAttribute="top" id="lL1-Jc-mDQ"/>
-                            <constraint firstItem="x0c-PX-CUu" firstAttribute="leading" secondItem="FkS-9H-4ag" secondAttribute="leadingMargin" id="wJU-Ws-Zj3"/>
-                            <constraint firstItem="oFF-CV-x7N" firstAttribute="leading" secondItem="FkS-9H-4ag" secondAttribute="leading" id="xU3-aW-8B5"/>
-                            <constraint firstAttribute="trailing" secondItem="oFF-CV-x7N" secondAttribute="trailing" id="zKo-Pc-IWI"/>
+                            <constraint firstItem="fSj-6Y-1Yy" firstAttribute="trailing" secondItem="Erx-1Z-ZkT" secondAttribute="trailing" constant="16" id="LBW-bv-sfv"/>
+                            <constraint firstItem="Erx-1Z-ZkT" firstAttribute="leading" secondItem="fSj-6Y-1Yy" secondAttribute="leading" constant="16" id="ODF-dX-XZA"/>
+                            <constraint firstItem="fSj-6Y-1Yy" firstAttribute="bottom" secondItem="Erx-1Z-ZkT" secondAttribute="bottom" constant="60" id="QxU-RA-cA8"/>
+                            <constraint firstItem="Erx-1Z-ZkT" firstAttribute="top" secondItem="fSj-6Y-1Yy" secondAttribute="top" id="gdt-Kh-Cti"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fSj-6Y-1Yy"/>
                     </view>
                     <connections>
+                        <outlet property="dateLabel" destination="f8N-sv-Hq0" id="9sz-8E-qCw"/>
                         <outlet property="medTableView" destination="x0c-PX-CUu" id="2m8-6K-Ii6"/>
                     </connections>
                 </viewController>
@@ -492,7 +518,7 @@
                                 <rect key="frame" x="16" y="20" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <segue destination="8l9-YL-xlN" kind="show" id="gjx-4w-c8T"/>
+                                    <segue destination="yPi-wK-DSa" kind="show" id="fbT-9h-Lbq"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medication Frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXy-qd-odo">
@@ -561,4 +587,7 @@
             <point key="canvasLocation" x="3160.8000000000002" y="408.84557721139436"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="MmQ-BZ-YRC"/>
+    </inferredMetricsTieBreakers>
 </document>
