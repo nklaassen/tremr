@@ -88,9 +88,9 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         medications = db.getMedicine()
         for medicine in db.getMedicine() {
             print("\(medicine.UID), \(medicine.MID), \(medicine.name), \(medicine.dosage)")
-            print("\(medicine.monday.description)")
+            print("\(medicine.mo.description)")
         }
-        var testMed = Medicine(UID: 5, MID: 4, name: "test1", dosage: "dosage", monday: true, tuesday: true, wednesday: true, thursday: true, friday: true, saturday: true, sunday: true, reminder: true, start_date: Date.init(), end_date: Date.init())
+        var testMed = Medicine(UID: 5, MID: 4, name: "test1", dosage: "dosage", mo: true, tu: true, we: true, th: true, fr: true, sa: true, su: true, reminder: true, start_date: Date.init(), end_date: Date.init())
         medications.append(testMed)
     }
 }
