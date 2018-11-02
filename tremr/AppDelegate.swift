@@ -8,6 +8,12 @@
 
 import UIKit
 
+internal let IS_DEBUG = true
+
+internal let motion = MotionObservable(); // gyroscope
+
+internal let Tremr = TremorController(); // Tremor Object for getting info
+
 let db = DatabaseManager()
 var myDate = Date()
 @UIApplicationMain

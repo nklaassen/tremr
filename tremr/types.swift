@@ -18,10 +18,11 @@ struct User {
 
 struct Tremor {
     var TID : Int64
-    var UID : Int64
-    var posturalSeverity : Float
-    var restingSeverity : Float
+    //var UID : Int64
+    var posturalSeverity : Double
+    var restingSeverity : Double
     var completed : Bool
+    var date : Date
 }
 
 struct Medicine {
