@@ -14,11 +14,10 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
     @IBOutlet weak var medTableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
     
-    
     var medications = [Medicine]()
     
     
-    
+    //MARK: UIViewController functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,8 +33,8 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Table view data source
     
+    // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -43,7 +42,6 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return medications.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
@@ -62,16 +60,6 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         return cell
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     //MARK: Actions
     @IBAction func mainViewTransition(_ sender: Any) {
@@ -96,8 +84,8 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         loadMedications()
     }
     
-    //MARK: Private Methods
     
+    //MARK: Private Methods
     private func loadMedications() {
         //Retrieve medications to be loaded into the table
         print("medications loaded")

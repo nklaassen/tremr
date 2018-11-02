@@ -12,133 +12,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Medication-->
-        <scene sceneID="U4O-ug-o8T">
-            <objects>
-                <viewController title="Medication" id="8l9-YL-xlN" customClass="MedicationViewController" customModule="tremr" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hGu-2v-YdF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2n-ai-DUE">
-                                <rect key="frame" x="16" y="20" width="138" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="tfs-WH-8hf"/>
-                                </constraints>
-                                <state key="normal" title="Go to Previous View"/>
-                                <connections>
-                                    <action selector="mainViewTransition:" destination="8l9-YL-xlN" eventType="touchUpInside" id="SJA-Wf-mVk"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLo-FI-hhy">
-                                <rect key="frame" x="65" y="58" width="281" height="57.5"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Medicine">
-                                        <attributes>
-                                            <font key="NSFont" size="48" name=".AppleSystemUIFont"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggz-at-OGn">
-                                <rect key="frame" x="41" y="473" width="287" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="aX0-IT-und"/>
-                                </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Tap a medication you've taken today! ">
-                                        <attributes>
-                                            <color key="NSColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Co-vw-bq6">
-                                <rect key="frame" x="107" y="572" width="146" height="46"/>
-                                <state key="normal" title="Edit/Add Medications"/>
-                                <connections>
-                                    <segue destination="cxd-6L-6ks" kind="show" id="MBT-G3-LF5"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvC-Ua-Rf4">
-                                <rect key="frame" x="55" y="314" width="254" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="zg5-u5-J7o"/>
-                                </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="[Medication for today listed here]">
-                                        <attributes>
-                                            <color key="NSColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="aav-BE-AqZ">
-                                <rect key="frame" x="65" y="141" width="254" height="34"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0O-Fj-jNx">
-                                        <rect key="frame" x="0.0" y="0.0" width="71" height="34"/>
-                                        <state key="normal" title="L-Button">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="prevDateButton:" destination="8l9-YL-xlN" eventType="touchUpInside" id="OEK-XI-jtD"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSI-7K-WCf">
-                                        <rect key="frame" x="102.5" y="0.0" width="46" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSB-2R-DIK">
-                                        <rect key="frame" x="180" y="0.0" width="74" height="34"/>
-                                        <state key="normal" title="R-Button">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="nextDateButton:" destination="8l9-YL-xlN" eventType="touchUpInside" id="poZ-o3-M1P"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ggz-at-OGn" firstAttribute="top" secondItem="BvC-Ua-Rf4" secondAttribute="bottom" constant="95" id="2pS-PI-259"/>
-                            <constraint firstItem="W2n-ai-DUE" firstAttribute="top" secondItem="oSC-Fl-7Sy" secondAttribute="top" id="49u-dy-B7c"/>
-                            <constraint firstItem="KLo-FI-hhy" firstAttribute="leading" secondItem="oSC-Fl-7Sy" secondAttribute="leading" constant="65" id="6n3-cS-MBX"/>
-                            <constraint firstItem="KLo-FI-hhy" firstAttribute="top" secondItem="W2n-ai-DUE" secondAttribute="bottom" constant="8" id="8Ir-wg-a01"/>
-                            <constraint firstItem="oSC-Fl-7Sy" firstAttribute="trailing" secondItem="aav-BE-AqZ" secondAttribute="trailing" constant="56" id="8tc-tb-uj9"/>
-                            <constraint firstItem="oSC-Fl-7Sy" firstAttribute="bottom" secondItem="4Co-vw-bq6" secondAttribute="bottom" constant="49" id="9vf-iz-JYB"/>
-                            <constraint firstItem="BvC-Ua-Rf4" firstAttribute="leading" secondItem="oSC-Fl-7Sy" secondAttribute="leading" constant="55" id="UfB-mU-caj"/>
-                            <constraint firstItem="ggz-at-OGn" firstAttribute="leading" secondItem="oSC-Fl-7Sy" secondAttribute="leading" constant="41" id="Vnz-FU-Asy"/>
-                            <constraint firstItem="BvC-Ua-Rf4" firstAttribute="top" secondItem="aav-BE-AqZ" secondAttribute="bottom" constant="139" id="XWH-G6-mNP"/>
-                            <constraint firstItem="aav-BE-AqZ" firstAttribute="top" secondItem="KLo-FI-hhy" secondAttribute="bottom" constant="25.5" id="ahP-Xv-E9y"/>
-                            <constraint firstItem="4Co-vw-bq6" firstAttribute="leading" secondItem="oSC-Fl-7Sy" secondAttribute="leading" constant="107" id="er6-WA-a8A"/>
-                            <constraint firstItem="aav-BE-AqZ" firstAttribute="leading" secondItem="oSC-Fl-7Sy" secondAttribute="leading" constant="65" id="jlb-d6-Gq1"/>
-                            <constraint firstItem="oSC-Fl-7Sy" firstAttribute="trailing" secondItem="KLo-FI-hhy" secondAttribute="trailing" constant="29" id="l7Q-Hi-gaq"/>
-                            <constraint firstItem="W2n-ai-DUE" firstAttribute="leading" secondItem="hGu-2v-YdF" secondAttribute="leadingMargin" id="lgU-fZ-KQy"/>
-                            <constraint firstItem="4Co-vw-bq6" firstAttribute="top" secondItem="ggz-at-OGn" secondAttribute="bottom" constant="35" id="mu6-MC-0dt"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="oSC-Fl-7Sy"/>
-                    </view>
-                    <connections>
-                        <outlet property="dateLabel" destination="VSI-7K-WCf" id="KY7-Jr-Gre"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0ns-70-92e" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1701.5999999999999" y="411.544227886057"/>
-        </scene>
         <!--DailyMedication-->
         <scene sceneID="L8e-8d-Ef9">
             <objects>
@@ -275,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zqf-se-9Pw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1693.5999999999999" y="1167.1664167916042"/>
+            <point key="canvasLocation" x="1652" y="412"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="C2L-us-ZVt">
@@ -518,7 +391,7 @@
                                 <rect key="frame" x="16" y="20" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <segue destination="yPi-wK-DSa" kind="show" id="fbT-9h-Lbq"/>
+                                    <segue destination="yPi-wK-DSa" kind="show" id="Of7-UK-BlF"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medication Frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXy-qd-odo">
@@ -587,7 +460,4 @@
             <point key="canvasLocation" x="3160.8000000000002" y="408.84557721139436"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="MmQ-BZ-YRC"/>
-    </inferredMetricsTieBreakers>
 </document>

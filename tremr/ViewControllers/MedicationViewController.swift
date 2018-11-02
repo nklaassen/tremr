@@ -10,6 +10,10 @@ import UIKit
 
 class MedicationViewController: UIViewController {
 
+    //MARK: Properties
+    @IBOutlet weak var medicineTextField: UITextField!
+    @IBOutlet weak var dosageTextField: UITextField!
+    
     // Add Medicine Page Variables
     var mondayFlag: Bool = false
     var tuesdayFlag: Bool = false
@@ -20,14 +24,22 @@ class MedicationViewController: UIViewController {
     var sundayFlag: Bool = false
     var reminderFlag: Bool = false
     
-    @IBAction func mainViewTransition(_ sender: Any) {
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-    }
-   
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var medicineTextField: UITextField!
-    @IBOutlet weak var dosageTextField: UITextField!
     
+    //MARK: UIViewController Functions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Put query for that day's medications here
+        // Do any additional setup after loading the view.
+        myDate = Date.init()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    //MARK: Actions
     @IBAction func addMedicineButton(_ sender: Any) {
         let medicineName: String = medicineTextField.text!
         let dosageValue: String = dosageTextField.text!
@@ -66,39 +78,6 @@ class MedicationViewController: UIViewController {
     @IBAction func reminderButton(_ sender: Any) {
         reminderFlag = !reminderFlag
     }
-    
-    @IBAction func prevDateButton(_ sender: Any) {
-        myDate = Calendar.current.date(byAdding: .day, value: -1, to: myDate)!
-        dateLabel.text = myDate.toString(dateFormat: "MM-dd-yyyy")
-    }
-    
-    @IBAction func nextDateButton(_ sender: Any) {
-        myDate = Calendar.current.date(byAdding: .day, value: 1, to: myDate)!
-        dateLabel.text = myDate.toString(dateFormat: "MM-dd-yyyy")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Put query for that day's medications here
-        // Do any additional setup after loading the view.
-        myDate = Date.init()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension Date
