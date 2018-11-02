@@ -192,7 +192,6 @@ class DatabaseManager
     func getMedicine() -> Array<Medicine> {
         var medicines = Array<Medicine>()
         
-        
         do {
             for medicine in try db.prepare(Medicines) {
                 medicines.append(Medicine(UID: medicine[self.UID],
@@ -267,5 +266,20 @@ class DatabaseManager
             fatalError("Query didn't execute at all")
         }
         return medicines
+    }
+    
+    // The medicine table will update MIDs equal to MIDToUpdate. Rows matching this query will
+    // have their end_date updated to the current date.
+    func updateMedicineEndDate(MIDToUpdate : Int64)
+    {
+        let currentDate = Date.init()
+        
+        // UPDATE "Medicines" SET end_date to the current date
+        do {
+            let medicineToUpdate = Medicines.filter(MID == MIDToUpdate)
+            try db.run(medicineToUpdate.update(end_date <- currentDate))
+        } catch {
+            fatalError("Failed to update row with MID: \(MID) with end_date: \(String(describing: currentDate))")
+        }
     }
 }
