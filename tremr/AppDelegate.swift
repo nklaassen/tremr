@@ -15,7 +15,7 @@ internal let motion = MotionObservable(); // gyroscope
 internal let Tremr = TremorController(); // Tremor Object for getting info
 
 let db = DatabaseManager()
-
+var myDate = Date()
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -37,6 +37,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
          */
         
+        // Fill in some test data for medicine database
+        let day = TimeInterval(60*60*24) //Number of seconds in a day
+        db.addMedicine(UID: 1,
+                       name: "medicine1",
+                       dosage: "100",
+                       monday: true,
+                       tuesday: true,
+                       wednesday: true,
+                       thursday: true,
+                       friday: false,
+                       saturday: false,
+                       sunday: false,
+                       reminder: false,
+                       start_date: Date().addingTimeInterval(day),
+                       end_date: nil)
+        db.addMedicine(UID: 1,
+                       name: "medicine2",
+                       dosage: "100",
+                       monday: true,
+                       tuesday: true,
+                       wednesday: true,
+                       thursday: true,
+                       friday: false,
+                       saturday: false,
+                       sunday: false,
+                       reminder: false,
+                       start_date: Date().addingTimeInterval(-day),
+                       end_date: nil)
+        db.addMedicine(UID: 1,
+                       name: "medicine3",
+                       dosage: "100",
+                       monday: true,
+                       tuesday: true,
+                       wednesday: true,
+                       thursday: true,
+                       friday: false,
+                       saturday: false,
+                       sunday: false,
+                       reminder: false,
+                       start_date: Date().addingTimeInterval(-3*day),
+                       end_date: Date().addingTimeInterval(-day))
+        db.addMedicine(UID: 1,
+                       name: "medicine4",
+                       dosage: "400",
+                       monday: true,
+                       tuesday: true,
+                       wednesday: true,
+                       thursday: false,
+                       friday: false,
+                       saturday: false,
+                       sunday: false,
+                       reminder: false,
+                       start_date: Date(),
+                       end_date: Date())
+        
+        db.testFunctionality()
         return true
     }
 

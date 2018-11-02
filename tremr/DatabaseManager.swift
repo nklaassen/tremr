@@ -29,6 +29,22 @@ class DatabaseManager
     let completed = Expression<Bool>("completed")
     let date = Expression<Date>("date")
 
+    let Medicines = Table("Medicine")
+    let MID = Expression<Int64>("MID")
+    // let name = Expression<String>("name") We'll use the one defined in Users table
+    let dosage = Expression<String>("dosage")
+    let monday = Expression<Bool>("monday")
+    let tuesday = Expression<Bool>("tuesday")
+    let wednesday = Expression<Bool>("wednesday")
+    let thursday = Expression<Bool>("thursday")
+    let friday = Expression<Bool>("friday")
+    let saturday = Expression<Bool>("saturday")
+    let sunday = Expression<Bool>("sunday")
+    let reminder = Expression<Bool>("reminder")
+    let start_date = Expression<Date>("start_date")
+    let end_date = Expression<Date?>("end_date") //optional
+
+
     init() {
         do {
             print("dbManager init")
@@ -48,7 +64,28 @@ class DatabaseManager
                 t.column(email, unique: true)                     //     "email" TEXT UNIQUE NOT NULL,
                 t.column(name)                                    //     "name" TEXT NOT NULL
             })                                                    // )
-
+            
+            try db.run(Medicines.drop(ifExists: true))
+            
+            // Create the Medicine table
+            try db.run(Medicines.create(ifNotExists: true) { t in
+                t.column(MID, primaryKey: true)
+                t.column(UID)
+                t.column(name)
+                t.column(dosage)
+                t.column(monday)
+                t.column(tuesday)
+                t.column(wednesday)
+                t.column(thursday)
+                t.column(friday)
+                t.column(saturday)
+                t.column(sunday)
+                t.column(reminder)
+                t.column(start_date)
+                t.column(end_date)
+                t.foreignKey(UID, references: Users, UID, delete: .setNull)
+            })
+            
             // Create the Tremors table
             try db.run(Tremors.create(ifNotExists: true) { t in              // CREATE TABLE "Tremors" (
                 t.column(TID, primaryKey: true)                              //     "TID" INTEGER PRIMARY KEY NOT NULL,
@@ -126,5 +163,93 @@ class DatabaseManager
             print(error)
         }
         return tremors
+    }
+    
+    func addMedicine(UID : Int64, name : String, dosage : String, monday : Bool, tuesday : Bool, wednesday : Bool, thursday : Bool, friday : Bool, saturday : Bool, sunday : Bool, reminder : Bool, start_date : Date, end_date : Date?) {
+        print("Trying to add medicine \(name) \(dosage)")
+        let query = Medicines.select(name)
+        print(query)
+        do {
+            try db.run(Medicines.insert(self.UID <- UID,
+                                      self.name <- name,
+                                      self.dosage <- dosage,
+                                      self.monday <- monday,
+                                      self.tuesday <- tuesday,
+                                      self.wednesday <- wednesday,
+                                      self.thursday <- thursday,
+                                      self.friday <- friday,
+                                      self.saturday <- saturday,
+                                      self.sunday <- sunday,
+                                      self.reminder <- reminder,
+                                      self.start_date <- start_date,
+                                      self.end_date <- end_date ))
+            print("Inserted medicine!")
+        } catch {
+            print("Failed to insert medicine: \(error)")
+        }
+    }
+    
+    func getMedicine() -> Array<Medicine> {
+        var medicines = Array<Medicine>()
+        
+        
+        do {
+            for medicine in try db.prepare(Medicines) {
+                medicines.append(Medicine(UID: medicine[self.UID],
+                                          MID: medicine[self.MID],
+                                          name: medicine[self.name],
+                                          dosage: medicine[self.dosage],
+                                          mo: medicine[self.monday],
+                                          tu: medicine[self.tuesday],
+                                          we: medicine[self.wednesday],
+                                          th: medicine[self.thursday],
+                                          fr: medicine[self.friday],
+                                          sa: medicine[self.saturday],
+                                          su: medicine[self.sunday],
+                                          reminder: medicine[self.reminder],
+                                          start_date: medicine[self.start_date],
+                                          end_date:medicine[self.end_date]))
+            }
+        } catch {
+            print(error)
+        }
+        return medicines
+    }
+    
+    func testFunctionality() {
+        //weekDay is a number. 1-sunday, 2-monday, ... 7-saturday
+        let date: Date = Date.init()
+        let weekDay = Calendar.current.component(.weekday, from: date)
+        print("today's weekDay is \(weekDay)")
+        var targetWeekDay :Expression<Bool>
+        switch weekDay {
+        case 1: //Sunday
+            targetWeekDay = sunday
+        case 2: //Monday
+            targetWeekDay = monday
+        case 3: //Tuesday
+            targetWeekDay = tuesday
+        case 4: //Wednesday
+            targetWeekDay = wednesday
+        case 5: //Thursday
+            targetWeekDay = thursday
+        case 6: //Friday
+            targetWeekDay = friday
+        default: //Saturday
+            targetWeekDay = saturday
+        //default: //Any day
+            //targetWeekDay = nil
+        }
+        var query = Medicines.filter(targetWeekDay == true) // Weekday matches weekday recorded for
+        query = query.filter(start_date <= Date())   // Ensure searching within valid timeframe
+                            //.filter(end_date >= Date())
+                
+        do {
+            for med in try db.prepare(query) {
+                print("name: \(try med.get(name))")
+            }
+        } catch {
+            fatalError("Query didn't execute at all")
+        }
     }
 }
