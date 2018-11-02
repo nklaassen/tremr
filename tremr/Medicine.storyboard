@@ -24,14 +24,14 @@
                                 <rect key="frame" x="16" y="20" width="343" height="587"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzy-e1-8AX">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="97"/>
                                         <state key="normal" title="Go to Previous View"/>
                                         <connections>
                                             <action selector="mainViewTransition:" destination="yPi-wK-DSa" eventType="touchUpInside" id="xg7-QD-wpl"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicine" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFF-CV-x7N">
-                                        <rect key="frame" x="0.0" y="38" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="105" width="343" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="y4y-6c-KiK"/>
                                         </constraints>
@@ -40,7 +40,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="y0n-NX-XLP">
-                                        <rect key="frame" x="52.5" y="96" width="238" height="30"/>
+                                        <rect key="frame" x="25.5" y="163" width="292" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiY-sd-93p">
                                                 <rect key="frame" x="0.0" y="0.0" width="55" height="30"/>
@@ -49,14 +49,17 @@
                                                     <action selector="leftArrowButton:" destination="yPi-wK-DSa" eventType="touchUpInside" id="MMM-cM-lTx"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8N-sv-Hq0">
-                                                <rect key="frame" x="95" y="0.0" width="46" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8N-sv-Hq0">
+                                                <rect key="frame" x="95" y="0.0" width="100" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="EAA-8I-wFh"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91y-sj-CkU">
-                                                <rect key="frame" x="181" y="0.0" width="57" height="30"/>
+                                                <rect key="frame" x="235" y="0.0" width="57" height="30"/>
                                                 <state key="normal" title="R-Arrow"/>
                                                 <connections>
                                                     <action selector="rightArrowButton:" destination="yPi-wK-DSa" eventType="touchUpInside" id="A57-xU-XJX"/>
@@ -65,7 +68,7 @@
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x0c-PX-CUu">
-                                        <rect key="frame" x="0.0" y="134" width="343" height="386.5"/>
+                                        <rect key="frame" x="0.0" y="201" width="343" height="319.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MedicationTableViewCell" id="jRx-Yk-Zcn" customClass="MedicationTableViewCell" customModule="tremr" customModuleProvider="target">
@@ -118,7 +121,6 @@
                                         <rect key="frame" x="98.5" y="557" width="146" height="30"/>
                                         <state key="normal" title="Edit/Add Medications"/>
                                         <connections>
-                                            <action selector="addMedication:" destination="yPi-wK-DSa" eventType="touchUpInside" id="GeT-CC-Xmf"/>
                                             <segue destination="cxd-6L-6ks" kind="show" id="MmQ-BZ-YRC"/>
                                         </connections>
                                     </button>

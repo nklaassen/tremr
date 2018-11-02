@@ -14,7 +14,14 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
     @IBOutlet weak var medTableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
     
+    //Array of medications displayed by table
     var medications = [Medicine]()
+    
+    //Day for which medications are being displayed
+    var displayDay = Date()
+    
+    //Calendar for comparing dates and performing date arithmetic
+    let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
     
     
     //MARK: UIViewController functions
@@ -24,15 +31,10 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         //load medications into table
         loadMedications()
         
+        //Set containing class as the delegate and datasource of the table view
         medTableView.delegate = self
         medTableView.dataSource = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,12 +48,11 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "MedicationTableViewCell"
-        print("fill table")
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MedicationTableViewCell else {
             fatalError("The dequeued cell is not an instance of MedicationTableViewCell.")
         }
         
-        // Fetches the appropriate meal for the data source layout.
+        // Fetches the appropriate medication for the data source layout.
         let med = medications[indexPath.row]
         
         cell.medNameLabel.text = med.name
@@ -67,23 +68,11 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
     }
     
     @IBAction func leftArrowButton(_ sender: UIButton) {
-        myDate = Calendar.current.date(byAdding: .day, value: -1, to: myDate)!
-        dateLabel.text = myDate.toString(dateFormat: "MM-dd-yyyy")
-        loadMedications()
+        incrementDisplayDay(changeValue: -1)
     }
     
     @IBAction func rightArrowButton(_ sender: UIButton) {
-        myDate = Calendar.current.date(byAdding: .day, value: 1, to: myDate)!
-        dateLabel.text = myDate.toString(dateFormat: "MM-dd-yyyy")
-        loadMedications()
-    }
-    
-    @IBAction func addMedication(_ sender: UIButton) {
-        db.addMedicine(UID: 5, name: "advil", dosage: "4 pills", monday: true, tuesday: true, wednesday: true, thursday: true, friday: true, saturday: true, sunday: true, reminder: true, start_date: Date.init(), end_date: Date.init())
-        print("I just added a medicine")
-        
-        //load medications into table
-        loadMedications()
+        incrementDisplayDay(changeValue: 1)
     }
     
     
@@ -91,14 +80,37 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
     private func loadMedications() {
         //Retrieve medications to be loaded into the table
         print("medications loaded")
-        medications = db.getMedicineDate(date: myDate)
+        medications = db.getMedicineDate(date: displayDay)
+    }
+    
+    private func incrementDisplayDay(changeValue : Int) {
+        displayDay = Calendar.current.date(byAdding: .day, value: changeValue, to: displayDay)!
+        if (calendar.isDateInToday(displayDay)){
+            dateLabel.text = "Today"
+        }
+        else if calendar.isDateInTomorrow(displayDay){
+            dateLabel.text = "Tomorrow"
+        }
+        else if calendar.isDateInYesterday(displayDay){
+            dateLabel.text = "Yesterday"
+        }
+        else {
+            dateLabel.text = displayDay.toString(dateFormat: "MM-dd-yyyy")
+        }
+        
+        //Load medications for updated day
+        loadMedications()
+        
+        //Reload table
         medTableView.reloadData()
-        //medications = db.getMedicine()
-        //for medicine in db.getMedicine() {
-        //    print("\(medicine.UID), \(medicine.MID), \(medicine.name), \(medicine.dosage)")
-        //    print("\(medicine.mo.description)")
-        //}
-        //var testMed = Medicine(UID: 5, MID: 4, name: "test1", dosage: "dosage", mo: true, tu: true, we: true, th: true, fr: true, sa: true, su: true, reminder: true, start_date: Date.init(), end_date: Date.init())
-        //medications.append(testMed)
+    }
+}
+
+
+extension Date {
+    func toString( dateFormat format  : String ) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
     }
 }

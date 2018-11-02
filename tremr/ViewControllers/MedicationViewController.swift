@@ -45,7 +45,7 @@ class MedicationViewController: UIViewController {
         let dosageValue: String = dosageTextField.text!
         
         // Need to determine UID to insert in subsequent versions
-        db.addMedicine(UID: 1, name: "\(medicineName)", dosage: "\(dosageValue)", monday: mondayFlag, tuesday: tuesdayFlag, wednesday: wednesdayFlag, thursday: thursdayFlag, friday: fridayFlag, saturday: saturdayFlag, sunday: sundayFlag, reminder: reminderFlag, start_date: myDate, end_date: Date.init())
+        db.addMedicine(UID: 1, name: "\(medicineName)", dosage: "\(dosageValue)", monday: mondayFlag, tuesday: tuesdayFlag, wednesday: wednesdayFlag, thursday: thursdayFlag, friday: fridayFlag, saturday: saturdayFlag, sunday: sundayFlag, reminder: reminderFlag, start_date: Date(), end_date: nil)
     }
     
     @IBAction func queryMedicineDatabase(_ sender: Any) {
@@ -77,16 +77,6 @@ class MedicationViewController: UIViewController {
     }
     @IBAction func reminderButton(_ sender: Any) {
         reminderFlag = !reminderFlag
-    }
-}
-
-extension Date
-{
-    func toString( dateFormat format  : String ) -> String
-    {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: self)
     }
 }
 

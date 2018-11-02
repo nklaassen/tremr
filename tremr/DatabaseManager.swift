@@ -214,11 +214,11 @@ class DatabaseManager
         }
         return medicines
     }
+    
     func getMedicineDate(date: Date) ->Array<Medicine> {
         //weekDay is a number. 1-sunday, 2-monday, ... 7-saturday
-        //let date: Date = Date.init()
         let weekDay = Calendar.current.component(.weekday, from: date)
-        print("today's weekDay is \(weekDay)")
+
         var targetWeekDay :Expression<Bool>
         switch weekDay {
         case 1: //Sunday
