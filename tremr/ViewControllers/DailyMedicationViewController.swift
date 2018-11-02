@@ -69,11 +69,13 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
     @IBAction func leftArrowButton(_ sender: UIButton) {
         myDate = Calendar.current.date(byAdding: .day, value: -1, to: myDate)!
         dateLabel.text = myDate.toString(dateFormat: "MM-dd-yyyy")
+        loadMedications()
     }
     
     @IBAction func rightArrowButton(_ sender: UIButton) {
         myDate = Calendar.current.date(byAdding: .day, value: 1, to: myDate)!
         dateLabel.text = myDate.toString(dateFormat: "MM-dd-yyyy")
+        loadMedications()
     }
     
     @IBAction func addMedication(_ sender: UIButton) {
@@ -89,12 +91,14 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
     private func loadMedications() {
         //Retrieve medications to be loaded into the table
         print("medications loaded")
-        medications = db.getMedicine()
-        for medicine in db.getMedicine() {
-            print("\(medicine.UID), \(medicine.MID), \(medicine.name), \(medicine.dosage)")
-            print("\(medicine.mo.description)")
-        }
-        var testMed = Medicine(UID: 5, MID: 4, name: "test1", dosage: "dosage", mo: true, tu: true, we: true, th: true, fr: true, sa: true, su: true, reminder: true, start_date: Date.init(), end_date: Date.init())
-        medications.append(testMed)
+        medications = db.getMedicineDate(date: myDate)
+        medTableView.reloadData()
+        //medications = db.getMedicine()
+        //for medicine in db.getMedicine() {
+        //    print("\(medicine.UID), \(medicine.MID), \(medicine.name), \(medicine.dosage)")
+        //    print("\(medicine.mo.description)")
+        //}
+        //var testMed = Medicine(UID: 5, MID: 4, name: "test1", dosage: "dosage", mo: true, tu: true, we: true, th: true, fr: true, sa: true, su: true, reminder: true, start_date: Date.init(), end_date: Date.init())
+        //medications.append(testMed)
     }
 }

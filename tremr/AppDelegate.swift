@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        tuesday: true,
                        wednesday: true,
                        thursday: true,
-                       friday: false,
+                       friday: true,
                        saturday: false,
                        sunday: false,
                        reminder: false,
@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        tuesday: true,
                        wednesday: true,
                        thursday: true,
-                       friday: false,
+                       friday: true,
                        saturday: false,
                        sunday: false,
                        reminder: false,
@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        tuesday: true,
                        wednesday: true,
                        thursday: true,
-                       friday: false,
+                       friday: true,
                        saturday: false,
                        sunday: false,
                        reminder: false,
@@ -85,14 +85,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        tuesday: true,
                        wednesday: true,
                        thursday: false,
-                       friday: false,
+                       friday: true,
                        saturday: false,
                        sunday: false,
                        reminder: false,
                        start_date: Date(),
                        end_date: Date())
-        
-        db.testFunctionality()
         return true
     }
 

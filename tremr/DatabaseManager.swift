@@ -215,10 +215,9 @@ class DatabaseManager
         }
         return medicines
     }
-    
-    func testFunctionality() {
+    func getMedicineDate(date: Date) ->Array<Medicine> {
         //weekDay is a number. 1-sunday, 2-monday, ... 7-saturday
-        let date: Date = Date.init()
+        //let date: Date = Date.init()
         let weekDay = Calendar.current.component(.weekday, from: date)
         print("today's weekDay is \(weekDay)")
         var targetWeekDay :Expression<Bool>
@@ -237,19 +236,36 @@ class DatabaseManager
             targetWeekDay = friday
         default: //Saturday
             targetWeekDay = saturday
-        //default: //Any day
+            //default: //Any day
             //targetWeekDay = nil
         }
         var query = Medicines.filter(targetWeekDay == true) // Weekday matches weekday recorded for
-        query = query.filter(start_date <= Date())   // Ensure searching within valid timeframe
-                            //.filter(end_date >= Date())
-                
+        query = query.filter(start_date <= date)   // Ensure searching within valid timeframe
+        query = query.filter(end_date == nil || end_date >= date)   //If end_date is assigned, then only return when within the timeframe of that medicine
+        
+        var medicines = Array<Medicine>()
+        
         do {
             for med in try db.prepare(query) {
-                print("name: \(try med.get(name))")
+                medicines.append(Medicine(UID: med[self.UID],
+                                          MID: med[self.MID],
+                                          name: med[self.name],
+                                          dosage: med[self.dosage],
+                                          mo: med[self.monday],
+                                          tu: med[self.tuesday],
+                                          we: med[self.wednesday],
+                                          th: med[self.thursday],
+                                          fr: med[self.friday],
+                                          sa: med[self.saturday],
+                                          su: med[self.sunday],
+                                          reminder: med[self.reminder],
+                                          start_date: med[self.start_date],
+                                          end_date:med[self.end_date]))
+                //print("name: \(try med.get(name))")
             }
         } catch {
             fatalError("Query didn't execute at all")
         }
+        return medicines
     }
 }
