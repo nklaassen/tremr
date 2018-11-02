@@ -2,18 +2,18 @@
 //  RecordPosturalViewController.swift
 //  tremr
 //
-//  Created by Devansh Chopra on 2018-10-28.
+//  Created by Devansh Chopra and Nic Klaassen on 2018-10-28.
 //  Copyright © 2018 CO.DEsign. All rights reserved.
 //
 
 import UIKit
 
+//Class for recording the Postural Tremor 
 class RecordPosturalViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         disableInput()
         Tremr.recordPostural() {
             self.enableInput()

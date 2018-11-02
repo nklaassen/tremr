@@ -2,18 +2,18 @@
 //  PosturalViewController.swift
 //  tremr
 //
-//  Created by Devansh Chopra on 2018-10-24.
+//  Created by Devansh Chopra and Nic Klaasen on 2018-10-24.
 //  Copyright © 2018 CO.DEsign. All rights reserved.
 //
 
 import UIKit
 
+//Class for recording the Resting Tremors
 class RecordRestingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         disableInput()
         Tremr.recordResting() {
             self.enableInput()

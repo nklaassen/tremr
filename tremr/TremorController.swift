@@ -2,7 +2,7 @@
 //  PosturalViewController.swift
 //  tremr
 //
-//  Created by Devansh Chopra on 2018-10-24.
+//  Created by Devansh Chopra and Nic Klaassen on 2018-10-24.
 //  Copyright © 2018 CO.DEsign. All rights reserved.
 //
 
@@ -82,6 +82,7 @@ class TremorController {
                 severity = 10
             }
         }
+        
         print("severity: \(severity)")
         return severity
     }
