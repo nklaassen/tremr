@@ -21,14 +21,21 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hrR-h7-Ml3">
                                 <rect key="frame" x="20" y="40" width="335" height="607"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rB9-tZ-SBR">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <segue destination="Hxf-rW-vGC" kind="show" id="lAT-HK-eoS"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TREMOR TRACKING INSTRUCTIONS " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nr5-wO-n4U">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="38" width="335" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSw-zG-eH4">
-                                        <rect key="frame" x="0.0" y="28.5" width="335" height="462.5"/>
+                                        <rect key="frame" x="0.0" y="66.5" width="335" height="424.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Postural
 
@@ -90,13 +97,13 @@ Resting
                                 <rect key="frame" x="20" y="40" width="335" height="607"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="POSTURAL TREMOR TRACKING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWk-Yn-IyJ">
-                                        <rect key="frame" x="43.5" y="0.0" width="248" height="0.0"/>
+                                        <rect key="frame" x="43.5" y="0.0" width="248" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="holding-phone.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Bah-NK-QoJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="507"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="20181101_180539" translatesAutoresizingMaskIntoConstraints="NO" id="Bah-NK-QoJ">
+                                        <rect key="frame" x="0.0" y="20.5" width="335" height="486.5"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfd-wf-tdF">
                                         <rect key="frame" x="0.0" y="507" width="335" height="100"/>
@@ -140,28 +147,13 @@ Resting
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OUt-T6-Sys">
                                 <rect key="frame" x="20" y="40" width="335" height="607"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Your Postural Tremor is now being recording, please stay still. Once next button below is lit up, please click next." translatesAutoresizingMaskIntoConstraints="NO" id="RDd-te-wnP">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="507"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yKZ-mx-xeI">
-                                        <rect key="frame" x="0.0" y="507" width="335" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="k5k-vG-tcq"/>
-                                        </constraints>
-                                        <state key="normal" title="Next"/>
-                                        <connections>
-                                            <segue destination="bog-as-OpF" kind="show" id="gQS-ol-3Gb"/>
-                                        </connections>
-                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recording . . ." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyS-Jk-IFn">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="607"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="yKZ-mx-xeI" secondAttribute="trailing" id="VJk-4Z-ffu"/>
-                                    <constraint firstItem="yKZ-mx-xeI" firstAttribute="top" secondItem="RDd-te-wnP" secondAttribute="bottom" constant="100" id="nhi-CR-wlk"/>
-                                    <constraint firstItem="yKZ-mx-xeI" firstAttribute="leading" secondItem="OUt-T6-Sys" secondAttribute="leading" id="uh0-UY-k1z"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -174,7 +166,7 @@ Resting
                         <viewLayoutGuide key="safeArea" id="2fq-py-5mz"/>
                     </view>
                     <connections>
-                        <outlet property="Next" destination="yKZ-mx-xeI" id="a3D-kb-4C8"/>
+                        <segue destination="bog-as-OpF" kind="show" identifier="PosturalDoneRecording" id="8XJ-5B-s3b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7CU-Ak-cr5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -198,7 +190,7 @@ Resting
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="holding-phone.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="EC3-2B-1hy">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="20181101_180449" translatesAutoresizingMaskIntoConstraints="NO" id="EC3-2B-1hy">
                                         <rect key="frame" x="0.0" y="20.5" width="335" height="486.5"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmg-B2-WZw">
@@ -243,27 +235,13 @@ Resting
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2AX-fJ-zjV">
                                 <rect key="frame" x="20" y="40" width="335" height="607"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Your Resting Tremor is now being recording, please stay still. Once next button below is lit up, please click next." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xjd-2c-f5r">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="507"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKM-Kg-Qso">
-                                        <rect key="frame" x="0.0" y="507" width="335" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="XS3-v5-IyB"/>
-                                        </constraints>
-                                        <state key="normal" title="Next"/>
-                                        <connections>
-                                            <segue destination="EwS-5N-Z2f" kind="show" id="gLb-zr-JcB"/>
-                                        </connections>
-                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recording . . " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U3i-VT-lZn">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="607"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="WKM-Kg-Qso" secondAttribute="trailing" id="1v3-hU-Kql"/>
-                                    <constraint firstItem="WKM-Kg-Qso" firstAttribute="leading" secondItem="2AX-fJ-zjV" secondAttribute="leading" id="CYK-Nd-Rnl"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -276,7 +254,7 @@ Resting
                         <viewLayoutGuide key="safeArea" id="L7M-d8-ihi"/>
                     </view>
                     <connections>
-                        <outlet property="Next" destination="WKM-Kg-Qso" id="t48-WW-tnw"/>
+                        <segue destination="EwS-5N-Z2f" kind="show" identifier="RestingDoneRecording" id="Qbs-LU-czO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LCk-FF-uPx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -295,8 +273,11 @@ Resting
                                 <rect key="frame" x="20" y="40" width="335" height="607"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Good Job! Your Tremor severity Scores are shown below" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xGo-b0-nrY">
-                                        <rect key="frame" x="47.5" y="0.0" width="240" height="207"/>
+                                        <rect key="frame" x="68" y="0.0" width="199" height="207"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="TJz-ve-FDM"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -348,6 +329,7 @@ Resting
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="xGo-b0-nrY" firstAttribute="leading" secondItem="kZt-H9-pyu" secondAttribute="leading" constant="68" id="9Df-sA-aTj"/>
                                     <constraint firstItem="nmy-M7-B0a" firstAttribute="leading" secondItem="kZt-H9-pyu" secondAttribute="leading" id="ESV-mf-twR"/>
                                     <constraint firstAttribute="trailing" secondItem="nmy-M7-B0a" secondAttribute="trailing" id="aqO-fk-Gk5"/>
                                 </constraints>
@@ -381,6 +363,10 @@ Resting
         </scene>
     </scenes>
     <resources>
-        <image name="holding-phone.jpg" width="3043" height="3793"/>
+        <image name="20181101_180449" width="2268" height="4032"/>
+        <image name="20181101_180539" width="2268" height="4032"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="5AM-81-4t7"/>
+    </inferredMetricsTieBreakers>
 </document>
