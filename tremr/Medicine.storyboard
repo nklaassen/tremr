@@ -24,14 +24,14 @@
                                 <rect key="frame" x="16" y="20" width="343" height="587"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzy-e1-8AX">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="97"/>
-                                        <state key="normal" title="Go to Previous View"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="77"/>
+                                        <state key="normal" title="Back"/>
                                         <connections>
                                             <action selector="mainViewTransition:" destination="yPi-wK-DSa" eventType="touchUpInside" id="xg7-QD-wpl"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicine" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFF-CV-x7N">
-                                        <rect key="frame" x="0.0" y="105" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="85" width="343" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="y4y-6c-KiK"/>
                                         </constraints>
@@ -40,17 +40,21 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="y0n-NX-XLP">
-                                        <rect key="frame" x="25.5" y="163" width="292" height="30"/>
+                                        <rect key="frame" x="31.5" y="143" width="280" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiY-sd-93p">
-                                                <rect key="frame" x="0.0" y="0.0" width="55" height="30"/>
-                                                <state key="normal" title="L-Arrow"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiY-sd-93p">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="Uo9-iU-sIe"/>
+                                                    <constraint firstAttribute="width" constant="50" id="eMc-UI-Lc6"/>
+                                                </constraints>
+                                                <state key="normal" title="L-Arrow" image="Left-Arrow"/>
                                                 <connections>
                                                     <action selector="leftArrowButton:" destination="yPi-wK-DSa" eventType="touchUpInside" id="MMM-cM-lTx"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8N-sv-Hq0">
-                                                <rect key="frame" x="95" y="0.0" width="100" height="30"/>
+                                                <rect key="frame" x="90" y="0.0" width="100" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="EAA-8I-wFh"/>
                                                 </constraints>
@@ -58,9 +62,13 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91y-sj-CkU">
-                                                <rect key="frame" x="235" y="0.0" width="57" height="30"/>
-                                                <state key="normal" title="R-Arrow"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91y-sj-CkU">
+                                                <rect key="frame" x="230" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="38e-4K-kDj"/>
+                                                    <constraint firstAttribute="width" constant="50" id="8Xm-xC-SBl"/>
+                                                </constraints>
+                                                <state key="normal" title="R-Arrow" image="Right-Arrow"/>
                                                 <connections>
                                                     <action selector="rightArrowButton:" destination="yPi-wK-DSa" eventType="touchUpInside" id="A57-xU-XJX"/>
                                                 </connections>
@@ -272,7 +280,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htK-rp-DwT">
-                                <rect key="frame" x="95.5" y="79" width="187.5" height="57.5"/>
+                                <rect key="frame" x="96.5" y="79" width="187.5" height="57.5"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Medicine">
                                         <attributes>
@@ -296,8 +304,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfE-hA-QdO">
-                                <rect key="frame" x="132" y="520.5" width="113" height="30"/>
-                                <state key="normal" title="Add to database"/>
+                                <rect key="frame" x="142" y="520.5" width="94" height="30"/>
+                                <state key="normal" title="Add Medicine"/>
                                 <connections>
                                     <action selector="addMedicineButton:" destination="K7v-nW-bB6" eventType="touchUpInside" id="GZS-qG-gQf"/>
                                 </connections>
@@ -427,13 +435,6 @@
                                     <constraint firstAttribute="width" constant="340" id="5Qu-fV-fUS"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LF5-Em-BuP">
-                                <rect key="frame" x="100" y="572.5" width="177" height="30"/>
-                                <state key="normal" title="Query Medicine Database"/>
-                                <connections>
-                                    <action selector="queryMedicineDatabase:" destination="K7v-nW-bB6" eventType="touchUpInside" id="6oM-Pt-vEK"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hq5-4E-lpR">
                                 <rect key="frame" x="16" y="20" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
@@ -442,7 +443,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medication Frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXy-qd-odo">
-                                <rect key="frame" x="76" y="278" width="224" height="38"/>
+                                <rect key="frame" x="76" y="277.5" width="224" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="Zy7-cU-7wJ"/>
                                 </constraints>
@@ -451,7 +452,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you like to be reminded?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEa-12-RnC">
-                                <rect key="frame" x="35.5" y="416" width="308.5" height="27.5"/>
+                                <rect key="frame" x="36.5" y="416" width="308.5" height="27.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -467,7 +468,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Hq5-4E-lpR" firstAttribute="top" secondItem="7mo-FK-TtX" secondAttribute="top" id="0LL-91-WiJ"/>
-                            <constraint firstItem="BaQ-Cl-f7e" firstAttribute="centerX" secondItem="LF5-Em-BuP" secondAttribute="centerX" id="8Ub-f5-W1t"/>
                             <constraint firstItem="hEa-12-RnC" firstAttribute="top" secondItem="BaQ-Cl-f7e" secondAttribute="bottom" constant="29" id="Aig-LJ-0sW"/>
                             <constraint firstItem="BaQ-Cl-f7e" firstAttribute="top" secondItem="Tbi-Dz-MiV" secondAttribute="bottom" constant="16" id="Any-gc-18O"/>
                             <constraint firstItem="K63-wK-VCC" firstAttribute="centerX" secondItem="2oJ-zV-QLg" secondAttribute="centerX" id="GnA-5b-Pkk"/>
@@ -478,10 +478,8 @@
                             <constraint firstItem="UXy-qd-odo" firstAttribute="centerX" secondItem="BaQ-Cl-f7e" secondAttribute="centerX" id="QqD-V5-QY1"/>
                             <constraint firstItem="2oJ-zV-QLg" firstAttribute="leading" secondItem="7mo-FK-TtX" secondAttribute="leading" constant="27" id="TbO-79-43S"/>
                             <constraint firstItem="UXy-qd-odo" firstAttribute="leading" secondItem="7mo-FK-TtX" secondAttribute="leading" constant="76" id="TwD-xO-3Fg"/>
-                            <constraint firstItem="htK-rp-DwT" firstAttribute="centerX" secondItem="LF5-Em-BuP" secondAttribute="centerX" id="WnX-Ka-l87"/>
                             <constraint firstItem="Tbi-Dz-MiV" firstAttribute="leading" secondItem="7mo-FK-TtX" secondAttribute="leading" constant="19" id="YbD-3b-2EM"/>
                             <constraint firstItem="7mo-FK-TtX" firstAttribute="trailing" secondItem="fkw-Dq-tnW" secondAttribute="trailing" constant="107" id="Yw3-Yf-r9Z"/>
-                            <constraint firstItem="LF5-Em-BuP" firstAttribute="top" secondItem="xfE-hA-QdO" secondAttribute="bottom" constant="22" id="b0H-D3-ER4"/>
                             <constraint firstItem="Tbi-Dz-MiV" firstAttribute="top" secondItem="UXy-qd-odo" secondAttribute="bottom" constant="6" id="bvT-cY-bHc"/>
                             <constraint firstItem="2oJ-zV-QLg" firstAttribute="top" secondItem="K63-wK-VCC" secondAttribute="bottom" constant="14" id="bxl-jf-bvD"/>
                             <constraint firstItem="7mo-FK-TtX" firstAttribute="trailing" secondItem="Tbi-Dz-MiV" secondAttribute="trailing" constant="16" id="cGI-hq-7Ny"/>
@@ -491,6 +489,7 @@
                             <constraint firstItem="BaQ-Cl-f7e" firstAttribute="centerX" secondItem="xfE-hA-QdO" secondAttribute="centerX" id="jds-9G-LcS"/>
                             <constraint firstItem="htK-rp-DwT" firstAttribute="top" secondItem="7mo-FK-TtX" secondAttribute="top" constant="59" id="ke9-QO-k8J"/>
                             <constraint firstItem="K63-wK-VCC" firstAttribute="centerX" secondItem="DFT-bm-hr7" secondAttribute="centerX" id="tCA-fN-Pgb"/>
+                            <constraint firstItem="htK-rp-DwT" firstAttribute="centerX" secondItem="fkw-Dq-tnW" secondAttribute="centerX" id="v8U-hq-B3q"/>
                             <constraint firstItem="fkw-Dq-tnW" firstAttribute="top" secondItem="hEa-12-RnC" secondAttribute="bottom" constant="8" id="w2H-F6-moz"/>
                             <constraint firstItem="K63-wK-VCC" firstAttribute="top" secondItem="htK-rp-DwT" secondAttribute="bottom" constant="46" id="z9a-w2-VT2"/>
                             <constraint firstItem="UXy-qd-odo" firstAttribute="top" secondItem="2oJ-zV-QLg" secondAttribute="bottom" constant="21" id="zsA-4K-78n"/>
@@ -507,7 +506,11 @@
             <point key="canvasLocation" x="3160.8000000000002" y="408.84557721139436"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Left-Arrow" width="256" height="256"/>
+        <image name="Right-Arrow" width="256" height="256"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="g7f-H2-eRD"/>
+        <segue reference="Of7-UK-BlF"/>
     </inferredMetricsTieBreakers>
 </document>
