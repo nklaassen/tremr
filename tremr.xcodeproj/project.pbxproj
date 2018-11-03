@@ -14,6 +14,7 @@
 		A5B4C6A62183D67000A71E9B /* ViewData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C6A42183D67000A71E9B /* ViewData.storyboard */; };
 		A5B4C6A82183D68000A71E9B /* Medicine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C6A72183D68000A71E9B /* Medicine.storyboard */; };
 		A5E1D110218955D3001D8814 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1D10F218955D3001D8814 /* ToggleButton.swift */; };
+		A83CF0B6218D4995002C3E50 /* MedicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83CF0B5218D4995002C3E50 /* MedicationTests.swift */; };
 		A8F8A206218A56A30044342D /* DailyMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8A205218A56A30044342D /* DailyMedicationViewController.swift */; };
 		A8F8A20E218A59170044342D /* MedicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8A20D218A59170044342D /* MedicationTableViewCell.swift */; };
 		E04F6FD32182979C000AF2F6 /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */; };
@@ -133,6 +134,7 @@
 		A5B4C6A52183D67000A71E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = tremr/Base.lproj/ViewData.storyboard; sourceTree = "<group>"; };
 		A5B4C6A72183D68000A71E9B /* Medicine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Medicine.storyboard; sourceTree = "<group>"; };
 		A5E1D10F218955D3001D8814 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
+		A83CF0B5218D4995002C3E50 /* MedicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTests.swift; sourceTree = "<group>"; };
 		A8F8A205218A56A30044342D /* DailyMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMedicationViewController.swift; sourceTree = "<group>"; };
 		A8F8A20D218A59170044342D /* MedicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTableViewCell.swift; sourceTree = "<group>"; };
 		E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
@@ -251,8 +253,6 @@
 			children = (
 				A5760018218AB42F007A641F /* Assets */,
 				A5E1D108218955B4001D8814 /* SubClasses */,
-				E0BF93DF218692640097767F /* DatabaseManager.swift */,
-				E0BF93E0218692640097767F /* types.swift */,
 				E0FEE158217ECDF800C72D7C /* ViewControllers */,
 				E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */,
 				E0BF93E0218692640097767F /* types.swift */,
@@ -275,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				E0FEE134217EB76D00C72D7C /* tremrTests.swift */,
+				A83CF0B5218D4995002C3E50 /* MedicationTests.swift */,
 				E0FEE136217EB76D00C72D7C /* Info.plist */,
 			);
 			path = tremrTests;
@@ -528,6 +529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A83CF0B6218D4995002C3E50 /* MedicationTests.swift in Sources */,
 				E0FEE135217EB76D00C72D7C /* tremrTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
