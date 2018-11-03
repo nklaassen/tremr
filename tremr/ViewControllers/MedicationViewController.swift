@@ -30,7 +30,6 @@ class MedicationViewController: UIViewController {
         super.viewDidLoad()
         // Put query for that day's medications here
         // Do any additional setup after loading the view.
-        myDate = Date.init()
     }
     
     override func didReceiveMemoryWarning() {

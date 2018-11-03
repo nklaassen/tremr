@@ -1,18 +1,17 @@
 //
-//  MedicationTableViewCell.swift
+//  AllMedicationTableViewCell.swift
 //  tremr
 //
-//  Created by Jason Fevang on 10/31/18.
+//  Created by Jason Fevang on 2018-11-03.
 //  Copyright © 2018 CO.DEsign. All rights reserved.
 //
 
 import UIKit
 
-class MedicationTableViewCell: UITableViewCell {
-    //MARK: Properties
+class AllMedicationTableViewCell: UITableViewCell {
+
     @IBOutlet weak var medNameLabel: UILabel!
-    @IBOutlet weak var medDosageLabel: UILabel!
-    
+    @IBOutlet weak var dosageLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

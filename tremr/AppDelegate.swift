@@ -15,7 +15,7 @@ internal let motion = MotionObservable(); // gyroscope
 internal let Tremr = TremorController(); // Tremor Object for getting info
 
 let db = DatabaseManager()
-var myDate = Date()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

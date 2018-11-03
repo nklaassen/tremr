@@ -71,24 +71,24 @@
                                         <rect key="frame" x="0.0" y="201" width="343" height="319.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MedicationTableViewCell" id="jRx-Yk-Zcn" customClass="MedicationTableViewCell" customModule="tremr" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MedicationTableViewCell" id="jRx-Yk-Zcn" customClass="DailyMedicationTableViewCell" customModule="tremr" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jRx-Yk-Zcn" id="2bf-dd-ssx">
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Med Dosage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Wm-rC-rPj">
-                                                            <rect key="frame" x="231" y="0.0" width="112" height="44"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="112" id="ahu-oh-piT"/>
-                                                            </constraints>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Med Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sY-4L-U2F">
+                                                            <rect key="frame" x="15" y="-1" width="140" height="44"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Med Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sY-4L-U2F">
-                                                            <rect key="frame" x="24" y="0.0" width="140" height="44"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Med Dosage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Wm-rC-rPj">
+                                                            <rect key="frame" x="163" y="1" width="165" height="42"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="112" id="ahu-oh-piT"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -121,7 +121,7 @@
                                         <rect key="frame" x="98.5" y="557" width="146" height="30"/>
                                         <state key="normal" title="Edit/Add Medications"/>
                                         <connections>
-                                            <segue destination="cxd-6L-6ks" kind="show" id="MmQ-BZ-YRC"/>
+                                            <segue destination="cxd-6L-6ks" kind="show" id="gx7-xn-9FS"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -150,46 +150,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zqf-se-9Pw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1652" y="412"/>
+            <point key="canvasLocation" x="1652" y="411.544227886057"/>
         </scene>
-        <!--View Controller-->
+        <!--All Medication View Controller-->
         <scene sceneID="C2L-us-ZVt">
             <objects>
-                <viewController storyboardIdentifier="UIViewController-9BJ-KS-svN" id="cxd-6L-6ks" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UIViewController-9BJ-KS-svN" id="cxd-6L-6ks" customClass="AllMedicationViewController" customModule="tremr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jYV-av-B8I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5SR-rr-i5H">
-                                <rect key="frame" x="28" y="33" width="319" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Medicine">
-                                        <attributes>
-                                            <font key="NSFont" size="48" name=".AppleSystemUIFont"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCN-Dr-HkU">
-                                <rect key="frame" x="28" y="134" width="320" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="[All medications listed here] Garbage Icon">
-                                        <attributes>
-                                            <color key="NSColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYm-Ji-HAw">
-                                <rect key="frame" x="94" y="484" width="188" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYm-Ji-HAw">
+                                <rect key="frame" x="96" y="525" width="183" height="34"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Tap a medication to edit">
                                         <attributes>
@@ -201,9 +173,64 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vb3-E7-Cj0">
-                                <rect key="frame" x="133" y="582" width="108" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZXc-ci-zdl">
+                                <rect key="frame" x="16" y="116" width="343" height="401"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="401" id="grz-dK-oaQ"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllMedicationTableViewCell" id="Iis-TO-D9Z" customClass="AllMedicationTableViewCell" customModule="tremr" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Iis-TO-D9Z" id="VkM-0j-CG6">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Med Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjA-my-KIi">
+                                                    <rect key="frame" x="15" y="0.0" width="149" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dosage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muQ-te-wOD">
+                                                    <rect key="frame" x="172" y="0.0" width="156" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dosageLabel" destination="muQ-te-wOD" id="U3O-cm-FWj"/>
+                                            <outlet property="medNameLabel" destination="cjA-my-KIi" id="bxW-pK-uG6"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicine" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7m-kA-PM9">
+                                <rect key="frame" x="16" y="58" width="343" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2CJ-Li-7gs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXA-f0-cXM">
+                                <rect key="frame" x="16" y="20" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="yPi-wK-DSa" kind="show" id="g7f-H2-eRD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vb3-E7-Cj0">
+                                <rect key="frame" x="133" y="567" width="108" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="sRo-DQ-2nn"/>
+                                </constraints>
                                 <state key="normal" title="Add Medication"/>
                                 <connections>
                                     <segue destination="K7v-nW-bB6" kind="show" id="c09-3C-95A"/>
@@ -211,8 +238,26 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="C7m-kA-PM9" firstAttribute="top" secondItem="QXA-f0-cXM" secondAttribute="bottom" constant="8" symbolic="YES" id="5vm-jN-miJ"/>
+                            <constraint firstItem="C7m-kA-PM9" firstAttribute="leading" secondItem="ZXc-ci-zdl" secondAttribute="leading" id="LHD-pk-ZHf"/>
+                            <constraint firstItem="Vb3-E7-Cj0" firstAttribute="top" secondItem="wYm-Ji-HAw" secondAttribute="bottom" constant="8" symbolic="YES" id="NM6-Ce-Is8"/>
+                            <constraint firstItem="RPf-Sh-3dC" firstAttribute="bottom" secondItem="Vb3-E7-Cj0" secondAttribute="bottom" constant="70" id="VR9-Wt-33V"/>
+                            <constraint firstItem="C7m-kA-PM9" firstAttribute="trailing" secondItem="jYV-av-B8I" secondAttribute="trailingMargin" id="Y9x-uI-Ok2"/>
+                            <constraint firstItem="C7m-kA-PM9" firstAttribute="trailing" secondItem="ZXc-ci-zdl" secondAttribute="trailing" id="ZDm-q3-YMk"/>
+                            <constraint firstItem="C7m-kA-PM9" firstAttribute="leading" secondItem="QXA-f0-cXM" secondAttribute="leading" id="jjU-vg-XSD"/>
+                            <constraint firstItem="C7m-kA-PM9" firstAttribute="top" secondItem="jYV-av-B8I" secondAttribute="top" constant="58" id="kiJ-Qx-XL2"/>
+                            <constraint firstItem="C7m-kA-PM9" firstAttribute="centerX" secondItem="wYm-Ji-HAw" secondAttribute="centerX" id="np0-05-F89"/>
+                            <constraint firstItem="wYm-Ji-HAw" firstAttribute="top" secondItem="ZXc-ci-zdl" secondAttribute="bottom" constant="8" symbolic="YES" id="p3p-iC-Z8i"/>
+                            <constraint firstItem="C7m-kA-PM9" firstAttribute="leading" secondItem="jYV-av-B8I" secondAttribute="leadingMargin" id="tib-bB-O8w"/>
+                            <constraint firstItem="ZXc-ci-zdl" firstAttribute="top" secondItem="C7m-kA-PM9" secondAttribute="bottom" constant="8" symbolic="YES" id="x9n-P4-Bla"/>
+                            <constraint firstItem="C7m-kA-PM9" firstAttribute="centerX" secondItem="Vb3-E7-Cj0" secondAttribute="centerX" id="yoe-wD-aa5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="RPf-Sh-3dC"/>
                     </view>
+                    <connections>
+                        <outlet property="medTableView" destination="ZXc-ci-zdl" id="gV6-OB-THu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHi-CM-pJo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -462,4 +507,7 @@
             <point key="canvasLocation" x="3160.8000000000002" y="408.84557721139436"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="g7f-H2-eRD"/>
+    </inferredMetricsTieBreakers>
 </document>
