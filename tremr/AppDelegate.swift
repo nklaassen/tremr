@@ -38,18 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          */
         
         // Fill in some test data for medicine database
-        /*
         let day = TimeInterval(60*60*24) //Number of seconds in a day
         db.addMedicine(UID: 1,
                        name: "medicine1",
                        dosage: "100",
-                       monday: true,
-                       tuesday: true,
-                       wednesday: true,
-                       thursday: true,
-                       friday: true,
-                       saturday: false,
-                       sunday: false,
+                       mo: true, tu: true, we: true, th: true, fr: true, sa: false, su: false,
                        reminder: false,
                        start_date: Date().addingTimeInterval(day),
                        end_date: nil)
@@ -57,44 +50,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         db.addMedicine(UID: 1,
                        name: "medicine2",
                        dosage: "100",
-                       monday: true,
-                       tuesday: true,
-                       wednesday: true,
-                       thursday: true,
-                       friday: true,
-                       saturday: false,
-                       sunday: false,
+                       mo: true, tu: true, we: true, th: true, fr: true, sa: false, su: false,
                        reminder: false,
                        start_date: Date().addingTimeInterval(-day),
                        end_date: nil)
         db.addMedicine(UID: 1,
                        name: "medicine3",
                        dosage: "100",
-                       monday: true,
-                       tuesday: true,
-                       wednesday: true,
-                       thursday: true,
-                       friday: true,
-                       saturday: false,
-                       sunday: false,
+                       mo: true, tu: true, we: true, th: true, fr: true, sa: false, su: false,
                        reminder: false,
                        start_date: Date().addingTimeInterval(-3*day),
                        end_date: Date().addingTimeInterval(-day))
         db.addMedicine(UID: 1,
                        name: "medicine4",
                        dosage: "400",
-                       monday: true,
-                       tuesday: true,
-                       wednesday: true,
-                       thursday: false,
-                       friday: true,
-                       saturday: false,
-                       sunday: false,
+                       mo: true, tu: true, we: true, th: false, fr: true, sa: false, su: false,
                        reminder: false,
                        start_date: Date(),
                        end_date: Date())
         db.updateMedicineEndDate(MIDToUpdate: 5)
-        */
+        
         return true
     }
 

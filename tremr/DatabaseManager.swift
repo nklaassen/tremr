@@ -110,7 +110,7 @@ class DatabaseManager
             print("Failed to init DB: \(error)")
         }
     }
-
+    
     func addUser(name : String, email : String) {
         print("Trying to add user \(name) \(email)")
         do {
@@ -165,7 +165,8 @@ class DatabaseManager
         return tremors
     }
     
-    func addMedicine(UID : Int64, name : String, dosage : String, monday : Bool, tuesday : Bool, wednesday : Bool, thursday : Bool, friday : Bool, saturday : Bool, sunday : Bool, reminder : Bool, start_date : Date, end_date : Date?) {
+    //Adds a medicine to the Medicines table
+    func addMedicine(UID : Int64, name : String, dosage : String, mo : Bool, tu : Bool, we : Bool, th : Bool, fr : Bool, sa : Bool, su : Bool, reminder : Bool, start_date : Date, end_date : Date?) {
         print("Trying to add medicine \(name) \(dosage)")
         let query = Medicines.select(name)
         print(query)
@@ -173,13 +174,13 @@ class DatabaseManager
             try db.run(Medicines.insert(self.UID <- UID,
                                       self.name <- name,
                                       self.dosage <- dosage,
-                                      self.monday <- monday,
-                                      self.tuesday <- tuesday,
-                                      self.wednesday <- wednesday,
-                                      self.thursday <- thursday,
-                                      self.friday <- friday,
-                                      self.saturday <- saturday,
-                                      self.sunday <- sunday,
+                                      self.monday <- mo,
+                                      self.tuesday <- tu,
+                                      self.wednesday <- we,
+                                      self.thursday <- th,
+                                      self.friday <- fr,
+                                      self.saturday <- sa,
+                                      self.sunday <- su,
                                       self.reminder <- reminder,
                                       self.start_date <- start_date,
                                       self.end_date <- end_date ))
@@ -189,6 +190,7 @@ class DatabaseManager
         }
     }
     
+    //Returns array of all medicines
     func getMedicine() -> Array<Medicine> {
         var medicines = Array<Medicine>()
         
@@ -215,6 +217,7 @@ class DatabaseManager
         return medicines
     }
     
+    //Returns array of all medicines that are scheduled for the day Date
     func getMedicineDate(date: Date) ->Array<Medicine> {
         //weekDay is a number. 1-sunday, 2-monday, ... 7-saturday
         let weekDay = Calendar.current.component(.weekday, from: date)
@@ -280,6 +283,16 @@ class DatabaseManager
             try db.run(medicineToUpdate.update(end_date <- currentDate))
         } catch {
             fatalError("Failed to update row with MID: \(MID) with end_date: \(String(describing: currentDate))")
+        }
+    }
+    
+    //Empty all entries from medicine table
+    func clearMedicine()
+    {
+        do {
+            try db.run(Medicines.delete())
+        } catch {
+            fatalError("Failed to delete Medicines table")
         }
     }
 }

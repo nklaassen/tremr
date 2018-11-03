@@ -45,7 +45,7 @@ class MedicationViewController: UIViewController {
         let dosageValue: String = dosageTextField.text!
         
         // Need to determine UID to insert in subsequent versions
-        db.addMedicine(UID: 1, name: "\(medicineName)", dosage: "\(dosageValue)", monday: mondayFlag, tuesday: tuesdayFlag, wednesday: wednesdayFlag, thursday: thursdayFlag, friday: fridayFlag, saturday: saturdayFlag, sunday: sundayFlag, reminder: reminderFlag, start_date: Date(), end_date: nil)
+        db.addMedicine(UID: 1, name: "\(medicineName)", dosage: "\(dosageValue)", mo: mondayFlag, tu: tuesdayFlag, we: wednesdayFlag, th: thursdayFlag, fr: fridayFlag, sa: saturdayFlag, su: sundayFlag, reminder: reminderFlag, start_date: Date(), end_date: nil)
     }
     
     @IBAction func queryMedicineDatabase(_ sender: Any) {
