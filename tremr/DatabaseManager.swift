@@ -13,7 +13,7 @@ import SQLite
 class DatabaseManager
 {
     var db : Connection! // The actual SQLite database connection
-
+    
     // These are "Expressions" which need to be passed to many of the database calls
     
     let Users = Table("Users")
@@ -44,7 +44,9 @@ class DatabaseManager
     let start_date = Expression<Date>("start_date")
     let end_date = Expression<Date?>("end_date") //optional
 
-
+    //Calendar for comparing dates and performing date arithmetic
+    let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+    
     init() {
         do {
             print("dbManager init")
@@ -168,8 +170,14 @@ class DatabaseManager
     //Adds a medicine to the Medicines table
     func addMedicine(UID : Int64, name : String, dosage : String, mo : Bool, tu : Bool, we : Bool, th : Bool, fr : Bool, sa : Bool, su : Bool, reminder : Bool, start_date : Date, end_date : Date?) {
         print("Trying to add medicine \(name) \(dosage)")
-        let query = Medicines.select(name)
-        print(query)
+
+        //Modify start_date and end_date to be the very end of the day and very beginning of the day respectively
+        let modified_start_date = calendar.startOfDay(for: start_date)
+        var modified_end_date :Date? = nil
+        if end_date != nil {
+            modified_end_date = calendar.startOfDay(for: (end_date?.addingTimeInterval(60*60*24))!)
+        }
+        
         do {
             try db.run(Medicines.insert(self.UID <- UID,
                                       self.name <- name,
@@ -182,8 +190,8 @@ class DatabaseManager
                                       self.saturday <- sa,
                                       self.sunday <- su,
                                       self.reminder <- reminder,
-                                      self.start_date <- start_date,
-                                      self.end_date <- end_date ))
+                                      self.start_date <- modified_start_date,
+                                      self.end_date <- modified_end_date ))
             print("Inserted medicine!")
         } catch {
             print("Failed to insert medicine: \(error)")
@@ -241,6 +249,7 @@ class DatabaseManager
             //default: //Any day
             //targetWeekDay = nil
         }
+
         var query = Medicines.filter(targetWeekDay == true) // Weekday matches weekday recorded for
         query = query.filter(start_date <= date)   // Ensure searching within valid timeframe
         query = query.filter(end_date == nil || end_date >= date)   //If end_date is assigned, then only return when within the timeframe of that medicine
@@ -263,7 +272,6 @@ class DatabaseManager
                                           reminder: med[self.reminder],
                                           start_date: med[self.start_date],
                                           end_date:med[self.end_date]))
-                //print("name: \(try med.get(name))")
             }
         } catch {
             fatalError("Query didn't execute at all")
