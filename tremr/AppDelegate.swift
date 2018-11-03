@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          */
         
         // Fill in some test data for medicine database
+        /*
         let day = TimeInterval(60*60*24) //Number of seconds in a day
         db.addMedicine(UID: 1,
                        name: "medicine1",
@@ -93,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        start_date: Date(),
                        end_date: Date())
         db.updateMedicineEndDate(MIDToUpdate: 5)
-        
+        */
         return true
     }
 
