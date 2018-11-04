@@ -1,6 +1,21 @@
 # tremr
 This app is targeted for people with Parkinson's. It allows the user to measure the severity of hand tremors over time. In addition, the user can track medication use, and exercise. These three variables can be plotted, so that the user and/or a medical professional can visualize changes in tremor symtoms over time, and possibly correlate this with medication or exercise.
 
+## Cloning and Building this Repo
+This repository uses git submodules to manage dependencies, so when you clone, please run
+
+`git clone --recurse-submodules https://github.com/nklaassen/tremr`
+
+After cloning, run
+
+`cd tremr`
+
+`open tremr.xcodeproj`
+
+This should open the project in XCode. At this point, make sure your build scheme is set to tremr > iPhone 8 Plus, and then you should be able to build and run the project.
+
+Note: if you already cloned the project without `--recurse-submodules`, you may need to run `git submodule update --init --recursive` from within the project directory.
+
 ## Contributing
 When contributing to this repository, we will try to follow the [GitHub Flow](https://help.github.com/articles/github-flow/):
 1. Create a branch from the repository.
