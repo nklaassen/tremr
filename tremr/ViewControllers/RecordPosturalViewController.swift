@@ -17,18 +17,18 @@ class RecordPosturalViewController: UIViewController {
         disableInput()
         Tremr.recordPostural() {
             self.enableInput()
+            self.performSegue(withIdentifier: "PosturalDoneRecording", sender: nil)
         }
     }
     
-    @IBOutlet weak var Next: UIButton!
     
     private func disableInput() {
-        Next.isEnabled=false
+
         view.isUserInteractionEnabled = false
     }
     
     private func enableInput() {
-        Next.isEnabled=true
+       
         view.isUserInteractionEnabled = true
     }
 }
