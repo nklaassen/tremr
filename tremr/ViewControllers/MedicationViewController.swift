@@ -14,6 +14,18 @@ class MedicationViewController: UIViewController {
     @IBOutlet weak var medicineTextField: UITextField!
     @IBOutlet weak var dosageTextField: UITextField!
     
+    @IBOutlet weak var suToggle: ToggleButton!
+    @IBOutlet weak var moToggle: ToggleButton!
+    @IBOutlet weak var tuToggle: ToggleButton!
+    @IBOutlet weak var weToggle: ToggleButton!
+    @IBOutlet weak var thToggle: ToggleButton!
+    @IBOutlet weak var frToggle: ToggleButton!
+    @IBOutlet weak var saToggle: ToggleButton!
+    @IBOutlet weak var reminderToggle: ToggleButton!
+    @IBOutlet weak var confirmationButton: UIButton!
+    
+    var edittedMedicine : Medicine? = nil
+    
     // Add Medicine Page Variables
     var mondayFlag: Bool = false
     var tuesdayFlag: Bool = false
@@ -30,6 +42,23 @@ class MedicationViewController: UIViewController {
         super.viewDidLoad()
         // Put query for that day's medications here
         // Do any additional setup after loading the view.
+        // Fill in the data fields with data if a medicine is provided, meaning this page was accessed by clicking an existing medication
+        if edittedMedicine != nil {
+            medicineTextField.text = edittedMedicine?.name
+            dosageTextField.text = edittedMedicine?.dosage
+            suToggle.activateButton(bool: (edittedMedicine?.su)!)
+            moToggle.activateButton(bool: (edittedMedicine?.mo)!)
+            tuToggle.activateButton(bool: (edittedMedicine?.tu)!)
+            weToggle.activateButton(bool: (edittedMedicine?.we)!)
+            thToggle.activateButton(bool: (edittedMedicine?.th)!)
+            frToggle.activateButton(bool: (edittedMedicine?.fr)!)
+            saToggle.activateButton(bool: (edittedMedicine?.sa)!)
+            reminderToggle.activateButton(bool: (edittedMedicine?.reminder)!)
+            confirmationButton.setTitle("Update Medicine",for: .normal)
+        }
+        else {
+            confirmationButton.setTitle("Add Medicine",for: .normal)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,39 +72,57 @@ class MedicationViewController: UIViewController {
         let medicineName: String = medicineTextField.text!
         let dosageValue: String = dosageTextField.text!
         
-        // Need to determine UID to insert in subsequent versions
-        db.addMedicine(UID: 1, name: "\(medicineName)", dosage: "\(dosageValue)", mo: mondayFlag, tu: tuesdayFlag, we: wednesdayFlag, th: thursdayFlag, fr: fridayFlag, sa: saturdayFlag, su: sundayFlag, reminder: reminderFlag, start_date: Date(), end_date: nil)
+        if edittedMedicine != nil {
+            db.updateMedicine(
+                MIDToUpdate: (edittedMedicine?.MID)!,
+                name: "\(medicineName)",
+                dosage: "\(dosageValue)",
+                mo: moToggle.isOn, tu: tuToggle.isOn, we: weToggle.isOn, th: thToggle.isOn, fr: frToggle.isOn, sa: saToggle.isOn, su: suToggle.isOn,
+                reminder: reminderToggle.isOn)
+        }
+        else {
+            db.addMedicine(
+                UID: 1,
+                name: "\(medicineName)",
+                dosage: "\(dosageValue)",
+                mo: moToggle.isOn, tu: tuToggle.isOn, we: weToggle.isOn, th: thToggle.isOn, fr: frToggle.isOn, sa: saToggle.isOn, su: suToggle.isOn,
+                reminder: reminderToggle.isOn,
+                start_date: Date(),
+                end_date: nil)
+        }
     }
     
+    /*
     @IBAction func queryMedicineDatabase(_ sender: Any) {
         for medicine in db.getMedicine() {
             print("\(medicine.UID), \(medicine.MID), \(medicine.name), \(medicine.dosage)", "\(medicine.sa.description)","\(medicine.mo.description)", "\(medicine.tu.description)", "\(medicine.we.description)", "\(medicine.th.description)", "\(medicine.fr.description)",  "\(medicine.su.description)", "\(medicine.reminder.description)", "\(medicine.start_date)", "\(String(describing: medicine.end_date))")
         }
     }
+    */
     
     @IBAction func mondayButton(_ sender: Any) {
-        mondayFlag = !mondayFlag
+        //mondayFlag = !mondayFlag
     }
     @IBAction func tuesdayButton(_ sender: Any) {
-        tuesdayFlag = !tuesdayFlag
+        //tuesdayFlag = !tuesdayFlag
     }
     @IBAction func wednesdayButton(_ sender: Any) {
-        wednesdayFlag = !wednesdayFlag
+        //wednesdayFlag = !wednesdayFlag
     }
     @IBAction func thursdayButton(_ sender: Any) {
-        thursdayFlag = !thursdayFlag
+        //thursdayFlag = !thursdayFlag
     }
     @IBAction func fridayButton(_ sender: Any) {
-        fridayFlag = !fridayFlag
+        //fridayFlag = !fridayFlag
     }
     @IBAction func saturdayButton(_ sender: Any) {
-        saturdayFlag = !saturdayFlag
+        //saturdayFlag = !saturdayFlag
     }
     @IBAction func sundayButton(_ sender: Any) {
-        sundayFlag = !sundayFlag
+        //sundayFlag = !sundayFlag
     }
     @IBAction func reminderButton(_ sender: Any) {
-        reminderFlag = !reminderFlag
+        //reminderFlag = !reminderFlag
     }
 }
 

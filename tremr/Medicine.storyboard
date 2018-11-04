@@ -214,6 +214,7 @@
                                         <connections>
                                             <outlet property="dosageLabel" destination="muQ-te-wOD" id="U3O-cm-FWj"/>
                                             <outlet property="medNameLabel" destination="cjA-my-KIi" id="bxW-pK-uG6"/>
+                                            <segue destination="K7v-nW-bB6" kind="show" identifier="ShowDetail" id="6dP-4r-oIr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -241,7 +242,7 @@
                                 </constraints>
                                 <state key="normal" title="Add Medication"/>
                                 <connections>
-                                    <segue destination="K7v-nW-bB6" kind="show" id="c09-3C-95A"/>
+                                    <segue destination="K7v-nW-bB6" kind="show" identifier="AddMedicine" id="c09-3C-95A"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -308,6 +309,7 @@
                                 <state key="normal" title="Add Medicine"/>
                                 <connections>
                                     <action selector="addMedicineButton:" destination="K7v-nW-bB6" eventType="touchUpInside" id="GZS-qG-gQf"/>
+                                    <segue destination="cxd-6L-6ks" kind="show" id="GGJ-D1-lbS"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BaQ-Cl-f7e">
@@ -497,13 +499,22 @@
                         <viewLayoutGuide key="safeArea" id="7mo-FK-TtX"/>
                     </view>
                     <connections>
+                        <outlet property="confirmationButton" destination="xfE-hA-QdO" id="wJV-TO-RVq"/>
                         <outlet property="dosageTextField" destination="2oJ-zV-QLg" id="U43-gc-PDW"/>
+                        <outlet property="frToggle" destination="vZg-UK-Vh3" id="auo-1S-9Bw"/>
                         <outlet property="medicineTextField" destination="K63-wK-VCC" id="3QG-Xz-l9v"/>
+                        <outlet property="moToggle" destination="RTT-o4-FLS" id="1pY-9X-RbN"/>
+                        <outlet property="reminderToggle" destination="fkw-Dq-tnW" id="e4D-Xs-XXq"/>
+                        <outlet property="saToggle" destination="WTH-BW-qae" id="VRn-JT-1XE"/>
+                        <outlet property="suToggle" destination="5T4-Yb-aXG" id="kCz-0I-2EQ"/>
+                        <outlet property="thToggle" destination="MTc-H1-sef" id="GQD-IW-KmW"/>
+                        <outlet property="tuToggle" destination="yzZ-Sb-Xn2" id="mQw-4W-eeT"/>
+                        <outlet property="weToggle" destination="ui4-3f-d9R" id="JUA-8o-G81"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rY8-nk-5r8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3160.8000000000002" y="408.84557721139436"/>
+            <point key="canvasLocation" x="3290" y="412"/>
         </scene>
     </scenes>
     <resources>
@@ -511,6 +522,8 @@
         <image name="Right-Arrow" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="6dP-4r-oIr"/>
+        <segue reference="GGJ-D1-lbS"/>
         <segue reference="Of7-UK-BlF"/>
     </inferredMetricsTieBreakers>
 </document>

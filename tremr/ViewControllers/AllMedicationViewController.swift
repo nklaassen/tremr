@@ -16,6 +16,7 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
     //Array of medications displayed by table
     var medications = [Medicine]()
     
+    
     //MARK: UIViewController functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,38 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
         return cell
     }
 
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+        case "AddMedicine":
+            print("adding an item")
+        case "ShowDetail":
+            guard let medicationDetailViewController = segue.destination as? MedicationViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedMedicineCell = sender as? AllMedicationTableViewCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = medTableView.indexPath(for: selectedMedicineCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedMedicine = medications[indexPath.row]
+            
+            //copy over data to detailed view
+            medicationDetailViewController.edittedMedicine = selectedMedicine
+            
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+        }
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
     
     //MARK: Actions
     //button clicks here
