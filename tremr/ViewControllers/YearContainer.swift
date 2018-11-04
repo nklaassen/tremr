@@ -144,7 +144,7 @@ class YearContainer: UIViewController {
     janR.append(Tremor[size].restingSeverity)
     }
     
-    if nameOfMonth == "Febuary" {
+    if nameOfMonth == "February" {
     febR.append(Tremor[size].restingSeverity)
     }
     
@@ -315,7 +315,7 @@ class YearContainer: UIViewController {
     janP.append(Tremor[size].posturalSeverity)
     }
     
-    if nameOfMonth == "Febuary" {
+    if nameOfMonth == "February" {
     febP.append(Tremor[size].posturalSeverity)
     }
     
