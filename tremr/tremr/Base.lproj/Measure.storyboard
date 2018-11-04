@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w9c-1m-vE8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w9c-1m-vE8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,39 +22,32 @@
                                 <rect key="frame" x="20" y="40" width="335" height="607"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rB9-tZ-SBR">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="38"/>
+                                        <state key="normal" title="Back"/>
                                         <connections>
                                             <segue destination="Hxf-rW-vGC" kind="show" id="lAT-HK-eoS"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TREMOR TRACKING INSTRUCTIONS " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nr5-wO-n4U">
-                                        <rect key="frame" x="0.0" y="38" width="335" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tremor Measurement Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nr5-wO-n4U">
+                                        <rect key="frame" x="0.0" y="46" width="335" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSw-zG-eH4">
-                                        <rect key="frame" x="0.0" y="66.5" width="335" height="424.5"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSw-zG-eH4">
+                                        <rect key="frame" x="0.0" y="74.5" width="335" height="424.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <string key="text">Postural
+                                        <mutableString key="text">This app measures two types of hand tremor commonly associated with Parkinson's Disease: postural and resting. The next few screens will walk you through measuring both of these. For each measurement, you will need to hold your phone in a specific way, described below.  Postural
 
-1. Stand up-straight
-2. Hold the phone in one hand
-3. With the same hand, extend your hand out and stay still for 10 seconds 
+1. Stand up straight.
+2. Hold the phone in one hand.
+3. Extend your hand straight out in front of you and hold it as still as you can for 10 seconds.
 
 Resting 
 
-1. Sit Down on a comfortable surface
-2. Hold the phone in one hand
-3. Keeping your hand on your lap, record for 10 seconds</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7ur-J3-OBI">
-                                        <rect key="frame" x="0.0" y="499" width="335" height="0.0"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+1. Sit down on a comfortable surface
+2. Hold the phone in one hand.
+3. Rest your forearm on your thigh, and hold the phone as still as you can for 10 seconds.</mutableString>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -93,17 +86,24 @@ Resting
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ce3-r5-QzS">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ce3-r5-QzS">
                                 <rect key="frame" x="20" y="40" width="335" height="607"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="POSTURAL TREMOR TRACKING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWk-Yn-IyJ">
-                                        <rect key="frame" x="43.5" y="0.0" width="248" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Postural Tremor Measurement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWk-Yn-IyJ">
+                                        <rect key="frame" x="52" y="0.0" width="231" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="20181101_180539" translatesAutoresizingMaskIntoConstraints="NO" id="Bah-NK-QoJ">
-                                        <rect key="frame" x="0.0" y="20.5" width="335" height="486.5"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Vj3-AK-9tD">
+                                        <rect key="frame" x="0.0" y="28.5" width="335" height="133"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <mutableString key="text">For this measurement, you should stand up straight and hold the phone straight out in front of you as shown in the picture below.  When you are ready, press the "Start Recording" button. There will then be a 5 second timer for you to get the phone into position.</mutableString>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="100" image="20181101_180539" translatesAutoresizingMaskIntoConstraints="NO" id="Bah-NK-QoJ">
+                                        <rect key="frame" x="0.0" y="169.5" width="335" height="329.5"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfd-wf-tdF">
                                         <rect key="frame" x="0.0" y="507" width="335" height="100"/>
@@ -117,8 +117,10 @@ Resting
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="mfd-wf-tdF" secondAttribute="trailing" id="Cat-ND-1sU"/>
-                                    <constraint firstItem="mfd-wf-tdF" firstAttribute="leading" secondItem="ce3-r5-QzS" secondAttribute="leading" id="qgX-2d-KSF"/>
+                                    <constraint firstItem="Vj3-AK-9tD" firstAttribute="leading" secondItem="ce3-r5-QzS" secondAttribute="leading" id="Bud-4Y-uh8"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vj3-AK-9tD" secondAttribute="trailing" id="Jw5-55-cZr"/>
+                                    <constraint firstAttribute="trailing" secondItem="mfd-wf-tdF" secondAttribute="trailing" id="MyZ-3c-wra"/>
+                                    <constraint firstItem="mfd-wf-tdF" firstAttribute="leading" secondItem="ce3-r5-QzS" secondAttribute="leading" id="oWI-ZE-Uij"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -181,17 +183,24 @@ Resting
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ScE-4e-ieB">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ScE-4e-ieB">
                                 <rect key="frame" x="20" y="40" width="335" height="607"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="RESTING TREMOR TRACKING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTJ-SS-o2c">
-                                        <rect key="frame" x="52.5" y="0.0" width="230.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resting Tremor Measurement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTJ-SS-o2c">
+                                        <rect key="frame" x="54.5" y="0.0" width="226" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="20181101_180449" translatesAutoresizingMaskIntoConstraints="NO" id="EC3-2B-1hy">
-                                        <rect key="frame" x="0.0" y="20.5" width="335" height="486.5"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CUx-Q6-FiC">
+                                        <rect key="frame" x="0.0" y="28.5" width="335" height="133"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">For this measurement, you should be sitting with your forearm resting on your thigh as shown in the picture below.  When you are ready, press the "Start Recording" button. There will then be a 5 second timer for you to get the phone into position.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="100" image="20181101_180449" translatesAutoresizingMaskIntoConstraints="NO" id="EC3-2B-1hy">
+                                        <rect key="frame" x="0.0" y="169.5" width="335" height="329.5"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmg-B2-WZw">
                                         <rect key="frame" x="0.0" y="507" width="335" height="100"/>
@@ -269,51 +278,36 @@ Resting
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kZt-H9-pyu">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kZt-H9-pyu">
                                 <rect key="frame" x="20" y="40" width="335" height="607"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Good Job! Your Tremor severity Scores are shown below" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xGo-b0-nrY">
-                                        <rect key="frame" x="68" y="0.0" width="199" height="207"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="TJz-ve-FDM"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postural Severity Level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sif-8j-QEr">
-                                        <rect key="frame" x="81" y="207" width="173" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="W3j-D7-Wfj"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="100" text="Good Job!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1X5-Ox-9UJ">
+                                        <rect key="frame" x="128" y="0.0" width="79.5" height="232"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postural Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sif-8j-QEr">
+                                        <rect key="frame" x="112" y="252" width="111.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAc-yV-GBM">
-                                        <rect key="frame" x="132" y="257" width="71" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="d88-Uo-eRJ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                        <rect key="frame" x="126.5" y="292.5" width="82" height="67"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="56"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resting Severity Level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPR-5B-cQ7">
-                                        <rect key="frame" x="83.5" y="357" width="168" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="0ql-Fy-h9Y"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resting Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPR-5B-cQ7">
+                                        <rect key="frame" x="114.5" y="379.5" width="106.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zt-eF-vPE">
-                                        <rect key="frame" x="138" y="407" width="59.5" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="Y3s-Uu-AG5"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <rect key="frame" x="126.5" y="420" width="82" height="67"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="56"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -329,7 +323,6 @@ Resting
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="xGo-b0-nrY" firstAttribute="leading" secondItem="kZt-H9-pyu" secondAttribute="leading" constant="68" id="9Df-sA-aTj"/>
                                     <constraint firstItem="nmy-M7-B0a" firstAttribute="leading" secondItem="kZt-H9-pyu" secondAttribute="leading" id="ESV-mf-twR"/>
                                     <constraint firstAttribute="trailing" secondItem="nmy-M7-B0a" secondAttribute="trailing" id="aqO-fk-Gk5"/>
                                 </constraints>
