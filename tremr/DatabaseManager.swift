@@ -279,6 +279,14 @@ class DatabaseManager
         return medicines
     }
     
+    func updateMedicine(MIDToUpdate : Int64, name: String, dosage: String,mo: Bool, tu: Bool, we: Bool, th: Bool, fr: Bool, sa: Bool, su: Bool, reminder: Bool) {
+        do {
+            let medicineToUpdate = Medicines.filter(MID == MIDToUpdate)
+            try db.run(medicineToUpdate.update(self.name <- name, self.dosage <- dosage, monday <- mo, tuesday <- tu, wednesday <- we, thursday <- th, friday <- fr, saturday <- sa, sunday <- su, self.reminder <- reminder))
+        } catch {
+            fatalError("Failed to update row with MID: \(MID))")
+        }
+    }
     // The medicine table will update MIDs equal to MIDToUpdate. Rows matching this query will
     // have their end_date updated to the current date.
     func updateMedicineEndDate(MIDToUpdate : Int64)
