@@ -3,9 +3,13 @@
 //  tremr
 //
 //  Created by Kira Nishi Beckingham and Leo Zhang on 2018-11-01.
+//  CO.DEsign
 //  Copyright © 2018 CO.DEsign. All rights reserved.
 //
 // This file sets the line chart for week view
+//
+// changes:
+// data is checked to ensure that it is in bounds
 //
 
 import Foundation
@@ -109,7 +113,7 @@ class WeekContainer: UIViewController {
 
     // get postural tremor data from the database for the last week
     func getPosturalData() -> [Double] {
-        let Tremor = db.getTremors() //grab tremors from database
+        var Tremor = db.getTremors() //grab tremors from database
     
         var monP: Double = 0
         var tueP: Double = 0
@@ -128,6 +132,16 @@ class WeekContainer: UIViewController {
 
         //for loop that runs for 7 or array size if less than 7
         for _ in Tremor{
+            
+            //make sure tremor values are between 0 and 10
+            if Tremor[size].posturalSeverity > 10{
+                Tremor[size].posturalSeverity = 10
+            }
+            
+            if Tremor[size].posturalSeverity < 0{
+                Tremor[size].posturalSeverity = 0
+            }
+
             //converting date data of specific tremor to weekday
             let dayOfWeek = dateFormatter.string(from: Tremor[size].date)
     
@@ -173,7 +187,7 @@ class WeekContainer: UIViewController {
     
     // get resting tremor data from database for the last week
     func getRestingData() -> [Double] {
-        let Tremor = db.getTremors() //grab tremors from database
+        var Tremor = db.getTremors() //grab tremors from database
         
         var monR: Double = 0
         var tueR: Double = 0
@@ -192,6 +206,14 @@ class WeekContainer: UIViewController {
     
         //for loop that runs for 7 or array size if less than 7
         for _ in Tremor{
+            //make sure tremor values are between 0 and 10
+            if Tremor[size].restingSeverity > 10{
+                Tremor[size].restingSeverity = 10
+            }
+            
+            if Tremor[size].restingSeverity < 0{
+                Tremor[size].restingSeverity = 0
+            }
             //converting date data of specific tremor to weekday
             let dayOfWeek = dateFormatter.string(from: Tremor[size].date)
     

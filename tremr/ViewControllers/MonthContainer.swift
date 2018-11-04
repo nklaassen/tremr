@@ -3,9 +3,13 @@
 //  tremr
 //
 //  Created by Kira Nishi Beckingham and Leo Zhang on 2018-11-01.
+//  CO.DEsign
 //  Copyright © 2018 CO.DEsign. All rights reserved.
 //
-//  This file sets the line chart for month view
+// This file sets the line chart for month view
+//
+// changes:
+// data is checked to ensure that it is in bounds
 //
 
 import Foundation
@@ -108,7 +112,7 @@ class MonthContainer: UIViewController {
     
     // get postural tremor data from the database for the last month
     func getPosturalData() -> [Double] {
-        let Tremor = db.getTremors() //get tremors from database
+        var Tremor = db.getTremors() //get tremors from database
         
         //array of 28 elements to hold severity values
         var Postural: [Double] = Array(repeating: 0, count: 28)
@@ -121,6 +125,16 @@ class MonthContainer: UIViewController {
         
         //copies postural and resting severity values into newly made array from data from database
         while index > -1 && size > -1 {
+            
+            //make sure tremor values are between 0 and 10
+            if Tremor[size].posturalSeverity > 10{
+                Tremor[size].posturalSeverity = 10
+            }
+            
+            if Tremor[size].posturalSeverity < 0{
+                Tremor[size].posturalSeverity = 0
+            }
+
             Postural[index] = Tremor[size].posturalSeverity
             index = index - 1
             size =  size - 1
@@ -140,7 +154,7 @@ class MonthContainer: UIViewController {
     // get resting tremor data from the database from the last month
     func getRestingData() -> [Double] {
         
-        let Tremor = db.getTremors() //get tremors from database
+        var Tremor = db.getTremors() //get tremors from database
         
         //array of 28 elements to hold severity values
         var Resting: [Double] = Array(repeating: 0, count: 28)
@@ -153,6 +167,16 @@ class MonthContainer: UIViewController {
         
         //copies postural and resting severity values into newly made array from data from database
         while index > -1 && size > -1 {
+            
+            //make sure tremor values are between 0 and 10
+            if Tremor[size].restingSeverity > 10{
+                Tremor[size].restingSeverity = 10
+            }
+            
+            if Tremor[size].restingSeverity < 0{
+                Tremor[size].restingSeverity = 0
+            }
+
             Resting[index] = Tremor[size].restingSeverity
             index = index - 1
             size =  size - 1
