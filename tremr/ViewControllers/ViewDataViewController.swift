@@ -1,13 +1,16 @@
 //
-//  ViewDataViewController.swift
-//  tremr
-//
-//  Created by Nic Klaasen and Devansh Chopra on 10/22/18.
-//  Created by Kira Nishi Beckingham on 2018-11-01.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
-// This file controls the View Data page
-//
+//  Name of file: ViewDataViewController.swift
+//  Programmers: Kira Nishi-Beckingham
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs:
+
 
 import Foundation
 import UIKit

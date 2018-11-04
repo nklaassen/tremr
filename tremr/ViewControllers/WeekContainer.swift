@@ -1,12 +1,15 @@
 //
-//  WeekContainer.swift
-//  tremr
-//
-//  Created by Kira Nishi Beckingham and Leo Zhang on 2018-11-01.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
-// This file sets the line chart for week view
-//
+//  Name of file: WeekContainer.swift
+//  Programmers: Kira Nishi-Beckingham and Leo Zhang
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs:
 
 import Foundation
 import UIKit

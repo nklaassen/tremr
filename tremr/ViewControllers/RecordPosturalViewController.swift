@@ -1,10 +1,15 @@
 //
-//  RecordPosturalViewController.swift
-//  tremr
-//
-//  Created by Devansh Chopra and Nic Klaassen on 2018-10-28.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: RecordPosturalViewController.swift
+//  Programmers: Devansh Chopra and Nic Klaassen
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs: 
 
 import UIKit
 

@@ -1,10 +1,15 @@
 //
-//  DailyMedicationViewController.swift
-//  tremr
-//
-//  Created by Jason Fevang on 10/31/18.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: DailyMedicationViewController.swift
+//  Programmers: Jason Fevang
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs:
 
 import UIKit
 

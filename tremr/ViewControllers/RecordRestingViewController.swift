@@ -1,10 +1,15 @@
 //
-//  PosturalViewController.swift
-//  tremr
-//
-//  Created by Devansh Chopra and Nic Klaasen on 2018-10-24.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: RecordRestingViewController.swift
+//  Programmers: Devansh Chopra and Nic Klaassen
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs: 
 
 import UIKit
 

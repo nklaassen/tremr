@@ -1,10 +1,15 @@
 //
-//  types.swift
-//  tremr
-//
-//  Created by nklaasse on 10/24/18.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: Types.swift
+//  Programmers: Nic Klaassen and Jason Fevang
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs:
 
 import Foundation
 

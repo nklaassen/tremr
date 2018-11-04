@@ -1,12 +1,15 @@
 //
-//  WeekBarContainer.swift
-//  tremr
-//
-//  Created by Kira Nishi Beckingham on 2018-11-01.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
-//  This file sets the bar chart for week view
-//
+//  Name of file: WeakBarContainer.swift
+//  Programmers: Kira Nishi-Beckingham
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs:
 
 import Charts
 import Foundation

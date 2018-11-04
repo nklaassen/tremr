@@ -1,10 +1,15 @@
 //
-//  CountdownViewController.swift
-//  tremr
-//
-//  Created by Nic Klaassen and Devansh Chopra on 10/25/18.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: CountdownViewController.swift
+//  Programmers: Devansh Chopra and Nic Klaassen
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs: 
 
 import UIKit
 
