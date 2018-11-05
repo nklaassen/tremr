@@ -28,9 +28,101 @@ class tremrUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testViewResults() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        
+        let app = XCUIApplication()
+        
+        XCTAssert(app.buttons["View Results"].exists)
+        XCTAssert(app.buttons["Measure"].exists)
+        XCTAssert(app.buttons["Medication"].exists)
+        XCTAssert(app.buttons["Exercise"].exists)
+        
+        app.buttons["View Results"].tap()
+        
+        XCTAssert(app.buttons["Week"].exists)
+        XCTAssert(app.buttons["Month"].exists)
+        XCTAssert(app.buttons["Year"].exists)
+        
+        app/*@START_MENU_TOKEN@*/.buttons["Month"]/*[[".segmentedControls.buttons[\"Month\"]",".buttons[\"Month\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        XCTAssert(app.buttons["Week"].exists)
+        XCTAssert(app.buttons["Month"].exists)
+        XCTAssert(app.buttons["Year"].exists)
+        
+        app/*@START_MENU_TOKEN@*/.buttons["Year"]/*[[".segmentedControls.buttons[\"Year\"]",".buttons[\"Year\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        XCTAssert(app.buttons["Week"].exists)
+        XCTAssert(app.buttons["Month"].exists)
+        XCTAssert(app.buttons["Year"].exists)
+        
+        app/*@START_MENU_TOKEN@*/.buttons["Week"]/*[[".segmentedControls.buttons[\"Week\"]",".buttons[\"Week\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        XCTAssert(app.buttons["Week"].exists)
+        XCTAssert(app.buttons["Month"].exists)
+        XCTAssert(app.buttons["Year"].exists)
+        
+        app.buttons["Go to Previous View"].tap()
+        
+        XCTAssert(app.buttons["View Results"].exists)
+        XCTAssert(app.buttons["Measure"].exists)
+        XCTAssert(app.buttons["Medication"].exists)
+        XCTAssert(app.buttons["Exercise"].exists)
+        
     }
     
+    func testMedication(){
+        
+    }
+    
+    func testExercise(){
+        
+    }
+    
+    func testMeasure(){
+        
+        let app = XCUIApplication()
+        
+        XCTAssert(app.buttons["View Results"].exists)
+        XCTAssert(app.buttons["Measure"].exists)
+        XCTAssert(app.buttons["Medication"].exists)
+        XCTAssert(app.buttons["Exercise"].exists)
+        
+        app.buttons["Measure"].tap()
+        
+        XCTAssert(app.buttons["Back"].exists)
+        XCTAssert(app.buttons["NEXT"].exists)
+        
+        app.buttons["NEXT"].tap()
+        
+        let startRecordingButton = app.buttons["Start Recording"]
+        
+        sleep(2)
+        
+        XCTAssert(app.buttons["Start Recording"].exists)
+        
+        startRecordingButton.tap()
+        
+        sleep(10)
+        
+        XCTAssert(app.buttons["Start Recording"].exists)
+        
+        startRecordingButton.tap()
+        
+        sleep(10)
+        
+        XCTAssert(app.buttons["Done"].exists)
+        
+        app.buttons["Done"].tap()
+        
+        XCTAssert(app.buttons["View Results"].exists)
+        XCTAssert(app.buttons["Measure"].exists)
+        XCTAssert(app.buttons["Medication"].exists)
+        XCTAssert(app.buttons["Exercise"].exists)
+        
+        
+        
+    }
 }
