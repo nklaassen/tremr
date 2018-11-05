@@ -27,16 +27,8 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
         //Set containing class as the delegate and datasource of the table view
         medTableView.delegate = self
         medTableView.dataSource = self
-        medTableView.estimatedRowHeight = 0
-        medTableView.estimatedSectionHeaderHeight = 0
-        medTableView.estimatedSectionFooterHeight = 0
-        // Do any additional setup after loading the view.
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
 
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -60,17 +52,11 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
         cell.medNameLabel.text = med.name
         cell.dosageLabel.text = med.dosage
         
+        //Set the delButton in the cell to refer to deleteButtonClicked when deleteButton is pressed
         cell.delButton.tag = indexPath.row
-        cell.delButton.addTarget(self, action: #selector(self.buttonClicked), for: .touchUpInside)
+        cell.delButton.addTarget(self, action: #selector(self.deleteButtonClicked), for: .touchUpInside)
         
         return cell
-    }
-    
-    @objc func buttonClicked(_ sender: UIButton) {
-        //Here sender.tag will give you the tapped checkbox/Button index from the cell
-        db.updateMedicineEndDate(MIDToUpdate: medications[sender.tag].MID)//Set entry in database to end today
-        medications.remove(at: sender.tag) //Remove your element from array
-        medTableView.deleteRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic) //Delete row from table section 0
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -100,15 +86,24 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
         // Pass the selected object to the new view controller.
     }
     
-    //MARK: Actions
-    //button clicks here
     
+    //MARK: Actions
+    //When the delete button is clicked on the table, this function gets called
+    @objc func deleteButtonClicked(_ sender: UIButton) {
+        //Here sender.tag will give you the tapped checkbox/Button index from the cell
+        //Set entry in database to end today
+        db.updateMedicineEndDate(MIDToUpdate: medications[sender.tag].MID)
+        
+        //Remove your element from array
+        medications.remove(at: sender.tag)
+        
+        //Delete row from table section 0
+        medTableView.deleteRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
+    }
     
     //MARK: Private methods
     private func loadMedications() {
         //Retrieve medications to be loaded into the table
-        print("medications loaded")
-        //Get all medicine
         medications = db.getMedicine()
     }
 }
