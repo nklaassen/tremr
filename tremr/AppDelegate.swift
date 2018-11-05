@@ -46,7 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        reminder: false,
                        start_date: Date().addingTimeInterval(day),
                        end_date: nil)
-        db.updateMedicineEndDate(MIDToUpdate: 1)
         db.addMedicine(UID: 1,
                        name: "medicine2",
                        dosage: "100",
@@ -68,8 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        reminder: false,
                        start_date: Date(),
                        end_date: Date())
-        db.updateMedicineEndDate(MIDToUpdate: 5)
-        
         return true
     }
 

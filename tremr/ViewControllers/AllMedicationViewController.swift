@@ -30,7 +30,7 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
         
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -58,17 +58,28 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
         cell.medNameLabel.text = med.name
         cell.dosageLabel.text = med.dosage
         
+        cell.delButton.tag = indexPath.row
+        cell.delButton.addTarget(self, action: #selector(self.buttonClicked), for: .touchUpInside)
+        
         return cell
     }
-
+    
+    @objc func buttonClicked(_ sender: UIButton) {
+        //Here sender.tag will give you the tapped checkbox/Button index from the cell
+        db.updateMedicineEndDate(MIDToUpdate: medications[sender.tag].MID)//Set entry in database to end today
+        medications.remove(at: sender.tag) //Remove your element from array
+        medTableView.deleteRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic) //Delete row from table section 0
+        loadMedications()
+        
+        //Reload table
+        medTableView.reloadData()
+    }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        switch(segue.identifier ?? "") {
-        case "AddMedicine":
-            print("adding an item")
-        case "ShowDetail":
+        if segue.identifier == "ShowDetail" {
             guard let medicationDetailViewController = segue.destination as? MedicationViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -85,10 +96,6 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
             
             //copy over data to detailed view
             medicationDetailViewController.edittedMedicine = selectedMedicine
-            
-            
-        default:
-            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

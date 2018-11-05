@@ -203,15 +203,21 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dosage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muQ-te-wOD">
-                                                    <rect key="frame" x="172" y="0.0" width="156" height="44"/>
+                                                    <rect key="frame" x="172" y="0.0" width="85" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YfJ-Bh-nMm">
+                                                    <rect key="frame" x="280" y="3" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button" image="Trash-Can"/>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="delButton" destination="YfJ-Bh-nMm" id="3HT-TW-wZ2"/>
                                             <outlet property="dosageLabel" destination="muQ-te-wOD" id="U3O-cm-FWj"/>
                                             <outlet property="medNameLabel" destination="cjA-my-KIi" id="bxW-pK-uG6"/>
                                             <segue destination="K7v-nW-bB6" kind="show" identifier="ShowDetail" id="6dP-4r-oIr"/>
@@ -520,10 +526,11 @@
     <resources>
         <image name="Left-Arrow" width="256" height="256"/>
         <image name="Right-Arrow" width="256" height="256"/>
+        <image name="Trash-Can" width="368" height="490"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6dP-4r-oIr"/>
-        <segue reference="GGJ-D1-lbS"/>
-        <segue reference="Of7-UK-BlF"/>
+        <segue reference="gx7-xn-9FS"/>
+        <segue reference="g7f-H2-eRD"/>
     </inferredMetricsTieBreakers>
 </document>

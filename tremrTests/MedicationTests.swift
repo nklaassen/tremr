@@ -64,7 +64,7 @@ class MedicationTests: XCTestCase {
         //start_date is modified in the datebase to be the very start of the day, so only check for the day component to match
         XCTAssert(calendar.compare(medications[0].start_date, to: testDate, toGranularity: Calendar.Component.day) == ComparisonResult.orderedSame)
         //end_date is modified in the database to be the very start of the next day, so subtracting 1 second from it will be the same day as testDate
-        XCTAssert(calendar.compare(medications[0].end_date!.addingTimeInterval(-1), to: testDate, toGranularity: Calendar.Component.day) == ComparisonResult.orderedSame)
+        XCTAssert(calendar.compare(medications[0].end_date!, to: testDate, toGranularity: Calendar.Component.day) == ComparisonResult.orderedSame)
     }
     
     func testSelectMedicationsRightDayOfWeek() {
@@ -139,6 +139,7 @@ class MedicationTests: XCTestCase {
         })
     }
     
+    
     func testSelectMedicationEndDateConsiderations() {
         let dateFri = dateFormatter.date(from: "Nov 2, 2018 at 11:14:31 AM PST")
         //print(dateFormatter.string(from: queryDate!))
@@ -174,22 +175,38 @@ class MedicationTests: XCTestCase {
                        end_date: dateFri!.addingTimeInterval(-10)) //10 seconds before
         let friMedications = db.getMedicineDate(date: dateFri!)
         
-        XCTAssert(friMedications.count as Int == 3) //Two elements
-        XCTAssert(friMedications.contains { element in //medicine1 is listed
-            return element.name == "medicine1"
-        })
+        XCTAssert(friMedications.count as Int == 1) //Two elements
+        //XCTAssert(friMedications.contains { element in //medicine1 is listed
+        //    return element.name == "medicine1"
+        //})
         XCTAssert(friMedications.contains { element in //medicine2 is listed
             return element.name == "medicine2"
         })
-        XCTAssert(friMedications.contains { element in //medicine4 is listed
-            return element.name == "medicine4"
-        })
+        //XCTAssert(friMedications.contains { element in //medicine4 is listed
+        //    return element.name == "medicine4"
+        //})
     }
     
-    
-    
-    
-    
-  
-    
+    func testUpdateMedicineEndDate() {
+        db.addMedicine(UID: 1,
+                       name: "medicine1",
+                       dosage: "100",
+                       mo: true, tu: true, we: true, th: true, fr: true, sa: true, su: true,
+                       reminder: false,
+                       start_date: Date(),
+                       end_date: nil)
+        db.addMedicine(UID: 1,
+                       name: "medicine2",
+                       dosage: "200",
+                       mo: true, tu: true, we: true, th: true, fr: true, sa: true, su: true,
+                       reminder: false,
+                       start_date: Date(),
+                       end_date: nil)
+        let medications = db.getMedicine()
+        XCTAssert(medications.count as Int == 2) //Two elements
+
+        db.updateMedicineEndDate(MIDToUpdate: medications[0].MID)
+        let newMedications = db.getMedicineDate(date: Date())
+        XCTAssert(newMedications.count as Int == 1) //One element, since one was removed
+    }
 }

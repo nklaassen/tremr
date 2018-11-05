@@ -175,7 +175,7 @@ class DatabaseManager
         let modified_start_date = calendar.startOfDay(for: start_date)
         var modified_end_date :Date? = nil
         if end_date != nil {
-            modified_end_date = calendar.startOfDay(for: (end_date?.addingTimeInterval(60*60*24))!)
+            modified_end_date = calendar.startOfDay(for: end_date!)
         }
         
         do {
@@ -202,8 +202,10 @@ class DatabaseManager
     func getMedicine() -> Array<Medicine> {
         var medicines = Array<Medicine>()
         
+        let query = Medicines.filter(end_date == nil)   //Only return active medications, without an end date set
+
         do {
-            for medicine in try db.prepare(Medicines) {
+            for medicine in try db.prepare(query) {
                 medicines.append(Medicine(UID: medicine[self.UID],
                                           MID: medicine[self.MID],
                                           name: medicine[self.name],
@@ -246,8 +248,6 @@ class DatabaseManager
             targetWeekDay = friday
         default: //Saturday
             targetWeekDay = saturday
-            //default: //Any day
-            //targetWeekDay = nil
         }
 
         var query = Medicines.filter(targetWeekDay == true) // Weekday matches weekday recorded for
@@ -310,5 +310,17 @@ class DatabaseManager
         } catch {
             fatalError("Failed to delete Medicines table")
         }
+    }
+    
+    func removeMedicine(MIDToRemove: Int64) {
+        do {
+            let medicineToRemove = Medicines.filter(MID == MIDToRemove)
+            try db.run(medicineToRemove.delete())
+        } catch {
+            fatalError("Failed to remove row with MID: \(MID))")
+        }
+        
+
+        
     }
 }
