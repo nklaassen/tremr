@@ -1,14 +1,11 @@
 //
-//  Name of file: Gyroscope.swift
+//  Name of file: MotionObserver.swift
 //  Programmers: Nic Klaassen and Devansh Chopra
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
+//          2018-10-25: add gyroscope tracking
+//          2018-10-25: updates
+//          2018-11-04: rename GryoScope -> MotionObserver
 // Known Bugs:
 
 import Foundation
@@ -16,7 +13,7 @@ import CoreMotion
 
 let Fps60 = 0.016
 
-class MotionObservable {
+class MotionObserver {
     
     let motionManager: CMMotionManager
     let updateInterval: Double = Fps60

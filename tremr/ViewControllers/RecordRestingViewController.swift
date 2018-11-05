@@ -3,12 +3,8 @@
 //  Programmers: Devansh Chopra and Nic Klaassen
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
+//          2018-10-28: show real score
+//          2018-10-30: cosmetic updates
 // Known Bugs: 
 
 import UIKit
@@ -28,12 +24,10 @@ class RecordRestingViewController: UIViewController {
     
     
     private func disableInput() {
-       
         view.isUserInteractionEnabled = false
     }
     
     private func enableInput() {
-
         view.isUserInteractionEnabled = true
     }
 }
