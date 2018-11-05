@@ -41,3 +41,20 @@ struct Medicine {
     var start_date : Date
     var end_date : Date?
 }
+
+struct Exercise {
+    var UID : Int64
+    var EID : Int64
+    var name : String
+    var unit : String
+    var mo : Bool
+    var tu : Bool
+    var we : Bool
+    var th : Bool
+    var fr : Bool
+    var sa : Bool
+    var su : Bool
+    var reminder : Bool
+    var start_date : Date
+    var end_date : Date?
+}

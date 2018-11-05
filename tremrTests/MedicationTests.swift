@@ -47,7 +47,7 @@ class MedicationTests: XCTestCase {
                        mo: true, tu: true, we: true, th: true, fr: true, sa: false, su: true,
                        reminder: false,
                        start_date: testDate,
-                       end_date: testDate)
+                       end_date: nil)
         let medications = db.getMedicine()
         
         XCTAssert(medications.count as Int == 1)
@@ -64,7 +64,7 @@ class MedicationTests: XCTestCase {
         //start_date is modified in the datebase to be the very start of the day, so only check for the day component to match
         XCTAssert(calendar.compare(medications[0].start_date, to: testDate, toGranularity: Calendar.Component.day) == ComparisonResult.orderedSame)
         //end_date is modified in the database to be the very start of the next day, so subtracting 1 second from it will be the same day as testDate
-        XCTAssert(calendar.compare(medications[0].end_date!, to: testDate, toGranularity: Calendar.Component.day) == ComparisonResult.orderedSame)
+        XCTAssertNil(medications[0].end_date)
     }
     
     func testSelectMedicationsRightDayOfWeek() {

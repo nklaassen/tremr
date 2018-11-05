@@ -67,6 +67,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        reminder: false,
                        start_date: Date(),
                        end_date: Date())
+        
+        
+        db.addExercise(UID: 1,
+                       name: "Exercise1",
+                       unit: "100",
+                       mo: true, tu: true, we: true, th: true, fr: true, sa: true, su: true,
+                       reminder: false,
+                       start_date: Date(),
+                       end_date: nil)
         return true
     }
 

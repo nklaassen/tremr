@@ -43,7 +43,23 @@ class DatabaseManager
     let reminder = Expression<Bool>("reminder")
     let start_date = Expression<Date>("start_date")
     let end_date = Expression<Date?>("end_date") //optional
-
+    
+    let Exercises = Table("Exercise")
+    let EID = Expression<Int64>("EID")
+    // let name = Expression<String>("name") We'll use the one defined in Users table
+    let unit = Expression<String>("unit")
+    // We'll use the one defined in Medicines table
+    /* let monday = Expression<Bool>("monday")
+    let tuesday = Expression<Bool>("tuesday")
+    let wednesday = Expression<Bool>("wednesday")
+    let thursday = Expression<Bool>("thursday")
+    let friday = Expression<Bool>("friday")
+    let saturday = Expression<Bool>("saturday")
+    let sunday = Expression<Bool>("sunday")
+    let reminder = Expression<Bool>("reminder")
+    let start_date = Expression<Date>("start_date")
+    let end_date = Expression<Date?>("end_date") //optional */
+    
     //Calendar for comparing dates and performing date arithmetic
     let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
     
@@ -68,6 +84,7 @@ class DatabaseManager
             })                                                    // )
             
             try db.run(Medicines.drop(ifExists: true))
+            try db.run(Exercises.drop(ifExists: true))
             
             // Create the Medicine table
             try db.run(Medicines.create(ifNotExists: true) { t in
@@ -75,6 +92,25 @@ class DatabaseManager
                 t.column(UID)
                 t.column(name)
                 t.column(dosage)
+                t.column(monday)
+                t.column(tuesday)
+                t.column(wednesday)
+                t.column(thursday)
+                t.column(friday)
+                t.column(saturday)
+                t.column(sunday)
+                t.column(reminder)
+                t.column(start_date)
+                t.column(end_date)
+                t.foreignKey(UID, references: Users, UID, delete: .setNull)
+            })
+            
+            // Create the Exercise table
+            try db.run(Exercises.create(ifNotExists: true) { t in
+                t.column(EID, primaryKey: true)
+                t.column(UID)
+                t.column(name)
+                t.column(unit)
                 t.column(monday)
                 t.column(tuesday)
                 t.column(wednesday)
@@ -198,6 +234,37 @@ class DatabaseManager
         }
     }
     
+    //Adds an exercise to the Exercises table
+    func addExercise(UID : Int64, name : String, unit : String, mo : Bool, tu : Bool, we : Bool, th : Bool, fr : Bool, sa : Bool, su : Bool, reminder : Bool, start_date : Date, end_date : Date?) {
+        print("Trying to add exercise \(name) \(unit)")
+        
+        //Modify start_date and end_date to be the very end of the day and very beginning of the day respectively
+        let modified_start_date = calendar.startOfDay(for: start_date)
+        var modified_end_date :Date? = nil
+        if end_date != nil {
+            modified_end_date = calendar.startOfDay(for: (end_date?.addingTimeInterval(60*60*24))!)
+        }
+        
+        do {
+            try db.run(Exercises.insert(self.UID <- UID,
+                                        self.name <- name,
+                                        self.unit <- unit,
+                                        self.monday <- mo,
+                                        self.tuesday <- tu,
+                                        self.wednesday <- we,
+                                        self.thursday <- th,
+                                        self.friday <- fr,
+                                        self.saturday <- sa,
+                                        self.sunday <- su,
+                                        self.reminder <- reminder,
+                                        self.start_date <- modified_start_date,
+                                        self.end_date <- modified_end_date ))
+            print("Inserted exercise!")
+        } catch {
+            print("Failed to insert exercise: \(error)")
+        }
+    }
+    
     //Returns array of all medicines
     func getMedicine() -> Array<Medicine> {
         var medicines = Array<Medicine>()
@@ -225,6 +292,33 @@ class DatabaseManager
             print(error)
         }
         return medicines
+    }
+    
+    //Returns array of all exercises
+    func getExercise() -> Array<Exercise> {
+        var exercises = Array<Exercise>()
+        
+        do {
+            for exercise in try db.prepare(Exercises) {
+                exercises.append(Exercise(UID: exercise[self.UID],
+                                          EID: exercise[self.EID],
+                                          name: exercise[self.name],
+                                          unit: exercise[self.unit],
+                                          mo: exercise[self.monday],
+                                          tu: exercise[self.tuesday],
+                                          we: exercise[self.wednesday],
+                                          th: exercise[self.thursday],
+                                          fr: exercise[self.friday],
+                                          sa: exercise[self.saturday],
+                                          su: exercise[self.sunday],
+                                          reminder: exercise[self.reminder],
+                                          start_date: exercise[self.start_date],
+                                          end_date:exercise[self.end_date]))
+            }
+        } catch {
+            print(error)
+        }
+        return exercises
     }
     
     //Returns array of all medicines that are scheduled for the day Date
@@ -279,6 +373,60 @@ class DatabaseManager
         return medicines
     }
     
+    //Returns array of all exercises that are scheduled for the day Date
+    func getExerciseDate(date: Date) ->Array<Exercise> {
+        //weekDay is a number. 1-sunday, 2-monday, ... 7-saturday
+        let weekDay = Calendar.current.component(.weekday, from: date)
+        
+        var targetWeekDay :Expression<Bool>
+        switch weekDay {
+        case 1: //Sunday
+            targetWeekDay = sunday
+        case 2: //Monday
+            targetWeekDay = monday
+        case 3: //Tuesday
+            targetWeekDay = tuesday
+        case 4: //Wednesday
+            targetWeekDay = wednesday
+        case 5: //Thursday
+            targetWeekDay = thursday
+        case 6: //Friday
+            targetWeekDay = friday
+        default: //Saturday
+            targetWeekDay = saturday
+            //default: //Any day
+            //targetWeekDay = nil
+        }
+        
+        var query = Exercises.filter(targetWeekDay == true) // Weekday matches weekday recorded for
+        query = query.filter(start_date <= date)   // Ensure searching within valid timeframe
+        query = query.filter(end_date == nil || end_date >= date)   //If end_date is assigned, then only return when within the timeframe of that medicine
+        
+        var exercises = Array<Exercise>()
+        
+        do {
+            for exer in try db.prepare(query) {
+                exercises.append(Exercise(UID: exer[self.UID],
+                                          EID: exer[self.EID],
+                                          name: exer[self.name],
+                                          unit: exer[self.unit],
+                                          mo: exer[self.monday],
+                                          tu: exer[self.tuesday],
+                                          we: exer[self.wednesday],
+                                          th: exer[self.thursday],
+                                          fr: exer[self.friday],
+                                          sa: exer[self.saturday],
+                                          su: exer[self.sunday],
+                                          reminder: exer[self.reminder],
+                                          start_date: exer[self.start_date],
+                                          end_date: exer[self.end_date]))
+            }
+        } catch {
+            fatalError("Query didn't execute at all")
+        }
+        return exercises
+    }
+    
     func updateMedicine(MIDToUpdate : Int64, name: String, dosage: String,mo: Bool, tu: Bool, we: Bool, th: Bool, fr: Bool, sa: Bool, su: Bool, reminder: Bool) {
         do {
             let medicineToUpdate = Medicines.filter(MID == MIDToUpdate)
@@ -287,6 +435,16 @@ class DatabaseManager
             fatalError("Failed to update row with MID: \(MID))")
         }
     }
+    
+    func updateExercise(EIDToUpdate : Int64, name: String, unit: String,mo: Bool, tu: Bool, we: Bool, th: Bool, fr: Bool, sa: Bool, su: Bool, reminder: Bool) {
+        do {
+            let exerciseToUpdate = Exercises.filter(EID == EIDToUpdate)
+            try db.run(exerciseToUpdate.update(self.name <- name, self.unit <- unit, monday <- mo, tuesday <- tu, wednesday <- we, thursday <- th, friday <- fr, saturday <- sa, sunday <- su, self.reminder <- reminder))
+        } catch {
+            fatalError("Failed to update row with EID: \(EID))")
+        }
+    }
+
     // The medicine table will update MIDs equal to MIDToUpdate. Rows matching this query will
     // have their end_date updated to the current date.
     func updateMedicineEndDate(MIDToUpdate : Int64)
@@ -302,6 +460,21 @@ class DatabaseManager
         }
     }
     
+    // The exercise table will update EIDs equal to EIDToUpdate. Rows matching this query will
+    // have their end_date updated to the current date.
+    func updateExerciseEndDate(EIDToUpdate : Int64)
+    {
+        let currentDate = Date.init()
+        
+        // UPDATE "Exercises" SET end_date to the current date
+        do {
+            let exerciseToUpdate = Exercises.filter(EID == EIDToUpdate)
+            try db.run(exerciseToUpdate.update(end_date <- currentDate))
+        } catch {
+            fatalError("Failed to update row with EID: \(EID) with end_date: \(String(describing: currentDate))")
+        }
+    }
+    
     //Empty all entries from medicine table
     func clearMedicine()
     {
@@ -312,15 +485,13 @@ class DatabaseManager
         }
     }
     
-    func removeMedicine(MIDToRemove: Int64) {
+    //Empty all entries from exercise table
+    func clearExercise()
+    {
         do {
-            let medicineToRemove = Medicines.filter(MID == MIDToRemove)
-            try db.run(medicineToRemove.delete())
+            try db.run(Exercises.delete())
         } catch {
-            fatalError("Failed to remove row with MID: \(MID))")
+            fatalError("Failed to delete Exercises table")
         }
-        
-
-        
     }
 }
