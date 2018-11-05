@@ -17,7 +17,7 @@ class TremorController {
     
     private var gyroValues = Array<(Double)>()
     private var accelValues = Array<(Double)>()
-    let recordingTime = 3 // seconds
+    let recordingTime = 10 // seconds
     private var resting = 0.0
     private var postural = 0.0
 
@@ -59,6 +59,7 @@ class TremorController {
         motion.addMotionObserver(observer: {(gyro: Double, accel: Double) -> Void in
             self.gyroValues.append(gyro)
             self.accelValues.append(accel)
+            print("gryoscope: \(gyro) accelerometer: \(accel)")
         })
     }
     
