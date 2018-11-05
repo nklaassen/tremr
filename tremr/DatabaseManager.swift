@@ -3,12 +3,11 @@
 //  Programmers: Nic Klaassen, Jason Fevang and Colin Chan
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
+//          2018-10-20: Create database
+//          2018-10-23: Schema update
+//          2018-10-24: Don't use users for v1
+//          2018-10-25: add medication/exercises
+//          2018-11-04: filter tremors by date
 // Known Bugs:
 
 import Foundation
@@ -178,6 +177,8 @@ class DatabaseManager
         return users
     }
 
+    // adds tremor recording to the db. Date defaults to the current date/time.
+    // Note: will delete all recordings in the db from the same day as the recording being inserted
     func addTremor(restingSeverity : Double, posturalSeverity : Double, date : Date = Date()) {
         print("Trying to add tremor \(restingSeverity) \(posturalSeverity)")
 
@@ -200,6 +201,7 @@ class DatabaseManager
         }
     }
     
+    // Returns all tremor recording values from the db
     func getTremors() -> Array<Tremor> {
         var tremors = Array<Tremor>()
         do {
@@ -218,6 +220,7 @@ class DatabaseManager
         return tremors
     }
 
+    // returns only the tremor recordings from the past week
     func getTremorsForLastWeek() -> Array<Tremor> {
         var tremors = Array<Tremor>()
         let startOfDay = Calendar.current.startOfDay(for: Date())

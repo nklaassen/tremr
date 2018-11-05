@@ -14,7 +14,7 @@
 		55D4D19B218B94AA00CB371C /* WeekBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D19A218B94AA00CB371C /* WeekBarContainer.swift */; };
 		55D4D1B0218D991700CB371C /* MonthBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D1AF218D991700CB371C /* MonthBarContainer.swift */; };
 		55D4D1B2218D9D9A00CB371C /* YearBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D1B1218D9D9A00CB371C /* YearBarContainer.swift */; };
-		80EF89CB21814DA400872F5B /* GyroScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CA21814DA400872F5B /* GyroScope.swift */; };
+		80EF89CB21814DA400872F5B /* MotionObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CA21814DA400872F5B /* MotionObserver.swift */; };
 		80EF89CD2181638700872F5B /* InstructionsForTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */; };
 		A50B2529218F9D610033AA48 /* DailyExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50B2528218F9D610033AA48 /* DailyExerciseViewController.swift */; };
 		A50B2531218FA6F10033AA48 /* DailyExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50B2530218FA6F10033AA48 /* DailyExerciseTableViewCell.swift */; };
@@ -178,7 +178,7 @@
 		55D4D19A218B94AA00CB371C /* WeekBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekBarContainer.swift; sourceTree = "<group>"; };
 		55D4D1AF218D991700CB371C /* MonthBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthBarContainer.swift; sourceTree = "<group>"; };
 		55D4D1B1218D9D9A00CB371C /* YearBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearBarContainer.swift; sourceTree = "<group>"; };
-		80EF89CA21814DA400872F5B /* GyroScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroScope.swift; sourceTree = "<group>"; };
+		80EF89CA21814DA400872F5B /* MotionObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionObserver.swift; sourceTree = "<group>"; };
 		80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsForTrackingViewController.swift; sourceTree = "<group>"; };
 		A50B2528218F9D610033AA48 /* DailyExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyExerciseViewController.swift; sourceTree = "<group>"; };
 		A50B2530218FA6F10033AA48 /* DailyExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyExerciseTableViewCell.swift; sourceTree = "<group>"; };
@@ -328,7 +328,7 @@
 				A5B4C6A42183D67000A71E9B /* ViewData.storyboard */,
 				E0FEE128217EB76D00C72D7C /* LaunchScreen.storyboard */,
 				E0FEE12B217EB76D00C72D7C /* Info.plist */,
-				80EF89CA21814DA400872F5B /* GyroScope.swift */,
+				80EF89CA21814DA400872F5B /* MotionObserver.swift */,
 			);
 			path = tremr;
 			sourceTree = "<group>";
@@ -636,7 +636,6 @@
 				A81150DE218E53BB005478EE /* AllMedicationViewController.swift in Sources */,
 				A5E1D110218955D3001D8814 /* ToggleButton.swift in Sources */,
 				E0D5F0E92188CAE4008BFC97 /* RecordRestingViewController.swift in Sources */,
-				E0FEE156217ECD5A00C72D7C /* ViewDataViewController.swift in Sources */,
 				A50B2531218FA6F10033AA48 /* DailyExerciseTableViewCell.swift in Sources */,
 				E0D5F0EA2188CAE4008BFC97 /* DisplaySeverityViewController.swift in Sources */,
 				80EF89CD2181638700872F5B /* InstructionsForTrackingViewController.swift in Sources */,
@@ -645,7 +644,7 @@
 				A81150E0218E588E005478EE /* AllMedicationTableViewCell.swift in Sources */,
 				A50B2529218F9D610033AA48 /* DailyExerciseViewController.swift in Sources */,
 				E04F6FD32182979C000AF2F6 /* CountdownViewController.swift in Sources */,
-				80EF89CB21814DA400872F5B /* GyroScope.swift in Sources */,
+				80EF89CB21814DA400872F5B /* MotionObserver.swift in Sources */,
 				E0FEE152217ECCE900C72D7C /* ExerciseViewController.swift in Sources */,
 				A8F8A206218A56A30044342D /* DailyMedicationViewController.swift in Sources */,
 				55D4D199218B8AA600CB371C /* WeekContainer.swift in Sources */,
