@@ -12,6 +12,7 @@ class AllExerciseTableViewCell: UITableViewCell {
 
     @IBOutlet weak var exerNameLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
+    @IBOutlet weak var delButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
