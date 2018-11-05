@@ -91,14 +91,16 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
     //When the delete button is clicked on the table, this function gets called
     @objc func deleteButtonClicked(_ sender: UIButton) {
         //Here sender.tag will give you the tapped checkbox/Button index from the cell
-        //Set entry in database to end today
-        db.updateMedicineEndDate(MIDToUpdate: medications[sender.tag].MID)
-        
-        //Remove your element from array
+
+        //Update element from array
         medications.remove(at: sender.tag)
         
         //Delete row from table section 0
         medTableView.deleteRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
+        
+        //Set entry in database to end today
+        db.updateMedicineEndDate(MIDToUpdate: medications[sender.tag].MID)
+
     }
     
     //MARK: Private methods
