@@ -75,6 +75,96 @@ class tremrUITests: XCTestCase {
     
     func testMedication(){
         
+        
+        
+        let app = XCUIApplication()
+        
+        XCTAssert(app.buttons["View Results"].exists)
+        XCTAssert(app.buttons["Measure"].exists)
+        XCTAssert(app.buttons["Medication"].exists)
+        XCTAssert(app.buttons["Exercise"].exists)
+        
+        app.buttons["Medication"].tap()
+        
+        XCTAssert(app.buttons["Edit/Add Medications"].exists)
+        XCTAssert(app.buttons["R-Arrow"].exists)
+        XCTAssert(app.buttons["L-Arrow"].exists)
+        
+        let rArrowButton = app.buttons["R-Arrow"]
+        rArrowButton.tap()
+        //sleep(1)
+        rArrowButton.tap()
+        //sleep(1)
+        app.buttons["L-Arrow"].tap()
+        //sleep(1)
+        
+        let tablesQuery2 = app.tables
+        let tablesQuery = tablesQuery2
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["medicine1"]/*[[".cells.staticTexts[\"medicine1\"]",".staticTexts[\"medicine1\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let medicine2StaticText = tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["medicine2"]/*[[".cells.staticTexts[\"medicine2\"]",".staticTexts[\"medicine2\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        medicine2StaticText.tap()
+        app.buttons["Edit/Add Medications"].tap()
+        
+        XCTAssert(app.buttons["Add Medication"].exists)
+        XCTAssert(app.buttons["Back"].exists)
+        
+        medicine2StaticText.tap()
+        //medicine2StaticText.typeText("new")
+        
+        let enterMedicineNameTextField = app.textFields["Enter medicine name"]
+        enterMedicineNameTextField.tap()
+        
+        let enterDosageAmountMgTextField = app.textFields["Enter dosage amount (mg)"]
+        enterDosageAmountMgTextField.tap()
+        
+        XCTAssert(app.buttons["Update Medicine"].exists)
+        XCTAssert(app.buttons["Cancel"].exists)
+        
+        let window = app.children(matching: .window).element(boundBy: 0)
+        let element3 = window.children(matching: .other).element(boundBy: 2).children(matching: .other).element
+        let element = element3.children(matching: .other).element(boundBy: 1)
+        element.children(matching: .button).matching(identifier: "No").element(boundBy: 0).tap()
+        element.children(matching: .button).matching(identifier: "Yes").element(boundBy: 2).tap()
+        element.children(matching: .button).matching(identifier: "Yes").element(boundBy: 3).tap()
+        element.children(matching: .button).matching(identifier: "No").element(boundBy: 2).tap()
+        element3.children(matching: .button)["No"].tap()
+        app.buttons["Update Medicine"].tap()
+        tablesQuery2/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"medicine1")/*[[".cells.containing(.staticText, identifier:\"100\")",".cells.containing(.staticText, identifier:\"medicine1\")"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.buttons["Button"].tap()
+        app.buttons["Add Medication"].tap()
+        enterMedicineNameTextField.tap()
+        
+        XCTAssert(app.buttons["Add Medicine"].exists)
+        XCTAssert(app.buttons["Cancel"].exists)
+        
+        enterMedicineNameTextField.typeText("medication3")
+        
+        enterDosageAmountMgTextField.tap()
+        
+        enterDosageAmountMgTextField.typeText("300")
+        
+        let element2 = window.children(matching: .other).element(boundBy: 4).children(matching: .other).element.children(matching: .other).element(boundBy: 1)
+        element2.children(matching: .button).matching(identifier: "No").element(boundBy: 0).tap()
+        
+        let noButton = element2.children(matching: .button).matching(identifier: "No").element(boundBy: 1)
+        noButton.tap()
+        noButton.tap()
+        element2.children(matching: .button).matching(identifier: "No").element(boundBy: 2).tap()
+        //element2.children(matching: .button).matching(identifier: "No").element(boundBy: 3).tap()
+        app.buttons["Add Medicine"].tap()
+        
+        let backButton = app.buttons["Back"]
+        backButton.tap()
+        rArrowButton.tap()
+        rArrowButton.tap()
+        rArrowButton.tap()
+        backButton.tap()
+     
+        XCTAssert(app.buttons["View Results"].exists)
+        XCTAssert(app.buttons["Measure"].exists)
+        XCTAssert(app.buttons["Medication"].exists)
+        XCTAssert(app.buttons["Exercise"].exists)
+    
     }
     
     func testExercise(){
