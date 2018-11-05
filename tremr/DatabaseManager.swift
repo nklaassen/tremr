@@ -142,7 +142,16 @@ class DatabaseManager
 
     func addTremor(restingSeverity : Double, posturalSeverity : Double, date : Date = Date()) {
         print("Trying to add tremor \(restingSeverity) \(posturalSeverity)")
+
+        let startOfDay = Calendar.current.startOfDay(for: date)
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        let endOfDay = Calendar.current.date(byAdding: components, to: startOfDay)!
+        let tremorsForToday = Tremors.filter(self.date >= startOfDay && self.date <= endOfDay)
+
         do {
+            try db.run(tremorsForToday.delete()) // only one measurement allowed per day
             try db.run(Tremors.insert(self.restingSeverity <- Int(restingSeverity * 10),
                                       self.posturalSeverity <- Int(posturalSeverity * 10),
                                       self.completed <- true,
@@ -157,12 +166,35 @@ class DatabaseManager
         var tremors = Array<Tremor>()
         do {
             for tremor in try db.prepare(Tremors) {
+                print("date: \(tremor[self.date])")
                 tremors.append(Tremor(TID: tremor[self.TID],
                                       //UID: tremor[self.UID],
                                       posturalSeverity: Double(tremor[self.posturalSeverity]) / 10.0,
                                       restingSeverity: Double(tremor[self.restingSeverity]) / 10.0,
                                       completed: tremor[self.completed],
                                       date: tremor[self.date]))
+            }
+        } catch {
+            print(error)
+        }
+        return tremors
+    }
+    
+    func getTremorsForLastWeek() -> Array<Tremor> {
+        var tremors = Array<Tremor>()
+        let startOfDay = Calendar.current.startOfDay(for: Date())
+        var components = DateComponents()
+        components.day = -7
+        let lastWeek = Calendar.current.date(byAdding: components, to: startOfDay)!
+        let tremorsForLastWeek = Tremors.filter(self.date >= lastWeek)
+        do {
+            for tremor in try db.prepare(tremorsForLastWeek) {
+                tremors.append(Tremor(TID: tremor[self.TID],
+                                      //UID: tremor[self.UID],
+                    posturalSeverity: Double(tremor[self.posturalSeverity]) / 10.0,
+                    restingSeverity: Double(tremor[self.restingSeverity]) / 10.0,
+                    completed: tremor[self.completed],
+                    date: tremor[self.date]))
             }
         } catch {
             print(error)
