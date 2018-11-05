@@ -1,13 +1,19 @@
 //
-//  DisplaySeverityViewController.swift
-//  tremr
-//
-//  Created by Devansh Chopra on 2018-10-28.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: DisplaySeverityViewController.swift
+//  Programmers: Devansh Chopra and Nic Klaassen
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs: 
 
 import UIKit
 
+//Class for getting the Tremor Severity Scores and inputting it to the database 
 class DisplaySeverityViewController: UIViewController {
 
     override func viewDidLoad() {

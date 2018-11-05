@@ -1,7 +1,4 @@
-//  Name of file: WeekContainer.swift
-//  Programmers: Kira Nishi-Beckingham and Leo Zhang
-//  Team Name: Co.DEsign
-//  Changes been made:
+//
 //          2018-11-03: checked serverity values to make sure it's in bounds
 //          2018-10-20:
 //          2018-10-20:
@@ -71,7 +68,7 @@ class WeekContainer: UIViewController {
         //format "Postural" line
         let set1: LineChartDataSet = LineChartDataSet(values: yVals1, label: "Postural")
         set1.axisDependency = .left // Line will correlate with left axis values
-    set1.setColor(UIColor.red.withAlphaComponent(0.5))
+        set1.setColor(UIColor.red.withAlphaComponent(0.5))
         set1.setCircleColor(UIColor.red)
         set1.lineWidth = 2.0
         set1.circleRadius = 3.0
@@ -89,7 +86,7 @@ class WeekContainer: UIViewController {
         //format "Resting" line
         let set2: LineChartDataSet = LineChartDataSet(values: yVals2, label: "Resting")
         set2.axisDependency = .left // Line will correlate with left axis values
-    set2.setColor(UIColor.yellow.withAlphaComponent(0.5))
+        set2.setColor(UIColor.yellow.withAlphaComponent(0.5))
         set2.setCircleColor(UIColor.yellow)
         set2.lineWidth = 2.0
         set2.circleRadius = 3.0
@@ -111,71 +108,55 @@ class WeekContainer: UIViewController {
 
     // get postural tremor data from the database for the last week
     func getPosturalData() -> [Double] {
-        var Tremor = db.getTremors() //grab tremors from database
+        let tremors = db.getTremorsForLastWeek() //grab tremors from database
     
-        var monP: Double = -1
-        var tueP: Double = -1
-        var wedP: Double = -1
-        var thuP: Double = -1
-        var friP: Double = -1
-        var satP: Double = -1
-        var sunP: Double = -1
+        var monP: Double = 0
+        var tueP: Double = 0
+        var wedP: Double = 0
+        var thuP: Double = 0
+        var friP: Double = 0
+        var satP: Double = 0
+        var sunP: Double = 0
         
         //formatting date information so it displays the weekday
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
-    
-        // finds the size of the data array tremors and subtracts one to match the index of the last element
-        var size: Int = Tremor.count - 1
 
-        //for loop that runs for 7 or array size if less than 7
-        for _ in Tremor{
+        for var tremor in tremors {
             
             //make sure tremor values are between 0 and 10
-            if Tremor[size].posturalSeverity > 10{
-                Tremor[size].posturalSeverity = 10
+            if tremor.posturalSeverity > 10 {
+                tremor.posturalSeverity = 10
             }
             
-            if Tremor[size].posturalSeverity < 0{
-                Tremor[size].posturalSeverity = 0
+            if tremor.posturalSeverity < 0 {
+                tremor.posturalSeverity = 0
             }
 
             //converting date data of specific tremor to weekday
-            let dayOfWeek = dateFormatter.string(from: Tremor[size].date)
+            let dayOfWeek = dateFormatter.string(from: tremor.date)
     
             //check which weekday the tremor is in
             if dayOfWeek == "Monday"{
-                monP = Tremor[size].posturalSeverity
+                monP = tremor.posturalSeverity
             }
             if dayOfWeek == "Tuesday"{
-                tueP = Tremor[size].posturalSeverity
+                tueP = tremor.posturalSeverity
             }
             if dayOfWeek == "Wednesday"{
-                wedP = Tremor[size].posturalSeverity
+                wedP = tremor.posturalSeverity
             }
             if dayOfWeek == "Thursday"{
-                thuP = Tremor[size].posturalSeverity
+                thuP = tremor.posturalSeverity
             }
             if dayOfWeek == "Friday"{
-                friP = Tremor[size].posturalSeverity
+                friP = tremor.posturalSeverity
             }
             if dayOfWeek == "Saturday"{
-                satP = Tremor[size].posturalSeverity
+                satP = tremor.posturalSeverity
             }
             if dayOfWeek == "Sunday"{
-                if sunP < 0{
-                    sunP = Tremor[size].posturalSeverity
-                }
-            }
-            
-            if sunP >= 0 && monP >= 0 && tueP >= 0 && wedP >= 0 && thuP >= 0 && friP >= 0 && satP >= 0 {
-                break
-            }
-    
-            size = size - 1
-    
-            if size < 0{
-                break
+                sunP = tremor.posturalSeverity
             }
         }
     
@@ -187,7 +168,7 @@ class WeekContainer: UIViewController {
     
     // get resting tremor data from database for the last week
     func getRestingData() -> [Double] {
-        var Tremor = db.getTremors() //grab tremors from database
+        let tremors = db.getTremorsForLastWeek() //grab tremors from database
         
         var monR: Double = -1
         var tueR: Double = -1
@@ -201,55 +182,39 @@ class WeekContainer: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
     
-        // finds the size of the data array tremors and subtracts one to match the index of the last element
-        var size: Int = Tremor.count - 1
-    
-        //for loop that runs for 7 or array size if less than 7
-        for _ in Tremor{
+        for var tremor in tremors {
             //make sure tremor values are between 0 and 10
-            if Tremor[size].restingSeverity > 10{
-                Tremor[size].restingSeverity = 10
+            if tremor.restingSeverity > 10{
+                tremor.restingSeverity = 10
             }
             
-            if Tremor[size].restingSeverity < 0{
-                Tremor[size].restingSeverity = 0
+            if tremor.restingSeverity < 0{
+                tremor.restingSeverity = 0
             }
             //converting date data of specific tremor to weekday
-            let dayOfWeek = dateFormatter.string(from: Tremor[size].date)
+            let dayOfWeek = dateFormatter.string(from: tremor.date)
     
             //check which weekday the tremor is in
             if dayOfWeek == "Monday"{
-                monR = Tremor[size].restingSeverity
+                monR = tremor.restingSeverity
             }
             if dayOfWeek == "Tuesday"{
-                tueR = Tremor[size].restingSeverity
+                tueR = tremor.restingSeverity
             }
             if dayOfWeek == "Wednesday"{
-                wedR = Tremor[size].restingSeverity
+                wedR = tremor.restingSeverity
             }
             if dayOfWeek == "Thursday"{
-                thuR = Tremor[size].restingSeverity
+                thuR = tremor.restingSeverity
             }
             if dayOfWeek == "Friday"{
-                friR = Tremor[size].restingSeverity
+                friR = tremor.restingSeverity
             }
             if dayOfWeek == "Saturday"{
-                satR = Tremor[size].restingSeverity
+                satR = tremor.restingSeverity
             }
             if dayOfWeek == "Sunday"{
-                if sunR < 0{
-                    sunR = Tremor[size].restingSeverity
-                }
-            }
-            
-            if sunR >= 0 && monR >= 0 && tueR >= 0 && wedR >= 0 && thuR >= 0 && friR >= 0 && satR >= 0 {
-                break
-            }
-    
-            size = size - 1
-    
-            if size < 0{
-                break
+                sunR = tremor.restingSeverity
             }
         }
     

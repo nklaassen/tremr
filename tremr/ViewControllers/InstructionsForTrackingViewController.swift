@@ -1,10 +1,15 @@
 //
-//  InstructionsForTrackingViewController.swift
-//  tremr
-//
-//  Created by Devansh Chopra on 2018-10-24.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: InstructionsForTrackingViewController.swift
+//  Programmers: Devansh Chopra and Nic Klaassen
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs: 
 
 import UIKit
 
@@ -13,18 +18,10 @@ class InstructionsForTrackingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func Instructions(_ sender: UITextField) {
+        
     }
-    */
 
 }

@@ -20,6 +20,9 @@
 		A5B4C6A32183D65700A71E9B /* Exercise.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C6A22183D65700A71E9B /* Exercise.storyboard */; };
 		A5B4C6A62183D67000A71E9B /* ViewData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C6A42183D67000A71E9B /* ViewData.storyboard */; };
 		A5B4C6A82183D68000A71E9B /* Medicine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B4C6A72183D68000A71E9B /* Medicine.storyboard */; };
+		A5E1D110218955D3001D8814 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1D10F218955D3001D8814 /* ToggleButton.swift */; };
+		A8F8A206218A56A30044342D /* DailyMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8A205218A56A30044342D /* DailyMedicationViewController.swift */; };
+		A8F8A20E218A59170044342D /* MedicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8A20D218A59170044342D /* MedicationTableViewCell.swift */; };
 		E04F6FD32182979C000AF2F6 /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */; };
 		E0B1033C218B720D00F0B96E /* libraries in Resources */ = {isa = PBXBuildFile; fileRef = E0B10335218B720D00F0B96E /* libraries */; };
 		E0B10353218B77D500F0B96E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B10343218B724600F0B96E /* Charts.framework */; };
@@ -51,13 +54,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
 			remoteInfo = Charts;
-		};
-		E0B10344218B724600F0B96E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E0B1033D218B724600F0B96E /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
-			remoteInfo = ChartsTests;
 		};
 		E0B10355218B77D500F0B96E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -136,6 +132,20 @@
 			remoteGlobalIDString = E0FEE11B217EB76B00C72D7C;
 			remoteInfo = tremr;
 		};
+		E0FF3F09218F9B4600877FE4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0B1033D218B724600F0B96E /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		E0FF3F0B218F9B4600877FE4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0B1033D218B724600F0B96E /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -167,6 +177,9 @@
 		A5B4C6A22183D65700A71E9B /* Exercise.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exercise.storyboard; sourceTree = "<group>"; };
 		A5B4C6A52183D67000A71E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = tremr/Base.lproj/ViewData.storyboard; sourceTree = "<group>"; };
 		A5B4C6A72183D68000A71E9B /* Medicine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Medicine.storyboard; sourceTree = "<group>"; };
+		A5E1D10F218955D3001D8814 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
+		A8F8A205218A56A30044342D /* DailyMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMedicationViewController.swift; sourceTree = "<group>"; };
+		A8F8A20D218A59170044342D /* MedicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTableViewCell.swift; sourceTree = "<group>"; };
 		E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
 		E0B10335218B720D00F0B96E /* libraries */ = {isa = PBXFileReference; lastKnownFileType = folder; path = libraries; sourceTree = "<group>"; };
 		E0B1033D218B724600F0B96E /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = libraries/charts/Charts.xcodeproj; sourceTree = "<group>"; };
@@ -222,13 +235,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E0B1033E218B724600F0B96E /* Products */ = {
+		A5760018218AB42F007A641F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				E0B10343218B724600F0B96E /* Charts.framework */,
-				E0B10345218B724600F0B96E /* ChartsTests.xctest */,
 			);
-			name = Products;
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		A5E1D108218955B4001D8814 /* SubClasses */ = {
+			isa = PBXGroup;
+			children = (
+				A5E1D10F218955D3001D8814 /* ToggleButton.swift */,
+			);
+			path = SubClasses;
 			sourceTree = "<group>";
 		};
 		E0BF93AD21868DBE0097767F /* Frameworks */ = {
@@ -263,6 +282,7 @@
 				E0FEE13E217EB76D00C72D7C /* tremrUITests */,
 				E0FEE11D217EB76B00C72D7C /* Products */,
 				E0BF93AD21868DBE0097767F /* Frameworks */,
+				E0FF3F07218F9B4600877FE4 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -279,6 +299,8 @@
 		E0FEE11E217EB76B00C72D7C /* tremr */ = {
 			isa = PBXGroup;
 			children = (
+				A5760018218AB42F007A641F /* Assets */,
+				A5E1D108218955B4001D8814 /* SubClasses */,
 				E0FEE158217ECDF800C72D7C /* ViewControllers */,
 				E0FEE11F217EB76B00C72D7C /* AppDelegate.swift */,
 				E0BF93E0218692640097767F /* types.swift */,
@@ -325,6 +347,8 @@
 				E0FEE14D217ECB4300C72D7C /* MeasureViewController.swift */,
 				E0FEE153217ECD1000C72D7C /* MedicationViewController.swift */,
 				E0FEE151217ECCE900C72D7C /* ExerciseViewController.swift */,
+				A8F8A205218A56A30044342D /* DailyMedicationViewController.swift */,
+				A8F8A20D218A59170044342D /* MedicationTableViewCell.swift */,
 				80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */,
 				E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */,
 				55D4D191218B7CAF00CB371C /* ViewDataViewController.swift */,
@@ -336,6 +360,23 @@
 				55D4D1B1218D9D9A00CB371C /* YearBarContainer.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E0FF3F04218F9B4600877FE4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E0FF3F0A218F9B4600877FE4 /* Charts.framework */,
+				E0FF3F0C218F9B4600877FE4 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E0FF3F07218F9B4600877FE4 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				E0B10343218B724600F0B96E /* Charts.framework */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,7 +474,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = E0B1033E218B724600F0B96E /* Products */;
+					ProductGroup = E0FF3F04218F9B4600877FE4 /* Products */;
 					ProjectRef = E0B1033D218B724600F0B96E /* Charts.xcodeproj */;
 				},
 				{
@@ -456,13 +497,6 @@
 			fileType = wrapper.framework;
 			path = Charts.framework;
 			remoteRef = E0B10342218B724600F0B96E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E0B10345218B724600F0B96E /* ChartsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsTests.xctest;
-			remoteRef = E0B10344218B724600F0B96E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		E0BF93D2218691E10097767F /* SQLite.framework */ = {
@@ -514,6 +548,20 @@
 			remoteRef = E0BF93DD218691E10097767F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		E0FF3F0A218F9B4600877FE4 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = E0FF3F09218F9B4600877FE4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E0FF3F0C218F9B4600877FE4 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = E0FF3F0B218F9B4600877FE4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -562,6 +610,7 @@
 				55D4D196218B888C00CB371C /* MonthContainer.swift in Sources */,
 				55D4D192218B7CAF00CB371C /* ViewDataViewController.swift in Sources */,
 				E0BF93E2218692640097767F /* types.swift in Sources */,
+				A5E1D110218955D3001D8814 /* ToggleButton.swift in Sources */,
 				E0D5F0E92188CAE4008BFC97 /* RecordRestingViewController.swift in Sources */,
 				E0D5F0EA2188CAE4008BFC97 /* DisplaySeverityViewController.swift in Sources */,
 				80EF89CD2181638700872F5B /* InstructionsForTrackingViewController.swift in Sources */,
@@ -570,9 +619,11 @@
 				E04F6FD32182979C000AF2F6 /* CountdownViewController.swift in Sources */,
 				80EF89CB21814DA400872F5B /* GyroScope.swift in Sources */,
 				E0FEE152217ECCE900C72D7C /* ExerciseViewController.swift in Sources */,
+				A8F8A206218A56A30044342D /* DailyMedicationViewController.swift in Sources */,
 				55D4D199218B8AA600CB371C /* WeekContainer.swift in Sources */,
 				55D4D19B218B94AA00CB371C /* WeekBarContainer.swift in Sources */,
 				E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */,
+				A8F8A20E218A59170044342D /* MedicationTableViewCell.swift in Sources */,
 				E0BF93E1218692640097767F /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

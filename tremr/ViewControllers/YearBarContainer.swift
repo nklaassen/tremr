@@ -1,12 +1,15 @@
 //
-//  YearBarContainer.swift
-//  tremr
-//
-//  Created by Kira Nishi Beckingham on 2018-11-03.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
-//  This file sets the bar chart for year view
-//
+//  Name of file: YearBarContainer.swift
+//  Programmers: Kira Nishi-Beckingham
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs:
 
 import Charts
 import Foundation

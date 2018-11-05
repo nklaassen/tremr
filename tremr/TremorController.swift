@@ -1,10 +1,15 @@
 //
-//  PosturalViewController.swift
-//  tremr
-//
-//  Created by Devansh Chopra on 2018-10-24.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: TremorController.swift
+//  Programmers: Nic Klaassen and Devansh Chopra
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs:
 
 import Foundation
 
@@ -82,6 +87,7 @@ class TremorController {
                 severity = 10
             }
         }
+        
         print("severity: \(severity)")
         return severity
     }
