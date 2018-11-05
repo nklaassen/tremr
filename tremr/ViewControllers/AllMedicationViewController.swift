@@ -27,7 +27,9 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
         //Set containing class as the delegate and datasource of the table view
         medTableView.delegate = self
         medTableView.dataSource = self
-        
+        medTableView.estimatedRowHeight = 0
+        medTableView.estimatedSectionHeaderHeight = 0
+        medTableView.estimatedSectionFooterHeight = 0
         // Do any additional setup after loading the view.
     }
     
@@ -69,10 +71,6 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
         db.updateMedicineEndDate(MIDToUpdate: medications[sender.tag].MID)//Set entry in database to end today
         medications.remove(at: sender.tag) //Remove your element from array
         medTableView.deleteRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic) //Delete row from table section 0
-        loadMedications()
-        
-        //Reload table
-        medTableView.reloadData()
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
