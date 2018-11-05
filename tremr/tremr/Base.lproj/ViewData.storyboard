@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XVr-e5-TTc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XVr-e5-TTc">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +14,7 @@
             <objects>
                 <viewController title="ViewData" id="XVr-e5-TTc" customClass="ViewDataViewController" customModule="tremr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hpP-mY-MFA">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ag-4d-qFU">
@@ -23,8 +26,8 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVR-C5-XxN">
-                                <rect key="frame" x="28" y="58" width="319" height="191"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="28" y="58" width="319" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="View Data">
                                         <attributes>
@@ -35,14 +38,229 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1Rt-lM-Akb">
+                                <rect key="frame" x="15" y="592" width="345" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Aiw-Ug-vSY"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Week"/>
+                                    <segment title="Month"/>
+                                    <segment title="Year"/>
+                                </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="XVr-e5-TTc" eventType="valueChanged" id="vG6-G0-BzE"/>
+                                </connections>
+                            </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9IY-Ws-9Gc">
+                                <rect key="frame" x="15" y="121" width="345" height="283"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <segue destination="I0K-rL-t0I" kind="embed" id="zCI-RD-Zn8"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nuj-AW-bWT">
+                                <rect key="frame" x="16" y="121" width="343" height="283"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <segue destination="5Rk-Ql-23W" kind="embed" id="L3q-LZ-L6c"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P9T-Tn-5wz">
+                                <rect key="frame" x="16" y="121" width="343" height="283"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <segue destination="aQt-lv-g7d" kind="embed" id="HHy-Ie-z7a"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="81G-34-lgF">
+                                <rect key="frame" x="15" y="412" width="344" height="172"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="XB2-gY-W9l" kind="embed" id="bE6-3k-7xC"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HUn-zh-3WT">
+                                <rect key="frame" x="16" y="437" width="343" height="147"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="HJI-bj-Dkm" kind="embed" id="qxV-CM-0sw"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DT4-Id-qvb">
+                                <rect key="frame" x="16" y="437" width="343" height="147"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="MDZ-iQ-KmV" kind="embed" id="qw1-xt-ff6"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1Rt-lM-Akb" firstAttribute="leading" secondItem="YUW-No-pPj" secondAttribute="leading" constant="15" id="JBI-f7-n9t"/>
+                            <constraint firstItem="YUW-No-pPj" firstAttribute="bottom" secondItem="1Rt-lM-Akb" secondAttribute="bottom" constant="25" id="eZt-wj-CWG"/>
+                            <constraint firstItem="YUW-No-pPj" firstAttribute="trailing" secondItem="1Rt-lM-Akb" secondAttribute="trailing" constant="15" id="rRW-tO-XMB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="YUW-No-pPj"/>
                     </view>
+                    <connections>
+                        <outlet property="mainView" destination="hpP-mY-MFA" id="pxO-Z3-Noo"/>
+                        <outlet property="monthBarContainer" destination="HUn-zh-3WT" id="P3A-S2-YA4"/>
+                        <outlet property="monthContainer" destination="Nuj-AW-bWT" id="bVX-Tr-Cyd"/>
+                        <outlet property="segmentedControl" destination="1Rt-lM-Akb" id="xg8-Um-kcy"/>
+                        <outlet property="weekBarContainer" destination="81G-34-lgF" id="aMa-BU-xll"/>
+                        <outlet property="weekContainer" destination="9IY-Ws-9Gc" id="YSZ-ic-nsX"/>
+                        <outlet property="yearBarContaienr" destination="DT4-Id-qvb" id="sbi-WG-p0Q"/>
+                        <outlet property="yearContainer" destination="P9T-Tn-5wz" id="jPg-gW-MIv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wxE-e3-O79" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1702" y="1124"/>
+            <point key="canvasLocation" x="1701.5999999999999" y="1123.9880059970017"/>
+        </scene>
+        <!--Week Container-->
+        <scene sceneID="2th-Np-Q1Y">
+            <objects>
+                <viewController id="I0K-rL-t0I" customClass="WeekContainer" customModule="tremr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XzI-yk-0Ki">
+                        <rect key="frame" x="0.0" y="0.0" width="345" height="283"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DiF-Qt-kOO" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="0.0" width="345" height="283"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="weekLineChartView" destination="DiF-Qt-kOO" id="nNq-ks-Nn5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qpL-cU-8EY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1145" y="1755"/>
+        </scene>
+        <!--Month Container-->
+        <scene sceneID="vi4-xk-pq4">
+            <objects>
+                <viewController id="5Rk-Ql-23W" customClass="MonthContainer" customModule="tremr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fOw-2F-azy">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="283"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8N0-nX-UV4" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="283"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="monthLineChartView" destination="8N0-nX-UV4" id="6TW-uL-JzU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KjF-es-mw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1727" y="1755"/>
+        </scene>
+        <!--Year Container-->
+        <scene sceneID="wGz-e1-Ufi">
+            <objects>
+                <viewController id="aQt-lv-g7d" customClass="YearContainer" customModule="tremr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hS5-8Y-fKf">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="283"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="faZ-uQ-qW1" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="283"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="yearLineChartView" destination="faZ-uQ-qW1" id="lqI-f5-c6w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tIM-Qd-0PO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2401" y="1755"/>
+        </scene>
+        <!--Week Bar Container-->
+        <scene sceneID="ncV-5O-CG7">
+            <objects>
+                <viewController id="XB2-gY-W9l" customClass="WeekBarContainer" customModule="tremr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WTN-cR-HgC">
+                        <rect key="frame" x="0.0" y="0.0" width="344" height="172"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3wz-kb-Sgf" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="0.0" width="345" height="172"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="weekBarChartView" destination="3wz-kb-Sgf" id="cMm-Lx-Diw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tZ8-Ix-C4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2344.8000000000002" y="1235.9820089955024"/>
+        </scene>
+        <!--Month Bar Container-->
+        <scene sceneID="QCJ-Ni-wYj">
+            <objects>
+                <viewController id="HJI-bj-Dkm" customClass="MonthBarContainer" customModule="tremr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L3O-VM-IwA">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="147"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dpz-Ga-BL4" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="147"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="monthBarChartView" destination="dpz-Ga-BL4" id="2pC-tR-51c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pko-pp-H5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="818" y="1464"/>
+        </scene>
+        <!--Year Bar Container-->
+        <scene sceneID="MAi-Ms-dZk">
+            <objects>
+                <viewController id="MDZ-iQ-KmV" customClass="YearBarContainer" customModule="tremr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FcI-Jp-9mO">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="147"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbm-ng-lZl" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="147"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="yearBarChartView" destination="cbm-ng-lZl" id="QEO-a6-th6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eN3-nh-AWO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1757.5999999999999" y="426.38680659670166"/>
         </scene>
     </scenes>
 </document>

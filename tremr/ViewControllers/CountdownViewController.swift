@@ -1,33 +1,39 @@
 //
-//  CountdownViewController.swift
-//  tremr
-//
-//  Created by nklaasse on 10/25/18.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: CountdownViewController.swift
+//  Programmers: Devansh Chopra and Nic Klaassen
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs: 
 
 import UIKit
 
+//The following class is for the countdown that starts the recording
 class CountdownViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
-    let delay = 5 // seconds
+    let delay = 5 // 5 Second Countdown
     var countdownCompleted = false
     var countingDown = false
 
     // The button is connected to a segue to go to the next page
     // Here I block that segue until the countdown is done, at which point I trigger the segue myself
     // Note: the page that is being segueued to *must* have an identifier in the storyboard or this will crash
+    
     override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
         if countdownCompleted {
             return true

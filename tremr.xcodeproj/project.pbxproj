@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55D4D192218B7CAF00CB371C /* ViewDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D191218B7CAF00CB371C /* ViewDataViewController.swift */; };
+		55D4D194218B813100CB371C /* YearContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D193218B813100CB371C /* YearContainer.swift */; };
+		55D4D196218B888C00CB371C /* MonthContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D195218B888C00CB371C /* MonthContainer.swift */; };
+		55D4D199218B8AA600CB371C /* WeekContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D198218B8AA600CB371C /* WeekContainer.swift */; };
+		55D4D19B218B94AA00CB371C /* WeekBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D19A218B94AA00CB371C /* WeekBarContainer.swift */; };
+		55D4D1B0218D991700CB371C /* MonthBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D1AF218D991700CB371C /* MonthBarContainer.swift */; };
+		55D4D1B2218D9D9A00CB371C /* YearBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D1B1218D9D9A00CB371C /* YearBarContainer.swift */; };
 		80EF89CB21814DA400872F5B /* GyroScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CA21814DA400872F5B /* GyroScope.swift */; };
 		80EF89CD2181638700872F5B /* InstructionsForTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */; };
 		A50B2529218F9D610033AA48 /* DailyExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50B2528218F9D610033AA48 /* DailyExerciseViewController.swift */; };
@@ -24,6 +31,9 @@
 		A8F8A206218A56A30044342D /* DailyMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8A205218A56A30044342D /* DailyMedicationViewController.swift */; };
 		A8F8A20E218A59170044342D /* DailyMedicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8A20D218A59170044342D /* DailyMedicationTableViewCell.swift */; };
 		E04F6FD32182979C000AF2F6 /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */; };
+		E0B1033C218B720D00F0B96E /* libraries in Resources */ = {isa = PBXBuildFile; fileRef = E0B10335218B720D00F0B96E /* libraries */; };
+		E0B10353218B77D500F0B96E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B10343218B724600F0B96E /* Charts.framework */; };
+		E0B10354218B77D500F0B96E /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0B10343218B724600F0B96E /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E0BF93E1218692640097767F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BF93DF218692640097767F /* DatabaseManager.swift */; };
 		E0BF93E2218692640097767F /* types.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BF93E0218692640097767F /* types.swift */; };
 		E0BF93E4218692870097767F /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0BF93D2218691E10097767F /* SQLite.framework */; };
@@ -42,10 +52,23 @@
 		E0FEE14E217ECB4300C72D7C /* MeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE14D217ECB4300C72D7C /* MeasureViewController.swift */; };
 		E0FEE152217ECCE900C72D7C /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE151217ECCE900C72D7C /* ExerciseViewController.swift */; };
 		E0FEE154217ECD1000C72D7C /* MedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE153217ECD1000C72D7C /* MedicationViewController.swift */; };
-		E0FEE156217ECD5A00C72D7C /* ViewDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEE155217ECD5A00C72D7C /* ViewDataViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E0B10342218B724600F0B96E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0B1033D218B724600F0B96E /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		E0B10355218B77D500F0B96E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0B1033D218B724600F0B96E /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A58A4ED274A941CA248EA921;
+			remoteInfo = Charts;
+		};
 		E0BF93D1218691E10097767F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E0BF93C7218691E10097767F /* SQLite.xcodeproj */;
@@ -116,6 +139,20 @@
 			remoteGlobalIDString = E0FEE11B217EB76B00C72D7C;
 			remoteInfo = tremr;
 		};
+		E0FF3F09218F9B4600877FE4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0B1033D218B724600F0B96E /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		E0FF3F0B218F9B4600877FE4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0B1033D218B724600F0B96E /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -126,6 +163,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				E0BF93E5218692870097767F /* SQLite.framework in Embed Frameworks */,
+				E0B10354218B77D500F0B96E /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,6 +171,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		55D4D191218B7CAF00CB371C /* ViewDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDataViewController.swift; sourceTree = "<group>"; };
+		55D4D193218B813100CB371C /* YearContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearContainer.swift; sourceTree = "<group>"; };
+		55D4D195218B888C00CB371C /* MonthContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthContainer.swift; sourceTree = "<group>"; };
+		55D4D198218B8AA600CB371C /* WeekContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekContainer.swift; sourceTree = "<group>"; };
+		55D4D19A218B94AA00CB371C /* WeekBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekBarContainer.swift; sourceTree = "<group>"; };
+		55D4D1AF218D991700CB371C /* MonthBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthBarContainer.swift; sourceTree = "<group>"; };
+		55D4D1B1218D9D9A00CB371C /* YearBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearBarContainer.swift; sourceTree = "<group>"; };
 		80EF89CA21814DA400872F5B /* GyroScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroScope.swift; sourceTree = "<group>"; };
 		80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsForTrackingViewController.swift; sourceTree = "<group>"; };
 		A50B2528218F9D610033AA48 /* DailyExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyExerciseViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +195,8 @@
 		A8F8A205218A56A30044342D /* DailyMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMedicationViewController.swift; sourceTree = "<group>"; };
 		A8F8A20D218A59170044342D /* DailyMedicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMedicationTableViewCell.swift; sourceTree = "<group>"; };
 		E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
+		E0B10335218B720D00F0B96E /* libraries */ = {isa = PBXFileReference; lastKnownFileType = folder; path = libraries; sourceTree = "<group>"; };
+		E0B1033D218B724600F0B96E /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = libraries/charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		E0BF93C7218691E10097767F /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "libraries/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		E0BF93DF218692640097767F /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		E0BF93E0218692640097767F /* types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = types.swift; sourceTree = "<group>"; };
@@ -173,7 +220,6 @@
 		E0FEE14D217ECB4300C72D7C /* MeasureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureViewController.swift; sourceTree = "<group>"; };
 		E0FEE151217ECCE900C72D7C /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
 		E0FEE153217ECD1000C72D7C /* MedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationViewController.swift; sourceTree = "<group>"; };
-		E0FEE155217ECD5A00C72D7C /* ViewDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDataViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0BF93E4218692870097767F /* SQLite.framework in Frameworks */,
+				E0B10353218B77D500F0B96E /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +267,7 @@
 		E0BF93AD21868DBE0097767F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E0B1033D218B724600F0B96E /* Charts.xcodeproj */,
 				E0BF93C7218691E10097767F /* SQLite.xcodeproj */,
 			);
 			name = Frameworks;
@@ -242,11 +290,13 @@
 		E0FEE113217EB76B00C72D7C = {
 			isa = PBXGroup;
 			children = (
+				E0B10335218B720D00F0B96E /* libraries */,
 				E0FEE11E217EB76B00C72D7C /* tremr */,
 				E0FEE133217EB76D00C72D7C /* tremrTests */,
 				E0FEE13E217EB76D00C72D7C /* tremrUITests */,
 				E0FEE11D217EB76B00C72D7C /* Products */,
 				E0BF93AD21868DBE0097767F /* Frameworks */,
+				E0FF3F07218F9B4600877FE4 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -311,7 +361,6 @@
 				E0D5F0E72188CAE4008BFC97 /* DisplaySeverityViewController.swift */,
 				E0D5F0E82188CAE4008BFC97 /* RecordPosturalViewController.swift */,
 				E0D5F0E62188CAE4008BFC97 /* RecordRestingViewController.swift */,
-				E0FEE155217ECD5A00C72D7C /* ViewDataViewController.swift */,
 				E0FEE121217EB76B00C72D7C /* MainViewController.swift */,
 				E0FEE14D217ECB4300C72D7C /* MeasureViewController.swift */,
 				E0FEE151217ECCE900C72D7C /* ExerciseViewController.swift */,
@@ -323,8 +372,32 @@
 				A81150DF218E588E005478EE /* AllMedicationTableViewCell.swift */,
 				80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */,
 				E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */,
+				55D4D191218B7CAF00CB371C /* ViewDataViewController.swift */,
+				55D4D193218B813100CB371C /* YearContainer.swift */,
+				55D4D195218B888C00CB371C /* MonthContainer.swift */,
+				55D4D198218B8AA600CB371C /* WeekContainer.swift */,
+				55D4D19A218B94AA00CB371C /* WeekBarContainer.swift */,
+				55D4D1AF218D991700CB371C /* MonthBarContainer.swift */,
+				55D4D1B1218D9D9A00CB371C /* YearBarContainer.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E0FF3F04218F9B4600877FE4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E0FF3F0A218F9B4600877FE4 /* Charts.framework */,
+				E0FF3F0C218F9B4600877FE4 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E0FF3F07218F9B4600877FE4 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				E0B10343218B724600F0B96E /* Charts.framework */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +416,7 @@
 			);
 			dependencies = (
 				E0BF93E7218692870097767F /* PBXTargetDependency */,
+				E0B10356218B77D500F0B96E /* PBXTargetDependency */,
 			);
 			name = tremr;
 			productName = tremr;
@@ -421,6 +495,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = E0FF3F04218F9B4600877FE4 /* Products */;
+					ProjectRef = E0B1033D218B724600F0B96E /* Charts.xcodeproj */;
+				},
+				{
 					ProductGroup = E0BF93C8218691E10097767F /* Products */;
 					ProjectRef = E0BF93C7218691E10097767F /* SQLite.xcodeproj */;
 				},
@@ -435,6 +513,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		E0B10343218B724600F0B96E /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = E0B10342218B724600F0B96E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		E0BF93D2218691E10097767F /* SQLite.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -484,6 +569,20 @@
 			remoteRef = E0BF93DD218691E10097767F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		E0FF3F0A218F9B4600877FE4 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = E0FF3F09218F9B4600877FE4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E0FF3F0C218F9B4600877FE4 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = E0FF3F0B218F9B4600877FE4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -497,6 +596,7 @@
 				E0FEE125217EB76B00C72D7C /* Main.storyboard in Resources */,
 				A5B4C6A12183D63B00A71E9B /* Measure.storyboard in Resources */,
 				A5B4C6A82183D68000A71E9B /* Medicine.storyboard in Resources */,
+				E0B1033C218B720D00F0B96E /* libraries in Resources */,
 				A5B4C6A62183D67000A71E9B /* ViewData.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,9 +622,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55D4D1B2218D9D9A00CB371C /* YearBarContainer.swift in Sources */,
 				E0FEE14E217ECB4300C72D7C /* MeasureViewController.swift in Sources */,
 				E0FEE122217EB76B00C72D7C /* MainViewController.swift in Sources */,
 				E0FEE154217ECD1000C72D7C /* MedicationViewController.swift in Sources */,
+				55D4D194218B813100CB371C /* YearContainer.swift in Sources */,
+				55D4D1B0218D991700CB371C /* MonthBarContainer.swift in Sources */,
+				55D4D196218B888C00CB371C /* MonthContainer.swift in Sources */,
+				55D4D192218B7CAF00CB371C /* ViewDataViewController.swift in Sources */,
 				E0BF93E2218692640097767F /* types.swift in Sources */,
 				A50B2533218FAB4D0033AA48 /* AllExerciseViewController.swift in Sources */,
 				A50B2535218FAE920033AA48 /* AllExerciseTableViewCell.swift in Sources */,
@@ -543,6 +648,8 @@
 				80EF89CB21814DA400872F5B /* GyroScope.swift in Sources */,
 				E0FEE152217ECCE900C72D7C /* ExerciseViewController.swift in Sources */,
 				A8F8A206218A56A30044342D /* DailyMedicationViewController.swift in Sources */,
+				55D4D199218B8AA600CB371C /* WeekContainer.swift in Sources */,
+				55D4D19B218B94AA00CB371C /* WeekBarContainer.swift in Sources */,
 				E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */,
 				A8F8A20E218A59170044342D /* DailyMedicationTableViewCell.swift in Sources */,
 				E0BF93E1218692640097767F /* DatabaseManager.swift in Sources */,
@@ -569,6 +676,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E0B10356218B77D500F0B96E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = E0B10355218B77D500F0B96E /* PBXContainerItemProxy */;
+		};
 		E0BF93E7218692870097767F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SQLite iOS";

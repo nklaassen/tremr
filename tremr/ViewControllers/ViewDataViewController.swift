@@ -1,39 +1,81 @@
 //
-//  ViewDataViewController.swift
-//  tremr
-//
-//  Created by nklaasse on 10/22/18.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: ViewDataViewController.swift
+//  Programmers: Kira Nishi-Beckingham
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs:
 
+
+import Foundation
 import UIKit
+//import Charts
 
 class ViewDataViewController: UIViewController {
+    
+    @IBOutlet weak var weekContainer: UIView!
+    @IBOutlet weak var monthContainer: UIView!
+    @IBOutlet weak var yearContainer: UIView!
+    @IBOutlet weak var weekBarContainer: UIView!
+    @IBOutlet weak var monthBarContainer: UIView!
+    @IBOutlet weak var yearBarContaienr: UIView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var mainView: UIView!
+    
+    @IBAction func indexChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            weekContainer.isHidden = false
+            weekBarContainer.isHidden = false
+            monthContainer.isHidden = true
+            monthBarContainer.isHidden = true
+            yearContainer.isHidden = true
+            yearBarContaienr.isHidden = true
+    
+        case 1:
+            weekContainer.isHidden = true
+            weekBarContainer.isHidden = true
+            monthContainer.isHidden = false
+            monthBarContainer.isHidden = false
+            yearContainer.isHidden = true
+            yearBarContaienr.isHidden = true
+    
+        case 2:
+            weekContainer.isHidden = true
+            weekBarContainer.isHidden = true
+            monthContainer.isHidden = true
+            monthBarContainer.isHidden = true
+            yearContainer.isHidden = false
+            yearBarContaienr.isHidden = false
+    
+        default:
+            weekContainer.isHidden = false
+            weekBarContainer.isHidden = false
+            monthContainer.isHidden = true
+            monthBarContainer.isHidden = true
+            yearContainer.isHidden = true
+            yearBarContaienr.isHidden = true
+    
+            break;
+        }
+    }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        //set default view to Week View
+        mainView.bringSubview(toFront: weekBarContainer)
+        mainView.bringSubview(toFront: weekContainer)
+    }
+    
+    // go back to main menu when the back button is pressed
     @IBAction func mainViewTransition(_ sender: Any) {
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

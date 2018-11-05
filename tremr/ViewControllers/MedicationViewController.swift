@@ -1,10 +1,15 @@
 //
-//  MedicationViewController.swift
-//  tremr
-//
-//  Created by nklaasse on 10/22/18.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: MedicationViewController.swift
+//  Programmers: Jason Fevang and Colin Chan
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs:
 
 import UIKit
 

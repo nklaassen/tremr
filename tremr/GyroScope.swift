@@ -1,10 +1,15 @@
 //
-//  GyroScope.swift
-//  tremr
-//
-//
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: Gyroscope.swift
+//  Programmers: Nic Klaassen and Devansh Chopra
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs:
 
 import Foundation
 import CoreMotion
