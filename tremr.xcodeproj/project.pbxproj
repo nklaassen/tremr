@@ -306,7 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				A50B2534218FAE920033AA48 /* AllExerciseTableViewCell.swift */,
-				A50B2532218FAB4D0033AA48 /* AllExerciseViewController.swift */,
 				A50B2530218FA6F10033AA48 /* DailyExerciseTableViewCell.swift */,
 				A50B2528218F9D610033AA48 /* DailyExerciseViewController.swift */,
 				E0D5F0E72188CAE4008BFC97 /* DisplaySeverityViewController.swift */,
@@ -318,6 +317,7 @@
 				E0FEE151217ECCE900C72D7C /* ExerciseViewController.swift */,
 				E0FEE153217ECD1000C72D7C /* MedicationViewController.swift */,
 				A8F8A205218A56A30044342D /* DailyMedicationViewController.swift */,
+				A50B2532218FAB4D0033AA48 /* AllExerciseViewController.swift */,
 				A81150DD218E53BB005478EE /* AllMedicationViewController.swift */,
 				A8F8A20D218A59170044342D /* DailyMedicationTableViewCell.swift */,
 				A81150DF218E588E005478EE /* AllMedicationTableViewCell.swift */,

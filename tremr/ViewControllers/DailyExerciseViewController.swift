@@ -50,7 +50,7 @@ class DailyExerciseViewController: UIViewController , UITableViewDataSource, UIT
             fatalError("The dequeued cell is not an instance of ExerciseTableViewCell.")
         }
         
-        // Fetches the appropriate medication for the data source layout.
+        // Fetches the appropriate exercise for the data source layout.
         let exer = exercises[indexPath.row]
         
         cell.exerNameLabel.text = exer.name
@@ -76,7 +76,7 @@ class DailyExerciseViewController: UIViewController , UITableViewDataSource, UIT
     private func loadExercises() {
         //Retrieve exercises to be loaded into the table
         print("exercises loaded")
-        exercises = db.getExerciseDate(date: displayDay)
+        exercises = db.getExerciseDate(date: displayDay)        
     }
     
     private func incrementDisplayDay(changeValue : Int) {

@@ -65,10 +65,8 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        switch(segue.identifier ?? "") {
-        case "AddMedicine":
-            print("adding an item")
-        case "ShowDetail":
+        
+        if (segue.identifier == "ShowDetail") {
             guard let medicationDetailViewController = segue.destination as? MedicationViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -86,12 +84,9 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
             //copy over data to detailed view
             medicationDetailViewController.edittedMedicine = selectedMedicine
             
-            
-        default:
-            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
-        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        }
     }
     
     //MARK: Actions

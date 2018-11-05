@@ -84,6 +84,7 @@ class DatabaseManager
             })                                                    // )
             
             try db.run(Medicines.drop(ifExists: true))
+            try db.run(Exercises.drop(ifExists: true))
             
             // Create the Medicine table
             try db.run(Medicines.create(ifNotExists: true) { t in
@@ -106,7 +107,7 @@ class DatabaseManager
             
             // Create the Exercise table
             try db.run(Exercises.create(ifNotExists: true) { t in
-                t.column(MID, primaryKey: true)
+                t.column(EID, primaryKey: true)
                 t.column(UID)
                 t.column(name)
                 t.column(unit)
@@ -245,9 +246,9 @@ class DatabaseManager
         }
         
         do {
-            try db.run(Medicines.insert(self.UID <- UID,
+            try db.run(Exercises.insert(self.UID <- UID,
                                         self.name <- name,
-                                        self.dosage <- dosage,
+                                        self.unit <- unit,
                                         self.monday <- mo,
                                         self.tuesday <- tu,
                                         self.wednesday <- we,
@@ -432,6 +433,15 @@ class DatabaseManager
             try db.run(medicineToUpdate.update(self.name <- name, self.dosage <- dosage, monday <- mo, tuesday <- tu, wednesday <- we, thursday <- th, friday <- fr, saturday <- sa, sunday <- su, self.reminder <- reminder))
         } catch {
             fatalError("Failed to update row with MID: \(MID))")
+        }
+    }
+    
+    func updateExercise(EIDToUpdate : Int64, name: String, unit: String,mo: Bool, tu: Bool, we: Bool, th: Bool, fr: Bool, sa: Bool, su: Bool, reminder: Bool) {
+        do {
+            let exerciseToUpdate = Exercises.filter(EID == EIDToUpdate)
+            try db.run(exerciseToUpdate.update(self.name <- name, self.unit <- unit, monday <- mo, tuesday <- tu, wednesday <- we, thursday <- th, friday <- fr, saturday <- sa, sunday <- su, self.reminder <- reminder))
+        } catch {
+            fatalError("Failed to update row with EID: \(EID))")
         }
     }
 

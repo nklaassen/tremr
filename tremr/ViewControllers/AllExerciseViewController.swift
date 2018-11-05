@@ -13,7 +13,7 @@ class AllExerciseViewController: UIViewController, UITableViewDataSource, UITabl
     //MARK: Properties
     @IBOutlet weak var exerTableView: UITableView!
     
-    //Array of medications displayed by table
+    //Array of exercises displayed by table
     var exercises = [Exercise]()
     
     //MARK: UIViewController functions
@@ -58,6 +58,31 @@ class AllExerciseViewController: UIViewController, UITableViewDataSource, UITabl
         cell.unitLabel.text = exer.unit
         
         return cell
+    }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if (segue.identifier == "ShowDetail") {
+        
+            guard let exerciseDetailViewController = segue.destination as? ExerciseViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedExerciseCell = sender as? AllExerciseTableViewCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = exerTableView.indexPath(for: selectedExerciseCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedExercise = exercises[indexPath.row]
+            
+            //copy over data to detailed view
+            exerciseDetailViewController.edittedExercise = selectedExercise
+        }
     }
     
     //MARK: Actions
