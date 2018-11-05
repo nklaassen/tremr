@@ -169,6 +169,72 @@ class tremrUITests: XCTestCase {
     
     func testExercise(){
         
+        let app = XCUIApplication()
+        
+        XCTAssert(app.buttons["View Results"].exists)
+        XCTAssert(app.buttons["Measure"].exists)
+        XCTAssert(app.buttons["Medication"].exists)
+        XCTAssert(app.buttons["Exercise"].exists)
+        
+        app.buttons["Exercise"].tap()
+        
+        XCTAssert(app.buttons["Edit/Add Exercises"].exists)
+        XCTAssert(app.buttons["R-Arrow"].exists)
+        XCTAssert(app.buttons["L-Arrow"].exists)
+        
+        let rArrowButton = app.buttons["R-Arrow"]
+        rArrowButton.tap()
+        rArrowButton.tap()
+        
+        let lArrowButton = app.buttons["L-Arrow"]
+        lArrowButton.tap()
+        lArrowButton.tap()
+        app.buttons["Edit/Add Exercises"].tap()
+        
+        XCTAssert(app.buttons["Add Exercise"].exists)
+        XCTAssert(app.buttons["Back"].exists)
+        
+        let tablesQuery = app.tables
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Exercise1"]/*[[".cells.staticTexts[\"Exercise1\"]",".staticTexts[\"Exercise1\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        XCTAssert(app.buttons["Update Exercise"].exists)
+        XCTAssert(app.buttons["Cancel"].exists)
+        
+        let window = app.children(matching: .window).element(boundBy: 0)
+        let element3 = window.children(matching: .other).element(boundBy: 2).children(matching: .other).element
+        let element = element3.children(matching: .other).element(boundBy: 1)
+        element.children(matching: .button).matching(identifier: "Yes").element(boundBy: 1).tap()
+        element.children(matching: .button).matching(identifier: "Yes").element(boundBy: 2).tap()
+        element.children(matching: .button).matching(identifier: "Yes").element(boundBy: 3).tap()
+        element3.children(matching: .button)["No"].tap()
+        app.buttons["Update Exercise"].tap()
+        
+        let addExerciseButton = app.buttons["Add Exercise"]
+        addExerciseButton.tap()
+        
+        XCTAssert(app.buttons["Add Exercise"].exists)
+        XCTAssert(app.buttons["Back"].exists)
+        
+        app.textFields["Enter exercise name"].tap()
+        app.textFields["Enter exercise name"].typeText("exercise2")
+        app.textFields["Enter units performed"].tap()
+        app.textFields["Enter units performed"].typeText("25")
+        
+        let element2 = window.children(matching: .other).element(boundBy: 4).children(matching: .other).element.children(matching: .other).element(boundBy: 1)
+        element2.children(matching: .button).matching(identifier: "No").element(boundBy: 1).tap()
+        element2.children(matching: .button).matching(identifier: "No").element(boundBy: 2).tap()
+        addExerciseButton.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"Exercise1")/*[[".cells.containing(.staticText, identifier:\"100\")",".cells.containing(.staticText, identifier:\"Exercise1\")"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.buttons["Button"].tap()
+        
+        let backButton = app.buttons["Back"]
+        backButton.tap()
+        backButton.tap()
+        
+        XCTAssert(app.buttons["View Results"].exists)
+        XCTAssert(app.buttons["Measure"].exists)
+        XCTAssert(app.buttons["Medication"].exists)
+        XCTAssert(app.buttons["Exercise"].exists)
+        
     }
     
     func testMeasure(){
