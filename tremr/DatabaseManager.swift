@@ -338,8 +338,10 @@ class DatabaseManager
     func getExercise() -> Array<Exercise> {
         var exercises = Array<Exercise>()
         
+        let query = Exercises.filter(end_date == nil)   //Only return active exercises, without an end date set
+
         do {
-            for exercise in try db.prepare(Exercises) {
+            for exercise in try db.prepare(query) {
                 exercises.append(Exercise(UID: exercise[self.UID],
                                           EID: exercise[self.EID],
                                           name: exercise[self.name],
