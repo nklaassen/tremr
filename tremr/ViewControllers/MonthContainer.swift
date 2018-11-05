@@ -2,13 +2,12 @@
 //  Programmers: Kira Nishi-Beckingham and Leo Zhang
 //  Team Name: Co.DEsign
 //  Changes been made:
+//          2018-10-27: code copied from weekContainer.swift and edited to month
+//          2018-10-28: formatted line graph to look nice
+//          2018-11-02: added functions to grab data from database
 //          2018-11-03: checked serverity values to make sure it's in bounds
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-// Known Bugs:
+//
+// Known Bugs: N/A
 
 import Foundation
 import UIKit

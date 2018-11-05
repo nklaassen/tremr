@@ -3,13 +3,11 @@
 //  Programmers: Kira Nishi-Beckingham
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-// Known Bugs:
+//          2018-10-28: added code to show bar graph of missed medications and exercises
+//          2018-11-02: fixed errors in code so there were no build errors
+//          2018-11-02: formatted bar graph to look nice
+//
+// Known Bugs: graph does not take data from the database yet
 
 import Charts
 import Foundation

@@ -3,13 +3,10 @@
 //  Programmers: Kira Nishi-Beckingham
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-// Known Bugs:
+//          2018-10-28: copied code from WeekBarContainer.swift and edited it to month
+//          2018-11-02: formatted bar graph to look nice
+//
+// Known Bugs: graph does not take data from the database yet
 
 import Charts
 import Foundation
