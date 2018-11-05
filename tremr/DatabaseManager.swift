@@ -282,9 +282,9 @@ class DatabaseManager
         let modified_start_date = calendar.startOfDay(for: start_date)
         var modified_end_date :Date? = nil
         if end_date != nil {
-            modified_end_date = calendar.startOfDay(for: (end_date?.addingTimeInterval(60*60*24))!)
+            modified_end_date = calendar.startOfDay(for: end_date!)
         }
-        
+
         do {
             try db.run(Exercises.insert(self.UID <- UID,
                                         self.name <- name,
@@ -436,8 +436,6 @@ class DatabaseManager
             targetWeekDay = friday
         default: //Saturday
             targetWeekDay = saturday
-            //default: //Any day
-            //targetWeekDay = nil
         }
         
         var query = Exercises.filter(targetWeekDay == true) // Weekday matches weekday recorded for
