@@ -1,16 +1,14 @@
-//
-//  WeekContainer.swift
-//  tremr
-//
-//  Created by Kira Nishi Beckingham and Leo Zhang on 2018-11-01.
-//  CO.DEsign
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
-// This file sets the line chart for week view
-//
-// changes:
-// data is checked to ensure that it is in bounds
-//
+//  Name of file: WeekContainer.swift
+//  Programmers: Kira Nishi-Beckingham and Leo Zhang
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-11-03: checked serverity values to make sure it's in bounds
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs:
 
 import Foundation
 import UIKit
@@ -115,13 +113,13 @@ class WeekContainer: UIViewController {
     func getPosturalData() -> [Double] {
         var Tremor = db.getTremors() //grab tremors from database
     
-        var monP: Double = 0
-        var tueP: Double = 0
-        var wedP: Double = 0
-        var thuP: Double = 0
-        var friP: Double = 0
-        var satP: Double = 0
-        var sunP: Double = 0
+        var monP: Double = -1
+        var tueP: Double = -1
+        var wedP: Double = -1
+        var thuP: Double = -1
+        var friP: Double = -1
+        var satP: Double = -1
+        var sunP: Double = -1
         
         //formatting date information so it displays the weekday
         let dateFormatter = DateFormatter()
@@ -165,10 +163,12 @@ class WeekContainer: UIViewController {
                 satP = Tremor[size].posturalSeverity
             }
             if dayOfWeek == "Sunday"{
-                sunP = Tremor[size].posturalSeverity
+                if sunP < 0{
+                    sunP = Tremor[size].posturalSeverity
+                }
             }
             
-            if sunP != 0 && monP != 0 && tueP != 0 && wedP != 0 && thuP != 0 && friP != 0 && satP != 0 {
+            if sunP >= 0 && monP >= 0 && tueP >= 0 && wedP >= 0 && thuP >= 0 && friP >= 0 && satP >= 0 {
                 break
             }
     
@@ -189,13 +189,13 @@ class WeekContainer: UIViewController {
     func getRestingData() -> [Double] {
         var Tremor = db.getTremors() //grab tremors from database
         
-        var monR: Double = 0
-        var tueR: Double = 0
-        var wedR: Double = 0
-        var thuR: Double = 0
-        var friR: Double = 0
-        var satR: Double = 0
-        var sunR: Double = 0
+        var monR: Double = -1
+        var tueR: Double = -1
+        var wedR: Double = -1
+        var thuR: Double = -1
+        var friR: Double = -1
+        var satR: Double = -1
+        var sunR: Double = -1
     
         //formatting date information so it displays the weekday
         let dateFormatter = DateFormatter()
@@ -237,10 +237,12 @@ class WeekContainer: UIViewController {
                 satR = Tremor[size].restingSeverity
             }
             if dayOfWeek == "Sunday"{
-                sunR = Tremor[size].restingSeverity
+                if sunR < 0{
+                    sunR = Tremor[size].restingSeverity
+                }
             }
             
-            if sunR != 0 && monR != 0 && tueR != 0 && wedR != 0 && thuR != 0 && friR != 0 && satR != 0 {
+            if sunR >= 0 && monR >= 0 && tueR >= 0 && wedR >= 0 && thuR >= 0 && friR >= 0 && satR >= 0 {
                 break
             }
     
@@ -252,7 +254,7 @@ class WeekContainer: UIViewController {
         }
     
         //sets the values for the array used in the graph for weekly view
-        let weeklyResting = [monR, tueR, wedR, thuR, friR, satR, sunR]
+        let weeklyResting = [sunR, monR, tueR, wedR, thuR, friR, satR]
         
         return(weeklyResting)
     }

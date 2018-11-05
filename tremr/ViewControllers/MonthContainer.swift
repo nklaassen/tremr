@@ -1,16 +1,14 @@
-//
-//  MonthContainer.swift
-//  tremr
-//
-//  Created by Kira Nishi Beckingham and Leo Zhang on 2018-11-01.
-//  CO.DEsign
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
-// This file sets the line chart for month view
-//
-// changes:
-// data is checked to ensure that it is in bounds
-//
+//  Name of file: MonthContainer.swift
+//  Programmers: Kira Nishi-Beckingham and Leo Zhang
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-11-03: checked serverity values to make sure it's in bounds
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs:
 
 import Foundation
 import UIKit
