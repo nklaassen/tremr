@@ -64,6 +64,9 @@ class MedicationViewController: UIViewController {
         else {
             confirmationButton.setTitle("Add Medicine",for: .normal)
         }
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
     override func didReceiveMemoryWarning() {

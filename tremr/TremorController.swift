@@ -3,28 +3,31 @@
 //  Programmers: Nic Klaassen and Devansh Chopra
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
+//          2018-10-20: Class created
+//          2018-10-22: Refactor
+//          2018-10-30: Update tremor calculation
+//          2018-11-04: Improve comments
 // Known Bugs:
 
 import Foundation
 
+// Class which is responsible for recording accelerometer/gyroscope data and calculating severity results
 class TremorController {
     
     private var gyroValues = Array<(Double)>()
     private var accelValues = Array<(Double)>()
-    let recordingTime = 3 // seconds
+    private let recordingTime = 10 // seconds
     private var resting = 0.0
     private var postural = 0.0
+    private let motion = MotionObserver()
 
+    // MARK: Public interface
+    
     init() {
         // Do any additional setup after loading the view.
     }
 
+    // records the resting tremor, accepts a callback that will be called when the recording completes
     func recordResting(callback: @escaping ()->()) {
         startRecording()
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(recordingTime), execute: {
@@ -36,6 +39,7 @@ class TremorController {
         })
     }
 
+    // records the postural tremor, accepts a callback that will be called when the recording completes
     func recordPostural(callback: @escaping ()->()) {
         startRecording()
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(recordingTime), execute: {
@@ -55,10 +59,13 @@ class TremorController {
         return postural
     }
     
+    // Mark: Internal methods
+    
     private func startRecording() {
         motion.addMotionObserver(observer: {(gyro: Double, accel: Double) -> Void in
             self.gyroValues.append(gyro)
             self.accelValues.append(accel)
+            print("gryoscope: \(gyro) accelerometer: \(accel)")
         })
     }
     

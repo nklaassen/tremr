@@ -3,12 +3,8 @@
 //  Programmers: Devansh Chopra and Nic Klaassen
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
+//          2018-10-28: show real score
+//          2018-10-30: cosmetic updates
 // Known Bugs: 
 
 import UIKit
@@ -22,8 +18,8 @@ class DisplaySeverityViewController: UIViewController {
         // Do any additional setup after loading the view.
         let postural = Tremr.GetPosturalScore()
         let resting = Tremr.GetRestingScore()
-        PosturalLabel.text = String(format: "%.1f", Tremr.GetPosturalScore())
-        RestingLabel.text = String(format: "%.1f", Tremr.GetRestingScore())
+        posturalLabel.text = String(format: "%.1f", Tremr.GetPosturalScore())
+        restingLabel.text = String(format: "%.1f", Tremr.GetRestingScore())
         db.addTremor(restingSeverity: resting, posturalSeverity: postural)
         
         // debug output
@@ -34,6 +30,6 @@ class DisplaySeverityViewController: UIViewController {
          */
     }
     
-    @IBOutlet weak var PosturalLabel: UILabel!
-    @IBOutlet weak var RestingLabel: UILabel!
+    @IBOutlet weak var posturalLabel: UILabel!
+    @IBOutlet weak var restingLabel: UILabel!
 }
