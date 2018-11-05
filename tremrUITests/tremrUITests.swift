@@ -64,7 +64,7 @@ class tremrUITests: XCTestCase {
         XCTAssert(app.buttons["Month"].exists)
         XCTAssert(app.buttons["Year"].exists)
         
-        app.buttons["Go to Previous View"].tap()
+        app.buttons["Back"].tap()
         
         XCTAssert(app.buttons["View Results"].exists)
         XCTAssert(app.buttons["Measure"].exists)
@@ -261,13 +261,13 @@ class tremrUITests: XCTestCase {
         
         startRecordingButton.tap()
         
-        sleep(10)
+        sleep(17)
         
         XCTAssert(app.buttons["Start Recording"].exists)
         
         startRecordingButton.tap()
         
-        sleep(10)
+        sleep(17)
         
         XCTAssert(app.buttons["Done"].exists)
         
