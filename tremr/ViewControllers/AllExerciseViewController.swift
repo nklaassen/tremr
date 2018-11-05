@@ -57,6 +57,10 @@ class AllExerciseViewController: UIViewController, UITableViewDataSource, UITabl
         cell.exerNameLabel.text = exer.name
         cell.unitLabel.text = exer.unit
         
+        //Set the delButton in the cell to refer to deleteButtonClicked when deleteButton is pressed
+        cell.delButton.tag = indexPath.row
+        cell.delButton.addTarget(self, action: #selector(self.deleteButtonClicked), for: .touchUpInside)
+        
         return cell
     }
     
@@ -86,6 +90,20 @@ class AllExerciseViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     //MARK: Actions
+    //When the delete button is clicked on the table, this function gets called
+    @objc func deleteButtonClicked(_ sender: UIButton) {
+        //Here sender.tag will give you the tapped checkbox/Button index from the cell
+        
+        //Update element from array
+        exercises.remove(at: sender.tag)
+        
+        //Delete row from table section 0
+        exerTableView.deleteRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
+        
+        //Set entry in database to end today
+        db.updateExerciseEndDate(EIDToUpdate: exercises[sender.tag].EID)
+        
+    }
     
     //MARK: Private methods
     private func loadExercises() {
