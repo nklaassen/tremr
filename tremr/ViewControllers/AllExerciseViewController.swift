@@ -1,10 +1,10 @@
 //
-//  AllExerciseViewController.swift
-//  tremr
-//
-//  Created by Colin Chan on 11/4/18.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: AllExerciseViewController.swift
+//  Programmers: Nic Klaassen and Devansh Chopra
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-22: created file
+// Known Bugs:
 
 import UIKit
 

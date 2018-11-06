@@ -3,12 +3,8 @@
 //  Programmers: Jason Fevang and Colin Chan
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
+//          2018-10-20: initial commit
+//          2018-10-24: build out pages
 // Known Bugs:
 
 import UIKit

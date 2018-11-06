@@ -3,12 +3,7 @@
 //  Programmers: Nic Klaassen
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
+//          2018-10-20: initial commit
 // Known Bugs:
 
 import UIKit

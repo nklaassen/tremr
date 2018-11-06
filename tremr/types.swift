@@ -3,12 +3,9 @@
 //  Programmers: Nic Klaassen and Jason Fevang
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
+//          2018-10-28: created file
+//          2018-10-30: add medicine and exercise
+//          2018-10-31: renames
 // Known Bugs:
 
 import Foundation

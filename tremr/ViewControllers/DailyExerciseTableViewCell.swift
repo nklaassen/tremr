@@ -1,10 +1,10 @@
 //
-//  DailyExerciseTableViewCell.swift
-//  tremr
-//
-//  Created by Colin Chan on 11/4/18.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: DailyExerciseTableViewCell.swift
+//  Programmers: Colin Chan
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-26: created file
+// Known Bugs:
 
 import UIKit
 

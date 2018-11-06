@@ -3,12 +3,9 @@
 //  Programmers: Devansh Chopra, Nic Klaassen, Jason Fevang, Colin Chan, Kira Nishi-Beckingham, Leo Zhang
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
+//          2018-10-22: initial build
+//          2018-10-28: add database example
+//          2018-10-29: add dummy data to db
 // Known Bugs:
 
 import UIKit

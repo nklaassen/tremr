@@ -1,10 +1,15 @@
 //
-//  AllMedicationTableViewCell.swift
-//  tremr
-//
-//  Created by Jason Fevang on 2018-11-03.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: AllMedicationTableViewCell.swift
+//  Programmers: Jason Fevang
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+//          2018-10-20:
+// Known Bugs:
 
 import UIKit
 
