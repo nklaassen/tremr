@@ -25,7 +25,8 @@ class DatabaseManager
     let email = Expression<String>("email")
     let name = Expression<String>("name")
     let password = Expression<String>("password")
-
+    let lastOpened = Expression<Date>("lastOpened")//Last time the app was opened
+    
     let Tremors = Table("Tremors")
     let TID = Expression<Int64>("TID")
     let posturalSeverity = Expression<Int>("posturalSeverity")
@@ -64,6 +65,26 @@ class DatabaseManager
     let start_date = Expression<Date>("start_date")
     let end_date = Expression<Date?>("end_date") //optional */
     
+    let MissedExercises = Table("MissedExercises")
+    //UID
+    //EID
+    //date
+    
+    let MissedMedicines = Table("MissedMedicines")
+    //UID
+    //MID
+    //date
+    
+    let TakenExercises = Table("TakenExercises")
+    //UID
+    //EID
+    //date
+    
+    let TakenMedicines = Table("TakenMedicines")
+    //UID
+    //MID
+    //date
+    
     //Calendar for comparing dates and performing date arithmetic
     let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
     
@@ -85,6 +106,7 @@ class DatabaseManager
                 t.column(UID, primaryKey: true)                   //     "UID" INTEGER PRIMARY KEY NOT NULL,
                 t.column(email, unique: true)                     //     "email" TEXT UNIQUE NOT NULL,
                 t.column(name)                                    //     "name" TEXT NOT NULL
+                t.column(lastOpened)
             })                                                    // )
             
             try db.run(Medicines.drop(ifExists: true))
@@ -138,7 +160,47 @@ class DatabaseManager
                 t.column(date)                                               //     "date" DATETIME NOT NULL
                 //t.foreignKey(UID, references: Users, UID, delete: .setNull)  //     FOREIGN KEY("UID") REFERENCES "Users"("UID") ON DELETE SET NULL,
             })                                                               // )
-
+            
+            // Create MissedExercises table
+            try db.run(MissedExercises.create(ifNotExists: true) { t in
+                t.column(UID)
+                t.column(EID)
+                t.column(date)
+                t.foreignKey(UID, references: Users, UID, delete: .cascade)
+                t.foreignKey(EID, references: Exercises, EID, delete: .cascade)
+                t.primaryKey(UID, EID, date)
+            })
+            
+            // Create MissedMedicines table
+            try db.run(MissedMedicines.create(ifNotExists: true) { t in
+                t.column(UID)
+                t.column(MID)
+                t.column(date)
+                t.foreignKey(UID, references: Users, UID, delete: .cascade)
+                t.foreignKey(MID, references: Medicines, MID, delete: .cascade)
+                t.primaryKey(UID, MID, date)
+            })                                                              // )
+            
+            // Create TakenExercises table
+            try db.run(TakenExercises.create(ifNotExists: true) { t in
+                t.column(UID)
+                t.column(EID)
+                t.column(date)
+                t.foreignKey(UID, references: Users, UID, delete: .cascade)
+                t.foreignKey(EID, references: Exercises, EID, delete: .cascade)
+                t.primaryKey(UID, EID, date)
+            })
+            
+            // Create TakenMedicines table
+            try db.run(TakenMedicines.create(ifNotExists: true) { t in
+                t.column(UID)
+                t.column(MID)
+                t.column(date)
+                t.foreignKey(UID, references: Users, UID, delete: .cascade)
+                t.foreignKey(MID, references: Medicines, MID, delete: .cascade)
+                t.primaryKey(UID, MID, date)
+            })
+            
             // Initialize the DB with some dummy data
             if getTremors().count == 0 {
                 for i in 0...365 {
