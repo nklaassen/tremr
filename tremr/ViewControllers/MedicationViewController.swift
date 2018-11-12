@@ -1,9 +1,9 @@
 //
 //  Name of file: MedicationViewController.swift
-//  Programmers: Jason Fevang and Colin Chan
+//  Programmers: Jason Fevang and Colin Chan and Leo Zhang
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
+//          2018-11-12: notifications added
 //          2018-10-20:
 //          2018-10-20:
 //          2018-10-20:
@@ -12,6 +12,7 @@
 // Known Bugs:
 
 import UIKit
+import UserNotifications
 
 class MedicationViewController: UIViewController {
 
@@ -107,36 +108,60 @@ class MedicationViewController: UIViewController {
                 let notificationID = "Mo\(MID)"
                 scheduleMedicationNotificationWeekly(at: repeatingMonDate, name: medicineName, ID: notificationID)
             }
+            if moToggle.isOn == false{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Mo\(MID)"])
+            }
             if tuToggle.isOn {
                 let repeatingTueDate = createDate(weekday: 3, hour: 10, minute: 00 , year: 2018)
                 let notificationID = "Tu\(MID)"
                 scheduleMedicationNotificationWeekly(at: repeatingTueDate, name: medicineName, ID: notificationID)
+            }
+            if tuToggle.isOn == false{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Tu\(MID)"])
             }
             if weToggle.isOn {
                 let repeatingWedDate = createDate(weekday: 4, hour: 10, minute: 00 , year: 2018)
                 let notificationID = "We\(MID)"
                 scheduleMedicationNotificationWeekly(at: repeatingWedDate, name: medicineName, ID: notificationID)
             }
+            if weToggle.isOn == false{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["We\(MID)"])
+            }
             if thToggle.isOn {
                 let repeatingThuDate = createDate(weekday: 5, hour: 10, minute: 00 , year: 2018)
                 let notificationID = "Th\(MID)"
                 scheduleMedicationNotificationWeekly(at: repeatingThuDate, name: medicineName, ID: notificationID)
+            }
+            if thToggle.isOn == false{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Th\(MID)"])
             }
             if frToggle.isOn {
                 let repeatingFriDate = createDate(weekday: 6, hour: 10, minute: 00 , year: 2018)
                 let notificationID = "Fr\(MID)"
                 scheduleMedicationNotificationWeekly(at: repeatingFriDate, name: medicineName, ID: notificationID)
             }
+            if frToggle.isOn == false{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Fr\(MID)"])
+            }
             if saToggle.isOn {
                 let repeatingSatDate = createDate(weekday: 7, hour: 10, minute: 00 , year: 2018)
                 let notificationID = "Sa\(MID)"
                 scheduleMedicationNotificationWeekly(at: repeatingSatDate, name: medicineName, ID: notificationID)
+            }
+            if saToggle.isOn == false{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Sa\(MID)"])
             }
             if suToggle.isOn {
                 let repeatingSunDate = createDate(weekday: 1, hour: 10, minute: 00 , year: 2018)
                 let notificationID = "Su\(MID)"
                 scheduleMedicationNotificationWeekly(at: repeatingSunDate, name: medicineName, ID: notificationID)
             }
+            if suToggle.isOn == false{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Su\(MID)"])
+            }
+        }
+        if reminderToggle.isOn == false{
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Mo\(MID)", "Tu\(MID)", "We\(MID)", "Th\(MID)", "Fr\(MID)", "Sa\(MID)", "Su\(MID)"])
         }
         
         

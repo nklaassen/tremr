@@ -1,10 +1,10 @@
 //
-//  Notification Functions.swift
-//  tremr
-//
-//  Created by Jakub2 on 2018-11-12.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: NotificationFunctions.swift
+//  Programmers: Leo Zhang
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-11-12: initial commit
+// Known Bugs:
 
 import Foundation
 import UIKit
