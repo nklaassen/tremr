@@ -99,7 +99,7 @@ class ExerciseViewController: UIViewController {
             if moToggle.isOn {
                 let repeatingMonDate = createDate(weekday: 2, hour: 10, minute: 00 , year: 2018)
                 let notificationID = "Mo\(EID)"
-                scheduleMedicationNotificationWeekly(at: repeatingMonDate, name: exerciseName, ID: notificationID)
+                scheduleExerciseNotificationWeekly(at: repeatingMonDate, name: exerciseName, ID: notificationID)
             }
             if moToggle.isOn == false{
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Mo\(EID)"])
@@ -107,7 +107,7 @@ class ExerciseViewController: UIViewController {
             if tuToggle.isOn {
                 let repeatingTueDate = createDate(weekday: 3, hour: 10, minute: 00 , year: 2018)
                 let notificationID = "Tu\(EID)"
-                scheduleMedicationNotificationWeekly(at: repeatingTueDate, name: exerciseName, ID: notificationID)
+                scheduleExerciseNotificationWeekly(at: repeatingTueDate, name: exerciseName, ID: notificationID)
             }
             if tuToggle.isOn == false{
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Tu\(EID)"])
@@ -115,7 +115,7 @@ class ExerciseViewController: UIViewController {
             if weToggle.isOn {
                 let repeatingWedDate = createDate(weekday: 4, hour: 10, minute: 00 , year: 2018)
                 let notificationID = "We\(EID)"
-                scheduleMedicationNotificationWeekly(at: repeatingWedDate, name: exerciseName, ID: notificationID)
+                scheduleExerciseNotificationWeekly(at: repeatingWedDate, name: exerciseName, ID: notificationID)
             }
             if weToggle.isOn == false{
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["We\(EID)"])
@@ -123,7 +123,7 @@ class ExerciseViewController: UIViewController {
             if thToggle.isOn {
                 let repeatingThuDate = createDate(weekday: 5, hour: 10, minute: 00 , year: 2018)
                 let notificationID = "Th\(EID)"
-                scheduleMedicationNotificationWeekly(at: repeatingThuDate, name: exerciseName, ID: notificationID)
+                scheduleExerciseNotificationWeekly(at: repeatingThuDate, name: exerciseName, ID: notificationID)
             }
             if thToggle.isOn == false{
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Th\(EID)"])
@@ -131,7 +131,7 @@ class ExerciseViewController: UIViewController {
             if frToggle.isOn {
                 let repeatingFriDate = createDate(weekday: 6, hour: 10, minute: 00 , year: 2018)
                 let notificationID = "Fr\(EID)"
-                scheduleMedicationNotificationWeekly(at: repeatingFriDate, name: exerciseName, ID: notificationID)
+                scheduleExerciseNotificationWeekly(at: repeatingFriDate, name: exerciseName, ID: notificationID)
             }
             if frToggle.isOn == false{
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Fr\(EID)"])
@@ -139,7 +139,7 @@ class ExerciseViewController: UIViewController {
             if saToggle.isOn {
                 let repeatingSatDate = createDate(weekday: 7, hour: 10, minute: 00 , year: 2018)
                 let notificationID = "Sa\(EID)"
-                scheduleMedicationNotificationWeekly(at: repeatingSatDate, name: exerciseName, ID: notificationID)
+                scheduleExerciseNotificationWeekly(at: repeatingSatDate, name: exerciseName, ID: notificationID)
             }
             if saToggle.isOn == false{
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Sa\(EID)"])
@@ -147,7 +147,7 @@ class ExerciseViewController: UIViewController {
             if suToggle.isOn {
                 let repeatingSunDate = createDate(weekday: 1, hour: 10, minute: 00 , year: 2018)
                 let notificationID = "Su\(EID)"
-                scheduleMedicationNotificationWeekly(at: repeatingSunDate, name: exerciseName, ID: notificationID)
+                scheduleExerciseNotificationWeekly(at: repeatingSunDate, name: exerciseName, ID: notificationID)
             }
             if suToggle.isOn == false{
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Su\(EID)"])
