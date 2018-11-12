@@ -9,6 +9,7 @@
 // Known Bugs:
 
 import UIKit
+import UserNotifications
 
 internal let IS_DEBUG = true
 
@@ -36,6 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("resting: \(tremor.restingSeverity), postural: \(tremor.posturalSeverity)")
         }
          */
+        
+        //prompt permission for notification
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         
         // Fill in some test data for medicine database
         let day = TimeInterval(60*60*24) //Number of seconds in a day
