@@ -244,7 +244,7 @@ class DatabaseManager
     }
 
     //Adds a medicine to the Medicines table
-    func addMedicine(UID : Int64, name : String, dosage : String, mo : Bool, tu : Bool, we : Bool, th : Bool, fr : Bool, sa : Bool, su : Bool, reminder : Bool, start_date : Date, end_date : Date?) {
+    func addMedicine(UID : Int64, name : String, dosage : String, mo : Bool, tu : Bool, we : Bool, th : Bool, fr : Bool, sa : Bool, su : Bool, reminder : Bool, start_date : Date, end_date : Date?) -> Int64? {
         print("Trying to add medicine \(name) \(dosage)")
 
         //Modify start_date and end_date to be the very end of the day and very beginning of the day respectively
@@ -255,7 +255,8 @@ class DatabaseManager
         }
         
         do {
-            try db.run(Medicines.insert(self.UID <- UID,
+            //Insert medicine and return the id created by the database
+            return try db.run(Medicines.insert(self.UID <- UID,
                                       self.name <- name,
                                       self.dosage <- dosage,
                                       self.monday <- mo,
@@ -268,14 +269,15 @@ class DatabaseManager
                                       self.reminder <- reminder,
                                       self.start_date <- modified_start_date,
                                       self.end_date <- modified_end_date ))
-            print("Inserted medicine!")
         } catch {
             print("Failed to insert medicine: \(error)")
+            //If the insert fails, return nil for the inserted MID
+            return nil
         }
     }
     
     //Adds an exercise to the Exercises table
-    func addExercise(UID : Int64, name : String, unit : String, mo : Bool, tu : Bool, we : Bool, th : Bool, fr : Bool, sa : Bool, su : Bool, reminder : Bool, start_date : Date, end_date : Date?) {
+    func addExercise(UID : Int64, name : String, unit : String, mo : Bool, tu : Bool, we : Bool, th : Bool, fr : Bool, sa : Bool, su : Bool, reminder : Bool, start_date : Date, end_date : Date?) -> Int64? {
         print("Trying to add exercise \(name) \(unit)")
         
         //Modify start_date and end_date to be the very end of the day and very beginning of the day respectively
@@ -286,7 +288,7 @@ class DatabaseManager
         }
 
         do {
-            try db.run(Exercises.insert(self.UID <- UID,
+            return try db.run(Exercises.insert(self.UID <- UID,
                                         self.name <- name,
                                         self.unit <- unit,
                                         self.monday <- mo,
@@ -299,9 +301,10 @@ class DatabaseManager
                                         self.reminder <- reminder,
                                         self.start_date <- modified_start_date,
                                         self.end_date <- modified_end_date ))
-            print("Inserted exercise!")
         } catch {
             print("Failed to insert exercise: \(error)")
+            //If the insert fails, return nil for the inserted EID
+            return nil
         }
     }
     
