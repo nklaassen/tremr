@@ -1,0 +1,50 @@
+//
+//  Notification Functions.swift
+//  tremr
+//
+//  Created by Jakub2 on 2018-11-12.
+//  Copyright © 2018 CO.DEsign. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import UserNotifications
+
+//Create Date from picker selected value.
+func createDate(weekday: Int, hour: Int, minute: Int, year: Int)->Date{
+    
+    var components = DateComponents()
+    components.hour = hour
+    components.minute = minute
+    components.year = year
+    components.weekday = weekday // sunday = 1 ... saturday = 7
+    components.weekdayOrdinal = 10
+    components.timeZone = .current
+    
+    let calendar = Calendar(identifier: .gregorian)
+    return calendar.date(from: components)!
+}
+
+func dailyTremorRecordingReminder(at date: Date, ID: String) {
+    
+    let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
+    
+    let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+    
+    let content = UNMutableNotificationContent()
+    content.title = "Daily Tremor Reminder"
+    content.body = "Remeber to record your tremors for today!"
+    //content.sound = UNNotificationSound.default()
+    content.categoryIdentifier = "todoList"
+    
+    let request = UNNotificationRequest(identifier: ID, content: content, trigger: trigger)
+    
+    //UNUserNotificationCenter.current().delegate = self
+    //UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    UNUserNotificationCenter.current().add(request) {(error) in
+        if let error = error {
+            print("Uh oh! We had an error: \(error)")
+        }
+    }
+}
+
