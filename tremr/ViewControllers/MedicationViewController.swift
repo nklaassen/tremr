@@ -79,7 +79,7 @@ class MedicationViewController: UIViewController {
     @IBAction func addMedicineButton(_ sender: Any) {
         let medicineName: String = medicineTextField.text!
         let dosageValue: String = dosageTextField.text!
-        
+        var MID : Int64
         if edittedMedicine != nil {
             db.updateMedicine(
                 MIDToUpdate: (edittedMedicine?.MID)!,
@@ -87,54 +87,55 @@ class MedicationViewController: UIViewController {
                 dosage: "\(dosageValue)",
                 mo: moToggle.isOn, tu: tuToggle.isOn, we: weToggle.isOn, th: thToggle.isOn, fr: frToggle.isOn, sa: saToggle.isOn, su: suToggle.isOn,
                 reminder: reminderToggle.isOn)
+            MID = edittedMedicine!.MID
         }
         else {
-            db.addMedicine(
+            MID = db.addMedicine(
                 UID: 1,
                 name: "\(medicineName)",
                 dosage: "\(dosageValue)",
                 mo: moToggle.isOn, tu: tuToggle.isOn, we: weToggle.isOn, th: thToggle.isOn, fr: frToggle.isOn, sa: saToggle.isOn, su: suToggle.isOn,
                 reminder: reminderToggle.isOn,
                 start_date: Date(),
-                end_date: nil)
+                end_date: nil)!
         }
         
         //notification
-        if reminderToggle.isOn == true{
-            if moToggle.isOn == true{
+        if reminderToggle.isOn {
+            if moToggle.isOn {
                 let repeatingMonDate = createDate(weekday: 2, hour: 10, minute: 00 , year: 2018)
-                let tempMID = "Mon Medicine \(medicineName) \(dosageValue)"
-                scheduleMedicationNotificationWeekly(at: repeatingMonDate, name: medicineName, ID: tempMID)
+                let notificationID = "Mo\(MID)"
+                scheduleMedicationNotificationWeekly(at: repeatingMonDate, name: medicineName, ID: notificationID)
             }
-            if tuToggle.isOn == true{
+            if tuToggle.isOn {
                 let repeatingTueDate = createDate(weekday: 3, hour: 10, minute: 00 , year: 2018)
-                let tempMID = "Tue Medicine \(medicineName) \(dosageValue)"
-                scheduleMedicationNotificationWeekly(at: repeatingTueDate, name: medicineName, ID: tempMID)
+                let notificationID = "Tu\(MID)"
+                scheduleMedicationNotificationWeekly(at: repeatingTueDate, name: medicineName, ID: notificationID)
             }
-            if weToggle.isOn == true{
+            if weToggle.isOn {
                 let repeatingWedDate = createDate(weekday: 4, hour: 10, minute: 00 , year: 2018)
-                let tempMID = "Wed Medicine \(medicineName) \(dosageValue)"
-                scheduleMedicationNotificationWeekly(at: repeatingWedDate, name: medicineName, ID: tempMID)
+                let notificationID = "We\(MID)"
+                scheduleMedicationNotificationWeekly(at: repeatingWedDate, name: medicineName, ID: notificationID)
             }
-            if thToggle.isOn == true{
+            if thToggle.isOn {
                 let repeatingThuDate = createDate(weekday: 5, hour: 10, minute: 00 , year: 2018)
-                let tempMID = "Thu Medicine \(medicineName) \(dosageValue)"
-                scheduleMedicationNotificationWeekly(at: repeatingThuDate, name: medicineName, ID: tempMID)
+                let notificationID = "Th\(MID)"
+                scheduleMedicationNotificationWeekly(at: repeatingThuDate, name: medicineName, ID: notificationID)
             }
-            if frToggle.isOn == true{
+            if frToggle.isOn {
                 let repeatingFriDate = createDate(weekday: 6, hour: 10, minute: 00 , year: 2018)
-                let tempMID = "Fri Medicine \(medicineName) \(dosageValue)"
-                scheduleMedicationNotificationWeekly(at: repeatingFriDate, name: medicineName, ID: tempMID)
+                let notificationID = "Fr\(MID)"
+                scheduleMedicationNotificationWeekly(at: repeatingFriDate, name: medicineName, ID: notificationID)
             }
-            if saToggle.isOn == true{
+            if saToggle.isOn {
                 let repeatingSatDate = createDate(weekday: 7, hour: 10, minute: 00 , year: 2018)
-                let tempMID = "Sat Medicine \(medicineName) \(dosageValue)"
-                scheduleMedicationNotificationWeekly(at: repeatingSatDate, name: medicineName, ID: tempMID)
+                let notificationID = "Sa\(MID)"
+                scheduleMedicationNotificationWeekly(at: repeatingSatDate, name: medicineName, ID: notificationID)
             }
-            if suToggle.isOn == true{
+            if suToggle.isOn {
                 let repeatingSunDate = createDate(weekday: 1, hour: 10, minute: 00 , year: 2018)
-                let tempMID = "Sun Medicine \(medicineName) \(dosageValue)"
-                scheduleMedicationNotificationWeekly(at: repeatingSunDate, name: medicineName, ID: tempMID)
+                let notificationID = "Su\(MID)"
+                scheduleMedicationNotificationWeekly(at: repeatingSunDate, name: medicineName, ID: notificationID)
             }
         }
         

@@ -71,7 +71,7 @@ class ExerciseViewController: UIViewController {
     @IBAction func addExerciseButton(_ sender: Any) {
         let exerciseName: String = exerciseTextField.text!
         let unitValue: String = unitTextField.text!
-        
+        var EID : Int64
         if edittedExercise != nil {
             db.updateExercise(
                 EIDToUpdate: (edittedExercise?.EID)!,
@@ -79,54 +79,55 @@ class ExerciseViewController: UIViewController {
                 unit: "\(unitValue)",
                 mo: moToggle.isOn, tu: tuToggle.isOn, we: weToggle.isOn, th: thToggle.isOn, fr: frToggle.isOn, sa: saToggle.isOn, su: suToggle.isOn,
                 reminder: reminderToggle.isOn)
+            EID = edittedExercise!.EID
         }
         else {
-            db.addExercise(
+            EID = db.addExercise(
                 UID: 1,
                 name: "\(exerciseName)",
                 unit: "\(unitValue)",
                 mo: moToggle.isOn, tu: tuToggle.isOn, we: weToggle.isOn, th: thToggle.isOn, fr: frToggle.isOn, sa: saToggle.isOn, su: suToggle.isOn,
                 reminder: reminderToggle.isOn,
                 start_date: Date(),
-                end_date: nil)
+                end_date: nil)!
         }
         
         //notification
         if reminderToggle.isOn == true{
             if moToggle.isOn == true{
                 let repeatingMonDate = createDate(weekday: 2, hour: 10, minute: 00 , year: 2018)
-                let tempEID = "Mon Exercise \(exerciseName) \(unitValue)"
-                scheduleExerciseNotificationWeekly(at: repeatingMonDate, name: exerciseName, ID: tempEID)
+                let notificationID = "Mo\(EID)"
+                scheduleExerciseNotificationWeekly(at: repeatingMonDate, name: exerciseName, ID: notificationID)
             }
             if tuToggle.isOn == true{
                 let repeatingTueDate = createDate(weekday: 3, hour: 10, minute: 00 , year: 2018)
-                let tempEID = "Tue Exercise \(exerciseName) \(unitValue)"
-                scheduleExerciseNotificationWeekly(at: repeatingTueDate, name: exerciseName, ID: tempEID)
+                let notificationID = "Tu\(EID)"
+                scheduleExerciseNotificationWeekly(at: repeatingTueDate, name: exerciseName, ID: notificationID)
             }
             if weToggle.isOn == true{
                 let repeatingWedDate = createDate(weekday: 4, hour: 10, minute: 00 , year: 2018)
-                let tempEID = "Wed Exercise \(exerciseName) \(unitValue)"
-                scheduleExerciseNotificationWeekly(at: repeatingWedDate, name: exerciseName, ID: tempEID)
+                let notificationID = "We\(EID)"
+                scheduleExerciseNotificationWeekly(at: repeatingWedDate, name: exerciseName, ID: notificationID)
             }
             if thToggle.isOn == true{
                 let repeatingThuDate = createDate(weekday: 5, hour: 10, minute: 00 , year: 2018)
-                let tempEID = "Thu Exercise \(exerciseName) \(unitValue)"
-                scheduleExerciseNotificationWeekly(at: repeatingThuDate, name: exerciseName, ID: tempEID)
+                let notificationID = "Th\(EID)"
+                scheduleExerciseNotificationWeekly(at: repeatingThuDate, name: exerciseName, ID: notificationID)
             }
             if frToggle.isOn == true{
                 let repeatingFriDate = createDate(weekday: 6, hour: 10, minute: 00 , year: 2018)
-                let tempEID = "Fri Exercise \(exerciseName) \(unitValue)"
-                scheduleExerciseNotificationWeekly(at: repeatingFriDate, name: exerciseName, ID: tempEID)
+                let notificationID = "Fr\(EID)"
+                scheduleExerciseNotificationWeekly(at: repeatingFriDate, name: exerciseName, ID: notificationID)
             }
             if saToggle.isOn == true{
                 let repeatingSatDate = createDate(weekday: 7, hour: 10, minute: 00 , year: 2018)
-                let tempEID = "Sat Exercise \(exerciseName) \(unitValue)"
-                scheduleExerciseNotificationWeekly(at: repeatingSatDate, name: exerciseName, ID: tempEID)
+                let notificationID = "Sa\(EID)"
+                scheduleExerciseNotificationWeekly(at: repeatingSatDate, name: exerciseName, ID: notificationID)
             }
             if suToggle.isOn == true{
                 let repeatingSunDate = createDate(weekday: 1, hour: 10, minute: 00 , year: 2018)
-                let tempEID = "Sun Exercise \(exerciseName) \(unitValue)"
-                scheduleExerciseNotificationWeekly(at: repeatingSunDate, name: exerciseName, ID: tempEID)
+                let notificationID = "Su\(EID)"
+                scheduleExerciseNotificationWeekly(at: repeatingSunDate, name: exerciseName, ID: notificationID)
             }
         }
     }
