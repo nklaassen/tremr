@@ -41,15 +41,17 @@ class MedicationTests: XCTestCase {
     func testAddMedication() {
         let testDate = Date()
         
-        db.addMedicine(UID: 1,
+        let insertedMID = db.addMedicine(UID: 1,
                        name: "medicine1",
                        dosage: "100",
                        mo: true, tu: true, we: true, th: true, fr: true, sa: false, su: true,
                        reminder: false,
                        start_date: testDate,
                        end_date: nil)
+        
         let medications = db.getMedicine()
         
+        XCTAssert(medications[0].MID == insertedMID)
         XCTAssert(medications.count as Int == 1)
         XCTAssert(medications[0].name == "medicine1")
         XCTAssert(medications[0].dosage == "100")
