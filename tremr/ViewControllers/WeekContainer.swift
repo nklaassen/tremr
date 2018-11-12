@@ -163,11 +163,16 @@ class WeekContainer: UIViewController {
         //index to start the arrays at the last element
         var index = 6
         
-        //copies postural and resting severity values into newly made array from data from database
+        //makes date variables
         var today = Date()
-        //var tomorrow = Date()
         var yesterday = Date()
+        var checkYes = Date()
+        
+        //copies postural and resting severity values into newly made array from data from database
         while index > -1 && size > -1 {
+            
+            //test to make sure severity values are correct on graph
+            print("postural:", tremors[size].posturalSeverity)
             
             //make sure tremor values are between 0 and 10
             if tremors[size].posturalSeverity > 10{
@@ -178,135 +183,99 @@ class WeekContainer: UIViewController {
                 tremors[size].posturalSeverity = 0
             }
             
-            today = tremors[size].date
-            //tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
-            yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)!
-            
-            if tremors[size-1].date != yesterday
+            //check previous tremor score date
+            if size - 1 >= 0
             {
-                Postural[index] = (tremors[size-1].posturalSeverity + tremors[size].posturalSeverity)/2
+                //set all dates to start of date to compare
+                let day = tremors[size].date
+                let day2 = tremors[size-1].date
+                today = Calendar.current.startOfDay(for: day)
+                checkYes = Calendar.current.startOfDay(for: day2)
+                yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)!
+            
+                //if tremor score is missing take the average of the adjacent scores
+                if checkYes != yesterday
+                {
+                    Postural[index] = (tremors[size-1].posturalSeverity + tremors[size].posturalSeverity)/2
+                }
+                else
+                {
+                    Postural[index] = tremors[size].posturalSeverity
+                    size =  size - 1
+                }
+                index = index - 1
             }
             else
             {
                 Postural[index] = tremors[size].posturalSeverity
                 size =  size - 1
             }
-            index = index - 1
         }
-        
-        //        var monP: Double = 0
-        //        var tueP: Double = 0
-        //        var wedP: Double = 0
-        //        var thuP: Double = 0
-        //        var friP: Double = 0
-        //        var satP: Double = 0
-        //        var sunP: Double = 0
-        //
-        //        //formatting date information so it displays the weekday
-        //        let dateFormatter = DateFormatter()
-        //        dateFormatter.dateFormat = "EEEE"
-        //
-        //        for var tremor in tremors {
-        //
-        //            //make sure tremor values are between 0 and 10
-        //            if tremor.posturalSeverity > 10 {
-        //                tremor.posturalSeverity = 10
-        //            }
-        //
-        //            if tremor.posturalSeverity < 0 {
-        //                tremor.posturalSeverity = 0
-        //            }
-        //
-        //
-        //            //converting date data of specific tremor to weekday
-        //            let dayOfWeek = dateFormatter.string(from: tremor.date)
-        //
-        //            //check which weekday the tremor is in
-        //            if dayOfWeek == "Monday"{
-        //                monP = tremor.posturalSeverity
-        //            }
-        //            if dayOfWeek == "Tuesday"{
-        //                tueP = tremor.posturalSeverity
-        //            }
-        //            if dayOfWeek == "Wednesday"{
-        //                wedP = tremor.posturalSeverity
-        //            }
-        //            if dayOfWeek == "Thursday"{
-        //                thuP = tremor.posturalSeverity
-        //            }
-        //            if dayOfWeek == "Friday"{
-        //                friP = tremor.posturalSeverity
-        //            }
-        //            if dayOfWeek == "Saturday"{
-        //                satP = tremor.posturalSeverity
-        //            }
-        //            if dayOfWeek == "Sunday"{
-        //                sunP = tremor.posturalSeverity
-        //            }
-        //        }
-        //
-        //        //sets the values for the array used in the graph for weekly view
-        //        let weeklyPostural = [sunP, monP, tueP, wedP, thuP, friP, satP]
-        
         return(Postural)
     }
     
     // get resting tremor data from database for the last week
     func getRestingData() -> [Double] {
-        let tremors = db.getTremorsForLastWeek() //grab tremors from database
+        var tremors = db.getTremorsForLastWeek() //grab tremors from database
         
-        var monR: Double = -1
-        var tueR: Double = -1
-        var wedR: Double = -1
-        var thuR: Double = -1
-        var friR: Double = -1
-        var satR: Double = -1
-        var sunR: Double = -1
+        //finds the size of the data array tremors and subtracts one to match the index of  the last element
+        var size = tremors.count - 1
         
-        //formatting date information so it displays the weekday
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE"
+        //array of 7 elements to hold severity values
+        var Resting: [Double] = Array(repeating: 0, count: 7)
         
-        for var tremor in tremors {
+        //index to start the arrays at the last element
+        var index = 6
+        
+        //makes date variables
+        var today = Date()
+        var yesterday = Date()
+        var checkYes = Date()
+        
+        //copies postural and resting severity values into newly made array from data from database
+        while index > -1 && size > -1 {
+            
+            //test to make sure severity values are correct on graph
+            print("resting:", tremors[size].restingSeverity)
+            
             //make sure tremor values are between 0 and 10
-            if tremor.restingSeverity > 10{
-                tremor.restingSeverity = 10
+            if tremors[size].restingSeverity > 10{
+                tremors[size].restingSeverity = 10
             }
             
-            if tremor.restingSeverity < 0{
-                tremor.restingSeverity = 0
+            if tremors[size].restingSeverity < 0{
+                tremors[size].restingSeverity = 0
             }
-            //converting date data of specific tremor to weekday
-            let dayOfWeek = dateFormatter.string(from: tremor.date)
             
-            //check which weekday the tremor is in
-            if dayOfWeek == "Monday"{
-                monR = tremor.restingSeverity
+            //check previous tremor score date
+            if size - 1 >= 0
+            {
+                //set all dates to start of date to compare
+                let day = tremors[size].date
+                let day2 = tremors[size-1].date
+                today = Calendar.current.startOfDay(for: day)
+                checkYes = Calendar.current.startOfDay(for: day2)
+                yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)!
+                
+                //if tremor score is missing take the average of the adjacent scores
+                if checkYes != yesterday
+                {
+                    Resting[index] = (tremors[size-1].restingSeverity + tremors[size].restingSeverity)/2
+                }
+                else
+                {
+                    Resting[index] = tremors[size].restingSeverity
+                    size =  size - 1
+                }
+                index = index - 1
             }
-            if dayOfWeek == "Tuesday"{
-                tueR = tremor.restingSeverity
-            }
-            if dayOfWeek == "Wednesday"{
-                wedR = tremor.restingSeverity
-            }
-            if dayOfWeek == "Thursday"{
-                thuR = tremor.restingSeverity
-            }
-            if dayOfWeek == "Friday"{
-                friR = tremor.restingSeverity
-            }
-            if dayOfWeek == "Saturday"{
-                satR = tremor.restingSeverity
-            }
-            if dayOfWeek == "Sunday"{
-                sunR = tremor.restingSeverity
+            else
+            {
+                Resting[index] = tremors[size].restingSeverity
+                size =  size - 1
             }
         }
-        
-        //sets the values for the array used in the graph for weekly view
-        let weeklyResting = [sunR, monR, tueR, wedR, thuR, friR, satR]
-        
-        return(weeklyResting)
+        return(Resting)
     }
     
 }
