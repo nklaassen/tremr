@@ -110,32 +110,30 @@ class MonthContainer: UIViewController {
     
     // get postural tremor data from the database for the last month
     func getPosturalData() -> [Double] {
-        var Tremor = db.getTremors() //get tremors from database
+        var Tremor = db.getTremorsForLastMonth() //get tremors from database
+        var counter = Tremor.count-1
+        var rcounter = 0
         
         //array of 28 elements to hold severity values
         var Postural: [Double] = Array(repeating: 0, count: 28)
-        
-        //finds the size of the data array tremors and subtracts one to match the index of  the last element
-        var size = Tremor.count - 1
-        
-        //index to start the arrays at the last element
-        var index = 27
-        
-        //copies postural and resting severity values into newly made array from data from database
-        while index > -1 && size > -1 {
+
+        while counter >= 0
+        {
+            Postural[rcounter] = Tremor[counter].posturalSeverity
             
             //make sure tremor values are between 0 and 10
-            if Tremor[size].posturalSeverity > 10{
-                Tremor[size].posturalSeverity = 10
+            if Postural[rcounter] > 10
+            {
+                Postural[rcounter] = 10
             }
             
-            if Tremor[size].posturalSeverity < 0{
-                Tremor[size].posturalSeverity = 0
+            if Postural[rcounter] < 0
+            {
+                Postural[rcounter] = 0
             }
-            
-            Postural[index] = Tremor[size].posturalSeverity
-            index = index - 1
-            size =  size - 1
+            print(Tremor[rcounter].posturalSeverity)
+            counter -= 1
+            rcounter += 1
         }
         
         //calculates the average severity values for each week for postural and resting
@@ -146,38 +144,37 @@ class MonthContainer: UIViewController {
         
         //sets the values for the array used in the graph for yearly view
         let postural = [weekOnePostural, weekTwoPostural, weekThreePostural, weekFourPostural]
+        print("week 1: ", postural[0], "week 2: " , postural[1], "week 3: ", postural[2], "week 4: " , postural[3])
         return(postural)
     }
     
     // get resting tremor data from the database from the last month
     func getRestingData() -> [Double] {
         
-        var Tremor = db.getTremors() //get tremors from database
+        var Tremor = db.getTremorsForLastMonth() //get tremors from database
+        var counter = Tremor.count-1
+        var rcounter = 0
         
         //array of 28 elements to hold severity values
         var Resting: [Double] = Array(repeating: 0, count: 28)
         
-        //finds the size of the data array tremors and subtracts one to match the index of the last element
-        var size = Tremor.count - 1
-        
-        //index to start the arrays at the last element
-        var index = 27
-        
-        //copies postural and resting severity values into newly made array from data from database
-        while index > -1 && size > -1 {
+        while counter >= 0
+        {
+            Resting[rcounter] = Tremor[counter].restingSeverity
             
             //make sure tremor values are between 0 and 10
-            if Tremor[size].restingSeverity > 10{
-                Tremor[size].restingSeverity = 10
+            if Resting[rcounter] > 10
+            {
+                Resting[rcounter] = 10
             }
             
-            if Tremor[size].restingSeverity < 0{
-                Tremor[size].restingSeverity = 0
+            if Resting[rcounter] < 0
+            {
+                Resting[rcounter] = 0
             }
-            
-            Resting[index] = Tremor[size].restingSeverity
-            index = index - 1
-            size =  size - 1
+            print(Tremor[rcounter].posturalSeverity)
+            counter -= 1
+            rcounter += 1
         }
         
         let weekOneResting = (Resting[0]+Resting[1]+Resting[2]+Resting[3]+Resting[4]+Resting[5]+Resting[6]) / 7.0
@@ -186,6 +183,7 @@ class MonthContainer: UIViewController {
         let weekFourResting = (Resting[21]+Resting[22]+Resting[23]+Resting[24]+Resting[25]+Resting[26]+Resting[27]) / 7.0
         
         let resting = [weekOneResting, weekTwoResting, weekThreeResting, weekFourResting]
+        
         
         return(resting)
     }
