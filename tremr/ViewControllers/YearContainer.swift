@@ -17,14 +17,97 @@ class YearContainer: UIViewController {
 
     @IBOutlet var yearLineChartView: LineChartView!
     
-    let dates = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
+    let dates1 = ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec", "Jan"]
+    let dates2 = ["Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec", "Jan", "Feb"]
+    let dates3 = ["Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar"]
+    let dates4 = ["May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"]
+    let dates5 = ["Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May"]
+    let dates6 = ["Jul", "Aug", "Sept", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+    let dates7 = ["Aug", "Sept", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"]
+    let dates8 = ["Sept", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"]
+    let dates9 = ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept"]
+    let dates10 = ["Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct"]
+    let dates11 = ["Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov"]
+    let dates12 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        let currentMonth = dateFormatter.string(from: now)
+        
+        var startNum = 0;
+        var dates = dates1
+        
+        // select the correct x-axis depending on current month
+        if currentMonth == "January"
+        {
+            dates = dates1
+            startNum = 0
+        }
+        if currentMonth == "February"
+        {
+            dates = dates2
+            startNum = 1
+        }
+        if currentMonth == "March"
+        {
+            dates = dates3
+            startNum = 2
+        }
+        if currentMonth == "April"
+        {
+            dates = dates4
+            startNum = 3
+        }
+        if currentMonth == "May"
+        {
+            dates = dates5
+            startNum = 4
+        }
+        if currentMonth == "June"
+        {
+            dates = dates6
+            startNum = 5
+        }
+        if currentMonth == "July"
+        {
+            dates = dates7
+            startNum = 6
+        }
+        if currentMonth == "August"
+        {
+            dates = dates8
+            startNum = 7
+        }
+        if currentMonth == "September"
+        {
+            dates = dates9
+            startNum = 8
+        }
+        if currentMonth == "October"
+        {
+            dates = dates10
+            startNum = 9
+        }
+        if currentMonth == "November"
+        {
+            dates = dates11
+            startNum = 10
+        }
+        if currentMonth == "December"
+        {
+            dates = dates12
+            startNum = 11
+        }
+        
+        
         //format monthLineChartView
         self.yearLineChartView.noDataText = "no data provided"
-        let data2 = setChartData(months: dates)
+        let data2 = setChartData(months: dates, initial: startNum)
         
         //set data
         self.yearLineChartView.data = data2
@@ -54,44 +137,57 @@ class YearContainer: UIViewController {
     }
     
     // set the line chart data for year view
-    func setChartData(months : [String]) -> LineChartData {
+    func setChartData(months : [String], initial : Int) -> LineChartData {
         
         let postural = getPosturalData()
         let resting = getRestingData()
+        var ii:Double = 0;
         
         //add "Postural" data
         var yVals1 : [ChartDataEntry] = [ChartDataEntry]()
-        for i in 0...postural.count-1 {
-            yVals1.append(ChartDataEntry(x: Double(i), y: postural[i]))
+        for i in initial...postural.count-1 {
+            yVals1.append(ChartDataEntry(x: Double(ii), y: postural[i]))
+            ii += 1
+        }
+        for i in 0...initial-1 {
+            yVals1.append(ChartDataEntry(x: Double(ii), y: postural[i]))
+            ii += 1
         }
         
         //format "Postural" line
         let set1: LineChartDataSet = LineChartDataSet(values: yVals1, label: "Postural")
         set1.axisDependency = .left // Line will correlate with left axis values
-        set1.setColor(UIColor.red.withAlphaComponent(0.5))
-        set1.setCircleColor(UIColor.red)
+        set1.setColor(UIColor(red: 0.0, green: 0.9, blue: 0.4, alpha: 1.0))
+        set1.setCircleColor(UIColor(red: 0.0, green: 0.9, blue: 0.4, alpha: 1.0))
         set1.lineWidth = 2.0
-        set1.circleRadius = 3.0
+        set1.circleRadius = 0.5
         set1.fillAlpha = 65 / 255.0
-        set1.fillColor = UIColor.red
+        set1.fillColor = UIColor(red: 0.0, green: 0.9, blue: 0.4, alpha: 1.0)
         set1.highlightColor = UIColor.white
         set1.drawCircleHoleEnabled = true
         
+        ii = 0;
+        
         //add "Resting" data
         var yVals2 : [ChartDataEntry] = [ChartDataEntry]()
-        for i in 0...resting.count-1 {
-            yVals2.append(ChartDataEntry(x: Double(i), y: resting[i]))
+        for i in initial...resting.count-1 {
+            yVals2.append(ChartDataEntry(x: Double(ii), y: resting[i]))
+            ii += 1
+        }
+        for i in 0...initial-1 {
+            yVals2.append(ChartDataEntry(x: Double(ii), y: resting[i]))
+            ii += 1
         }
         
         //format "Resting" line
         let set2: LineChartDataSet = LineChartDataSet(values: yVals2, label: "Resting")
         set2.axisDependency = .left // Line will correlate with left axis values
-        set2.setColor(UIColor.yellow.withAlphaComponent(0.5))
-        set2.setCircleColor(UIColor.yellow)
+        set2.setColor(UIColor(red: 0.1, green: 0.5, blue: 0.8, alpha: 1.0))
+        set2.setCircleColor(UIColor(red: 0.1, green: 0.5, blue: 0.8, alpha: 1.0))
         set2.lineWidth = 2.0
-        set2.circleRadius = 3.0
+        set2.circleRadius = 0.5
         set2.fillAlpha = 65 / 255.0
-        set2.fillColor = UIColor.yellow
+        set2.fillColor = UIColor(red: 0.1, green: 0.5, blue: 0.8, alpha: 1.0)
         set2.highlightColor = UIColor.white
         set2.drawCircleHoleEnabled = true
         
@@ -140,7 +236,7 @@ class YearContainer: UIViewController {
             if Tremor[size].restingSeverity > 10{
                 Tremor[size].restingSeverity = 10
             }
-           
+            
             if Tremor[size].restingSeverity < 0{
                 Tremor[size].restingSeverity = 0
             }
@@ -203,7 +299,7 @@ class YearContainer: UIViewController {
             
             //if the array is shorter than 365 and is now empty
             if size < 0{
-            break
+                break
             }
         }
         
@@ -285,7 +381,7 @@ class YearContainer: UIViewController {
         //sets the values for the array used in the graph for yearly view
         let yearlyResting = [averageJanR, averageFebR, averageMarR, averageAprR, averageMayR, averageJunR, averageJulR, averageAugR, averageSepR, averageOctR, averageNovR, averageDecR]
         
-            return(yearlyResting)
+        return(yearlyResting)
     }
     
     // get postural data from the database for the last year
@@ -316,7 +412,7 @@ class YearContainer: UIViewController {
         //for loop that runs for 365 or array size if less than 365
         for _ in Tremor{
             
-                //make sure tremor values are between 0 and 10
+            //make sure tremor values are between 0 and 10
             if Tremor[size].posturalSeverity > 10{
                 Tremor[size].posturalSeverity = 10
             }
@@ -383,7 +479,7 @@ class YearContainer: UIViewController {
             
             //if the array is shorter than 365 and is now empty
             if size < 0{
-            break
+                break
             }
         }
         
@@ -468,9 +564,9 @@ class YearContainer: UIViewController {
         //sets the values for the array used in the graph for yearly view
         let yearlyPostural = [averageJanP, averageFebP, averageMarP, averageAprP, averageMayP, averageJunP, averageJulP, averageAugP, averageSepP, averageOctP, averageNovP, averageDecP]
         
-            return(yearlyPostural)
+        return(yearlyPostural)
         
     }
-
-
+    
+    
 }

@@ -16,26 +16,27 @@ import Charts
 class MonthContainer: UIViewController {
 
     @IBOutlet weak var monthLineChartView: LineChartView!
+    
     let dates = ["Week 1", "Week 2", "Week 3", "Week 4"]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         //format monthLineChartView
         self.monthLineChartView.noDataText = "No data provided"
-    
+        
         let data2 = setChartData(months: dates)
-    
+        
         //set data
         self.monthLineChartView.data = data2
-    
+        
         //set up view
         self.monthLineChartView.chartDescription?.text = ""
         self.monthLineChartView.fitScreen()
         self.monthLineChartView.legend.textColor = UIColor.black
         self.monthLineChartView.gridBackgroundColor = UIColor.darkGray
         self.monthLineChartView.scaleXEnabled = false
-    
+        
         //format x-axis
         self.monthLineChartView.xAxis.labelPosition = .bottom
         self.monthLineChartView.xAxis.avoidFirstLastClippingEnabled = true
@@ -44,19 +45,19 @@ class MonthContainer: UIViewController {
         self.monthLineChartView.xAxis.granularityEnabled = true
         self.monthLineChartView.xAxis.granularity = 1
         self.monthLineChartView.xAxis.drawLimitLinesBehindDataEnabled = true
-    
+        
         //format y-axis
         self.monthLineChartView.leftAxis.labelCount = 10-1
         self.monthLineChartView.leftAxis.axisMaximum = 10
         self.monthLineChartView.leftAxis.axisMinimum = 0
         self.monthLineChartView.leftAxis.drawGridLinesEnabled = true
         self.monthLineChartView.rightAxis.enabled = false
-    
+        
     }
-
+    
     // set line chart data for month view
     func setChartData(months : [String]) -> LineChartData {
-    
+        
         let postural = getPosturalData()
         let resting = getRestingData()
         
@@ -65,42 +66,42 @@ class MonthContainer: UIViewController {
         for i in 0...postural.count-1 {
             yVals1.append(ChartDataEntry(x: Double(i), y: postural[i]))
         }
-    
+        
         //format "Postural" line
         let set1: LineChartDataSet = LineChartDataSet(values: yVals1, label: "Postural")
         set1.axisDependency = .left // Line will correlate with left axis values
-        set1.setColor(UIColor.red.withAlphaComponent(0.5))
-        set1.setCircleColor(UIColor.red)
+        set1.setColor(UIColor(red: 0.0, green: 0.9, blue: 0.4, alpha: 1.0))
+        set1.setCircleColor(UIColor(red: 0.0, green: 0.9, blue: 0.4, alpha: 1.0))
         set1.lineWidth = 2.0
-        set1.circleRadius = 3.0
+        set1.circleRadius = 0.5
         set1.fillAlpha = 65 / 255.0
-        set1.fillColor = UIColor.red
+        set1.fillColor = UIColor(red: 0.0, green: 0.9, blue: 0.4, alpha: 1.0)
         set1.highlightColor = UIColor.white
         set1.drawCircleHoleEnabled = true
-    
+        
         //add "Resting" data
         var yVals2 : [ChartDataEntry] = [ChartDataEntry]()
         for i in 0...resting.count-1 {
             yVals2.append(ChartDataEntry(x: Double(i), y: resting[i]))
         }
-    
+        
         //format "Resting" line
         let set2: LineChartDataSet = LineChartDataSet(values: yVals2, label: "Resting")
         set2.axisDependency = .left // Line will correlate with left axis values
-        set2.setColor(UIColor.yellow.withAlphaComponent(0.5))
-        set2.setCircleColor(UIColor.yellow)
+        set2.setColor(UIColor(red: 0.1, green: 0.5, blue: 0.8, alpha: 1.0))
+        set2.setCircleColor(UIColor(red: 0.1, green: 0.5, blue: 0.8, alpha: 1.0))
         set2.lineWidth = 2.0
-        set2.circleRadius = 3.0
+        set2.circleRadius = 0.5
         set2.fillAlpha = 65 / 255.0
-        set2.fillColor = UIColor.yellow
+        set2.fillColor = UIColor(red: 0.1, green: 0.5, blue: 0.8, alpha: 1.0)
         set2.highlightColor = UIColor.white
         set2.drawCircleHoleEnabled = true
-    
+        
         //create an array to store our LineChartDataSets
         var dataSets : [LineChartDataSet] = [LineChartDataSet]()
         dataSets.append(set1)
         dataSets.append(set2)
-    
+        
         //pass in our dataSets
         let data: LineChartData = LineChartData(dataSets: dataSets)
         data.setValueTextColor(UIColor.white)
@@ -131,7 +132,7 @@ class MonthContainer: UIViewController {
             if Tremor[size].posturalSeverity < 0{
                 Tremor[size].posturalSeverity = 0
             }
-
+            
             Postural[index] = Tremor[size].posturalSeverity
             index = index - 1
             size =  size - 1
@@ -173,7 +174,7 @@ class MonthContainer: UIViewController {
             if Tremor[size].restingSeverity < 0{
                 Tremor[size].restingSeverity = 0
             }
-
+            
             Resting[index] = Tremor[size].restingSeverity
             index = index - 1
             size =  size - 1
@@ -188,6 +189,6 @@ class MonthContainer: UIViewController {
         
         return(resting)
     }
-
-
+    
+    
 }

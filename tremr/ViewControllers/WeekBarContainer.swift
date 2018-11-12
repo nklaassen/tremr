@@ -17,13 +17,56 @@ class WeekBarContainer: UIViewController {
 
     @IBOutlet weak var weekBarChartView: BarChartView!
 
+    let dates1 = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun", ""]
+    let dates2 = ["Tues", "Wed", "Thurs", "Fri", "Sat", "Sun", "Mon", ""]
+    let dates3 = ["Wed", "Thurs", "Fri", "Sat", "Sun", "Mon", "Tues", ""]
+    let dates4 = ["Thurs", "Fri", "Sat", "Sun", "Mon", "Tues", "Wed", ""]
+    let dates5 = ["Fri", "Sat", "Sun", "Mon", "Tues", "Wed", "Thurs", ""]
+    let dates6 = ["Sat", "Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", ""]
+    let dates7 = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", ""]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        let dates = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", ""]
+        
         let medication = [1.0, 0.0, 0.0, 1.0, 2.0, 3.0, 0.0, 4.0]
         let exercise = [0.0, 0.0, 3.0, 0.0, 1.0, 1.0, 3.0, 4.0]
-    
+        
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        let currentDay = dateFormatter.string(from: now)
+        
+        var dates = dates1
+        
+        if currentDay == "Sunday"
+        {
+            dates = dates1
+        }
+        if currentDay == "Monday"
+        {
+            dates = dates2
+        }
+        if currentDay == "Tuesday"
+        {
+            dates = dates3
+        }
+        if currentDay == "Wednesday"
+        {
+            dates = dates4
+        }
+        if currentDay == "Thursday"
+        {
+            dates = dates5
+        }
+        if currentDay == "Friday"
+        {
+            dates = dates6
+        }
+        if currentDay == "Saturday"
+        {
+            dates = dates7
+        }
+        
         setChart(dataPoints: dates, values1: medication, values2: exercise)
         
         //format chart
@@ -46,11 +89,11 @@ class WeekBarContainer: UIViewController {
         self.weekBarChartView.leftAxis.drawLabelsEnabled = false
         self.weekBarChartView.rightAxis.drawLabelsEnabled = false
     }
-
+    
     // sets up the chart data for week view bar chart
     func setChart(dataPoints: [String], values1: [Double], values2: [Double]) {
         self.weekBarChartView.noDataText = "no data provided"
-    
+        
         let block1: (Int) -> BarChartDataEntry = { (i) -> BarChartDataEntry in
             return BarChartDataEntry(x: Double(i), y: values1[i])
         }
@@ -65,20 +108,20 @@ class WeekBarContainer: UIViewController {
         let barWidth = 0.2
         let yVals1 = (0 ..< dataPoints.count).map(block1)
         let yVals2 = (0 ..< dataPoints.count).map(block2)
-    
+        
         let set1: BarChartDataSet = BarChartDataSet(values: yVals1, label: "medications missed")
         
-        set1.setColor(UIColor.yellow)
-    
+        set1.setColor(UIColor(red: 0.0, green: 0.9, blue: 0.4, alpha: 1.0))
+        
         let set2: BarChartDataSet = BarChartDataSet(values: yVals2, label: "exercises missed")
         
-        set2.setColor(UIColor.red)
-
+        set2.setColor(UIColor(red: 0.1, green: 0.5, blue: 0.8, alpha: 1.0))
+        
         //add both data sets together
         var dataSets : [BarChartDataSet] = [BarChartDataSet] ()
         dataSets.append(set1)
         dataSets.append(set2)
-    
+        
         let data: BarChartData = BarChartData(dataSets: dataSets)
         data.barWidth = barWidth*2
         data.groupBars(fromX: Double(0), groupSpace: groupSpace, barSpace: barSpace)

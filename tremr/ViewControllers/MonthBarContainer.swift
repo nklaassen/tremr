@@ -67,11 +67,11 @@ class MonthBarContainer: UIViewController {
         
         let set1: BarChartDataSet = BarChartDataSet(values: yVals1, label: "medications missed")
         
-        set1.setColor(UIColor.yellow)
+        set1.setColor(UIColor(red: 0.0, green: 0.9, blue: 0.4, alpha: 1.0))
         
         let set2: BarChartDataSet = BarChartDataSet(values: yVals2, label: "exercises missed")
         
-        set2.setColor(UIColor.red)
+        set2.setColor(UIColor(red: 0.1, green: 0.5, blue: 0.8, alpha: 1.0))
         
         //add both data sets
         var dataSets : [BarChartDataSet] = [BarChartDataSet] ()
