@@ -1,6 +1,6 @@
 # tremr
 This app is targeted for people with Parkinson's. It allows the user to measure the severity of hand tremors over time. In addition, the user can track medication use, and exercise. These three variables can be plotted, so that the user and/or a medical professional can visualize changes in tremor symtoms over time, and possibly correlate this with medication or exercise.
-Make a change
+
 ## Cloning and Building this Repo
 
 ### From the Zip File
