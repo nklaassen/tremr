@@ -10,27 +10,30 @@
 //          2018-10-20:
 //          2018-10-20:
 //          2018-11-35: UI updates
-// Known Bugs: 
+// Known Bugs:
 
 import UIKit
 
 //The following class is for the countdown that starts the recording
-class CountdownViewController: UIViewController {
-
+class Countdown2ViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Postual Measurement"
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.title = "Resting Measurement"
+        let emptyView = UIView(frame: .zero)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: emptyView)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
+        
     }
     
     let delay = 5 // 5 Second Countdown
     var countdownCompleted = false
     var countingDown = false
-
+    
     // The button is connected to a segue to go to the next page
     // Here I block that segue until the countdown is done, at which point I trigger the segue myself
     // Note: the page that is being segueued to *must* have an identifier in the storyboard or this will crash
@@ -80,5 +83,5 @@ class CountdownViewController: UIViewController {
             completion()
         })
     }
-
+    
 }

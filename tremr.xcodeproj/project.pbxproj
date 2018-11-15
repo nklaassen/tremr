@@ -14,6 +14,7 @@
 		55D4D19B218B94AA00CB371C /* WeekBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D19A218B94AA00CB371C /* WeekBarContainer.swift */; };
 		55D4D1B0218D991700CB371C /* MonthBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D1AF218D991700CB371C /* MonthBarContainer.swift */; };
 		55D4D1B2218D9D9A00CB371C /* YearBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D1B1218D9D9A00CB371C /* YearBarContainer.swift */; };
+		55D4D1CE219E0FF100CB371C /* Countdown2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D1CD219E0FF100CB371C /* Countdown2ViewController.swift */; };
 		80EF89CB21814DA400872F5B /* MotionObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CA21814DA400872F5B /* MotionObserver.swift */; };
 		80EF89CD2181638700872F5B /* InstructionsForTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */; };
 		A50B2529218F9D610033AA48 /* DailyExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50B2528218F9D610033AA48 /* DailyExerciseViewController.swift */; };
@@ -180,6 +181,7 @@
 		55D4D19A218B94AA00CB371C /* WeekBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekBarContainer.swift; sourceTree = "<group>"; };
 		55D4D1AF218D991700CB371C /* MonthBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthBarContainer.swift; sourceTree = "<group>"; };
 		55D4D1B1218D9D9A00CB371C /* YearBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearBarContainer.swift; sourceTree = "<group>"; };
+		55D4D1CD219E0FF100CB371C /* Countdown2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown2ViewController.swift; sourceTree = "<group>"; };
 		80EF89CA21814DA400872F5B /* MotionObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionObserver.swift; sourceTree = "<group>"; };
 		80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsForTrackingViewController.swift; sourceTree = "<group>"; };
 		A50B2528218F9D610033AA48 /* DailyExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyExerciseViewController.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 				55D4D19A218B94AA00CB371C /* WeekBarContainer.swift */,
 				55D4D1AF218D991700CB371C /* MonthBarContainer.swift */,
 				55D4D1B1218D9D9A00CB371C /* YearBarContainer.swift */,
+				55D4D1CD219E0FF100CB371C /* Countdown2ViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				E0D5F0EA2188CAE4008BFC97 /* DisplaySeverityViewController.swift in Sources */,
 				80EF89CD2181638700872F5B /* InstructionsForTrackingViewController.swift in Sources */,
 				E0D5F0EB2188CAE4008BFC97 /* RecordPosturalViewController.swift in Sources */,
+				55D4D1CE219E0FF100CB371C /* Countdown2ViewController.swift in Sources */,
 				E0D5F0E52188CA32008BFC97 /* TremorController.swift in Sources */,
 				A81150E0218E588E005478EE /* AllMedicationTableViewCell.swift in Sources */,
 				A50B2529218F9D610033AA48 /* DailyExerciseViewController.swift in Sources */,

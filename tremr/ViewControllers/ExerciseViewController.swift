@@ -1,10 +1,11 @@
 //
 //  Name of file: ExerciseViewController.swift
-//  Programmers: Jason Fevang and Colin Chan
+//  Programmers: Jason Fevang and Colin Chan and Kira Nishi-Beckingham
 //  Team Name: Co.DEsign
 //  Changes been made:
 //          2018-10-20: initial commit
 //          2018-10-24: build out pages
+//          2018-11-35: UI updates
 // Known Bugs:
 
 import UIKit
@@ -60,6 +61,17 @@ class ExerciseViewController: UIViewController {
         else {
             confirmationButton.setTitle("Add Exercise",for: .normal)
         }
+        
+        //button colors?
+//        if suToggle.isOn {
+//            suToggle.setTitleColor(UIColor.black, for: .normal)
+//            suToggle.backgroundColor = UIColor(red: 0.0, green: 0.9, blue: 0.4, alpha: 1.0)
+//        }
+//        else {
+//            suToggle.setTitleColor(UIColor.white, for: .normal)
+//            suToggle.backgroundColor = UIColor(red: 0.1, green: 0.5, blue: 0.8, alpha: 1.0)
+//        }
+        self.navigationItem.title = "Edit/New Exercise"
     }
     
     override func didReceiveMemoryWarning() {

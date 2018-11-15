@@ -1,9 +1,10 @@
 //
 //  Name of file: DailyExerciseViewController.swift
-//  Programmers: Nic Klaassen and Devansh Chopra
+//  Programmers: Nic Klaassen and Devansh Chopra and Kira Nishi-Beckingham
 //  Team Name: Co.DEsign
 //  Changes been made:
 //          2018-10-22: created file
+//          2018-11-35: UI updates
 // Known Bugs:
 
 import UIKit
@@ -34,6 +35,7 @@ class DailyExerciseViewController: UIViewController , UITableViewDataSource, UIT
         exerTableView.dataSource = self
         
         self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.title = "Exercise"
     }
     
     //MARK: - Table view data source

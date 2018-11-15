@@ -1,9 +1,10 @@
 //
 //  Name of file: AllExerciseViewController.swift
-//  Programmers: Nic Klaassen and Devansh Chopra
+//  Programmers: Nic Klaassen and Devansh Chopra and Kira Nishi-Beckingham
 //  Team Name: Co.DEsign
 //  Changes been made:
 //          2018-10-22: created file
+//          2018-11-35: UI updates
 // Known Bugs:
 
 import UIKit
@@ -19,6 +20,9 @@ class AllExerciseViewController: UIViewController, UITableViewDataSource, UITabl
     //MARK: UIViewController functions
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
         //load exercises into table
         loadExercises()
@@ -28,6 +32,8 @@ class AllExerciseViewController: UIViewController, UITableViewDataSource, UITabl
         exerTableView.dataSource = self
         
         // Do any additional setup after loading the view.
+        
+        self.navigationItem.title = "All Exericses"
     }
     
     override func didReceiveMemoryWarning() {

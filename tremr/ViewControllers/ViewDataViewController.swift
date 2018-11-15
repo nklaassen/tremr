@@ -9,6 +9,7 @@
 //          2018-11-02: weekBarContainer, monthBarContainer, yearBarContainer added and formatted with segmeneted
 //                      control
 //          2018-11-03: week view set to default
+//          2018-11-35: UI updates
 
 // Known Bugs: week view default is hard coded (defaut is the top most contaienr) 
 

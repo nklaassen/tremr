@@ -1,9 +1,10 @@
 //
 //  Name of file: MainViewController.swift
-//  Programmers: Nic Klaassen
+//  Programmers: Nic Klaassen and Kira Nishi-Beckingham
 //  Team Name: Co.DEsign
 //  Changes been made:
 //          2018-10-20: initial commit
+//          2018-11-35: UI updates
 // Known Bugs:
 
 import UIKit
@@ -25,6 +26,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        self.navigationItem.setHidesBackButton(false, animated:true)
         //To change Navigation Bar Background Color
         UINavigationBar.appearance().barTintColor = UIColor(red: 0.0, green: 0.6, blue: 1.0, alpha: 1.0)
         //To change Back button title & icon color

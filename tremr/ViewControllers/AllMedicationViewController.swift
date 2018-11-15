@@ -1,6 +1,6 @@
 //
 //  Name of file: AllMedicationViewController.swift
-//  Programmers: Jason Fevang
+//  Programmers: Jason Fevang and Kira Nishi-Beckingham
 //  Team Name: Co.DEsign
 //  Changes been made:
 //          2018-10-20:
@@ -9,6 +9,7 @@
 //          2018-10-20:
 //          2018-10-20:
 //          2018-10-20:
+//          2018-11-35: UI updates
 // Known Bugs:
 
 import UIKit
@@ -40,7 +41,7 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
         
-        self.navigationItem.title = "All Medication"
+        self.navigationItem.title = "All Medications"
     }
 
     

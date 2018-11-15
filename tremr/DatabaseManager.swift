@@ -1,6 +1,6 @@
 //
 //  Name of file: DatabaseManager.swift
-//  Programmers: Nic Klaassen, Jason Fevang and Colin Chan
+//  Programmers: Nic Klaassen, Jason Fevang, Colin Chan and Kira Nishi-Beckingham
 //  Team Name: Co.DEsign
 //  Changes been made:
 //          2018-10-20: Create database
@@ -8,6 +8,7 @@
 //          2018-10-24: Don't use users for v1
 //          2018-10-25: add medication/exercises
 //          2018-11-04: filter tremors by date
+//          2018-11-12: added get functions
 // Known Bugs:
 
 import Foundation

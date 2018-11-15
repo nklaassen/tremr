@@ -1,10 +1,11 @@
 //
 //  Name of file: DisplaySeverityViewController.swift
-//  Programmers: Devansh Chopra and Nic Klaassen
+//  Programmers: Devansh Chopra and Nic Klaassen and Kira Nishi-Beckingham
 //  Team Name: Co.DEsign
 //  Changes been made:
 //          2018-10-28: show real score
 //          2018-10-30: cosmetic updates
+//          2018-11-15: UI updates
 // Known Bugs: 
 
 import UIKit
@@ -28,6 +29,12 @@ class DisplaySeverityViewController: UIViewController {
             print("tremor: resting=\(tremor.restingSeverity), postural=\(tremor.posturalSeverity), date=\(tremor.date)")
         }
          */
+        
+        //navigation bar formatting
+        self.navigationController?.isNavigationBarHidden = false
+        let emptyView = UIView(frame: .zero)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: emptyView)
+        self.navigationItem.title = "Results"
     }
     
     @IBOutlet weak var posturalLabel: UILabel!
