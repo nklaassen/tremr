@@ -68,14 +68,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        reminder: false,
                        start_date: Date().addingTimeInterval(-3*day),
                        end_date: Date().addingTimeInterval(-day))
-        db.addMedicine(UID: 1,
+        let addedMID = db.addMedicine(UID: 1,
                        name: "medicine4",
                        dosage: "400",
                        mo: true, tu: true, we: true, th: false, fr: true, sa: false, su: false,
                        reminder: false,
                        start_date: Date(),
                        end_date: Date())
-        
         
         db.addExercise(UID: 1,
                        name: "Exercise1",
@@ -84,6 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        reminder: false,
                        start_date: Date(),
                        end_date: nil)
+        db.addTakenMedicine(MID : addedMID!, date : Date())
         return true
     }
 

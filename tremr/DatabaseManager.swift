@@ -66,22 +66,18 @@ class DatabaseManager
     let end_date = Expression<Date?>("end_date") //optional */
     
     let MissedExercises = Table("MissedExercises")
-    //UID
     //EID
     //date
     
     let MissedMedicines = Table("MissedMedicines")
-    //UID
     //MID
     //date
     
     let TakenExercises = Table("TakenExercises")
-    //UID
     //EID
     //date
     
     let TakenMedicines = Table("TakenMedicines")
-    //UID
     //MID
     //date
     
@@ -163,42 +159,38 @@ class DatabaseManager
             
             // Create MissedExercises table
             try db.run(MissedExercises.create(ifNotExists: true) { t in
-                t.column(UID)
                 t.column(EID)
                 t.column(date)
                 t.foreignKey(UID, references: Users, UID, delete: .cascade)
                 t.foreignKey(EID, references: Exercises, EID, delete: .cascade)
-                t.primaryKey(UID, EID, date)
+                t.primaryKey(EID, date)
             })
             
             // Create MissedMedicines table
             try db.run(MissedMedicines.create(ifNotExists: true) { t in
-                t.column(UID)
                 t.column(MID)
                 t.column(date)
                 t.foreignKey(UID, references: Users, UID, delete: .cascade)
                 t.foreignKey(MID, references: Medicines, MID, delete: .cascade)
-                t.primaryKey(UID, MID, date)
+                t.primaryKey(MID, date)
             })                                                              // )
             
             // Create TakenExercises table
             try db.run(TakenExercises.create(ifNotExists: true) { t in
-                t.column(UID)
                 t.column(EID)
                 t.column(date)
                 t.foreignKey(UID, references: Users, UID, delete: .cascade)
                 t.foreignKey(EID, references: Exercises, EID, delete: .cascade)
-                t.primaryKey(UID, EID, date)
+                t.primaryKey(EID, date)
             })
             
             // Create TakenMedicines table
             try db.run(TakenMedicines.create(ifNotExists: true) { t in
-                t.column(UID)
                 t.column(MID)
                 t.column(date)
                 t.foreignKey(UID, references: Users, UID, delete: .cascade)
                 t.foreignKey(MID, references: Medicines, MID, delete: .cascade)
-                t.primaryKey(UID, MID, date)
+                t.primaryKey(MID, date)
             })
             
             // Initialize the DB with some dummy data
@@ -428,7 +420,7 @@ class DatabaseManager
         return exercises
     }
     
-    //Returns array of all medicines that are scheduled for the day Date
+    //Returns array of all medicines that are scheduled for the day Date that haven't been completed yet
     func getMedicineDate(date: Date) ->Array<Medicine> {
         //weekDay is a number. 1-sunday, 2-monday, ... 7-saturday
         let weekDay = Calendar.current.component(.weekday, from: date)
@@ -450,17 +442,46 @@ class DatabaseManager
         default: //Saturday
             targetWeekDay = saturday
         }
-
-        var query = Medicines.filter(targetWeekDay == true) // Weekday matches weekday recorded for
-        query = query.filter(start_date <= date)   // Ensure searching within valid timeframe
-        query = query.filter(end_date == nil || end_date >= date)   //If end_date is assigned, then only return when within the timeframe of that medicine
         
+        /*
+         
+         Does not support subqueries...
+         Select *
+         from Medicines M
+         where M.<targetWeekDay> == true
+         where M.start_date <= date
+         where M.end_date IS NULL OR M.end_date >= date
+         where M.MID NOT IN
+            (   Select MID
+                From TakenMedicines T
+                Where T.MID == M.MID
+            )
+         
+         OR
+         
+         Having issues peforming left join, not sure why
+         
+         SELECT *
+         FROM Medicines M
+         LEFT JOIN TakenMedicines T ON M.name = T.name
+         where M.<targetWeekDay> == true
+         where M.start_date <= date
+         where M.end_date IS NULL OR M.end_date >= date
+         WHERE T.name IS NULL
+         */
+        
+        
+        let query = Medicines.filter(targetWeekDay == true) // Weekday matches weekday recorded for
+                            .filter(start_date <= date)   // Ensure searching within valid timeframe
+                            .filter(end_date == nil || end_date >= date)   //If end_date is assigned, then only return when within the timeframe of that medicine
+                            .join(.leftOuter, TakenMedicines, on: TakenMedicines[MID] == Medicines[MID])
+                            //.filter(TakenMedicines[MID] == nil)
         var medicines = Array<Medicine>()
         
         do {
             for med in try db.prepare(query) {
                 medicines.append(Medicine(UID: med[self.UID],
-                                          MID: med[self.MID],
+                                          MID: med[self.Medicines[MID]],
                                           name: med[self.name],
                                           dosage: med[self.dosage],
                                           mo: med[self.monday],
@@ -475,7 +496,7 @@ class DatabaseManager
                                           end_date:med[self.end_date]))
             }
         } catch {
-            fatalError("Query didn't execute at all")
+            fatalError("Query didn't execute at all \(error)")
         }
         return medicines
     }
@@ -597,6 +618,27 @@ class DatabaseManager
             try db.run(Exercises.delete())
         } catch {
             fatalError("Failed to delete Exercises table")
+        }
+    }
+    
+    func addMissedMedicine(MID : Int64, date : Date)
+    {
+        do {
+            try db.run(MissedMedicines.insert(self.MID <- MID,
+                                        self.date <- date ))
+        } catch {
+            print("Failed to insert medicine: \(error)")
+        }
+
+    }
+    
+    func addTakenMedicine(MID : Int64, date : Date)
+    {
+        do {
+            try db.run(TakenMedicines.insert(self.MID <- MID,
+                                              self.date <- date ))
+        } catch {
+            print("Failed to insert medicine: \(error)")
         }
     }
 }

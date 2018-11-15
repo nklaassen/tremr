@@ -66,6 +66,22 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Fetches the appropriate medication for the data source layout.
+        let med = medications[indexPath.row]
+        print(med.name)
+
+        // Add medication to list of taken medications
+        db.addTakenMedicine(MID : med.MID, date : Date())
+        
+        // Reload the medications
+        loadMedications()
+        
+        // Refresh the table
+        medTableView.reloadData()
+    }
+    
     
     //MARK: Actions
     @IBAction func mainViewTransition(_ sender: Any) {
@@ -79,6 +95,7 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
     @IBAction func rightArrowButton(_ sender: UIButton) {
         incrementDisplayDay(changeValue: 1)
     }
+    
     
     
     //MARK: Private Methods
@@ -110,6 +127,7 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         medTableView.reloadData()
     }
 }
+
 
 
 extension Date {

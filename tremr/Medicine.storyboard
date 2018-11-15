@@ -112,6 +112,7 @@
                                                         <constraint firstItem="6sY-4L-U2F" firstAttribute="top" secondItem="2bf-dd-ssx" secondAttribute="top" id="ren-1v-1al"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <gestureRecognizers/>
                                                 <connections>
                                                     <outlet property="medDosageLabel" destination="7Wm-rC-rPj" id="j2h-ej-eyE"/>
                                                     <outlet property="medNameLabel" destination="6sY-4L-U2F" id="nWL-MV-FhD"/>
@@ -530,7 +531,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6dP-4r-oIr"/>
-        <segue reference="GGJ-D1-lbS"/>
+        <segue reference="gx7-xn-9FS"/>
         <segue reference="g7f-H2-eRD"/>
     </inferredMetricsTieBreakers>
 </document>
