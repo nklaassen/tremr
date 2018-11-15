@@ -90,6 +90,7 @@ class ExerciseViewController: UIViewController {
                 start_date: Date(),
                 end_date: nil)
         }
+        self.navigationController?.popViewController(animated: true)
     }
     
 

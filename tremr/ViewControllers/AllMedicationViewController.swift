@@ -25,6 +25,9 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
     //MARK: UIViewController functions
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
         //load medications into table
         loadMedications()
@@ -40,6 +43,7 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
         self.navigationItem.title = "All Medication"
     }
 
+    
 
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -98,6 +102,7 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     
+    
     //MARK: Actions
     //When the delete button is clicked on the table, this function gets called
     @objc func deleteButtonClicked(_ sender: UIButton) {
@@ -115,6 +120,7 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
         
 
     }
+
     
     //MARK: Private methods
     private func loadMedications() {

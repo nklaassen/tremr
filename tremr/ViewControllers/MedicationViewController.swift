@@ -101,6 +101,7 @@ class MedicationViewController: UIViewController {
                 end_date: nil)
         }
         
+        
         self.navigationController?.popViewController(animated: true)
     }
     
