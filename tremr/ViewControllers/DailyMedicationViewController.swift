@@ -39,6 +39,8 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         //Set containing class as the delegate and datasource of the table view
         medTableView.delegate = self
         medTableView.dataSource = self
+        
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     // MARK: - Table view data source

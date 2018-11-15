@@ -32,6 +32,8 @@ class DailyExerciseViewController: UIViewController , UITableViewDataSource, UIT
         //Set containing class as the delegate and datasource of the table view
         exerTableView.delegate = self
         exerTableView.dataSource = self
+        
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     //MARK: - Table view data source

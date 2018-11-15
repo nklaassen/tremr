@@ -68,6 +68,8 @@ class ViewDataViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.isNavigationBarHidden = false
     
         //set default view to Week View
         mainView.bringSubview(toFront: weekBarContainer)

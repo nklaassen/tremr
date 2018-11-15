@@ -17,7 +17,7 @@ class InstructionsForTrackingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     @IBAction func Instructions(_ sender: UITextField) {
