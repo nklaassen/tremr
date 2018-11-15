@@ -1,13 +1,15 @@
 //
 //  Name of file: ExerciseViewController.swift
-//  Programmers: Jason Fevang and Colin Chan
+//  Programmers: Jason Fevang and Colin Chan and Leo Zhang
 //  Team Name: Co.DEsign
 //  Changes been made:
 //          2018-10-20: initial commit
 //          2018-10-24: build out pages
+//          2018-11-12: notifications added
 // Known Bugs:
 
 import UIKit
+import UserNotifications
 
 class ExerciseViewController: UIViewController {
     
@@ -71,7 +73,7 @@ class ExerciseViewController: UIViewController {
     @IBAction func addExerciseButton(_ sender: Any) {
         let exerciseName: String = exerciseTextField.text!
         let unitValue: String = unitTextField.text!
-        
+        var EID : Int64
         if edittedExercise != nil {
             db.updateExercise(
                 EIDToUpdate: (edittedExercise?.EID)!,
@@ -79,16 +81,80 @@ class ExerciseViewController: UIViewController {
                 unit: "\(unitValue)",
                 mo: moToggle.isOn, tu: tuToggle.isOn, we: weToggle.isOn, th: thToggle.isOn, fr: frToggle.isOn, sa: saToggle.isOn, su: suToggle.isOn,
                 reminder: reminderToggle.isOn)
+            EID = edittedExercise!.EID
         }
         else {
-            db.addExercise(
+            EID = db.addExercise(
                 UID: 1,
                 name: "\(exerciseName)",
                 unit: "\(unitValue)",
                 mo: moToggle.isOn, tu: tuToggle.isOn, we: weToggle.isOn, th: thToggle.isOn, fr: frToggle.isOn, sa: saToggle.isOn, su: suToggle.isOn,
                 reminder: reminderToggle.isOn,
                 start_date: Date(),
-                end_date: nil)
+                end_date: nil)!
+        }
+        
+        //notification
+        if reminderToggle.isOn {
+            if moToggle.isOn {
+                let repeatingMonDate = createDate(weekday: 2, hour: 10, minute: 00 , year: 2018)
+                let notificationID = "Mo\(EID)"
+                scheduleExerciseNotificationWeekly(at: repeatingMonDate, name: exerciseName, ID: notificationID)
+            }
+            if moToggle.isOn == false{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Mo\(EID)"])
+            }
+            if tuToggle.isOn {
+                let repeatingTueDate = createDate(weekday: 3, hour: 10, minute: 00 , year: 2018)
+                let notificationID = "Tu\(EID)"
+                scheduleExerciseNotificationWeekly(at: repeatingTueDate, name: exerciseName, ID: notificationID)
+            }
+            if tuToggle.isOn == false{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Tu\(EID)"])
+            }
+            if weToggle.isOn {
+                let repeatingWedDate = createDate(weekday: 4, hour: 10, minute: 00 , year: 2018)
+                let notificationID = "We\(EID)"
+                scheduleExerciseNotificationWeekly(at: repeatingWedDate, name: exerciseName, ID: notificationID)
+            }
+            if weToggle.isOn == false{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["We\(EID)"])
+            }
+            if thToggle.isOn {
+                let repeatingThuDate = createDate(weekday: 5, hour: 10, minute: 00 , year: 2018)
+                let notificationID = "Th\(EID)"
+                scheduleExerciseNotificationWeekly(at: repeatingThuDate, name: exerciseName, ID: notificationID)
+            }
+            if thToggle.isOn == false{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Th\(EID)"])
+            }
+            if frToggle.isOn {
+                let repeatingFriDate = createDate(weekday: 6, hour: 10, minute: 00 , year: 2018)
+                let notificationID = "Fr\(EID)"
+                scheduleExerciseNotificationWeekly(at: repeatingFriDate, name: exerciseName, ID: notificationID)
+            }
+            if frToggle.isOn == false{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Fr\(EID)"])
+            }
+            if saToggle.isOn {
+                let repeatingSatDate = createDate(weekday: 7, hour: 10, minute: 00 , year: 2018)
+                let notificationID = "Sa\(EID)"
+                scheduleExerciseNotificationWeekly(at: repeatingSatDate, name: exerciseName, ID: notificationID)
+            }
+            if saToggle.isOn == false{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Sa\(EID)"])
+            }
+            if suToggle.isOn {
+                let repeatingSunDate = createDate(weekday: 1, hour: 10, minute: 00 , year: 2018)
+                let notificationID = "Su\(EID)"
+                scheduleExerciseNotificationWeekly(at: repeatingSunDate, name: exerciseName, ID: notificationID)
+            }
+            if suToggle.isOn == false{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Su\(EID)"])
+            }
+        }
+        if reminderToggle.isOn == false{
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Mo\(EID)", "Tu\(EID)", "We\(EID)", "Th\(EID)", "Fr\(EID)", "Sa\(EID)", "Su\(EID)"])
         }
     }
     

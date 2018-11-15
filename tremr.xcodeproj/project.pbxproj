@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03711BE9219A016A008CC9C8 /* NotificationFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03711BE8219A0169008CC9C8 /* NotificationFunctions.swift */; };
 		55D4D192218B7CAF00CB371C /* ViewDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D191218B7CAF00CB371C /* ViewDataViewController.swift */; };
 		55D4D194218B813100CB371C /* YearContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D193218B813100CB371C /* YearContainer.swift */; };
 		55D4D196218B888C00CB371C /* MonthContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D195218B888C00CB371C /* MonthContainer.swift */; };
@@ -173,6 +174,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03711BE8219A0169008CC9C8 /* NotificationFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFunctions.swift; sourceTree = "<group>"; };
 		55D4D191218B7CAF00CB371C /* ViewDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDataViewController.swift; sourceTree = "<group>"; };
 		55D4D193218B813100CB371C /* YearContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearContainer.swift; sourceTree = "<group>"; };
 		55D4D195218B888C00CB371C /* MonthContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthContainer.swift; sourceTree = "<group>"; };
@@ -253,6 +255,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03711BE0219A013B008CC9C8 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				03711BE8219A0169008CC9C8 /* NotificationFunctions.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		A5760018218AB42F007A641F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +327,7 @@
 		E0FEE11E217EB76B00C72D7C /* tremr */ = {
 			isa = PBXGroup;
 			children = (
+				03711BE0219A013B008CC9C8 /* Notification */,
 				A5760018218AB42F007A641F /* Assets */,
 				A5E1D108218955B4001D8814 /* SubClasses */,
 				E0FEE158217ECDF800C72D7C /* ViewControllers */,
@@ -649,6 +660,7 @@
 				E0D5F0E52188CA32008BFC97 /* TremorController.swift in Sources */,
 				A81150E0218E588E005478EE /* AllMedicationTableViewCell.swift in Sources */,
 				A50B2529218F9D610033AA48 /* DailyExerciseViewController.swift in Sources */,
+				03711BE9219A016A008CC9C8 /* NotificationFunctions.swift in Sources */,
 				E04F6FD32182979C000AF2F6 /* CountdownViewController.swift in Sources */,
 				80EF89CB21814DA400872F5B /* MotionObserver.swift in Sources */,
 				E0FEE152217ECCE900C72D7C /* ExerciseViewController.swift in Sources */,

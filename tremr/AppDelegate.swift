@@ -41,6 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //prompt permission for notification
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         
+        //daily reminder to do tremr measurements
+        let dailyTremorTime = createDate(weekday: 1, hour: 10, minute: 00, year: 2018)
+        dailyTremorRecordingReminder(at: dailyTremorTime, ID: "dailyReminder")
+        
         // Fill in some test data for medicine database
         let day = TimeInterval(60*60*24) //Number of seconds in a day
         db.addMedicine(UID: 1,

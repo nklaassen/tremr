@@ -41,7 +41,7 @@ class ExerciseTests: XCTestCase {
     func testAddExercise() {
         let testDate = Date()
         
-        db.addExercise(UID: 1,
+        let insertedEID = db.addExercise(UID: 1,
                        name: "exercise1",
                        unit: "100",
                        mo: true, tu: true, we: true, th: true, fr: true, sa: false, su: true,
@@ -50,6 +50,7 @@ class ExerciseTests: XCTestCase {
                        end_date: nil)
         let exercises = db.getExercise()
         
+        XCTAssert(exercises[0].EID == insertedEID)
         XCTAssert(exercises.count as Int == 1)
         XCTAssert(exercises[0].name == "exercise1")
         XCTAssert(exercises[0].unit == "100")
