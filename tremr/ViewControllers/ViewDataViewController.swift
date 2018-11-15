@@ -70,6 +70,7 @@ class ViewDataViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.title = "View Data"
     
         //set default view to Week View
         mainView.bringSubview(toFront: weekBarContainer)

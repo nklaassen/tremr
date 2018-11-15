@@ -41,6 +41,7 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         medTableView.dataSource = self
         
         self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.title = "Medication"
     }
     
     // MARK: - Table view data source

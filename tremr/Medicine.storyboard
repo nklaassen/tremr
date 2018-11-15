@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yPi-wK-DSa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yPi-wK-DSa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,24 +21,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Erx-1Z-ZkT">
                                 <rect key="frame" x="16" y="20" width="343" height="587"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzy-e1-8AX">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="77"/>
-                                        <state key="normal" title="Back"/>
-                                        <connections>
-                                            <action selector="mainViewTransition:" destination="yPi-wK-DSa" eventType="touchUpInside" id="xg7-QD-wpl"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicine" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFF-CV-x7N">
-                                        <rect key="frame" x="0.0" y="85" width="343" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="y4y-6c-KiK"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="y0n-NX-XLP">
-                                        <rect key="frame" x="31.5" y="143" width="280" height="50"/>
+                                        <rect key="frame" x="31.5" y="0.0" width="280" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiY-sd-93p">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -76,7 +58,7 @@
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x0c-PX-CUu">
-                                        <rect key="frame" x="0.0" y="201" width="343" height="319.5"/>
+                                        <rect key="frame" x="0.0" y="58" width="343" height="319.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MedicationTableViewCell" id="jRx-Yk-Zcn" customClass="DailyMedicationTableViewCell" customModule="tremr" customModuleProvider="target">
@@ -120,26 +102,19 @@
                                         </prototypes>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap a medication you've taken today! " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvk-Je-9VZ">
-                                        <rect key="frame" x="28" y="528.5" width="287" height="20.5"/>
+                                        <rect key="frame" x="28" y="385.5" width="287" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHB-Bz-dVc">
-                                        <rect key="frame" x="98.5" y="557" width="146" height="30"/>
+                                        <rect key="frame" x="98.5" y="414" width="146" height="173"/>
                                         <state key="normal" title="Edit/Add Medications"/>
                                         <connections>
                                             <segue destination="cxd-6L-6ks" kind="show" id="gx7-xn-9FS"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="x0c-PX-CUu" firstAttribute="leading" secondItem="oFF-CV-x7N" secondAttribute="leading" id="BYN-P4-dhI"/>
-                                    <constraint firstItem="Wzy-e1-8AX" firstAttribute="leading" secondItem="Erx-1Z-ZkT" secondAttribute="leading" id="FLT-3U-THf"/>
-                                    <constraint firstAttribute="trailing" secondItem="oFF-CV-x7N" secondAttribute="trailing" id="JKh-jl-my1"/>
-                                    <constraint firstItem="oFF-CV-x7N" firstAttribute="leading" secondItem="Erx-1Z-ZkT" secondAttribute="leading" id="hhn-lG-Htb"/>
-                                    <constraint firstItem="Wzy-e1-8AX" firstAttribute="top" secondItem="Erx-1Z-ZkT" secondAttribute="top" id="uVB-sQ-ZhX"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -242,7 +217,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vb3-E7-Cj0">
-                                <rect key="frame" x="133" y="567" width="108" height="30"/>
+                                <rect key="frame" x="133.5" y="567" width="108" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="sRo-DQ-2nn"/>
                                 </constraints>
@@ -287,7 +262,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htK-rp-DwT">
-                                <rect key="frame" x="96.5" y="79" width="187.5" height="57.5"/>
+                                <rect key="frame" x="96" y="79" width="187.5" height="57.5"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Medicine">
                                         <attributes>
@@ -299,7 +274,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter dosage amount (mg)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2oJ-zV-QLg">
-                                <rect key="frame" x="27" y="226.5" width="322" height="30"/>
+                                <rect key="frame" x="27" y="226.5" width="321" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -311,15 +286,14 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfE-hA-QdO">
-                                <rect key="frame" x="142" y="520.5" width="94" height="30"/>
+                                <rect key="frame" x="140.5" y="520.5" width="94" height="30"/>
                                 <state key="normal" title="Add Medicine"/>
                                 <connections>
-                                    <action selector="addMedicineButton:" destination="K7v-nW-bB6" eventType="touchUpInside" id="GZS-qG-gQf"/>
-                                    <segue destination="cxd-6L-6ks" kind="show" id="GGJ-D1-lbS"/>
+                                    <action selector="addMedication:" destination="K7v-nW-bB6" eventType="touchUpInside" id="C06-FB-4z0"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BaQ-Cl-f7e">
-                                <rect key="frame" x="18" y="357" width="341" height="30"/>
+                                <rect key="frame" x="18" y="357" width="339" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5T4-Yb-aXG" customClass="ToggleButton" customModule="tremr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="48.5" height="30"/>
@@ -329,42 +303,42 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTT-o4-FLS" customClass="ToggleButton" customModule="tremr" customModuleProvider="target">
-                                        <rect key="frame" x="48.5" y="0.0" width="49" height="30"/>
+                                        <rect key="frame" x="48.5" y="0.0" width="48.5" height="30"/>
                                         <state key="normal" title="Mon"/>
                                         <connections>
                                             <action selector="mondayButton:" destination="K7v-nW-bB6" eventType="touchUpInside" id="A5b-x2-iXZ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzZ-Sb-Xn2" customClass="ToggleButton" customModule="tremr" customModuleProvider="target">
-                                        <rect key="frame" x="97.5" y="0.0" width="48.5" height="30"/>
+                                        <rect key="frame" x="97" y="0.0" width="48.5" height="30"/>
                                         <state key="normal" title="Tue"/>
                                         <connections>
                                             <action selector="tuesdayButton:" destination="K7v-nW-bB6" eventType="touchUpInside" id="pgZ-YA-7kN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ui4-3f-d9R" customClass="ToggleButton" customModule="tremr" customModuleProvider="target">
-                                        <rect key="frame" x="146" y="0.0" width="49" height="30"/>
+                                        <rect key="frame" x="145.5" y="0.0" width="48" height="30"/>
                                         <state key="normal" title="Wed"/>
                                         <connections>
                                             <action selector="wednesdayButton:" destination="K7v-nW-bB6" eventType="touchUpInside" id="EVk-kq-Xfn"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTc-H1-sef" customClass="ToggleButton" customModule="tremr" customModuleProvider="target">
-                                        <rect key="frame" x="195" y="0.0" width="48.5" height="30"/>
+                                        <rect key="frame" x="193.5" y="0.0" width="48.5" height="30"/>
                                         <state key="normal" title="Thr"/>
                                         <connections>
                                             <action selector="thursdayButton:" destination="K7v-nW-bB6" eventType="touchUpInside" id="Zq6-RG-mkb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZg-UK-Vh3" customClass="ToggleButton" customModule="tremr" customModuleProvider="target">
-                                        <rect key="frame" x="243.5" y="0.0" width="49" height="30"/>
+                                        <rect key="frame" x="242" y="0.0" width="48.5" height="30"/>
                                         <state key="normal" title="Fri"/>
                                         <connections>
                                             <action selector="fridayButton:" destination="K7v-nW-bB6" eventType="touchUpInside" id="Cvo-UE-8gA"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTH-BW-qae" customClass="ToggleButton" customModule="tremr" customModuleProvider="target">
-                                        <rect key="frame" x="292.5" y="0.0" width="48.5" height="30"/>
+                                        <rect key="frame" x="290.5" y="0.0" width="48.5" height="30"/>
                                         <state key="normal" title="Sat"/>
                                         <connections>
                                             <action selector="saturdayButton:" destination="K7v-nW-bB6" eventType="touchUpInside" id="5sa-GA-8ct"/>
@@ -451,7 +425,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medication Frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXy-qd-odo">
-                                <rect key="frame" x="76" y="277.5" width="224" height="38"/>
+                                <rect key="frame" x="76" y="277.5" width="223" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="Zy7-cU-7wJ"/>
                                 </constraints>
@@ -460,7 +434,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you like to be reminded?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEa-12-RnC">
-                                <rect key="frame" x="36.5" y="416" width="308.5" height="27.5"/>
+                                <rect key="frame" x="35.5" y="416" width="308.5" height="27.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -530,7 +504,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6dP-4r-oIr"/>
-        <segue reference="GGJ-D1-lbS"/>
-        <segue reference="g7f-H2-eRD"/>
+        <segue reference="Of7-UK-BlF"/>
     </inferredMetricsTieBreakers>
 </document>

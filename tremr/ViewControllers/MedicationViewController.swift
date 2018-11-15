@@ -67,6 +67,8 @@ class MedicationViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        self.navigationItem.title = "Edit/New Medication"
     }
     
     override func didReceiveMemoryWarning() {
@@ -139,4 +141,10 @@ extension UIViewController : UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    //goes to previous page
+    @IBAction func addMedication (_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
