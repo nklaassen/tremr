@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,20 +19,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Lt1-ft-0iZ">
-                                <rect key="frame" x="19.5" y="40" width="335" height="607"/>
+                                <rect key="frame" x="20" y="40" width="335" height="607"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCN-QQ-5XZ">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RNM-Ix-HIV">
                                         <rect key="frame" x="8" y="8" width="319" height="191"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="TREMR">
-                                                <attributes>
-                                                    <font key="NSFont" size="48" name=".AppleSystemUIFont"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCN-QQ-5XZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="154" height="191"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="TREMR">
+                                                        <attributes>
+                                                            <font key="NSFont" size="48" name=".AppleSystemUIFont"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OiL-ww-r43">
+                                                <rect key="frame" x="154" y="0.0" width="165" height="191"/>
+                                                <state key="normal" title="Notification"/>
+                                                <connections>
+                                                    <segue destination="dxr-ti-ZFO" kind="show" id="JsZ-VK-tLV"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZn-eO-Mql">
                                         <rect key="frame" x="8" y="199" width="319" height="100"/>
                                         <constraints>
@@ -90,13 +102,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Notification-->
+        <scene sceneID="rUT-EY-sGa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Notification" id="dxr-ti-ZFO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z9g-eH-q0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="889" y="31"/>
+        </scene>
         <!--MeasureViewController-->
         <scene sceneID="Wak-st-lpO">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="MeasureViewController" storyboardName="Measure" referencedIdentifier="MeasureViewController" id="Ken-eg-4N4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbK-VK-0n7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1702" y="-1039"/>
+            <point key="canvasLocation" x="1054" y="479"/>
         </scene>
         <!--Exercise-->
         <scene sceneID="eHc-gj-1ar">
@@ -104,7 +124,7 @@
                 <viewControllerPlaceholder storyboardName="Exercise" id="D1k-0f-wmF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1e-kv-eBL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1702" y="-318"/>
+            <point key="canvasLocation" x="1278" y="107"/>
         </scene>
         <!--ViewData-->
         <scene sceneID="1Qh-ba-b2k">
@@ -120,7 +140,7 @@
                 <viewControllerPlaceholder storyboardName="Medicine" id="yuo-ma-Qjc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EvH-ck-gXm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1701.5999999999999" y="411.544227886057"/>
+            <point key="canvasLocation" x="1055" y="346"/>
         </scene>
     </scenes>
 </document>
