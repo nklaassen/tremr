@@ -100,6 +100,8 @@ class MedicationViewController: UIViewController {
                 start_date: Date(),
                 end_date: nil)
         }
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
     /*
@@ -140,11 +142,6 @@ extension UIViewController : UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-    
-    //goes to previous page
-    @IBAction func addMedication (_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
     }
     
 }
