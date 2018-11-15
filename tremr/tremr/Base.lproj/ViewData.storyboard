@@ -18,20 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVR-C5-XxN">
-                                <rect key="frame" x="28" y="58" width="319" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="View Data">
-                                        <attributes>
-                                            <font key="NSFont" size="48" name=".AppleSystemUIFont"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1Rt-lM-Akb">
+                            <segmentedControl contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1Rt-lM-Akb">
                                 <rect key="frame" x="15" y="592" width="345" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Aiw-Ug-vSY"/>
@@ -41,26 +28,20 @@
                                     <segment title="Month"/>
                                     <segment title="Year"/>
                                 </segments>
+                                <color key="tintColor" red="0.0" green="0.63529411764705879" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="indexChanged:" destination="XVr-e5-TTc" eventType="valueChanged" id="vG6-G0-BzE"/>
                                 </connections>
                             </segmentedControl>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9IY-Ws-9Gc">
-                                <rect key="frame" x="15" y="121" width="345" height="283"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <connections>
-                                    <segue destination="I0K-rL-t0I" kind="embed" id="zCI-RD-Zn8"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nuj-AW-bWT">
-                                <rect key="frame" x="16" y="121" width="343" height="283"/>
+                                <rect key="frame" x="16" y="72" width="343" height="332"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <segue destination="5Rk-Ql-23W" kind="embed" id="L3q-LZ-L6c"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P9T-Tn-5wz">
-                                <rect key="frame" x="16" y="121" width="343" height="283"/>
+                                <rect key="frame" x="15" y="72" width="343" height="332"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <segue destination="aQt-lv-g7d" kind="embed" id="HHy-Ie-z7a"/>
@@ -74,27 +55,26 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HUn-zh-3WT">
-                                <rect key="frame" x="16" y="437" width="343" height="147"/>
+                                <rect key="frame" x="16" y="412" width="343" height="172"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="HJI-bj-Dkm" kind="embed" id="qxV-CM-0sw"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DT4-Id-qvb">
-                                <rect key="frame" x="16" y="437" width="343" height="147"/>
+                                <rect key="frame" x="16" y="412" width="343" height="172"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="MDZ-iQ-KmV" kind="embed" id="qw1-xt-ff6"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ag-4d-qFU">
-                                <rect key="frame" x="16" y="40" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9IY-Ws-9Gc">
+                                <rect key="frame" x="13" y="72" width="345" height="332"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
-                                    <action selector="mainViewTransition:" destination="XVr-e5-TTc" eventType="touchUpInside" id="2M0-kZ-2AB"/>
+                                    <segue destination="I0K-rL-t0I" kind="embed" id="zCI-RD-Zn8"/>
                                 </connections>
-                            </button>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -125,11 +105,11 @@
             <objects>
                 <viewController id="I0K-rL-t0I" customClass="WeekContainer" customModule="tremr" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XzI-yk-0Ki">
-                        <rect key="frame" x="0.0" y="0.0" width="345" height="283"/>
+                        <rect key="frame" x="0.0" y="0.0" width="345" height="332"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DiF-Qt-kOO" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="345" height="283"/>
+                                <rect key="frame" x="0.0" y="0.0" width="345" height="332"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -150,11 +130,11 @@
             <objects>
                 <viewController id="5Rk-Ql-23W" customClass="MonthContainer" customModule="tremr" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fOw-2F-azy">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="283"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="332"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8N0-nX-UV4" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="343" height="283"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="332"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -175,11 +155,11 @@
             <objects>
                 <viewController id="aQt-lv-g7d" customClass="YearContainer" customModule="tremr" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hS5-8Y-fKf">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="283"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="332"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="faZ-uQ-qW1" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="343" height="283"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="332"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -225,11 +205,11 @@
             <objects>
                 <viewController id="HJI-bj-Dkm" customClass="MonthBarContainer" customModule="tremr" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L3O-VM-IwA">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="147"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="172"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dpz-Ga-BL4" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="343" height="147"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="172"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -250,11 +230,11 @@
             <objects>
                 <viewController id="MDZ-iQ-KmV" customClass="YearBarContainer" customModule="tremr" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FcI-Jp-9mO">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="147"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="172"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbm-ng-lZl" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="343" height="147"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="172"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
