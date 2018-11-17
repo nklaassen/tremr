@@ -196,12 +196,12 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vb3-E7-Cj0">
-                                <rect key="frame" x="98" y="587" width="179" height="30"/>
+                                <rect key="frame" x="0.0" y="587" width="375" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="sRo-DQ-2nn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Add Medication">
+                                <state key="normal" title="Add New Medication">
                                     <color key="titleColor" red="0.098039215690000001" green="0.90196078430000004" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -212,14 +212,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="RPf-Sh-3dC" firstAttribute="trailing" secondItem="wYm-Ji-HAw" secondAttribute="trailing" constant="81" id="9G4-dU-97G"/>
-                            <constraint firstItem="Vb3-E7-Cj0" firstAttribute="leading" secondItem="RPf-Sh-3dC" secondAttribute="leading" constant="98" id="Ah9-yN-ubd"/>
                             <constraint firstItem="Vb3-E7-Cj0" firstAttribute="top" secondItem="wYm-Ji-HAw" secondAttribute="bottom" constant="15" id="NM6-Ce-Is8"/>
                             <constraint firstItem="RPf-Sh-3dC" firstAttribute="bottom" secondItem="Vb3-E7-Cj0" secondAttribute="bottom" constant="50" id="VR9-Wt-33V"/>
-                            <constraint firstItem="RPf-Sh-3dC" firstAttribute="trailing" secondItem="Vb3-E7-Cj0" secondAttribute="trailing" constant="98" id="dMf-U5-zag"/>
+                            <constraint firstItem="Vb3-E7-Cj0" firstAttribute="leading" secondItem="RPf-Sh-3dC" secondAttribute="leading" id="ddO-x7-cnt"/>
                             <constraint firstItem="ZXc-ci-zdl" firstAttribute="leading" secondItem="RPf-Sh-3dC" secondAttribute="leading" constant="16" id="lDT-wj-a0y"/>
                             <constraint firstItem="wYm-Ji-HAw" firstAttribute="top" secondItem="ZXc-ci-zdl" secondAttribute="bottom" constant="15" id="p3p-iC-Z8i"/>
                             <constraint firstItem="RPf-Sh-3dC" firstAttribute="trailing" secondItem="ZXc-ci-zdl" secondAttribute="trailing" constant="16" id="qk2-PG-yuF"/>
                             <constraint firstItem="wYm-Ji-HAw" firstAttribute="leading" secondItem="RPf-Sh-3dC" secondAttribute="leading" constant="81" id="upk-2h-2zP"/>
+                            <constraint firstItem="Vb3-E7-Cj0" firstAttribute="trailing" secondItem="RPf-Sh-3dC" secondAttribute="trailing" id="vbU-3L-EQn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RPf-Sh-3dC"/>
                     </view>
@@ -251,8 +251,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfE-hA-QdO">
-                                <rect key="frame" x="118.5" y="581" width="138" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfE-hA-QdO">
+                                <rect key="frame" x="0.0" y="581" width="376" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Add Medication">
                                     <color key="titleColor" red="0.098039215690000001" green="0.90196078430000004" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -454,7 +454,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rY8-nk-5r8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3290" y="412"/>
+            <point key="canvasLocation" x="3288.8000000000002" y="411.544227886057"/>
         </scene>
     </scenes>
     <resources>

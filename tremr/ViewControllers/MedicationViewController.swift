@@ -60,10 +60,10 @@ class MedicationViewController: UIViewController {
             frToggle.activateButton(bool: (edittedMedicine?.fr)!)
             saToggle.activateButton(bool: (edittedMedicine?.sa)!)
             reminderToggle.activateButton(bool: (edittedMedicine?.reminder)!)
-            confirmationButton.setTitle("Update Medicine",for: .normal)
+            confirmationButton.setTitle("Update Medication",for: .normal)
         }
         else {
-            confirmationButton.setTitle("Add Medicine",for: .normal)
+            confirmationButton.setTitle("Add Medication",for: .normal)
         }
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
