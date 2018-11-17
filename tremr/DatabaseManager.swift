@@ -107,7 +107,8 @@ class DatabaseManager
             
             try db.run(Medicines.drop(ifExists: true))
             try db.run(Exercises.drop(ifExists: true))
-            
+            try db.run(TakenMedicines.drop(ifExists: true))
+
             // Create the Medicine table
             try db.run(Medicines.create(ifNotExists: true) { t in
                 t.column(MID, primaryKey: true)
@@ -161,7 +162,6 @@ class DatabaseManager
             try db.run(MissedExercises.create(ifNotExists: true) { t in
                 t.column(EID)
                 t.column(date)
-                t.foreignKey(UID, references: Users, UID, delete: .cascade)
                 t.foreignKey(EID, references: Exercises, EID, delete: .cascade)
                 t.primaryKey(EID, date)
             })
@@ -170,7 +170,6 @@ class DatabaseManager
             try db.run(MissedMedicines.create(ifNotExists: true) { t in
                 t.column(MID)
                 t.column(date)
-                t.foreignKey(UID, references: Users, UID, delete: .cascade)
                 t.foreignKey(MID, references: Medicines, MID, delete: .cascade)
                 t.primaryKey(MID, date)
             })                                                              // )
@@ -179,7 +178,6 @@ class DatabaseManager
             try db.run(TakenExercises.create(ifNotExists: true) { t in
                 t.column(EID)
                 t.column(date)
-                t.foreignKey(UID, references: Users, UID, delete: .cascade)
                 t.foreignKey(EID, references: Exercises, EID, delete: .cascade)
                 t.primaryKey(EID, date)
             })
@@ -188,7 +186,6 @@ class DatabaseManager
             try db.run(TakenMedicines.create(ifNotExists: true) { t in
                 t.column(MID)
                 t.column(date)
-                t.foreignKey(UID, references: Users, UID, delete: .cascade)
                 t.foreignKey(MID, references: Medicines, MID, delete: .cascade)
                 t.primaryKey(MID, date)
             })
@@ -443,57 +440,35 @@ class DatabaseManager
             targetWeekDay = saturday
         }
         
-        /*
-         
-         Does not support subqueries...
-         Select *
-         from Medicines M
-         where M.<targetWeekDay> == true
-         where M.start_date <= date
-         where M.end_date IS NULL OR M.end_date >= date
-         where M.MID NOT IN
-            (   Select MID
-                From TakenMedicines T
-                Where T.MID == M.MID
-            )
-         
-         OR
-         
-         Having issues peforming left join, not sure why
-         
-         SELECT *
-         FROM Medicines M
-         LEFT JOIN TakenMedicines T ON M.name = T.name
-         where M.<targetWeekDay> == true
-         where M.start_date <= date
-         where M.end_date IS NULL OR M.end_date >= date
-         WHERE T.name IS NULL
-         */
-        
+        //Get all taken MIDs from that day
+        let takenMedicineMIDs = getTakenMedicines(searchDate: date).map { $0.MID }
         
         let query = Medicines.filter(targetWeekDay == true) // Weekday matches weekday recorded for
                             .filter(start_date <= date)   // Ensure searching within valid timeframe
                             .filter(end_date == nil || end_date >= date)   //If end_date is assigned, then only return when within the timeframe of that medicine
-                            .join(.leftOuter, TakenMedicines, on: TakenMedicines[MID] == Medicines[MID])
-                            //.filter(TakenMedicines[MID] == nil)
+                            //.join(.leftOuter, TakenMedicines, on: TakenMedicines[MID] == Medicines[MID])
+        
         var medicines = Array<Medicine>()
         
         do {
             for med in try db.prepare(query) {
-                medicines.append(Medicine(UID: med[self.UID],
-                                          MID: med[self.Medicines[MID]],
-                                          name: med[self.name],
-                                          dosage: med[self.dosage],
-                                          mo: med[self.monday],
-                                          tu: med[self.tuesday],
-                                          we: med[self.wednesday],
-                                          th: med[self.thursday],
-                                          fr: med[self.friday],
-                                          sa: med[self.saturday],
-                                          su: med[self.sunday],
-                                          reminder: med[self.reminder],
-                                          start_date: med[self.start_date],
-                                          end_date:med[self.end_date]))
+                // Only accept medicines that haven't been taken yet that day
+                if !takenMedicineMIDs.contains(med[self.MID]) {
+                    medicines.append(Medicine(UID: med[self.UID],
+                                              MID: med[self.MID],
+                                              name: med[self.name],
+                                              dosage: med[self.dosage],
+                                              mo: med[self.monday],
+                                              tu: med[self.tuesday],
+                                              we: med[self.wednesday],
+                                              th: med[self.thursday],
+                                              fr: med[self.friday],
+                                              sa: med[self.saturday],
+                                              su: med[self.sunday],
+                                              reminder: med[self.reminder],
+                                              start_date: med[self.start_date],
+                                              end_date:med[self.end_date]))
+                }
             }
         } catch {
             fatalError("Query didn't execute at all \(error)")
@@ -621,6 +596,17 @@ class DatabaseManager
         }
     }
     
+    //Empty all entries from TakenMedicines table
+    func clearTakenMedicines()
+    {
+        do {
+            try db.run(TakenMedicines.delete())
+        } catch {
+            fatalError("Failed to delete TakenMedicines table")
+        }
+    }
+    
+    
     func addMissedMedicine(MID : Int64, date : Date)
     {
         do {
@@ -640,5 +626,25 @@ class DatabaseManager
         } catch {
             print("Failed to insert medicine: \(error)")
         }
+    }
+    
+    //Returns array of all taken medicines
+    func getTakenMedicines(searchDate : Date) -> Array<TakenMedicine> {
+        var takenMedicines = Array<TakenMedicine>()
+        let beginDay = calendar.startOfDay(for: searchDate)
+        let endDay = calendar.startOfDay(for: searchDate.addingTimeInterval(60*60*24)) // Add one day's worth of seconds, then go to the first second of that day
+        
+        let query = TakenMedicines.filter(date >= beginDay && date <= endDay)//Only return active medications, without an end date set
+        
+        do {
+            for takenMedicineFromDB in try db.prepare(query) {
+                takenMedicines.append(TakenMedicine(
+                                          MID: takenMedicineFromDB[self.MID],
+                                          date: takenMedicineFromDB[self.date]))
+            }
+        } catch {
+            print(error)
+        }
+        return takenMedicines
     }
 }

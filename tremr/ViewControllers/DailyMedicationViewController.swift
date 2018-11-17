@@ -75,8 +75,11 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         // Add medication to list of taken medications
         db.addTakenMedicine(MID : med.MID, date : Date())
         
+        //Update element from array
+        medications.remove(at: indexPath.row)
+        
         // Reload the medications
-        loadMedications()
+        //loadMedications()
         
         // Refresh the table
         medTableView.reloadData()

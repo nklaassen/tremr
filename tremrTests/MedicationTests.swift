@@ -24,7 +24,7 @@ class MedicationTests: XCTestCase {
         
         //Remove all medications in database
         db.clearMedicine()
-        
+        db.clearTakenMedicines()
         //Setup the dateFormatter, both these lines are required to use dateFormatter
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .long
@@ -211,4 +211,52 @@ class MedicationTests: XCTestCase {
         let newMedications = db.getMedicineDate(date: Date())
         XCTAssert(newMedications.count as Int == 1) //One element, since one was removed
     }
+    
+    func testAddTakenMedicine() {
+        let dateFri = dateFormatter.date(from: "Nov 2, 2018 at 11:14:31 AM PST")
+        let takenMid = db.addMedicine(UID: 1,
+                                      name: "medicine1",
+                                      dosage: "100",
+                                      mo: true, tu: true, we: true, th: true, fr: true, sa: true, su: true,
+                                      reminder: false,
+                                      start_date: Date(),
+                                      end_date: nil)
+        db.addTakenMedicine(MID: takenMid!, date: dateFri!)
+        
+        let takenMedications = db.getTakenMedicines(searchDate: dateFri!)
+        XCTAssert(takenMedications.count as Int == 1) //One element
+        XCTAssert(takenMedications[0].MID == takenMid)
+        XCTAssert(takenMedications[0].date == dateFri)
+    }
+    
+    func testSelectMedicationTakenMedicineConsiderations() {
+        let dateThu = dateFormatter.date(from: "Nov 1, 2018 at 11:14:31 AM PST")
+        let dateFri = dateFormatter.date(from: "Nov 2, 2018 at 11:14:31 AM PST")
+        let dateSat = dateFormatter.date(from: "Nov 3, 2018 at 11:14:31 AM PST")
+        let takenMid1 = db.addMedicine(UID: 1,
+                                      name: "medicine1",
+                                      dosage: "100",
+                                      mo: true, tu: true, we: true, th: true, fr: true, sa: true, su: true,
+                                      reminder: false,
+                                      start_date: dateFri!,
+                                      end_date: nil)
+        let takenMid2 = db.addMedicine(UID: 1,
+                       name: "medicine2",
+                       dosage: "200",
+                       mo: true, tu: true, we: true, th: true, fr: true, sa: true, su: true,
+                       reminder: false,
+                       start_date: dateFri!,
+                       end_date: nil)
+        
+        db.addTakenMedicine(MID: takenMid1!, date: dateFri!)
+        db.addTakenMedicine(MID: takenMid2!, date: dateSat!)
+        db.addTakenMedicine(MID: takenMid2!, date: dateThu!)
+
+        let medications = db.getMedicineDate(date: dateFri!)
+
+        XCTAssert(medications.count as Int == 1) //One element
+        XCTAssert(medications[0].MID == takenMid2)
+        XCTAssert(medications[0].name == "medicine2")
+    }
+
 }
