@@ -17,6 +17,7 @@ class InstructionsForTrackingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Measurement Instructions"
         self.navigationController?.isNavigationBarHidden = false
     }
     

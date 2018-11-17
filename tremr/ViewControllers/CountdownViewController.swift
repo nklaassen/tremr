@@ -55,7 +55,7 @@ class CountdownViewController: UIViewController {
         let countDownLabel = UILabel()
         countDownLabel.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         countDownLabel.font = UIFont.systemFont(ofSize: 300)
-        countDownLabel.textColor = .blue
+        countDownLabel.textColor = UIColor(red: 0.0, green: 0.49, blue: 0.8, alpha: 1.0)
         countDownLabel.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
         
         countDownLabel.textAlignment = .center
