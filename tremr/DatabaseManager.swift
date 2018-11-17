@@ -446,7 +446,6 @@ class DatabaseManager
         let query = Medicines.filter(targetWeekDay == true) // Weekday matches weekday recorded for
                             .filter(start_date <= date)   // Ensure searching within valid timeframe
                             .filter(end_date == nil || end_date >= date)   //If end_date is assigned, then only return when within the timeframe of that medicine
-                            //.join(.leftOuter, TakenMedicines, on: TakenMedicines[MID] == Medicines[MID])
         
         var medicines = Array<Medicine>()
         
@@ -499,28 +498,35 @@ class DatabaseManager
             targetWeekDay = saturday
         }
         
+        //Get all taken EIDs from that day
+        let takenExerciseEIDs = getTakenExercises(searchDate: date).map { $0.EID }
+
+        
         var query = Exercises.filter(targetWeekDay == true) // Weekday matches weekday recorded for
-        query = query.filter(start_date <= date)   // Ensure searching within valid timeframe
-        query = query.filter(end_date == nil || end_date >= date)   //If end_date is assigned, then only return when within the timeframe of that medicine
+                            .filter(start_date <= date)   // Ensure searching within valid timeframe
+                            .filter(end_date == nil || end_date >= date)   //If end_date is assigned, then only return when within the timeframe of that medicine
         
         var exercises = Array<Exercise>()
         
         do {
             for exer in try db.prepare(query) {
-                exercises.append(Exercise(UID: exer[self.UID],
-                                          EID: exer[self.EID],
-                                          name: exer[self.name],
-                                          unit: exer[self.unit],
-                                          mo: exer[self.monday],
-                                          tu: exer[self.tuesday],
-                                          we: exer[self.wednesday],
-                                          th: exer[self.thursday],
-                                          fr: exer[self.friday],
-                                          sa: exer[self.saturday],
-                                          su: exer[self.sunday],
-                                          reminder: exer[self.reminder],
-                                          start_date: exer[self.start_date],
-                                          end_date: exer[self.end_date]))
+                // Only accept exercises that haven't been taken yet that day
+                if !takenExerciseEIDs.contains(exer[self.EID]) {
+                    exercises.append(Exercise(UID: exer[self.UID],
+                                              EID: exer[self.EID],
+                                              name: exer[self.name],
+                                              unit: exer[self.unit],
+                                              mo: exer[self.monday],
+                                              tu: exer[self.tuesday],
+                                              we: exer[self.wednesday],
+                                              th: exer[self.thursday],
+                                              fr: exer[self.friday],
+                                              sa: exer[self.saturday],
+                                              su: exer[self.sunday],
+                                              reminder: exer[self.reminder],
+                                              start_date: exer[self.start_date],
+                                              end_date: exer[self.end_date]))
+                }
             }
         } catch {
             fatalError("Query didn't execute at all")
@@ -606,6 +612,16 @@ class DatabaseManager
         }
     }
     
+    //Empty all entries from TakenExercises table
+    func clearTakenExercises()
+    {
+        do {
+            try db.run(TakenExercises.delete())
+        } catch {
+            fatalError("Failed to delete TakenExercises table")
+        }
+    }
+    
     
     func addMissedMedicine(MID : Int64, date : Date)
     {
@@ -618,13 +634,25 @@ class DatabaseManager
 
     }
     
+    //Add entry to taken medicine table
     func addTakenMedicine(MID : Int64, date : Date)
     {
         do {
             try db.run(TakenMedicines.insert(self.MID <- MID,
-                                              self.date <- date ))
+                                             self.date <- date ))
         } catch {
             print("Failed to insert medicine: \(error)")
+        }
+    }
+    
+    //Add entry to taken exercise table
+    func addTakenExercise(EID : Int64, date : Date)
+    {
+        do {
+            try db.run(TakenExercises.insert(self.EID <- EID,
+                                             self.date <- date ))
+        } catch {
+            print("Failed to insert exercise: \(error)")
         }
     }
     
@@ -639,12 +667,32 @@ class DatabaseManager
         do {
             for takenMedicineFromDB in try db.prepare(query) {
                 takenMedicines.append(TakenMedicine(
-                                          MID: takenMedicineFromDB[self.MID],
-                                          date: takenMedicineFromDB[self.date]))
+                    MID: takenMedicineFromDB[self.MID],
+                    date: takenMedicineFromDB[self.date]))
             }
         } catch {
             print(error)
         }
         return takenMedicines
+    }
+    
+    //Returns array of all taken exercises
+    func getTakenExercises(searchDate : Date) -> Array<TakenExercise> {
+        var takenExercises = Array<TakenExercise>()
+        let beginDay = calendar.startOfDay(for: searchDate)
+        let endDay = calendar.startOfDay(for: searchDate.addingTimeInterval(60*60*24)) // Add one day's worth of seconds, then go to the first second of that day
+        
+        let query = TakenExercises.filter(date >= beginDay && date <= endDay)//Only return active medications, without an end date set
+        
+        do {
+            for takenExerciseFromDB in try db.prepare(query) {
+                takenExercises.append(TakenExercise(
+                    EID: takenExerciseFromDB[self.EID],
+                    date: takenExerciseFromDB[self.date]))
+            }
+        } catch {
+            print(error)
+        }
+        return takenExercises
     }
 }
