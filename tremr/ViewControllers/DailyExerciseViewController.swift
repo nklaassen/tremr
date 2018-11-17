@@ -38,6 +38,19 @@ class DailyExerciseViewController: UIViewController , UITableViewDataSource, UIT
         self.navigationItem.title = "Exercise"
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        //load exercises into table
+        loadExercises()
+        
+        //Set containing class as the delegate and datasource of the table view
+        exerTableView.delegate = self
+        exerTableView.dataSource = self
+        
+        //Reload table
+        exerTableView.reloadData()
+    }
+    
     //MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

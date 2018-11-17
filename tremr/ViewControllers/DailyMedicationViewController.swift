@@ -45,6 +45,19 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         self.navigationItem.title = "Medication"
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        //load medications into table
+        loadMedications()
+        
+        //Set containing class as the delegate and datasource of the table view
+        medTableView.delegate = self
+        medTableView.dataSource = self
+        
+        //reload table
+        medTableView.reloadData()
+    }
+    
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

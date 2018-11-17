@@ -41,6 +41,8 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
         
+        medTableView.reloadData()
+        
         self.navigationItem.title = "All Medications"
     }
 

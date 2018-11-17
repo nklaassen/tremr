@@ -33,6 +33,8 @@ class AllExerciseViewController: UIViewController, UITableViewDataSource, UITabl
         
         // Do any additional setup after loading the view.
         
+        exerTableView.reloadData()
+        
         self.navigationItem.title = "All Exericses"
     }
     
