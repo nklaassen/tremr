@@ -52,14 +52,15 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hP9-Nm-F3P" userLabel="bellImage">
-                                                    <rect key="frame" x="255" y="0.0" width="43" height="43"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eI3-t6-N8R" userLabel="bellButton">
+                                                    <rect key="frame" x="256" y="6" width="71" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
+                                                    <state key="normal" title="bellButton"/>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="bellImage" destination="hP9-Nm-F3P" id="Hgy-tm-r02"/>
+                                            <outlet property="bellButton" destination="eI3-t6-N8R" id="k1j-iY-W9d"/>
                                             <outlet property="nameLabel" destination="cpf-UD-aAf" id="W5x-NF-sQc"/>
                                         </connections>
                                     </tableViewCell>

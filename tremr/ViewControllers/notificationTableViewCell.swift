@@ -21,8 +21,8 @@ class notificationTableViewCell: UITableViewCell {
     }
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var bellImage: UIImageView!
-    
+    @IBOutlet weak var bellButton: UIButton!
+
     
     
     override func setSelected(_ selected: Bool, animated: Bool) {

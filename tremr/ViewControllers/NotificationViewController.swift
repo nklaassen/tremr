@@ -75,18 +75,18 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         //Load images from assets into variables
-        let onBellImage = UIImage(named: "Bell-On")
-        let offBellImage = UIImage(named: "Bell-Off")
+        var onBellImage = UIImage(named: "Bell-On")
+        var offBellImage = UIImage(named: "Bell-Off")
         
         //Set name label
         cell.nameLabel.text = nameText
         
         //Set bell image
         if bellIsOn {
-            cell.bellImage.image = onBellImage
+            cell.bellButton.setImage(onBellImage, for: UIControlState.normal)
         }
         else {
-            cell.bellImage.image = offBellImage
+            cell.bellButton.setImage(offBellImage, for: UIControlState.normal)
         }
         return cell
     }
