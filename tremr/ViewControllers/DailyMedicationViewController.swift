@@ -22,11 +22,19 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
     //Array of medications displayed by table
     var medications = [Medicine]()
     
-    //Day for which medications are being displayed
-    var displayDay = Date()
-    
     //Calendar for comparing dates and performing date arithmetic
     let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+    
+    //Day for which medications are being displayed, initialized to current day
+    var displayDay = Date()
+    
+    //MARK: Initializer
+    //init() {
+    //    super.init()
+        
+        //initialize display day to today
+    //    displayDay = calendar.startOfDay(for: Date.init())
+    //}
     
     
     //MARK: UIViewController functions
@@ -73,13 +81,13 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         print(med.name)
 
         // Add medication to list of taken medications
-        db.addTakenMedicine(MID : med.MID, date : Date())
+        db.addTakenMedicine(MID : med.MID, date : Date())// It needs to change the date depending on which day you check off on, past, current or future
         
         //Update element from array
         medications.remove(at: indexPath.row)
         
         // Reload the medications
-        //loadMedications()
+        loadMedications()
         
         // Refresh the table
         medTableView.reloadData()

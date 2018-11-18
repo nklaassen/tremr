@@ -25,6 +25,8 @@ class MedicationTests: XCTestCase {
         //Remove all medications in database
         db.clearMedicine()
         db.clearTakenMedicines()
+        //db.clearMissedMedicines()
+        
         //Setup the dateFormatter, both these lines are required to use dateFormatter
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .long
@@ -33,8 +35,6 @@ class MedicationTests: XCTestCase {
     override func tearDown() {
         //Runs after every test method
         
-        //Remove all newly added medications in database
-        db.clearMedicine()
         super.tearDown()
     }
     

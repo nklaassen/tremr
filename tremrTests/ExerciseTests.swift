@@ -24,6 +24,8 @@ class ExerciseTests: XCTestCase {
         
         //Remove all Exercises in database
         db.clearExercise()
+        db.clearTakenExercises()
+        //db.clearMissedExercises()
         
         //Setup the dateFormatter, both these lines are required to use dateFormatter
         dateFormatter.dateStyle = .long
@@ -33,8 +35,6 @@ class ExerciseTests: XCTestCase {
     override func tearDown() {
         //Runs after every test method
         
-        //Remove all newly added exercises in database
-        db.clearExercise()
         super.tearDown()
     }
     
