@@ -1,9 +1,10 @@
 //
 //  Name of file: DailyExerciseViewController.swift
-//  Programmers: Nic Klaassen and Devansh Chopra
+//  Programmers: Nic Klaassen and Devansh Chopra and Leo Zhang
 //  Team Name: Co.DEsign
 //  Changes been made:
 //          2018-10-22: created file
+//          2018-11-17: tapping exercises in past or present now removes it
 // Known Bugs:
 
 import UIKit
@@ -57,6 +58,46 @@ class DailyExerciseViewController: UIViewController , UITableViewDataSource, UIT
         cell.exerUnitLabel.text = exer.unit
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Fetches the appropriate medication for the data source layout.
+        let exer = exercises[indexPath.row]
+        print(exer.name)
+        
+        //todays date at very start
+        let todayStart = Calendar.current.startOfDay(for: Date())
+        print(todayStart)
+        
+        //display chart date at very start
+        let displayDateStart = Calendar.current.startOfDay(for: displayDay)
+        print(displayDateStart)
+        
+        //if user is on today
+        if todayStart == displayDateStart{
+            // Add medication to list of taken medications
+            db.addTakenExercise(EID : exer.EID, date : Date())
+        }
+        
+        //if user is in the future, can delete this loop i guess lol
+        if displayDateStart > todayStart{
+            //nothing should happen cuz u cant do shit in the future
+        }
+        
+        //if user is in the past
+        if displayDateStart < todayStart{
+            db.addTakenExercise(EID : exer.EID, date : displayDateStart)
+        }
+        
+        //Update element from array
+        exercises.remove(at: indexPath.row)
+        
+        // Reload the medications
+        loadExercises()
+        
+        // Refresh the table
+        exerTableView.reloadData()
     }
 
     //MARK: Actions
