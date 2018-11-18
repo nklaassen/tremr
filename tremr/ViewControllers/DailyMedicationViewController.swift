@@ -1,9 +1,9 @@
 //
 //  Name of file: DailyMedicationViewController.swift
-//  Programmers: Jason Fevang
+//  Programmers: Jason Fevang and Leo Zhang
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
+//          2018-11-17: added tapping medications in the past
 //          2018-10-20:
 //          2018-10-20:
 //          2018-10-20:
@@ -80,8 +80,6 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         let med = medications[indexPath.row]
         print(med.name)
         
-        // -----------------------------------------------------------------------------------leo
-        
         //todays date at very start
         let todayStart = Calendar.current.startOfDay(for: Date())
         print(todayStart)
@@ -105,8 +103,6 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         if displayDateStart < todayStart{
             db.addTakenMedicine(MID : med.MID, date : displayDateStart)
         }
-        
-        //-------------------------------------------------------------------------------------leo
         
         //Update element from array
         medications.remove(at: indexPath.row)
