@@ -30,6 +30,7 @@
 		A5E1D110218955D3001D8814 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1D10F218955D3001D8814 /* ToggleButton.swift */; };
 		A81150DE218E53BB005478EE /* AllMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81150DD218E53BB005478EE /* AllMedicationViewController.swift */; };
 		A81150E0218E588E005478EE /* AllMedicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81150DF218E588E005478EE /* AllMedicationTableViewCell.swift */; };
+		A823ABFE21A0EE4E00CB07E2 /* notificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A823ABFD21A0EE4E00CB07E2 /* notificationTableViewCell.swift */; };
 		A827933A21910D0200DA3DB2 /* ExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A827933921910D0200DA3DB2 /* ExerciseTests.swift */; };
 		A83CF0B6218D4995002C3E50 /* MedicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83CF0B5218D4995002C3E50 /* MedicationTests.swift */; };
 		A8F8A206218A56A30044342D /* DailyMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8A205218A56A30044342D /* DailyMedicationViewController.swift */; };
@@ -199,6 +200,7 @@
 		A5E1D10F218955D3001D8814 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		A81150DD218E53BB005478EE /* AllMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMedicationViewController.swift; sourceTree = "<group>"; };
 		A81150DF218E588E005478EE /* AllMedicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMedicationTableViewCell.swift; sourceTree = "<group>"; };
+		A823ABFD21A0EE4E00CB07E2 /* notificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationTableViewCell.swift; sourceTree = "<group>"; };
 		A827933921910D0200DA3DB2 /* ExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTests.swift; sourceTree = "<group>"; };
 		A83CF0B5218D4995002C3E50 /* MedicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTests.swift; sourceTree = "<group>"; };
 		A8F8A205218A56A30044342D /* DailyMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMedicationViewController.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				55D4D1AF218D991700CB371C /* MonthBarContainer.swift */,
 				55D4D1B1218D9D9A00CB371C /* YearBarContainer.swift */,
 				03711BF0219CFC4C008CC9C8 /* NotificationViewController.swift */,
+				A823ABFD21A0EE4E00CB07E2 /* notificationTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -670,6 +673,7 @@
 				A50B2529218F9D610033AA48 /* DailyExerciseViewController.swift in Sources */,
 				03711BE9219A016A008CC9C8 /* NotificationFunctions.swift in Sources */,
 				E04F6FD32182979C000AF2F6 /* CountdownViewController.swift in Sources */,
+				A823ABFE21A0EE4E00CB07E2 /* notificationTableViewCell.swift in Sources */,
 				80EF89CB21814DA400872F5B /* MotionObserver.swift in Sources */,
 				E0FEE152217ECCE900C72D7C /* ExerciseViewController.swift in Sources */,
 				A8F8A206218A56A30044342D /* DailyMedicationViewController.swift in Sources */,
