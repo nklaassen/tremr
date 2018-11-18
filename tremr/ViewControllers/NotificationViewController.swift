@@ -20,7 +20,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     var exercises = [Exercise]()
     
     //Header titles
-    var headerTitles = ["Exercises", "Medications"]
+    var headerTitles = ["Medications", "Exercises"]
     
     
     override func viewDidLoad() {
@@ -75,8 +75,8 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         //Load images from assets into variables
-        let onBellImage = UIImage(named: "Left-Arrow")
-        let offBellImage = UIImage(named: "Right-Arrow")
+        let onBellImage = UIImage(named: "Bell-On")
+        let offBellImage = UIImage(named: "Bell-Off")
         
         //Set name label
         cell.nameLabel.text = nameText

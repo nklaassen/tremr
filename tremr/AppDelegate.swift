@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        name: "medicine1",
                        dosage: "100",
                        mo: true, tu: true, we: true, th: true, fr: true, sa: false, su: false,
-                       reminder: true,
+                       reminder: false,
                        start_date: Date().addingTimeInterval(day),
                        end_date: nil)
         db.addMedicine(UID: 1,
@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        name: "medicine3",
                        dosage: "100",
                        mo: true, tu: true, we: true, th: true, fr: true, sa: false, su: false,
-                       reminder: true,
+                       reminder: false,
                        start_date: Date().addingTimeInterval(-3*day),
                        end_date: Date().addingTimeInterval(-day))
         db.addMedicine(UID: 1,
