@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="luu-l2-xiN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="luu-l2-xiN">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="20" y="84" width="335" height="563"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCN-QQ-5XZ">
-                                        <rect key="frame" x="8" y="8" width="319" height="147"/>
+                                        <rect key="frame" x="8" y="8" width="319" height="66"/>
                                         <color key="backgroundColor" red="0.0" green="0.6588235294117647" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <attributedString key="attributedText">
                                             <fragment content="TREMR">
@@ -36,6 +36,18 @@
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RNM-Ix-HIV">
+                                        <rect key="frame" x="8" y="74" width="319" height="81"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OiL-ww-r43">
+                                                <rect key="frame" x="0.0" y="0.0" width="319" height="81"/>
+                                                <state key="normal" title="Notification"/>
+                                                <connections>
+                                                    <segue destination="dxr-ti-ZFO" kind="show" id="JsZ-VK-tLV"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZn-eO-Mql">
                                         <rect key="frame" x="8" y="155" width="319" height="100"/>
                                         <color key="backgroundColor" red="0.0" green="0.6588235294117647" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -107,7 +119,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992.79999999999995" y="27.436281859070466"/>
+            <point key="canvasLocation" x="1284" y="-431"/>
+        </scene>
+        <!--Notification-->
+        <scene sceneID="rUT-EY-sGa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Notification" id="dxr-ti-ZFO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z9g-eH-q0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2409" y="-606"/>
         </scene>
         <!--MeasureViewController-->
         <scene sceneID="Wak-st-lpO">
@@ -115,7 +135,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="MeasureViewController" storyboardName="Measure" referencedIdentifier="MeasureViewController" id="Ken-eg-4N4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbK-VK-0n7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1702" y="-1039"/>
+            <point key="canvasLocation" x="2232" y="109"/>
         </scene>
         <!--Exercise-->
         <scene sceneID="eHc-gj-1ar">
@@ -131,7 +151,7 @@
                 <viewControllerPlaceholder storyboardName="ViewData" id="Bkq-on-jAH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x26-td-8Zi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1702" y="1124"/>
+            <point key="canvasLocation" x="1483" y="470"/>
         </scene>
         <!--Medicine-->
         <scene sceneID="MpW-6k-Iqy">
@@ -139,7 +159,7 @@
                 <viewControllerPlaceholder storyboardName="Medicine" id="yuo-ma-Qjc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EvH-ck-gXm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1701.5999999999999" y="411.544227886057"/>
+            <point key="canvasLocation" x="2422" y="-875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="77d-Uc-9yi">

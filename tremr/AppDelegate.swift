@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        name: "medicine2",
                        dosage: "100",
                        mo: true, tu: true, we: true, th: true, fr: true, sa: false, su: false,
-                       reminder: false,
+                       reminder: true,
                        start_date: Date().addingTimeInterval(-day),
                        end_date: nil)
         db.addMedicine(UID: 1,
@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        name: "medicine4",
                        dosage: "400",
                        mo: true, tu: true, we: true, th: false, fr: true, sa: false, su: false,
-                       reminder: false,
+                       reminder: true,
                        start_date: Date(),
                        end_date: Date())
         
@@ -80,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        name: "Exercise1",
                        unit: "100",
                        mo: true, tu: true, we: true, th: true, fr: true, sa: true, su: true,
-                       reminder: false,
+                       reminder: true,
                        start_date: Date(),
                        end_date: nil)
         db.addTakenMedicine(MID : addedMID!, date : Date())
