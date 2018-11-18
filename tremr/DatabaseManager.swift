@@ -271,6 +271,34 @@ class DatabaseManager
         }
         return tremors
     }
+    
+    // Returns all missed exercise values from the db
+    func getMissedExercises() -> Array<MissedExercise> {
+        var exercises = Array<MissedExercise>()
+        do {
+            for exercise in try db.prepare(MissedExercises) {
+                print("date: \(exercise[self.date])")
+                exercises.append(MissedExercise(EID: exercise[self.EID], date: exercise[self.date]))
+            }
+        } catch {
+            print(error)
+        }
+        return exercises
+    }
+    
+    // Returns all missed exercise values from the db
+    func getMissedMedicines() -> Array<MissedMedicine> {
+        var medicines = Array<MissedMedicine>()
+        do {
+            for medicine in try db.prepare(MissedMedicines) {
+                print("date: \(medicine[self.date])")
+                medicines.append(MissedMedicine(MID: medicine[self.MID], date: medicine[self.date]))
+            }
+        } catch {
+            print(error)
+        }
+        return medicines
+    }
 
     // returns only the tremor recordings from the past week
     func getTremorsForLastWeek() -> Array<Tremor> {
@@ -386,6 +414,7 @@ class DatabaseManager
         do {
             for medicine in try db.prepare(missedExercisesForLastWeek) {
                 missedMedicines.append(MissedMedicine(MID: medicine[self.MID], date: medicine[self.date]))
+                print("Missed Medicine Month: ", medicine[self.date])
             }
         } catch {
             print(error)

@@ -32,8 +32,8 @@ class YearBarContainer: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
             
-        let medication = [9.0, 4.0, 5.0, 7.0, 9.0, 20.0, 13.0, 2.0, 8.0, 7.0, 17.0, 11.0, 22]
-        let exercise = [4.0, 6.0, 3.0, 8.0, 9.0, 15.0, 13.0, 5.0, 8.0, 16.0, 21.0, 14.0, 22]
+        let medication = getMissedMedications()
+        let exercise = getMissedExercises()
             
         let now = Date()
         let dateFormatter = DateFormatter()
@@ -132,15 +132,11 @@ class YearBarContainer: UIViewController {
     func setChart(dataPoints: [String], values1: [Double], values2: [Double], initial: Int) {
         self.yearBarChartView.noDataText = "no data provided"
         
-        var ii = 0
-        
         let block1: (Int) -> BarChartDataEntry = { (i) -> BarChartDataEntry in
-            ii += 1
-            return BarChartDataEntry(x: Double(ii-1), y: values1[i])
+            return BarChartDataEntry(x: Double(i), y: values1[i])
         }
         
         let block2: (Int) -> BarChartDataEntry = { (i) -> BarChartDataEntry in
-            ii += 1
             return BarChartDataEntry(x: Double(i), y: values2[i])
         }
         
@@ -149,18 +145,21 @@ class YearBarContainer: UIViewController {
         let barSpace = 0.01
         let barWidth = 0.2
         
+        let yValExtra = BarChartDataEntry(x: 12.0, y: 0)
+        
         //set the yValues for the first set of values
-        var tempYVals = (initial ..< dataPoints.count).map(block1)
+        var tempYVals = (initial ..< dataPoints.count-1).map(block1)
         var yVals1 = tempYVals
         tempYVals = (0 ..< initial).map(block1)
         yVals1.append(contentsOf: tempYVals)
+        yVals1.append(yValExtra)
         
         //set the yValues for the second set of values
-        ii = 0
-        tempYVals = (initial ..< dataPoints.count).map(block2)
+        tempYVals = (initial ..< dataPoints.count-1).map(block2)
         var yVals2 = tempYVals
         tempYVals = (0 ..< initial).map(block2)
         yVals2.append(contentsOf: tempYVals)
+        yVals2.append(yValExtra)
         
         let set1: BarChartDataSet = BarChartDataSet(values: yVals1, label: "medications missed")
         
@@ -182,5 +181,199 @@ class YearBarContainer: UIViewController {
         //add data to graph
         self.yearBarChartView.data = data
         
+    }
+    
+    // get Exercise data from the database for the last year
+    func getMissedExercises() -> [Double] {
+        var Exercises = db.getMissedExercises() //grab missed exercises from database
+        
+        //create doubles for number of missed exercises to be stored in for each month
+        var janR: Double = 0
+        var febR: Double = 0
+        var marR: Double = 0
+        var aprR: Double = 0
+        var mayR: Double = 0
+        var junR: Double = 0
+        var julR: Double = 0
+        var augR: Double = 0
+        var sepR: Double = 0
+        var octR: Double = 0
+        var novR: Double = 0
+        var decR: Double = 0
+        
+        //formatting date information so it displays the month
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        
+        // finds the size of the data array exercises and subtracts one to match the index of the last element
+        var size: Int = Exercises.count - 1
+        
+        
+        //for loop that runs for 365 or array size if less than 365
+        for _ in Exercises{
+            
+            //converting date data of specific exercise to month
+            let nameOfMonth = dateFormatter.string(from: Exercises[size].date)
+            
+            //check which month the exercise is in
+            
+            if nameOfMonth == "January" {
+                janR += 1
+            }
+            
+            if nameOfMonth == "February" {
+                febR += 1
+            }
+            
+            if nameOfMonth == "March" {
+                marR += 1
+            }
+            
+            if nameOfMonth == "April" {
+                aprR += 1
+            }
+            
+            if nameOfMonth == "May" {
+                mayR += 1
+            }
+            
+            if nameOfMonth == "June" {
+                junR += 1
+            }
+            
+            if nameOfMonth == "July" {
+                julR += 1
+            }
+            
+            if nameOfMonth == "August" {
+                augR += 1
+            }
+            
+            if nameOfMonth == "September" {
+                sepR += 1
+            }
+            
+            if nameOfMonth == "October" {
+                octR += 1
+            }
+            
+            if nameOfMonth == "November" {
+                novR += 1
+            }
+            
+            if nameOfMonth == "December" {
+                decR += 1
+            }
+            
+            //moving the index one element forward
+            size = size - 1
+            
+            //if the array is shorter than 365 and is now empty
+            if size < 0{
+                break
+            }
+        }
+
+        //sets the values for the array used in the graph for yearly view
+        let yearlyEx = [janR, febR, marR, aprR, mayR, junR, julR, augR, sepR, octR, novR, decR]
+        
+        return(yearlyEx)
+    }
+    
+    // get medication data from the database for the last year
+    func getMissedMedications() -> [Double] {
+        var Medicaitons = db.getMissedMedicines() //grab missed medicines from database
+        
+        //create doubles for number of missed exercises to be stored in for each month
+        var janR: Double = 0
+        var febR: Double = 0
+        var marR: Double = 0
+        var aprR: Double = 0
+        var mayR: Double = 0
+        var junR: Double = 0
+        var julR: Double = 0
+        var augR: Double = 0
+        var sepR: Double = 0
+        var octR: Double = 0
+        var novR: Double = 0
+        var decR: Double = 0
+        
+        //formatting date information so it displays the month
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        
+        // finds the size of the data array medication and subtracts one to match the index of the last element
+        var size: Int = Medicaitons.count - 1
+        
+        
+        //for loop that runs for 365 or array size if less than 365
+        for _ in Medicaitons{
+            
+            //converting date data of specific tremor to month
+            let nameOfMonth = dateFormatter.string(from: Medicaitons[size].date)
+            
+            //check which month the tremor is in
+            
+            if nameOfMonth == "January" {
+                janR += 1
+            }
+            
+            if nameOfMonth == "February" {
+                febR += 1
+            }
+            
+            if nameOfMonth == "March" {
+                marR += 1
+            }
+            
+            if nameOfMonth == "April" {
+                aprR += 1
+            }
+            
+            if nameOfMonth == "May" {
+                mayR += 1
+            }
+            
+            if nameOfMonth == "June" {
+                junR += 1
+            }
+            
+            if nameOfMonth == "July" {
+                julR += 1
+            }
+            
+            if nameOfMonth == "August" {
+                augR += 1
+            }
+            
+            if nameOfMonth == "September" {
+                sepR += 1
+            }
+            
+            if nameOfMonth == "October" {
+                octR += 1
+            }
+            
+            if nameOfMonth == "November" {
+                novR += 1
+            }
+            
+            if nameOfMonth == "December" {
+                decR += 1
+            }
+            
+            //moving the index one element forward
+            size = size - 1
+            
+            //if the array is shorter than 365 and is now empty
+            if size < 0{
+                break
+            }
+        }
+        
+        //sets the values for the array used in the graph for yearly view
+        let yearlyMed = [janR, febR, marR, aprR, mayR, junR, julR, augR, sepR, octR, novR, decR]
+        
+        return(yearlyMed)
     }
 }

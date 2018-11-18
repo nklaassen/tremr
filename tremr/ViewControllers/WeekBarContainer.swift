@@ -168,33 +168,35 @@ class WeekBarContainer: UIViewController {
     func getMedicineData() -> [Double] {
         var missedMedicines = db.getMissedMedicinesForLastWeek() //grab tremors from database
         var Medicines: [Double] = [0, 0, 0, 0, 0, 0, 0, 0]
+        
+        //For Start Date
+        var calendar = NSCalendar.current
+        calendar.timeZone = NSTimeZone(abbreviation: "UTC")! as TimeZone //OR NSTimeZone.localTimeZone()
+        
         //finds the size of the data array tremors and subtracts one to match the index of  the last element
         var size = missedMedicines.count - 1
         var i = Medicines.count - 2
         
-        let now = Date()
         var now2 = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE"
-        var currentDay = dateFormatter.string(from: now)
+        var today = Date()
+        var currentDay = calendar.startOfDay(for: Date())
         
-        while size > 0 && i >= 0
+        while size >= 0 && i >= 0
         {
-            var day = missedMedicines[size].date
-            dateFormatter.dateFormat = "EEEE"
-            var today = dateFormatter.string(from: day)
-            while today == currentDay && size > 0
+            today = calendar.startOfDay(for: missedMedicines[size].date)
+            while today == currentDay
             {
                 Medicines[i] += 1
                 size -= 1
-                day = missedMedicines[size].date
-                dateFormatter.dateFormat = "EEEE"
-                today = dateFormatter.string(from: day)
+                if size < 0
+                {
+                    break
+                }
+                today = calendar.startOfDay(for: missedMedicines[size].date)
             }
             i -= 1
-            now2 = Calendar.current.date(byAdding: .day, value: -1, to: now2)!
-            dateFormatter.dateFormat = "EEEE"
-            currentDay = dateFormatter.string(from: now2)
+            now2 = calendar.date(byAdding: .day, value: -1, to: now2)!
+            currentDay = calendar.startOfDay(for: now2)
         }
         
         return(Medicines)
