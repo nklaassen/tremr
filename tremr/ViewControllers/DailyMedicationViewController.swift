@@ -1,9 +1,9 @@
 //
 //  Name of file: DailyMedicationViewController.swift
-//  Programmers: Jason Fevang and Kira Nishi-Beckingham
+//  Programmers: Jason Fevang and Kira Nishi-Beckingham and Leo Zhang
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
+//          2018-11-17: added tapping medications in the past
 //          2018-10-20:
 //          2018-10-20:
 //          2018-10-20:
@@ -96,9 +96,30 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         // Fetches the appropriate medication for the data source layout.
         let med = medications[indexPath.row]
         print(med.name)
-
-        // Add medication to list of taken medications
-        db.addTakenMedicine(MID : med.MID, date : Date())// It needs to change the date depending on which day you check off on, past, current or future
+        
+        //todays date at very start
+        let todayStart = Calendar.current.startOfDay(for: Date())
+        print(todayStart)
+        
+        //display chart date at very start
+        let displayDateStart = Calendar.current.startOfDay(for: displayDay)
+        print(displayDateStart)
+        
+        //if user is on today
+        if todayStart == displayDateStart{
+            // Add medication to list of taken medications
+            db.addTakenMedicine(MID : med.MID, date : Date())
+        }
+        
+        //if user is in the future, can delete this loop i guess lol
+        if displayDateStart > todayStart{
+            //nothing should happen cuz u cant do shit in the future
+        }
+        
+        //if user is in the past
+        if displayDateStart < todayStart{
+            db.addTakenMedicine(MID : med.MID, date : displayDateStart)
+        }
         
         //Update element from array
         medications.remove(at: indexPath.row)
