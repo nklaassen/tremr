@@ -129,4 +129,42 @@ class WeekBarContainer: UIViewController {
         //add data to graph
         self.weekBarChartView.data = data
     }
+    
+    func getExerciseData() -> [Double] {
+        var missedExercises = db.getTremorsForLastWeek() //grab tremors from database
+        var Exercises: [Double] = [0, 0, 0, 0, 0, 0, 0]
+        //finds the size of the data array tremors and subtracts one to match the index of  the last element
+        var size = missedExercises.count - 1
+        var i = 0
+        
+        let now = Date()
+        var now2 = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        var currentDay = dateFormatter.string(from: now)
+        
+        while size >= 0 && i < Exercises.count
+        {
+            var day = missedExercises[size].date
+            dateFormatter.dateFormat = "EEEE"
+            var today = dateFormatter.string(from: day)
+            while today == currentDay
+            {
+                Exercises[i] += 1
+                size -= 1
+                day = missedExercises[size].date
+                dateFormatter.dateFormat = "EEEE"
+                today = dateFormatter.string(from: day)
+            }
+            i += 1
+            now2 = Calendar.current.date(byAdding: .day, value: -1, to: now2)!
+            dateFormatter.dateFormat = "EEEE"
+            currentDay = dateFormatter.string(from: now2)
+        }
+        
+        return(Exercises)
+    }
+
 }
+
+

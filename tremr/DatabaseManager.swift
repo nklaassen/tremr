@@ -244,6 +244,29 @@ class DatabaseManager
         return tremors
     }
     
+    // returns only the tremor recordings from the past week
+    func getMissedExercisesForLastWeek() -> Array<Tremor> {
+        var missedExercises = Array<Tremor>()
+        let startOfDay = Calendar.current.startOfDay(for: Date())
+        var components = DateComponents()
+        components.day = -6
+        let lastWeek = Calendar.current.date(byAdding: components, to: startOfDay)!
+        let missedExercisesForLastWeek = Tremors.filter(self.date >= lastWeek).order(self.date.asc)
+        do {
+            for tremor in try db.prepare(missedExercisesForLastWeek) {
+                missedExercises.append(Tremor(TID: tremor[self.TID],
+                                      //UID: tremor[self.UID],
+                    posturalSeverity: Double(tremor[self.posturalSeverity]) / 10.0,
+                    restingSeverity: Double(tremor[self.restingSeverity]) / 10.0,
+                    completed: tremor[self.completed],
+                    date: tremor[self.date]))
+            }
+        } catch {
+            print(error)
+        }
+        return missedExercises
+    }
+    
     // returns only the tremor recordings from the past month
     func getTremorsForLastMonth() -> Array<Tremor> {
         var tremors = Array<Tremor>()
