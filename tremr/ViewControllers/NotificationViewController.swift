@@ -26,6 +26,10 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //navigation bar formatting
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.title = "Notifications"
+        
         //Set containing class as the delegate and datasource of the table view
         exerMedTableView.delegate = self
         exerMedTableView.dataSource = self
