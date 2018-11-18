@@ -86,5 +86,83 @@ class MonthBarContainer: UIViewController {
         self.monthBarChartView.data = data
         
     }
+    
+    // get missed exercises from the database for the last month
+    func getExerciseData() -> [Double] {
+        let MissedExercises = db.getMissedExercisesForLastMonth() //get tremors from database
+        var counter = MissedExercises.count
+        
+        //array of 28 elements to hold severity values
+        var numExercises: [Double] = Array(repeating: 0, count: 28)
+        var numExCount = 27
+        var day = Date()
+        day = Calendar.current.startOfDay(for: day)
+        var checkDate = Calendar.current.startOfDay(for: MissedExercises[counter].date)
+        
+        while counter >= 0
+        {
+            if checkDate == day
+            {
+                numExercises[numExCount] += 1
+                checkDate = Calendar.current.startOfDay(for: MissedExercises[numExCount].date)
+            }
+            else
+            {
+                day = Calendar.current.date(byAdding: .day, value: -1, to: day)!
+                day = Calendar.current.startOfDay(for: day)
+            }
+            counter -= 1
+            numExCount -= 1
+        }
+        
+        //calculates the average severity values for each week for postural and resting
+        let exercises1 = numExercises[0]+numExercises[1]+numExercises[2]+numExercises[3]+numExercises[4]+numExercises[5]+numExercises[6]
+        let exercises2 = numExercises[7]+numExercises[8]+numExercises[9]+numExercises[10]+numExercises[11]+numExercises[12]+numExercises[13]
+        let exercises3 = numExercises[14]+numExercises[15]+numExercises[16]+numExercises[17]+numExercises[18]+numExercises[19]+numExercises[20]
+        let exercises4 = numExercises[21]+numExercises[22]+numExercises[23]+numExercises[24]+numExercises[25]+numExercises[26]+numExercises[27]
+        
+        //sets the values for the array used in the graph for yearly view
+        let exercises = [exercises1, exercises2, exercises3, exercises4]
+        return(exercises)
+    }
+    
+    // get missed exercises from the database for the last month
+    func getMedicineData() -> [Double] {
+        let MissedMedicines = db.getMissedMedicinesForLastMonth() //get tremors from database
+        var counter = MissedMedicines.count
+        
+        //array of 28 elements to hold severity values
+        var numMedicines: [Double] = Array(repeating: 0, count: 28)
+        var numMedCount = 27
+        var day = Date()
+        day = Calendar.current.startOfDay(for: day)
+        var checkDate = Calendar.current.startOfDay(for: MissedMedicines[counter].date)
+        
+        while counter >= 0
+        {
+            if checkDate == day
+            {
+                numMedicines[numMedCount] += 1
+                checkDate = Calendar.current.startOfDay(for: MissedMedicines[numMedCount].date)
+            }
+            else
+            {
+                day = Calendar.current.date(byAdding: .day, value: -1, to: day)!
+                day = Calendar.current.startOfDay(for: day)
+            }
+            counter -= 1
+            numMedCount -= 1
+        }
+        
+        //calculates the average severity values for each week for postural and resting
+        let med1 = numMedicines[0]+numMedicines[1]+numMedicines[2]+numMedicines[3]+numMedicines[4]+numMedicines[5]+numMedicines[6]
+        let med2 = numMedicines[7]+numMedicines[8]+numMedicines[9]+numMedicines[10]+numMedicines[11]+numMedicines[12]+numMedicines[13]
+        let med3 = numMedicines[14]+numMedicines[15]+numMedicines[16]+numMedicines[17]+numMedicines[18]+numMedicines[19]+numMedicines[20]
+        let med4 = numMedicines[21]+numMedicines[22]+numMedicines[23]+numMedicines[24]+numMedicines[25]+numMedicines[26]+numMedicines[27]
+        
+        //sets the values for the array used in the graph for yearly view
+        let medicines = [med1, med2, med3, med4]
+        return(medicines)
+    }
 }
 

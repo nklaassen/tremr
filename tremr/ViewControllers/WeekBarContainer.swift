@@ -28,8 +28,8 @@ class WeekBarContainer: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let medication = [1.0, 0.0, 0.0, 1.0, 2.0, 3.0, 0.0, 4.0]
-        let exercise = [0.0, 0.0, 3.0, 0.0, 1.0, 1.0, 3.0, 4.0]
+        let medication = getMedicineData()
+        let exercise = getExerciseData()
         
         let now = Date()
         let dateFormatter = DateFormatter()
@@ -131,11 +131,11 @@ class WeekBarContainer: UIViewController {
     }
     
     func getExerciseData() -> [Double] {
-        var missedExercises = db.getTremorsForLastWeek() //grab tremors from database
-        var Exercises: [Double] = [0, 0, 0, 0, 0, 0, 0]
+        var missedExercises = db.getMissedExercisesForLastWeek() //grab tremors from database
+        var Exercises: [Double] = [0, 0, 0, 0, 0, 0, 0, 0]
         //finds the size of the data array tremors and subtracts one to match the index of  the last element
         var size = missedExercises.count - 1
-        var i = 0
+        var i = Exercises.count - 2
         
         let now = Date()
         var now2 = Date()
@@ -143,12 +143,12 @@ class WeekBarContainer: UIViewController {
         dateFormatter.dateFormat = "EEEE"
         var currentDay = dateFormatter.string(from: now)
         
-        while size >= 0 && i < Exercises.count
+        while size > 0 && i >= 0
         {
             var day = missedExercises[size].date
             dateFormatter.dateFormat = "EEEE"
             var today = dateFormatter.string(from: day)
-            while today == currentDay
+            while today == currentDay && size > 0
             {
                 Exercises[i] += 1
                 size -= 1
@@ -156,7 +156,7 @@ class WeekBarContainer: UIViewController {
                 dateFormatter.dateFormat = "EEEE"
                 today = dateFormatter.string(from: day)
             }
-            i += 1
+            i -= 1
             now2 = Calendar.current.date(byAdding: .day, value: -1, to: now2)!
             dateFormatter.dateFormat = "EEEE"
             currentDay = dateFormatter.string(from: now2)
@@ -165,6 +165,40 @@ class WeekBarContainer: UIViewController {
         return(Exercises)
     }
 
+    func getMedicineData() -> [Double] {
+        var missedMedicines = db.getMissedMedicinesForLastWeek() //grab tremors from database
+        var Medicines: [Double] = [0, 0, 0, 0, 0, 0, 0, 0]
+        //finds the size of the data array tremors and subtracts one to match the index of  the last element
+        var size = missedMedicines.count - 1
+        var i = Medicines.count - 2
+        
+        let now = Date()
+        var now2 = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        var currentDay = dateFormatter.string(from: now)
+        
+        while size > 0 && i >= 0
+        {
+            var day = missedMedicines[size].date
+            dateFormatter.dateFormat = "EEEE"
+            var today = dateFormatter.string(from: day)
+            while today == currentDay && size > 0
+            {
+                Medicines[i] += 1
+                size -= 1
+                day = missedMedicines[size].date
+                dateFormatter.dateFormat = "EEEE"
+                today = dateFormatter.string(from: day)
+            }
+            i -= 1
+            now2 = Calendar.current.date(byAdding: .day, value: -1, to: now2)!
+            dateFormatter.dateFormat = "EEEE"
+            currentDay = dateFormatter.string(from: now2)
+        }
+        
+        return(Medicines)
+    }
 }
 
 

@@ -24,6 +24,8 @@ class ExerciseTests: XCTestCase {
         
         //Remove all Exercises in database
         db.clearExercise()
+        db.clearTakenExercises()
+        //db.clearMissedExercises()
         
         //Setup the dateFormatter, both these lines are required to use dateFormatter
         dateFormatter.dateStyle = .long
@@ -33,15 +35,13 @@ class ExerciseTests: XCTestCase {
     override func tearDown() {
         //Runs after every test method
         
-        //Remove all newly added exercises in database
-        db.clearExercise()
         super.tearDown()
     }
     
     func testAddExercise() {
         let testDate = Date()
         
-        db.addExercise(UID: 1,
+        let insertedEID = db.addExercise(UID: 1,
                        name: "exercise1",
                        unit: "100",
                        mo: true, tu: true, we: true, th: true, fr: true, sa: false, su: true,
@@ -50,6 +50,7 @@ class ExerciseTests: XCTestCase {
                        end_date: nil)
         let exercises = db.getExercise()
         
+        XCTAssert(exercises[0].EID == insertedEID)
         XCTAssert(exercises.count as Int == 1)
         XCTAssert(exercises[0].name == "exercise1")
         XCTAssert(exercises[0].unit == "100")
@@ -202,5 +203,52 @@ class ExerciseTests: XCTestCase {
         db.updateExerciseEndDate(EIDToUpdate: exercises[0].EID)
         let newExercises = db.getExerciseDate(date: Date())
         XCTAssert(newExercises.count as Int == 1) //One element, since one was removed
+    }
+    
+    func testAddTakenExercise() {
+        let dateFri = dateFormatter.date(from: "Nov 2, 2018 at 11:14:31 AM PST")
+        let takenEid = db.addExercise(UID: 1,
+                                      name: "exercise1",
+                                      unit: "100",
+                                      mo: true, tu: true, we: true, th: true, fr: true, sa: true, su: true,
+                                      reminder: false,
+                                      start_date: Date(),
+                                      end_date: nil)
+        db.addTakenExercise(EID: takenEid!, date: dateFri!)
+        
+        let takenExercises = db.getTakenExercises(searchDate: dateFri!)
+        XCTAssert(takenExercises.count as Int == 1) //One element
+        XCTAssert(takenExercises[0].EID == takenEid)
+        XCTAssert(takenExercises[0].date == dateFri)
+    }
+    
+    func testSelectExerciseTakenExerciseConsiderations() {
+        let dateThu = dateFormatter.date(from: "Nov 1, 2018 at 11:14:31 AM PST")
+        let dateFri = dateFormatter.date(from: "Nov 2, 2018 at 11:14:31 AM PST")
+        let dateSat = dateFormatter.date(from: "Nov 3, 2018 at 11:14:31 AM PST")
+        let takenEid1 = db.addExercise(UID: 1,
+                                       name: "exercise1",
+                                       unit: "100",
+                                       mo: true, tu: true, we: true, th: true, fr: true, sa: true, su: true,
+                                       reminder: false,
+                                       start_date: dateFri!,
+                                       end_date: nil)
+        let takenEid2 = db.addExercise(UID: 1,
+                                       name: "exercise2",
+                                       unit: "200",
+                                       mo: true, tu: true, we: true, th: true, fr: true, sa: true, su: true,
+                                       reminder: false,
+                                       start_date: dateFri!,
+                                       end_date: nil)
+        
+        db.addTakenExercise(EID: takenEid1!, date: dateFri!)
+        db.addTakenExercise(EID: takenEid2!, date: dateSat!)
+        db.addTakenExercise(EID: takenEid2!, date: dateThu!)
+        
+        let exercises = db.getExerciseDate(date: dateFri!)
+        
+        XCTAssert(exercises.count as Int == 1) //One element
+        XCTAssert(exercises[0].EID == takenEid2)
+        XCTAssert(exercises[0].name == "exercise2")
     }
 }

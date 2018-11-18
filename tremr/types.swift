@@ -60,3 +60,23 @@ struct Exercise {
     var start_date : Date
     var end_date : Date?
 }
+
+struct MissedExercise {
+    var EID: Int64
+    var date: Date
+}
+
+struct MissedMedicine {
+    var MID: Int64
+    var date: Date
+}
+
+struct TakenExercise {
+    var EID: Int64
+    var date: Date
+}
+
+struct TakenMedicine {
+    var MID: Int64
+    var date: Date
+}

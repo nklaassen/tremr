@@ -87,6 +87,7 @@
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
+                                                <gestureRecognizers/>
                                                 <connections>
                                                     <outlet property="medDosageLabel" destination="7Wm-rC-rPj" id="j2h-ej-eyE"/>
                                                     <outlet property="medNameLabel" destination="6sY-4L-U2F" id="nWL-MV-FhD"/>
