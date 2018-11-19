@@ -37,6 +37,7 @@
 		A83CF0B6218D4995002C3E50 /* MedicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83CF0B5218D4995002C3E50 /* MedicationTests.swift */; };
 		A8F8A206218A56A30044342D /* DailyMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8A205218A56A30044342D /* DailyMedicationViewController.swift */; };
 		A8F8A20E218A59170044342D /* DailyMedicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8A20D218A59170044342D /* DailyMedicationTableViewCell.swift */; };
+		A8FA189421A3777800AFB843 /* NotificationToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FA189321A3777800AFB843 /* NotificationToggleButton.swift */; };
 		E04F6FD32182979C000AF2F6 /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */; };
 		E0B1033C218B720D00F0B96E /* libraries in Resources */ = {isa = PBXBuildFile; fileRef = E0B10335218B720D00F0B96E /* libraries */; };
 		E0B10353218B77D500F0B96E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B10343218B724600F0B96E /* Charts.framework */; };
@@ -209,6 +210,7 @@
 		A83CF0B5218D4995002C3E50 /* MedicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTests.swift; sourceTree = "<group>"; };
 		A8F8A205218A56A30044342D /* DailyMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMedicationViewController.swift; sourceTree = "<group>"; };
 		A8F8A20D218A59170044342D /* DailyMedicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMedicationTableViewCell.swift; sourceTree = "<group>"; };
+		A8FA189321A3777800AFB843 /* NotificationToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToggleButton.swift; sourceTree = "<group>"; };
 		E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
 		E0B10335218B720D00F0B96E /* libraries */ = {isa = PBXFileReference; lastKnownFileType = folder; path = libraries; sourceTree = "<group>"; };
 		E0B1033D218B724600F0B96E /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = libraries/charts/Charts.xcodeproj; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				A5E1D10F218955D3001D8814 /* ToggleButton.swift */,
+				A8FA189321A3777800AFB843 /* NotificationToggleButton.swift */,
 			);
 			path = SubClasses;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				55D4D192218B7CAF00CB371C /* ViewDataViewController.swift in Sources */,
 				E0BF93E2218692640097767F /* types.swift in Sources */,
 				A50B2533218FAB4D0033AA48 /* AllExerciseViewController.swift in Sources */,
+				A8FA189421A3777800AFB843 /* NotificationToggleButton.swift in Sources */,
 				A50B2535218FAE920033AA48 /* AllExerciseTableViewCell.swift in Sources */,
 				A81150DE218E53BB005478EE /* AllMedicationViewController.swift in Sources */,
 				A5E1D110218955D3001D8814 /* ToggleButton.swift in Sources */,

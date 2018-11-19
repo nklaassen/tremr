@@ -22,7 +22,7 @@ class notificationTableViewCell: UITableViewCell {
     
     //MARK: Properties
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var bellButton: UIButton!
+    @IBOutlet weak var bellButton: NotificationToggleButton!
     
     
     

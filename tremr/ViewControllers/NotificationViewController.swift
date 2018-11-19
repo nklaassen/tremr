@@ -75,12 +75,12 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         //Load images from assets into variables
-        var onBellImage = UIImage(named: "Bell-On")
-        var offBellImage = UIImage(named: "Bell-Off")
+        //var onBellImage = UIImage(named: "Bell-On")
+        //var offBellImage = UIImage(named: "Bell-Off")
         
-        //Set name label
+        //Set name label and bell start state
         cell.nameLabel.text = nameText
-        
+        cell.bellButton.initBellState(setOn: bellIsOn)
         //Set the bellButton in the cell to refer to deleteButtonClicked when deleteButton is pressed
         //Encode the section and the path row as an even or odd number. If the number is even, section = 0, row = tag/2. If the number is odd, section = 1, row = (tag-1)/2
         cell.bellButton.tag = 2*indexPath.row + indexPath.section
@@ -88,12 +88,12 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
 
         
         //Set bell image
-        if bellIsOn {
-            cell.bellButton.setImage(onBellImage, for: UIControlState.normal)
-        }
-        else {
-            cell.bellButton.setImage(offBellImage, for: UIControlState.normal)
-        }
+        //if bellIsOn {
+        //    cell.bellButton.setImage(onBellImage, for: UIControlState.normal)
+        //}
+        //else {
+        //    cell.bellButton.setImage(offBellImage, for: UIControlState.normal)
+        //}
         return cell
     }
 
@@ -122,29 +122,19 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     // MARK: Private Methods
     @objc func bellButtonClicked(_ sender: UIButton) {
         //Here sender.tag will give you the tapped checkbox/Button index from the cell
-        var section : Int
-        var row : Int
-        if sender.tag % 2 == 0 {
-            section = 0
-            row = sender.tag/2
+        if sender.tag % 2 == 0 { //Medication
+            let med = medications[sender.tag/2]
+            print(med.name)
+            db.setMedReminder(Mid: med.MID, setFlag: !med.reminder)
+            
+            //do notification stuff here
         }
-        else {
-            section = 1
-            row = (sender.tag - 1)/2
+        else { //Exercise
+            let exer = exercises[(sender.tag-1)/2]
+            print(exer.name)
+            db.setExerReminder(Eid: exer.EID, setFlag: !exer.reminder)
+            
+            //do notification stuff here
         }
-        
-        
-        //update medication/exercise
-        
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

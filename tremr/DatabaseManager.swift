@@ -825,4 +825,25 @@ class DatabaseManager
         }
         return takenExercises
     }
+    
+    //Update medicines reminder flag to a given boolean value
+    func setMedReminder(Mid : Int64, setFlag : Bool){
+        do {
+            let medToUpdate = Medicines.filter(MID == Mid)
+            try db.run(medToUpdate.update(reminder <- setFlag))
+        } catch {
+            fatalError("Failed to update row with MID: \(Mid) with reminder: \(String(describing: setFlag))")
+        }
+    }
+    
+    
+    //Update medicines reminder flag to a given boolean value
+    func setExerReminder(Eid : Int64, setFlag : Bool){
+        do {
+            let exerToUpdate = Exercises.filter(EID == Eid)
+            try db.run(exerToUpdate.update(reminder <- setFlag))
+        } catch {
+            fatalError("Failed to update row with EID: \(Eid) with reminder: \(String(describing: setFlag))")
+        }
+    }
 }
