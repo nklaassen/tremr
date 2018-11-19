@@ -81,6 +81,12 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         //Set name label
         cell.nameLabel.text = nameText
         
+        //Set the bellButton in the cell to refer to deleteButtonClicked when deleteButton is pressed
+        //Encode the section and the path row as an even or odd number. If the number is even, section = 0, row = tag/2. If the number is odd, section = 1, row = (tag-1)/2
+        cell.bellButton.tag = 2*indexPath.row + indexPath.section
+        cell.bellButton.addTarget(self, action: #selector(self.bellButtonClicked), for: .touchUpInside)
+
+        
         //Set bell image
         if bellIsOn {
             cell.bellButton.setImage(onBellImage, for: UIControlState.normal)
@@ -111,6 +117,25 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         exercises = db.getExercise()
         //Get all active medications
         medications = db.getMedicine()
+    }
+    
+    // MARK: Private Methods
+    @objc func bellButtonClicked(_ sender: UIButton) {
+        //Here sender.tag will give you the tapped checkbox/Button index from the cell
+        var section : Int
+        var row : Int
+        if sender.tag % 2 == 0 {
+            section = 0
+            row = sender.tag/2
+        }
+        else {
+            section = 1
+            row = (sender.tag - 1)/2
+        }
+        
+        
+        //update medication/exercise
+        
     }
     /*
     // MARK: - Navigation

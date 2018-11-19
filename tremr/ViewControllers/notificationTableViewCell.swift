@@ -20,9 +20,10 @@ class notificationTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+    //MARK: Properties
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bellButton: UIButton!
-
+    
     
     
     override func setSelected(_ selected: Bool, animated: Bool) {

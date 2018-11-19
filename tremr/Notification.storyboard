@@ -60,7 +60,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="bellButton" destination="eI3-t6-N8R" id="k1j-iY-W9d"/>
+                                            <outlet property="bellButton" destination="eI3-t6-N8R" id="ut9-E1-bAw"/>
                                             <outlet property="nameLabel" destination="cpf-UD-aAf" id="W5x-NF-sQc"/>
                                         </connections>
                                     </tableViewCell>
