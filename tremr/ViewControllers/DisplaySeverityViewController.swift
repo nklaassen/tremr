@@ -31,10 +31,7 @@ class DisplaySeverityViewController: UIViewController {
          */
         
         //navigation bar formatting
-        self.navigationController?.isNavigationBarHidden = false
-        let emptyView = UIView(frame: .zero)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: emptyView)
-        self.navigationItem.title = "Results"
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     @IBOutlet weak var posturalLabel: UILabel!

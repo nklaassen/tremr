@@ -1,17 +1,32 @@
 //
-//  NotificationViewController.swift
-//  tremr
+//  Name of file: NotificationViewController.swift
+//  Programmers: Leo Zhang and Jason FeVang
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-11-17: implemented daily notificaitons
 //
-//  Created by Jakub2 on 2018-11-14.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+// Known Bugs:
 
 import UIKit
+import UserNotifications
 
 class NotificationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: Properties
     @IBOutlet weak var exerMedTableView: UITableView!
+    
+    @IBOutlet weak var reminderButton: ToggleButton!
+    
+    @IBAction func dailyReminderToggle(_ sender: ToggleButton) {
+        if reminderButton.isOn{
+            let dailyTremorTime = createDate(weekday: 1, hour: 10, minute: 00, year: 2018)
+            dailyTremorRecordingReminder(at: dailyTremorTime, ID: "dailyReminder")
+        }
+        if reminderButton.isOn == false{
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["dailyReminder"])
+        }
+    }
+    
     
     //Array of medications displayed by table
     var medications = [Medicine]()
@@ -25,6 +40,10 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //navigation bar formatting
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.title = "Notifications"
         
         //Set containing class as the delegate and datasource of the table view
         exerMedTableView.delegate = self

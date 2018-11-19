@@ -20,8 +20,8 @@ class MonthBarContainer: UIViewController {
         super.viewDidLoad()
         
         let dates = ["Week 1", "Week 2", "Week 3", "Week 4", ""]
-        let medication = [1.0, 4.0, 5.0, 7.0, 9.0]
-        let exercise = [4.0, 6.0, 3.0, 8.0, 9.0]
+        let medication = getMedicineData()
+        let exercise = getExerciseData()
         
         setChart(dataPoints: dates, values1: medication, values2: exercise)
         
@@ -90,28 +90,39 @@ class MonthBarContainer: UIViewController {
     // get missed exercises from the database for the last month
     func getExerciseData() -> [Double] {
         let MissedExercises = db.getMissedExercisesForLastMonth() //get tremors from database
-        var counter = MissedExercises.count
         
-        //array of 28 elements to hold severity values
+        if MissedExercises.count == 0
+        {
+            return ([0, 0, 0, 0, 0])
+        }
+        var counter = MissedExercises.count-1
+        
+        //For Start Date
+        var calendar = NSCalendar.current
+        calendar.timeZone = NSTimeZone(abbreviation: "UTC")! as TimeZone //OR NSTimeZone.localTimeZone()
+        
         var numExercises: [Double] = Array(repeating: 0, count: 28)
         var numExCount = 27
         var day = Date()
-        day = Calendar.current.startOfDay(for: day)
-        var checkDate = Calendar.current.startOfDay(for: MissedExercises[counter].date)
+        day = calendar.startOfDay(for: day)
+        var day2 = MissedExercises[counter].date
+        var checkDate = calendar.startOfDay(for: day2)
         
-        while counter >= 0
+        while counter >= 0 && numExCount >= 0
         {
-            if checkDate == day
+            while checkDate == day
             {
                 numExercises[numExCount] += 1
-                checkDate = Calendar.current.startOfDay(for: MissedExercises[numExCount].date)
+                counter -= 1
+                if counter < 0
+                {
+                    break
+                }
+                day2 = MissedExercises[counter].date
+                checkDate = calendar.startOfDay(for: day2)
             }
-            else
-            {
-                day = Calendar.current.date(byAdding: .day, value: -1, to: day)!
-                day = Calendar.current.startOfDay(for: day)
-            }
-            counter -= 1
+            day = calendar.date(byAdding: .day, value: -1, to: day)!
+            day = calendar.startOfDay(for: day)
             numExCount -= 1
         }
         
@@ -122,35 +133,46 @@ class MonthBarContainer: UIViewController {
         let exercises4 = numExercises[21]+numExercises[22]+numExercises[23]+numExercises[24]+numExercises[25]+numExercises[26]+numExercises[27]
         
         //sets the values for the array used in the graph for yearly view
-        let exercises = [exercises1, exercises2, exercises3, exercises4]
+        let exercises = [exercises1, exercises2, exercises3, exercises4, 0]
         return(exercises)
     }
     
     // get missed exercises from the database for the last month
     func getMedicineData() -> [Double] {
         let MissedMedicines = db.getMissedMedicinesForLastMonth() //get tremors from database
-        var counter = MissedMedicines.count
+        var counter = MissedMedicines.count-1
         
-        //array of 28 elements to hold severity values
+        if MissedMedicines.count == 0
+        {
+            return ([0, 0, 0, 0, 0])
+        }
+        
+        //For Start Date
+        var calendar = NSCalendar.current
+        calendar.timeZone = NSTimeZone(abbreviation: "UTC")! as TimeZone //OR NSTimeZone.localTimeZone()
+        
         var numMedicines: [Double] = Array(repeating: 0, count: 28)
         var numMedCount = 27
         var day = Date()
-        day = Calendar.current.startOfDay(for: day)
-        var checkDate = Calendar.current.startOfDay(for: MissedMedicines[counter].date)
-        
-        while counter >= 0
+        day = calendar.startOfDay(for: day)
+        var day2 = MissedMedicines[counter].date
+        var checkDate = calendar.startOfDay(for: day2)
+
+        while counter >= 0 && numMedCount >= 0
         {
-            if checkDate == day
+            while checkDate == day
             {
                 numMedicines[numMedCount] += 1
-                checkDate = Calendar.current.startOfDay(for: MissedMedicines[numMedCount].date)
+                counter -= 1
+                if counter < 0
+                {
+                    break
+                }
+                day2 = MissedMedicines[counter].date
+                checkDate = calendar.startOfDay(for: day2)
             }
-            else
-            {
-                day = Calendar.current.date(byAdding: .day, value: -1, to: day)!
-                day = Calendar.current.startOfDay(for: day)
-            }
-            counter -= 1
+            day = calendar.date(byAdding: .day, value: -1, to: day)!
+            day = calendar.startOfDay(for: day)
             numMedCount -= 1
         }
         
@@ -161,7 +183,7 @@ class MonthBarContainer: UIViewController {
         let med4 = numMedicines[21]+numMedicines[22]+numMedicines[23]+numMedicines[24]+numMedicines[25]+numMedicines[26]+numMedicines[27]
         
         //sets the values for the array used in the graph for yearly view
-        let medicines = [med1, med2, med3, med4]
+        let medicines = [med1, med2, med3, med4, 0]
         return(medicines)
     }
 }
