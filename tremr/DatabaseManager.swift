@@ -306,7 +306,11 @@ class DatabaseManager
     func getTremorsForLastWeek() -> [Tremor] {
         return Array<Tremor>()
     }
-    // returns only the tremor recordings from the past week
+    
+    
+    // Description: Retrieve all tremor data from the past week from the database and return in a callback
+    // Pre-condition: Connection to remote webserver, valid callback function prepared to recieve callback data
+    // Post-condition: Tremor data passed to input callback function
     func getTremorsForLastWeekAsync(completion: @escaping ([Tremor]) -> ()) {
         let startOfDay = Calendar.current.startOfDay(for: Date())
         var components = DateComponents()
@@ -316,17 +320,20 @@ class DatabaseManager
         let url = baseUrl + "tremors?since=" + datestring
         print(url)
         
+        // Request data from the webserver using Alamofire
         Alamofire.request(url).validate().responseData { response in
+            //Ensure valid response before passing data to completion callback
             switch response.result {
             case .success:
                 print("got valid response")
                 if let data = response.result.value {
-                    let decoder = JSONDecoder()
-                    decoder.dateDecodingStrategy = .iso8601
-                    if let tremors = try? decoder.decode([Tremor].self, from: data) {
+                    //Use JSONDecoder to convert JSON data from webserver into an array of Tremor objects
+                    if let tremors = try? JSONDecoder().decode([Tremor].self, from: data) {
+                        //Pass Tremor array to callback completion
                         completion(tremors)
                     }
                 }
+            //Data request failure
             case .failure(let error):
                 print(error)
             }
@@ -381,11 +388,13 @@ class DatabaseManager
         let tremorsForLastMonth = Tremors.filter(self.date >= lastMonth).order(self.date.asc)
         do {
             for tremor in try db.prepare(tremorsForLastMonth) {
-                tremors.append(Tremor(TID: tremor[self.TID],
-                                      //UID: tremor[self.UID],
-                    posturalSeverity: Double(tremor[self.posturalSeverity]) / 10.0,
-                    restingSeverity: Double(tremor[self.restingSeverity]) / 10.0,
-                    date: tremor[self.date]))
+                tremors.append(
+                    Tremor(
+                        TID: tremor[self.TID],
+                        //UID: tremor[self.UID],
+                        posturalSeverity: Double(tremor[self.posturalSeverity]) / 10.0,
+                        restingSeverity: Double(tremor[self.restingSeverity]) / 10.0,
+                        date: tremor[self.date]))
                 print("tremor date ", tremor[self.date])
             }
         } catch {
