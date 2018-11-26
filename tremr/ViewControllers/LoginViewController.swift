@@ -10,10 +10,37 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    //log in page: textfields
+    @IBOutlet weak var logInEmailTextField: UITextField!
+    @IBOutlet weak var logInPasswordTextField: UITextField!
+    
+    //create an account page: textfields
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+    }
+    
+    //log in page: buttons
+    @IBAction func logInButton(_ sender: Any) {
+        print(logInEmailTextField)
+        print(logInPasswordTextField)
+        print("pressed log in button")
+        
+        if true{ //account doesnt exist
+            print("Account does not exist")
+        }
+        else{
+            //complete log in
+            //segway to main.storyboard
+        }
+    }
+    
+    //goes to create account page
+    @IBAction func createAccountButton(_ sender: Any) {
+        print("pressed create account button")
     }
     
     

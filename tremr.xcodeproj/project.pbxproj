@@ -12,6 +12,7 @@
 		03711BFA219CFCA2008CC9C8 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03711BF9219CFCA2008CC9C8 /* Notification.storyboard */; };
 		03DF564D21AB810400223E4B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03DF564C21AB810400223E4B /* Login.storyboard */; };
 		03DF565521AB817600223E4B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF565421AB817600223E4B /* LoginViewController.swift */; };
+		03DF565B21AB8A4E00223E4B /* createAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF565A21AB8A4E00223E4B /* createAccountViewController.swift */; };
 		55D4D192218B7CAF00CB371C /* ViewDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D191218B7CAF00CB371C /* ViewDataViewController.swift */; };
 		55D4D194218B813100CB371C /* YearContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D193218B813100CB371C /* YearContainer.swift */; };
 		55D4D196218B888C00CB371C /* MonthContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D195218B888C00CB371C /* MonthContainer.swift */; };
@@ -246,6 +247,7 @@
 		03711BF9219CFCA2008CC9C8 /* Notification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
 		03DF564C21AB810400223E4B /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		03DF565421AB817600223E4B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		03DF565A21AB8A4E00223E4B /* createAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createAccountViewController.swift; sourceTree = "<group>"; };
 		55D4D191218B7CAF00CB371C /* ViewDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDataViewController.swift; sourceTree = "<group>"; };
 		55D4D193218B813100CB371C /* YearContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearContainer.swift; sourceTree = "<group>"; };
 		55D4D195218B888C00CB371C /* MonthContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthContainer.swift; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 				03711BF0219CFC4C008CC9C8 /* NotificationViewController.swift */,
 				A823ABFD21A0EE4E00CB07E2 /* notificationTableViewCell.swift */,
 				03DF565421AB817600223E4B /* LoginViewController.swift */,
+				03DF565A21AB8A4E00223E4B /* createAccountViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03DF565B21AB8A4E00223E4B /* createAccountViewController.swift in Sources */,
 				03DF565521AB817600223E4B /* LoginViewController.swift in Sources */,
 				55D4D1B2218D9D9A00CB371C /* YearBarContainer.swift in Sources */,
 				E0FEE14E217ECB4300C72D7C /* MeasureViewController.swift in Sources */,
