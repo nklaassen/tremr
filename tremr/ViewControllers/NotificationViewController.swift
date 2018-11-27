@@ -35,7 +35,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     var exercises = [Exercise]()
     
     //Header titles
-    var headerTitles = ["Medications", "Exercises"]
+    var headerTitles = ["Linked Accounts", "NOTIFICATIONS:", "Medications", "Exercises"]
     
     
     override func viewDidLoad() {
@@ -43,7 +43,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         
         //navigation bar formatting
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.title = "Notifications"
+        self.navigationItem.title = "Settings"
         
         //Set containing class as the delegate and datasource of the table view
         exerMedTableView.delegate = self
@@ -57,13 +57,20 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 4
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return medications.count
+            //change this for linked accounts
+            return 3
         }
         else if section == 1 {
+            return 0
+        }
+        else if section == 2 {
+            return medications.count
+        }
+        else if section == 3 {
             return exercises.count
         }
         else {
@@ -76,11 +83,20 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         var nameText : String
         var bellIsOn : Bool
         
-        if indexPath.section == 0 { //medication
+        if indexPath.section == 0 {
+            //change this for linked accounts
+            nameText = "testEmail@gmail.com"
+            bellIsOn = false
+        }
+        else if indexPath.section == 1 {
+            nameText = "test"
+            bellIsOn = false
+        }
+        else if indexPath.section == 2 { //medication
             nameText = medications[indexPath.row].name
             bellIsOn = medications[indexPath.row].reminder
         }
-        else if indexPath.section == 1 { //exercise
+        else if indexPath.section == 3 { //exercise
             nameText = exercises[indexPath.row].name
             bellIsOn = exercises[indexPath.row].reminder
         }
@@ -104,6 +120,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         //Encode the section and the path row as an even or odd number. If the number is even, section = 0, row = tag/2. If the number is odd, section = 1, row = (tag-1)/2
         cell.bellButton.tag = 2*indexPath.row + indexPath.section
         cell.bellButton.addTarget(self, action: #selector(self.bellButtonClicked), for: .touchUpInside)
+        
 
         
         //Set bell image
@@ -142,14 +159,14 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     @objc func bellButtonClicked(_ sender: UIButton) {
         //Here sender.tag will give you the tapped checkbox/Button index from the cell
         if sender.tag % 2 == 0 { //Medication
-            let med = medications[sender.tag/2]
+            let med = medications[(sender.tag-1)/2]
             print(med.name)
             db.setMedReminder(Mid: med.MID, setFlag: !med.reminder)
             
             //do notification stuff here
         }
         else { //Exercise
-            let exer = exercises[(sender.tag-1)/2]
+            let exer = exercises[(sender.tag-2)/2]
             print(exer.name)
             db.setExerReminder(Eid: exer.EID, setFlag: !exer.reminder)
             
