@@ -67,6 +67,18 @@ class MainMenuViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationItem.setHidesBackButton(false, animated:true)
+        //To change Navigation Bar Background Color
+        UINavigationBar.appearance().barTintColor = UIColor(red: 0.0, green: 0.6, blue: 1.0, alpha: 1.0)
+        //To change Back button title & icon color
+        UINavigationBar.appearance().tintColor = UIColor.white
+        //To change Navigation Bar Title Color
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+    }
+    
     
     @IBOutlet var SettingsOptions: [UIButton]!
     
