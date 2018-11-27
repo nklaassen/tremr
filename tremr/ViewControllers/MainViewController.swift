@@ -11,13 +11,33 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    @IBOutlet weak var Measure: UIButton!
+    @IBOutlet weak var Exercise: UIButton!
+    @IBOutlet weak var Meds: UIButton!
+    @IBOutlet weak var Results: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        Measure.backgroundColor = UIColor.blue
+        
+        Measure.layer.cornerRadius = Measure.frame.size.width/6
+        Measure.layer.masksToBounds = true
+        
+        Measure.setTitleColor(UIColor.white, for: .normal)
+        Measure.layer.shadowColor = UIColor.darkGray.cgColor
+        Measure.layer.shadowRadius = 4
+        Measure.layer.shadowOpacity = 0.5
+        Measure.layer.shadowOffset = CGSize(width: 0, height: 0)
+        
+        
+        
+        
         
         print("Main Page View is loaded :)")
 
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
