@@ -10,6 +10,9 @@ import UIKit
 
 class createAccountViewController: UIViewController {
 
+    //self.navigationController?.isNavigationBarHidden = false
+    //self.navigationItem.title = "Create Account"
+    
     //create account page: textfields
     @IBOutlet weak var createAccountEmailTextField: UITextField!
     @IBOutlet weak var createAccountFullNameTextField: UITextField!
@@ -19,6 +22,9 @@ class createAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.title = "Create Account"
         // Do any additional setup after loading the view.
     }
     
@@ -38,9 +44,20 @@ class createAccountViewController: UIViewController {
             print(password1)
             print(password2)
             print("passwords do not match")
+            
+            let alert = UIAlertController(title: "", message: "Passwords do not match", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: {(action) in}))
+            
+            self.present(alert, animated: true, completion: nil)
+            
         }
         else if password1 == "" || password2 == ""{
             print("passwords are empty")
+            
+            let alert = UIAlertController(title: "", message: "Password must not be empty", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: {(action) in}))
+            
+            self.present(alert, animated: true, completion: nil)
         }
         else{
             print("passwords match")

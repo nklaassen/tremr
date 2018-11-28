@@ -10,16 +10,20 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    
+    
     //log in page: textfields
     @IBOutlet weak var logInEmailTextField: UITextField!
     @IBOutlet weak var logInPasswordTextField: UITextField!
     
-    //create an account page: textfields
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.title = "Login"
         // Do any additional setup after loading the view.
     }
     
