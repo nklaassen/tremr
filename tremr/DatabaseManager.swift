@@ -20,8 +20,6 @@ class DatabaseManager
 {
     var db : Connection! // The actual SQLite database connection
     
-    let baseUrl = "http://ec2-34-209-34-34.us-west-2.compute.amazonaws.com/api/"
-    
     // These are "Expressions" which need to be passed to many of the database calls
     
     let Users = Table("Users")

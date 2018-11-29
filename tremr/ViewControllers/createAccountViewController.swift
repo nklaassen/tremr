@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Alamofire
+
 class createAccountViewController: UIViewController {
 
     //self.navigationController?.isNavigationBarHidden = false
@@ -37,6 +39,8 @@ class createAccountViewController: UIViewController {
         
         print("confirm button pressed")
         
+        let name: String = createAccountFullNameTextField.text!
+        let email: String = createAccountEmailTextField.text!
         let password1: String = createAccountPasswordTextField.text!
         let password2: String = createAccountConfirmPasswordTextField.text!
         
@@ -51,10 +55,10 @@ class createAccountViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             
         }
-        else if password1 == "" || password2 == ""{
-            print("passwords are empty")
+        else if password1 == "" || name == "" || email == "" {
+            print("some fields are empty")
             
-            let alert = UIAlertController(title: "", message: "Password must not be empty", preferredStyle: .alert)
+            let alert = UIAlertController(title: "", message: "name, email, password fields must not be empty", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "ok", style: .default, handler: {(action) in}))
             
             self.present(alert, animated: true, completion: nil)
@@ -64,9 +68,27 @@ class createAccountViewController: UIViewController {
             
             //creats account
             //segways to main.storyboard
+            let parameters: [String: Any] = [
+                "name" : name,
+                "email" : email,
+                "password" : password1
+            ]
+            
+            Alamofire.request(baseUrl + "auth/signup", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+                .responseString() { response in
+                    let statusCode = response.response?.statusCode
+                    if statusCode == 200 {
+                        print("Signup Successful")
+                        self.performSegue(withIdentifier: "CreateAccountSegue", sender: nil)
+                    } else {
+                        print(response.result.value as Any)
+                        let alert = UIAlertController(title: "", message: response.result.value, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: {(action) in}))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+            }
         }
-    }
-    
+    }    
 
     /*
     // MARK: - Navigation

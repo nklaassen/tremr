@@ -8,16 +8,15 @@
 //
 import UIKit
 
+import Alamofire
+
+let authTokenKey = "authToken"
+
 class LoginViewController: UIViewController {
-    
-    
     
     //log in page: textfields
     @IBOutlet weak var logInEmailTextField: UITextField!
     @IBOutlet weak var logInPasswordTextField: UITextField!
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +32,31 @@ class LoginViewController: UIViewController {
         print(logInPasswordTextField)
         print("pressed log in button")
         
-        if true{ //account doesnt exist
-            print("Account does not exist")
-        }
-        else{
-            //complete log in
-            //segway to main.storyboard
+        let email: String = logInEmailTextField.text!
+        let password: String = logInPasswordTextField.text!
+
+        let parameters: [String: Any] = [
+            "email" : email,
+            "password" : password
+        ]
+        
+        Alamofire.request(baseUrl + "auth/signin", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .responseString() { response in
+                let statusCode = response.response?.statusCode
+                let responseString = response.result.value!
+                if statusCode == 200 {
+                    print("Signin Successful")
+                    
+                    // save jwt to persistent storage
+                    let defaults = UserDefaults.standard
+                    defaults.set(responseString, forKey: authTokenKey)
+                    
+                } else {
+                    print(responseString)
+                    let alert = UIAlertController(title: "", message: responseString, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "ok", style: .default, handler: {(action) in}))
+                    self.present(alert, animated: true, completion: nil)
+                }
         }
     }
     
@@ -46,7 +64,6 @@ class LoginViewController: UIViewController {
     @IBAction func createAccountButton(_ sender: Any) {
         print("pressed create account button")
     }
-    
     
     /*
      // MARK: - Navigation
