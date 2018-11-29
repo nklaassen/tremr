@@ -504,7 +504,7 @@ class DatabaseManager
             return nil
         }
     }
-    
+
     //Returns array of all medicines
     func getMedicine() -> Array<Medicine> {
         var medicines = Array<Medicine>()
@@ -534,6 +534,45 @@ class DatabaseManager
         return medicines
     }
     
+    
+    
+    func getMedicineAsync(completion: @escaping ([Tremor]) -> ()) {
+        Alamofire.request(baseUrl + "meds").validate().responseData { response in
+            switch response.result {
+            case .success:
+                print("got valid response")
+                if let data = response.result.value {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    if let tremors = try? decoder.decode([Tremor].self, from: data) {
+                        completion(tremors)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    /*
+     func getTremorsAsync(completion: @escaping ([Tremor]) -> ()) {
+     Alamofire.request(baseUrl + "tremors").validate().responseData { response in
+     switch response.result {
+     case .success:
+     print("got valid response")
+     if let data = response.result.value {
+     let decoder = JSONDecoder()
+     decoder.dateDecodingStrategy = .iso8601
+     if let tremors = try? decoder.decode([Tremor].self, from: data) {
+     completion(tremors)
+     }
+     }
+     case .failure(let error):
+     print(error)
+     }
+     }
+     }
+     */
     //Returns array of all exercises
     func getExercise() -> Array<Exercise> {
         var exercises = Array<Exercise>()
