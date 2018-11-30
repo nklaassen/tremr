@@ -66,7 +66,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             //change this for linked accounts
-            return 3
+            return 9
         }
         else if section == 1 {
             return 0
