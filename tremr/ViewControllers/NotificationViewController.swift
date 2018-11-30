@@ -17,6 +17,8 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBOutlet weak var reminderButton: ToggleButton!
     
+    @IBOutlet weak var textField: UITextView!
+    
     @IBAction func dailyReminderToggle(_ sender: ToggleButton) {
         if reminderButton.isOn{
             let dailyTremorTime = createDate(weekday: 1, hour: 10, minute: 00, year: 2018)
@@ -40,6 +42,8 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        reminderButton.bringSubview(toFront: textField)
         
         //navigation bar formatting
         self.navigationController?.isNavigationBarHidden = false
@@ -172,5 +176,36 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
             
             //do notification stuff here
         }
+    }
+    
+    func showInputDialog() {
+        //Creating UIAlertController and
+        //Setting title and message for the alert dialog
+        let alertController = UIAlertController(title: "Link an Account", message: "Enter an email to link", preferredStyle: .alert)
+        
+        //the confirm action taking the inputs
+        let confirmAction = UIAlertAction(title: "Link", style: .default) { (_) in
+            
+            //getting the input values from user
+            let email = alertController.textFields?[0].text
+            //add email to linked accounts
+        }
+        
+        //the cancel action doing nothing
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Enter Email"
+        }
+        
+        //adding the action to dialogbox
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        //finally presenting the dialog box
+        self.present(alertController, animated: true, completion: nil)
+    }
+    @IBAction func addLinkedAccount(_ sender: Any) {
+        showInputDialog()
     }
 }
