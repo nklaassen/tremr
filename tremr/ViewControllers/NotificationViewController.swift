@@ -168,6 +168,33 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
             db.setMedReminder(Mid: med.MID, setFlag: !med.reminder)
             
             //do notification stuff here
+            let repeatingMonDate = createDate(weekday: 2, hour: 10, minute: 00 , year: 2018)
+            var notificationID = "Mo\(med.MID)"
+            scheduleMedicationNotificationWeekly(at: repeatingMonDate, name: med.name, ID: notificationID)
+            
+            let repeatingTueDate = createDate(weekday: 3, hour: 10, minute: 00 , year: 2018)
+            notificationID = "Tu\(med.MID)"
+            scheduleMedicationNotificationWeekly(at: repeatingTueDate, name: med.name, ID: notificationID)
+            
+            let repeatingWedDate = createDate(weekday: 4, hour: 10, minute: 00 , year: 2018)
+            notificationID = "We\(med.MID)"
+            scheduleMedicationNotificationWeekly(at: repeatingWedDate, name: med.name, ID: notificationID)
+            
+            let repeatingThuDate = createDate(weekday: 5, hour: 10, minute: 00 , year: 2018)
+            notificationID = "Th\(med.MID)"
+            scheduleMedicationNotificationWeekly(at: repeatingThuDate, name: med.name, ID: notificationID)
+            
+            let repeatingFriDate = createDate(weekday: 6, hour: 10, minute: 00 , year: 2018)
+            notificationID = "Fr\(med.MID)"
+            scheduleMedicationNotificationWeekly(at: repeatingFriDate, name: med.name, ID: notificationID)
+            
+            let repeatingSatDate = createDate(weekday: 7, hour: 10, minute: 00 , year: 2018)
+            notificationID = "Sa\(med.MID)"
+            scheduleMedicationNotificationWeekly(at: repeatingSatDate, name: med.name, ID: notificationID)
+            
+            let repeatingSunDate = createDate(weekday: 1, hour: 10, minute: 00 , year: 2018)
+            notificationID = "Su\(med.MID)"
+            scheduleMedicationNotificationWeekly(at: repeatingSunDate, name: med.name, ID: notificationID)
         }
         else { //Exercise
             let exer = exercises[(sender.tag-2)/2]
@@ -175,6 +202,33 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
             db.setExerReminder(Eid: exer.EID, setFlag: !exer.reminder)
             
             //do notification stuff here
+            let repeatingMonDate = createDate(weekday: 2, hour: 10, minute: 00 , year: 2018)
+            var notificationID = "Mo\(exer.EID)"
+            scheduleExerciseNotificationWeekly(at: repeatingMonDate, name: exer.name, ID: notificationID)
+            
+            let repeatingTueDate = createDate(weekday: 3, hour: 10, minute: 00 , year: 2018)
+            notificationID = "Tu\(exer.EID)"
+            scheduleExerciseNotificationWeekly(at: repeatingTueDate, name: exer.name, ID: notificationID)
+            
+            let repeatingWedDate = createDate(weekday: 4, hour: 10, minute: 00 , year: 2018)
+            notificationID = "We\(exer.EID)"
+            scheduleExerciseNotificationWeekly(at: repeatingWedDate, name: exer.name, ID: notificationID)
+            
+            let repeatingThuDate = createDate(weekday: 5, hour: 10, minute: 00 , year: 2018)
+            notificationID = "Th\(exer.EID)"
+            scheduleExerciseNotificationWeekly(at: repeatingThuDate, name: exer.name, ID: notificationID)
+            
+            let repeatingFriDate = createDate(weekday: 6, hour: 10, minute: 00 , year: 2018)
+            notificationID = "Fr\(exer.EID)"
+            scheduleExerciseNotificationWeekly(at: repeatingFriDate, name: exer.name, ID: notificationID)
+            
+            let repeatingSatDate = createDate(weekday: 7, hour: 10, minute: 00 , year: 2018)
+            notificationID = "Sa\(exer.EID)"
+            scheduleExerciseNotificationWeekly(at: repeatingSatDate, name: exer.name, ID: notificationID)
+            
+            let repeatingSunDate = createDate(weekday: 1, hour: 10, minute: 00 , year: 2018)
+            notificationID = "Su\(exer.EID)"
+            scheduleExerciseNotificationWeekly(at: repeatingSunDate, name: exer.name, ID: notificationID)
         }
     }
     
