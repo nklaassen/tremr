@@ -6,13 +6,14 @@
 //          2018-10-25: add gyroscope tracking
 //          2018-10-25: updates
 //          2018-11-04: rename GryoScope -> MotionObserver
-// Known Bugs:
+// Known Bugs: N/A
 
 import Foundation
 import CoreMotion
 
 let Fps60 = 0.016
 
+//Class for initializing and using the gyroscope and accelerometer
 class MotionObserver {
     
     let motionManager: CMMotionManager

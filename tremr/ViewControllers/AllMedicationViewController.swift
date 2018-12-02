@@ -3,17 +3,14 @@
 //  Programmers: Jason Fevang and Kira Nishi-Beckingham
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-11-35: UI updates
-// Known Bugs:
+//          2018-11-15: Created file and basic functions
+//          2018-11-19: Initialized tables
+//          2018-11-25: UI updates
+// Known Bugs: N/A
 
 import UIKit
 
+//Class for viewing all medications 
 class AllMedicationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     //MARK: Properties

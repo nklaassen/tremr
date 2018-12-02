@@ -4,10 +4,12 @@
 //  Team Name: Co.DEsign
 //  Changes been made:
 //          2018-10-26: created file
-// Known Bugs:
+//          2018-10-26: Created the main class
+// Known Bugs: N/A
 
 import UIKit
 
+//Class for the DailyExercise view cell
 class DailyExerciseTableViewCell: UITableViewCell {
     @IBOutlet weak var exerNameLabel: UILabel!
     @IBOutlet weak var exerUnitLabel: UILabel!

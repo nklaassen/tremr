@@ -1,13 +1,16 @@
 //
-//  tremrUITests.swift
-//  tremrUITests
-//
-//  Created by nklaasse on 10/22/18.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: tremrUITests.swift
+//  Programmers: Nic Klaassen
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-11-04: Class created
+//          2018-11-12: Created tests for UI
+//          2018-11-20: Updated tests
+// Known Bugs: N/A
 
 import XCTest
 
+//Class for testing the features for the UI
 class tremrUITests: XCTestCase {
         
     override func setUp() {

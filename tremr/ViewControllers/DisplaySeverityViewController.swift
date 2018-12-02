@@ -6,7 +6,7 @@
 //          2018-10-28: show real score
 //          2018-10-30: cosmetic updates
 //          2018-11-15: UI updates
-// Known Bugs: 
+// Known Bugs: N/A
 
 import UIKit
 
@@ -33,7 +33,7 @@ class DisplaySeverityViewController: UIViewController {
         //navigation bar formatting
         self.navigationController?.isNavigationBarHidden = true
     }
-    
+    //Buttons and labels 
     @IBOutlet weak var posturalLabel: UILabel!
     @IBOutlet weak var restingLabel: UILabel!
 }

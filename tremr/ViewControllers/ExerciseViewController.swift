@@ -1,24 +1,23 @@
 //
 //  Name of file: ExerciseViewController.swift
-
 //  Programmers: Jason Fevang and Colin Chan and Kira Nishi-Beckingham
-
 //  Team Name: Co.DEsign
 //  Changes been made:
 //          2018-10-20: initial commit
 //          2018-10-24: build out pages
-//          2018-11-35: UI updates
+//          2018-11-25: UI updates
 //          2018-11-12: notifications added
-
-// Known Bugs:
+// Known Bugs: N/A
 
 import UIKit
 import UserNotifications
 
+//Class for the Exercise view page
 class ExerciseViewController: UIViewController {
     
     //MARK: Properties
     
+    //The following are buttons, labels and text fields initializations
     @IBOutlet weak var exerciseTextField: UITextField!
     @IBOutlet weak var unitTextField: UITextField!
     
@@ -85,6 +84,7 @@ class ExerciseViewController: UIViewController {
     }
     
     //MARK: Actions
+    //Function for adding exercises 
     @IBAction func addExerciseButton(_ sender: Any) {
         let exerciseName: String = exerciseTextField.text!
         let unitValue: String = unitTextField.text!

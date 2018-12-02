@@ -1,14 +1,16 @@
 //
-//  tremrTests.swift
-//  tremrTests
-//
-//  Created by nklaasse on 10/22/18.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: tremrTests.swift
+//  Programmers: Nic Klaassen
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-10-28: Created file and tests
+//          2018-11-01: Made minor edits
+// Known Bugs: N/A
 
 import XCTest
 @testable import tremr
 
+//Class for testing small things 
 class tremrTests: XCTestCase {
     
     override func setUp() {

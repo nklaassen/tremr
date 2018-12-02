@@ -4,11 +4,13 @@
 //  Team Name: Co.DEsign
 //  Changes been made:
 //          2018-10-22: created file
-//          2018-11-35: UI updates
-// Known Bugs:
+//          2018-10-23: Created tables
+//          2018-11-25: UI updates
+// Known Bugs: N/A
 
 import UIKit
 
+//Class for viewing all exercises 
 class AllExerciseViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: Properties

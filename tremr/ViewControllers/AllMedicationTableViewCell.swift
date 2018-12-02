@@ -3,16 +3,13 @@
 //  Programmers: Jason Fevang
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-// Known Bugs:
+//          2018-10-24: Created file and basic functionality
+//          2018-11-15: UI Updates
+// Known Bugs: N/A
 
 import UIKit
 
+//Class for the table view for all medications 
 class AllMedicationTableViewCell: UITableViewCell {
 
     //MARK: Properties

@@ -1,15 +1,18 @@
 //
-//  MissedDataTests.swift
-//  tremrTests
-//
-//  Created by David Nishi Beckingham on 2018-11-17.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: MissedDataTests.swift
+//  Programmers: Kira Nishi-Beckingham
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-11-17: Class created
+//          2018-11-21: Created basic class and tests
+//          2018-11-23: Updated tests
+// Known Bugs: N/A
 
 import UIKit
 import XCTest
 @testable import tremr
 
+//Class for testing Missed Data 
 class MissedDataTests: XCTestCase {
     
     //Calendar for comparing dates and performing date arithmetic

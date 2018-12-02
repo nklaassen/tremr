@@ -3,17 +3,14 @@
 //  Programmers: Jason Fevang and Kira Nishi-Beckingham and Leo Zhang
 //  Team Name: Co.DEsign
 //  Changes been made:
+//          2018-11-10: Created file and basic functions
 //          2018-11-17: added tapping medications in the past
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-11-35: UI updates
-// Known Bugs:
+//          2018-11-25: UI updates
+// Known Bugs: N/A
 
 import UIKit
 
+//Class for daily medication view controller 
 class DailyMedicationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: Properties

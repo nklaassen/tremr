@@ -3,14 +3,10 @@
 //  Programmers: Devansh Chopra and Nic Klaassen and Kira Nishi-Beckingham
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-11-35: UI updates
-// Known Bugs: 
+//          2018-10-27: Created file and initial class
+//          2018-11-12: Created count-down display
+//          2018-11-19: UI updates
+// Known Bugs: N/A
 
 import UIKit
 

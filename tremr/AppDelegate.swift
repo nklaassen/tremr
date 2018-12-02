@@ -6,7 +6,7 @@
 //          2018-10-22: initial build
 //          2018-10-28: add database example
 //          2018-10-29: add dummy data to db
-// Known Bugs:
+// Known Bugs: N/A
 
 import UIKit
 import UserNotifications

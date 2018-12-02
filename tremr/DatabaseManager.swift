@@ -9,12 +9,13 @@
 //          2018-10-25: add medication/exercises
 //          2018-11-04: filter tremors by date
 //          2018-11-12: added get functions
-// Known Bugs:
+// Known Bugs: N/A
 
 import Foundation
 
 import SQLite
 
+//Class for the database which adds medications, exercises and tremor scores to the database 
 class DatabaseManager
 {
     var db : Connection! // The actual SQLite database connection

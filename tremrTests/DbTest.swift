@@ -1,14 +1,17 @@
 //
-//  DbTest.swift
-//  tremrTests
-//
-//  Created by nklaasse on 11/1/18.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: DbTest.swift
+//  Programmers: Nic Klaassen
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-11-03: Class created
+//          2018-11-06: Created tests for Database
+//          2018-11-14: Updated tests
+// Known Bugs: N/A
 
 import XCTest
 @testable import tremr
 
+//Class for testing the database 
 class DbTest: XCTestCase {
 
     override func setUp() {

@@ -1,3 +1,4 @@
+//
 //  Name of file: MonthContainer.swift
 //  Programmers: Kira Nishi-Beckingham and Leo Zhang
 //  Team Name: Co.DEsign
@@ -6,13 +7,13 @@
 //          2018-10-28: formatted line graph to look nice
 //          2018-11-02: added functions to grab data from database
 //          2018-11-03: checked serverity values to make sure it's in bounds
-//
 // Known Bugs: N/A
 
 import Foundation
 import UIKit
 import Charts
 
+//Class for viewing the entire month when viewing the results 
 class MonthContainer: UIViewController {
 
     @IBOutlet weak var monthLineChartView: LineChartView!

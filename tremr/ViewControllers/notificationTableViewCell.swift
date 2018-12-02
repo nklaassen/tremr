@@ -1,18 +1,15 @@
 //
-//  Name of file: MedicationTableViewCell.swift
+//  Name of file: notificationTableViewCell.swift
 //  Programmers: Jason Fevang
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-// Known Bugs:
+//          2018-10-29: Created file and initial functions
+//          2018-11-16: Created button and label
+// Known Bugs: N/A
 
 import UIKit
 
+//Class for the table cells on the notification view page 
 class notificationTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {

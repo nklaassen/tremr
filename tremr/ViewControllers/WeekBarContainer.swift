@@ -6,13 +6,13 @@
 //          2018-10-28: added code to show bar graph of missed medications and exercises
 //          2018-11-02: fixed errors in code so there were no build errors
 //          2018-11-02: formatted bar graph to look nice
-//
 // Known Bugs: graph does not take data from the database yet
 
 import Charts
 import Foundation
 import UIKit
 
+//Class for viewing the entire week when viewing the bar graph
 class WeekBarContainer: UIViewController {
 
     @IBOutlet weak var weekBarChartView: BarChartView!

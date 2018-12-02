@@ -1,16 +1,12 @@
 //
-//  Name of file: CountdownViewController.swift
+//  Name of file: Countdown2ViewController.swift
 //  Programmers: Devansh Chopra and Nic Klaassen and Kira Nishi-Beckingham
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-10-20:
-//          2018-11-35: UI updates
-// Known Bugs:
+//          2018-10-27: Created file and added basic functionality
+//          2018-11-04: CountDown timer added 
+//          2018-11-28: UI updates
+// Known Bugs: N/A
 
 import UIKit
 

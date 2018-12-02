@@ -1,3 +1,4 @@
+//
 //  Name of file: YearContainer.swift
 //  Programmers: Kira Nishi-Beckingham and Leo Zhang
 //  Team Name: Co.DEsign
@@ -6,13 +7,13 @@
 //          2018-10-28: formatted line graph to look nice
 //          2018-11-02: added functions to grab data from database
 //          2018-11-03: checked serverity values to make sure it's in bounds
-//
 // Known Bugs: N/A
 
 import Foundation
 import UIKit
 import Charts
 
+//Class for viewing the entire year when viewing the results 
 class YearContainer: UIViewController {
 
     @IBOutlet var yearLineChartView: LineChartView!

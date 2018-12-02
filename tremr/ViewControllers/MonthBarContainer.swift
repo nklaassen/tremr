@@ -5,13 +5,13 @@
 //  Changes been made:
 //          2018-10-28: copied code from WeekBarContainer.swift and edited it to month
 //          2018-11-02: formatted bar graph to look nice
-//
 // Known Bugs: graph does not take data from the database yet
 
 import Charts
 import Foundation
 import UIKit
 
+//Class for viewing the entire month when viewing the bar graph
 class MonthBarContainer: UIViewController {
     
     @IBOutlet weak var monthBarChartView: BarChartView!

@@ -3,12 +3,13 @@
 //  Programmers: Nic Klaassen and Kira Nishi-Beckingham
 //  Team Name: Co.DEsign
 //  Changes been made:
-//          2018-10-20: initial commit
-//          2018-11-35: UI updates
-// Known Bugs:
+//          2018-10-20: initial commit with navigation bar 
+//          2018-11-25: UI updates
+// Known Bugs: N/A
 
 import UIKit
 
+//Class for the main view and the navigation bar for the app
 class MainViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -24,6 +25,7 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //Function for the navifation bar 
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.isNavigationBarHidden = true

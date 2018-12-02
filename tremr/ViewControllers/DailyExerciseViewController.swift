@@ -6,10 +6,11 @@
 //          2018-10-22: created file
 //          2018-11-15: UI updates
 //          2018-11-17: tapping exercises in past or present now removes it
-// Known Bugs:
+// Known Bugs: N/A
 
 import UIKit
 
+//Class for the daily view for the Exercises page 
 class DailyExerciseViewController: UIViewController , UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var exerTableView: UITableView!
@@ -53,6 +54,7 @@ class DailyExerciseViewController: UIViewController , UITableViewDataSource, UIT
     }
     
     //MARK: - Table view data source
+    //Functions for the table view
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

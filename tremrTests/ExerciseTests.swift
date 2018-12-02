@@ -1,14 +1,17 @@
 //
-//  ExerciseTests.swift
-//  tremrTests
-//
-//  Created by Jason Fevang on 11/5/18.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: ExercisesTests.swift
+//  Programmers: Jason Fevang
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-11-02: Class created
+//          2018-11-06: Created tests for exercises
+//          2018-11-17: Edited and added more tests 
+// Known Bugs: N/A
 
 import XCTest
 @testable import tremr
 
+//Class for testing the exerises 
 class ExerciseTests: XCTestCase {
     //Calendar for comparing dates and performing date arithmetic
     let calendar = Calendar(identifier: Calendar.Identifier.gregorian)

@@ -4,12 +4,12 @@
 //  Team Name: Co.DEsign
 //  Changes been made:
 //          2018-11-17: implemented daily notificaitons
-//
-// Known Bugs:
+// Known Bugs: N/A
 
 import UIKit
 import UserNotifications
 
+//Class for the Notifications view controller page 
 class NotificationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: Properties

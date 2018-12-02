@@ -1,14 +1,17 @@
 //
-//  MedicationTests.swift
-//  tremrTests
-//
-//  Created by Jason Fevang on 11/2/18.
-//  Copyright © 2018 CO.DEsign. All rights reserved.
-//
+//  Name of file: MedicationTests.swift
+//  Programmers: Jason Fevang
+//  Team Name: Co.DEsign
+//  Changes been made:
+//          2018-11-02: Class created
+//          2018-11-06: Created tests for medications
+//          2018-11-23: Updated tests
+// Known Bugs: N/A
 
 import XCTest
 @testable import tremr
 
+//Class for testing the medications 
 class MedicationTests: XCTestCase {
     //Calendar for comparing dates and performing date arithmetic
     let calendar = Calendar(identifier: Calendar.Identifier.gregorian)

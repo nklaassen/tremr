@@ -7,7 +7,7 @@
 //          2018-10-22: Refactor
 //          2018-10-30: Update tremor calculation
 //          2018-11-04: Improve comments
-// Known Bugs:
+// Known Bugs: N/A
 
 import Foundation
 

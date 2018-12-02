@@ -1,12 +1,15 @@
+//
 //  Name of file: AllExerciseTableViewCell.swift
 //  Programmers: Nic Klaassen and Devansh Chopra
 //  Team Name: Co.DEsign
 //  Changes been made:
 //          2018-10-22: created file
-// Known Bugs:
+//          2018-10-29: Initialized basic functions
+// Known Bugs: N/A
 
 import UIKit
 
+//Class for the table view for all exercise
 class AllExerciseTableViewCell: UITableViewCell {
 
     @IBOutlet weak var exerNameLabel: UILabel!

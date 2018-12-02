@@ -6,11 +6,9 @@
 //          2018-10-26: Charts Library added
 //          2018-10-27: weekContainer, monthContainer, yearContainer added
 //          2018-10-28: segmented control formatted
-//          2018-11-02: weekBarContainer, monthBarContainer, yearBarContainer added and formatted with segmeneted
-//                      control
+//          2018-11-02: weekBarContainer, monthBarContainer, yearBarContainer added and formatted with segmeneted control
 //          2018-11-03: week view set to default
-//          2018-11-35: UI updates
-
+//          2018-11-25: UI updates
 // Known Bugs: week view default is hard coded (defaut is the top most contaienr) 
 
 
@@ -18,6 +16,7 @@ import Foundation
 import UIKit
 //import Charts
 
+//Class for viewing the results with the graphs
 class ViewDataViewController: UIViewController {
     
     @IBOutlet weak var weekContainer: UIView!
@@ -29,6 +28,7 @@ class ViewDataViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var mainView: UIView!
     
+    //Function for changing the x-axis 
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
