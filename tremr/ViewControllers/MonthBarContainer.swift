@@ -8,6 +8,8 @@
 //
 // Known Bugs: graph does not take data from the database yet
 
+
+
 import Charts
 import Foundation
 import UIKit
@@ -22,8 +24,6 @@ class MonthBarContainer: UIViewController {
         let dates = ["Week 1", "Week 2", "Week 3", "Week 4", ""]
         let medication = getMedicineData()
         let exercise = getExerciseData()
-        
-        setChart(dataPoints: dates, values1: medication, values2: exercise)
         
         //format chart
         self.monthBarChartView.chartDescription?.text = ""
@@ -44,6 +44,8 @@ class MonthBarContainer: UIViewController {
         self.monthBarChartView.leftAxis.drawGridLinesEnabled = false
         self.monthBarChartView.leftAxis.drawLabelsEnabled = false
         self.monthBarChartView.rightAxis.drawLabelsEnabled = false
+        
+        setChart(dataPoints: dates, values1: medication, values2: exercise)
     }
     
     // sets up the chart data for month view bar chart
