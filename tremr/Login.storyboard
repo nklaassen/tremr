@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rq7-zx-7k2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NJs-fT-7MK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -90,14 +90,24 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="R3t-Ed-88o"/>
                     </view>
+                    <navigationItem key="navigationItem" id="nBE-h1-8bF"/>
                     <connections>
                         <outlet property="logInEmailTextField" destination="LyR-IX-Lr9" id="eAy-zx-AhN"/>
                         <outlet property="logInPasswordTextField" destination="i61-p1-8QL" id="byD-Nk-0y1"/>
+                        <segue destination="5WF-P3-hBU" kind="show" identifier="toDashboard" id="hkW-4B-F92"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4T3-sU-L0k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="53.600000000000001" y="27.436281859070466"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="lYa-1m-gH1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="5WF-P3-hBU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="595-xR-LZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="36" y="389"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="zxR-un-QPo">
@@ -210,5 +220,26 @@
             </objects>
             <point key="canvasLocation" x="809" y="27"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mCM-eW-dfO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NJs-fT-7MK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zTg-hd-VYm">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Rq7-zx-7k2" kind="relationship" relationship="rootViewController" id="YbS-Rx-hIg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k1r-ak-b4H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-735" y="27"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="YbS-Rx-hIg"/>
+    </inferredMetricsTieBreakers>
 </document>
