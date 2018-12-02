@@ -20,7 +20,7 @@ struct User {
 
 struct Tremor {
     var TID : Int64
-    //var UID : Int64
+    var UID : Int64
     var posturalSeverity : Double
     var restingSeverity : Double
     var date : Date
@@ -29,6 +29,7 @@ struct Tremor {
 extension Tremor: Decodable {
     enum CodingKeys: String, CodingKey {
         case TID = "tid"
+        case UID = "uid"
         case posturalSeverity = "postural"
         case restingSeverity = "resting"
         case date = "date"
@@ -37,6 +38,7 @@ extension Tremor: Decodable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         TID = try values.decode(Int64.self, forKey: .TID)
+        UID = try values.decode(Int64.self, forKey: .TID)
         posturalSeverity = try values.decode(Double.self, forKey: .posturalSeverity) / 10.0
         restingSeverity = try values.decode(Double.self, forKey: .restingSeverity) / 10.0
         let datestring = try values.decode(String.self, forKey: .date)

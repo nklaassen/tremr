@@ -321,13 +321,9 @@ class DatabaseManager
         //Retrive jwt for authentication
         let jwt = UserDefaults.standard.string(forKey: authTokenKey)
         
-        // Add parameter with authorization token
-        let parameters2: [String: Any] = [
-            "Authorization" : jwt as Any
-        ]
-        let Auth_header    = [ "Authorization" : jwt ]
+        let Auth_header: HTTPHeaders = [ "Authorization": jwt! ]
         // Request data from the webserver using Alamofire
-        Alamofire.request(url, headers:Auth_header).validate().responseData { response in
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Auth_header).validate().responseData { response in
             //Ensure valid response before passing data to completion callback
             switch response.result {
             case .success:
@@ -397,7 +393,7 @@ class DatabaseManager
                 tremors.append(
                     Tremor(
                         TID: tremor[self.TID],
-                        //UID: tremor[self.UID],
+                        UID: tremor[self.UID],
                         posturalSeverity: Double(tremor[self.posturalSeverity]) / 10.0,
                         restingSeverity: Double(tremor[self.restingSeverity]) / 10.0,
                         date: tremor[self.date]))
