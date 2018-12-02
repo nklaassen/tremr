@@ -10,6 +10,8 @@
 import UIKit
 import UserNotifications
 
+import Alamofire
+
 class NotificationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: Properties
@@ -36,6 +38,8 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     //Array of exercises displayed by table
     var exercises = [Exercise]()
     
+    var linkedAccounts = [String]()
+    
     //Header titles
     var headerTitles = ["Linked Accounts", "NOTIFICATIONS:", "Medications", "Exercises"]
     
@@ -55,7 +59,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         
         //load data into array for table
         loadExerMed()
-
+        loadLinkedAccounts()
     }
     
     
@@ -66,7 +70,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             //change this for linked accounts
-            return 9
+            return linkedAccounts.count
         }
         else if section == 1 {
             return 0
@@ -89,7 +93,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         
         if indexPath.section == 0 {
             //change this for linked accounts
-            nameText = "testEmail@gmail.com"
+            nameText = linkedAccounts[indexPath.row]
             bellIsOn = false
         }
         else if indexPath.section == 1 {
@@ -125,7 +129,10 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         cell.bellButton.tag = 2*indexPath.row + indexPath.section
         cell.bellButton.addTarget(self, action: #selector(self.bellButtonClicked), for: .touchUpInside)
         
-
+        // hide bell button for linked accounts section
+        if indexPath.section == 0 {
+            cell.bellButton.isHidden = true
+        }
         
         //Set bell image
         //if bellIsOn {
@@ -157,6 +164,39 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         exercises = db.getExercise()
         //Get all active medications
         medications = db.getMedicine()
+    }
+    
+    func loadLinkedAccounts() {
+        let token = UserDefaults.standard.string(forKey: authTokenKey)!
+        let authHeader : HTTPHeaders = ["Authorization": token]
+        
+        Alamofire.request(baseUrl + "users/links/out", method: .get, headers: authHeader)
+            .responseJSON() { response in
+            print(response)
+            
+            if let status = response.response?.statusCode {
+                switch(status){
+                case 200:
+                    print("successfully got linked accounts")
+                default:
+                    print("error with response status: \(status)")
+                }
+            }
+            //to get JSON return value
+            if let result = response.result.value {
+                let linkedAccounts = result as! NSArray
+                print(linkedAccounts)
+                for item in linkedAccounts {
+                    let linkedAccount = item as? NSDictionary
+                    let email = linkedAccount?.object(forKey: "email") as? String
+                    if email != nil {
+                        self.linkedAccounts.append(email!)
+                    }
+                }
+                
+                self.exerMedTableView?.reloadData()
+            }
+        }
     }
     
     // MARK: Private Methods
@@ -241,8 +281,30 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         let confirmAction = UIAlertAction(title: "Link", style: .default) { (_) in
             
             //getting the input values from user
-            let email = alertController.textFields?[0].text
+            let email : String = alertController.textFields?[0].text ?? ""
+            print("attempting to link acount \(email)")
             //add email to linked accounts
+            let token = UserDefaults.standard.string(forKey: authTokenKey)!
+            let headers : HTTPHeaders = ["Authorization": token]
+            
+            let parameters : [String: Any] = ["email" : email]
+            
+            Alamofire.request(baseUrl + "users/links/out", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseString() { response in
+                let statusCode = response.response?.statusCode
+                if statusCode == 200 {
+                    print("adding linked account Successful")
+                    self.loadLinkedAccounts()
+                } else {
+                    let responseString = response.result.value
+                    if responseString != nil {
+                        let responseString = responseString!
+                        print(responseString)
+                        let alert = UIAlertController(title: "", message: responseString, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: {(action) in}))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+            }
         }
         
         //the cancel action doing nothing
