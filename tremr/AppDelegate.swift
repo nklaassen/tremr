@@ -17,6 +17,11 @@ internal let Tremr = TremorController(); // Tremor Object for getting info
 
 let db = DatabaseManager()
 
+let baseUrl = "http://ec2-34-209-34-34.us-west-2.compute.amazonaws.com/api/"
+
+//For authentication with web server and almofire
+let authTokenKey = "authToken"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

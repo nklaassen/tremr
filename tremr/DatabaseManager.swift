@@ -14,6 +14,7 @@
 import Foundation
 
 import SQLite
+import Alamofire
 
 class DatabaseManager
 {
@@ -32,7 +33,6 @@ class DatabaseManager
     let TID = Expression<Int64>("TID")
     let posturalSeverity = Expression<Int>("posturalSeverity")
     let restingSeverity = Expression<Int>("restingSeverity")
-    let completed = Expression<Bool>("completed")
     let date = Expression<Date>("date")
 
     let Medicines = Table("Medicine")
@@ -96,7 +96,7 @@ class DatabaseManager
 
             // May need to uncomment these if you are debugging and changing the db schema
             //try db.run(Users.drop(ifExists: true))
-            //try db.run(Tremors.drop(ifExists: true))
+            try db.run(Tremors.drop(ifExists: true))
             
             // Create the Users table
             try db.run(Users.create(ifNotExists: true) { t in     // CREATE TABLE "Users" (
@@ -154,7 +154,6 @@ class DatabaseManager
                 //t.column(UID)                                                //     "UID" INTEGER NOT NULL,
                 t.column(posturalSeverity)                                   //     "posturalSeverity" INT NOT NULL,
                 t.column(restingSeverity)                                    //     "restingSeverity" INT NOT NULL,
-                t.column(completed)                                          //     "completed" BOOL NOT NULL
                 t.column(date)                                               //     "date" DATETIME NOT NULL
                 //t.foreignKey(UID, references: Users, UID, delete: .setNull)  //     FOREIGN KEY("UID") REFERENCES "Users"("UID") ON DELETE SET NULL,
             })                                                               // )
@@ -199,7 +198,6 @@ class DatabaseManager
                               date: Calendar.current.date(byAdding: .day, value: -1 * i, to: Date())!)
                 }
             }
-
         } catch {
             print("Failed to init DB: \(error)")
         }
@@ -245,7 +243,6 @@ class DatabaseManager
             try db.run(tremorsForToday.delete()) // only one measurement allowed per day
             try db.run(Tremors.insert(self.restingSeverity <- Int(restingSeverity * 10),
                                       self.posturalSeverity <- Int(posturalSeverity * 10),
-                                      self.completed <- true,
                                       self.date <- date))
             print("Inserted tremor!")
         } catch {
@@ -255,21 +252,25 @@ class DatabaseManager
     
     // Returns all tremor recording values from the db
     func getTremors() -> Array<Tremor> {
-        var tremors = Array<Tremor>()
-        do {
-            for tremor in try db.prepare(Tremors) {
-                print("date: \(tremor[self.date])")
-                tremors.append(Tremor(TID: tremor[self.TID],
-                                      //UID: tremor[self.UID],
-                                      posturalSeverity: Double(tremor[self.posturalSeverity]) / 10.0,
-                                      restingSeverity: Double(tremor[self.restingSeverity]) / 10.0,
-                                      completed: tremor[self.completed],
-                                      date: tremor[self.date]))
+        return Array<Tremor>()
+    }
+    
+    func getTremorsAsync(completion: @escaping ([Tremor]) -> ()) {
+        Alamofire.request(baseUrl + "tremors").validate().responseData { response in
+            switch response.result {
+            case .success:
+                print("got valid response")
+                if let data = response.result.value {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    if let tremors = try? decoder.decode([Tremor].self, from: data) {
+                        completion(tremors)
+                    }
+                }
+            case .failure(let error):
+                print(error)
             }
-        } catch {
-            print(error)
         }
-        return tremors
     }
     
     // Returns all missed exercise values from the db
@@ -300,27 +301,45 @@ class DatabaseManager
         return medicines
     }
 
-    // returns only the tremor recordings from the past week
-    func getTremorsForLastWeek() -> Array<Tremor> {
-        var tremors = Array<Tremor>()
+    func getTremorsForLastWeek() -> [Tremor] {
+        return Array<Tremor>()
+    }
+    
+    
+    // Description: Retrieve all tremor data from the past week from the database and return in a callback
+    // Pre-condition: Connection to remote webserver, valid callback function prepared to recieve callback data
+    // Post-condition: Tremor data passed to input callback function
+    func getTremorsForLastWeekAsync(completion: @escaping ([Tremor]) -> ()) {
         let startOfDay = Calendar.current.startOfDay(for: Date())
         var components = DateComponents()
         components.day = -6
         let lastWeek = Calendar.current.date(byAdding: components, to: startOfDay)!
-        let tremorsForLastWeek = Tremors.filter(self.date >= lastWeek).order(self.date.asc)
-        do {
-            for tremor in try db.prepare(tremorsForLastWeek) {
-                tremors.append(Tremor(TID: tremor[self.TID],
-                                      //UID: tremor[self.UID],
-                    posturalSeverity: Double(tremor[self.posturalSeverity]) / 10.0,
-                    restingSeverity: Double(tremor[self.restingSeverity]) / 10.0,
-                    completed: tremor[self.completed],
-                    date: tremor[self.date]))
+        let datestring = ISO8601DateFormatter().string(from: lastWeek)
+        let url = baseUrl + "tremors?since=" + datestring
+        print(url)
+        
+        //Retrive jwt for authentication
+        let jwt = UserDefaults.standard.string(forKey: authTokenKey)
+        
+        let Auth_header: HTTPHeaders = [ "Authorization": jwt! ]
+        // Request data from the webserver using Alamofire
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Auth_header).validate().responseData { response in
+            //Ensure valid response before passing data to completion callback
+            switch response.result {
+            case .success:
+                print("got valid response")
+                if let data = response.result.value {
+                    //Use JSONDecoder to convert JSON data from webserver into an array of Tremor objects
+                    if let tremors = try? JSONDecoder().decode([Tremor].self, from: data) {
+                        //Pass Tremor array to callback completion
+                        completion(tremors)
+                    }
+                }
+            //Data request failure
+            case .failure(let error):
+                print(error)
             }
-        } catch {
-            print(error)
         }
-        return tremors
     }
     
     // returns only the missed exercises from the past week
@@ -371,12 +390,13 @@ class DatabaseManager
         let tremorsForLastMonth = Tremors.filter(self.date >= lastMonth).order(self.date.asc)
         do {
             for tremor in try db.prepare(tremorsForLastMonth) {
-                tremors.append(Tremor(TID: tremor[self.TID],
-                                      //UID: tremor[self.UID],
-                    posturalSeverity: Double(tremor[self.posturalSeverity]) / 10.0,
-                    restingSeverity: Double(tremor[self.restingSeverity]) / 10.0,
-                    completed: tremor[self.completed],
-                    date: tremor[self.date]))
+                tremors.append(
+                    Tremor(
+                        TID: tremor[self.TID],
+                        UID: tremor[self.UID],
+                        posturalSeverity: Double(tremor[self.posturalSeverity]) / 10.0,
+                        restingSeverity: Double(tremor[self.restingSeverity]) / 10.0,
+                        date: tremor[self.date]))
                 print("tremor date ", tremor[self.date])
             }
         } catch {
@@ -486,7 +506,7 @@ class DatabaseManager
             return nil
         }
     }
-    
+
     //Returns array of all medicines
     func getMedicine() -> Array<Medicine> {
         var medicines = Array<Medicine>()
@@ -516,6 +536,45 @@ class DatabaseManager
         return medicines
     }
     
+    
+    
+    func getMedicineAsync(completion: @escaping ([Tremor]) -> ()) {
+        Alamofire.request(baseUrl + "meds").validate().responseData { response in
+            switch response.result {
+            case .success:
+                print("got valid response")
+                if let data = response.result.value {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    if let tremors = try? decoder.decode([Tremor].self, from: data) {
+                        completion(tremors)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    /*
+     func getTremorsAsync(completion: @escaping ([Tremor]) -> ()) {
+     Alamofire.request(baseUrl + "tremors").validate().responseData { response in
+     switch response.result {
+     case .success:
+     print("got valid response")
+     if let data = response.result.value {
+     let decoder = JSONDecoder()
+     decoder.dateDecodingStrategy = .iso8601
+     if let tremors = try? decoder.decode([Tremor].self, from: data) {
+     completion(tremors)
+     }
+     }
+     case .failure(let error):
+     print(error)
+     }
+     }
+     }
+     */
     //Returns array of all exercises
     func getExercise() -> Array<Exercise> {
         var exercises = Array<Exercise>()
