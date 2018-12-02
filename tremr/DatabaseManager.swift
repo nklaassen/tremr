@@ -320,8 +320,105 @@ class DatabaseManager
         
         //Retrive jwt for authentication
         let jwt = UserDefaults.standard.string(forKey: authTokenKey)
-        
         let Auth_header: HTTPHeaders = [ "Authorization": jwt! ]
+        
+        // Request data from the webserver using Alamofire
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Auth_header).validate().responseData { response in
+            //Ensure valid response before passing data to completion callback
+            switch response.result {
+            case .success:
+                print("got valid response")
+                if let data = response.result.value {
+                    //Use JSONDecoder to convert JSON data from webserver into an array of Tremor objects
+                    if let tremors = try? JSONDecoder().decode([Tremor].self, from: data) {
+                        //Pass Tremor array to callback completion
+                        completion(tremors)
+                    }
+                }
+            //Data request failure
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    // Description: Retrieve all tremor data from the past month from the database and return in a callback
+    // Pre-condition: Connection to remote webserver, valid callback function prepared to recieve callback data
+    // Post-condition: Tremor data passed to input callback function
+    func getTremorsForLastMonthAsync(completion: @escaping ([Tremor]) -> ()) {
+        let startOfDay = Calendar.current.startOfDay(for: Date())
+        var components = DateComponents()
+        components.day = -27
+        let lastMonth = Calendar.current.date(byAdding: components, to: startOfDay)!
+        let datestring = ISO8601DateFormatter().string(from: lastMonth)
+        let url = baseUrl + "tremors?since=" + datestring
+        print(url)
+        
+        //Retrive jwt for authentication
+        let jwt = UserDefaults.standard.string(forKey: authTokenKey)
+        let Auth_header: HTTPHeaders = [ "Authorization": jwt! ]
+        
+        // Request data from the webserver using Alamofire
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Auth_header).validate().responseData { response in
+            //Ensure valid response before passing data to completion callback
+            switch response.result {
+            case .success:
+                print("got valid response")
+                if let data = response.result.value {
+                    //Use JSONDecoder to convert JSON data from webserver into an array of Tremor objects
+                    if let tremors = try? JSONDecoder().decode([Tremor].self, from: data) {
+                        //Pass Tremor array to callback completion
+                        completion(tremors)
+                    }
+                }
+            //Data request failure
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    // returns only the tremor recordings from the past month
+    func getTremorsForLastMonth() -> Array<Tremor> {
+        var tremors = Array<Tremor>()
+        let startOfDay = Calendar.current.startOfDay(for: Date())
+        var components = DateComponents()
+        components.day = -27
+        let lastMonth = Calendar.current.date(byAdding: components, to: startOfDay)!
+        let tremorsForLastMonth = Tremors.filter(self.date >= lastMonth).order(self.date.asc)
+        do {
+            for tremor in try db.prepare(tremorsForLastMonth) {
+                tremors.append(
+                    Tremor(
+                        TID: tremor[self.TID],
+                        UID: tremor[self.UID],
+                        posturalSeverity: Double(tremor[self.posturalSeverity]) / 10.0,
+                        restingSeverity: Double(tremor[self.restingSeverity]) / 10.0,
+                        date: tremor[self.date]))
+                print("tremor date ", tremor[self.date])
+            }
+        } catch {
+            print(error)
+        }
+        return tremors
+    }
+    
+    // Description: Retrieve all tremor data from the past year from the database and return in a callback
+    // Pre-condition: Connection to remote webserver, valid callback function prepared to recieve callback data
+    // Post-condition: Tremor data passed to input callback function
+    func getTremorsForLastYearAsync(completion: @escaping ([Tremor]) -> ()) {
+        let startOfDay = Calendar.current.startOfDay(for: Date())
+        var components = DateComponents()
+        components.day = -365
+        let lastMonth = Calendar.current.date(byAdding: components, to: startOfDay)!
+        let datestring = ISO8601DateFormatter().string(from: lastMonth)
+        let url = baseUrl + "tremors?since=" + datestring
+        print(url)
+        
+        //Retrive jwt for authentication
+        let jwt = UserDefaults.standard.string(forKey: authTokenKey)
+        let Auth_header: HTTPHeaders = [ "Authorization": jwt! ]
+        
         // Request data from the webserver using Alamofire
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Auth_header).validate().responseData { response in
             //Ensure valid response before passing data to completion callback
@@ -379,31 +476,7 @@ class DatabaseManager
         }
         return missedMedicines
     }
-    
-    // returns only the tremor recordings from the past month
-    func getTremorsForLastMonth() -> Array<Tremor> {
-        var tremors = Array<Tremor>()
-        let startOfDay = Calendar.current.startOfDay(for: Date())
-        var components = DateComponents()
-        components.day = -27
-        let lastMonth = Calendar.current.date(byAdding: components, to: startOfDay)!
-        let tremorsForLastMonth = Tremors.filter(self.date >= lastMonth).order(self.date.asc)
-        do {
-            for tremor in try db.prepare(tremorsForLastMonth) {
-                tremors.append(
-                    Tremor(
-                        TID: tremor[self.TID],
-                        UID: tremor[self.UID],
-                        posturalSeverity: Double(tremor[self.posturalSeverity]) / 10.0,
-                        restingSeverity: Double(tremor[self.restingSeverity]) / 10.0,
-                        date: tremor[self.date]))
-                print("tremor date ", tremor[self.date])
-            }
-        } catch {
-            print(error)
-        }
-        return tremors
-    }
+
     
     // returns only the exercises from the past week
     func getMissedExercisesForLastMonth() -> Array<MissedExercise> {

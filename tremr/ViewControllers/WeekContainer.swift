@@ -91,14 +91,14 @@ class WeekContainer: UIViewController {
         self.weekLineChartView.leftAxis.drawGridLinesEnabled = true
         self.weekLineChartView.rightAxis.enabled = false
         
-        setChartDataAsync(months: dates) { data in
+        setChartDataAsync(days: dates) { data in
             //set data
             self.weekLineChartView.data = data
         }
     }
     
     // set up line chart data for week view
-    func setChartDataAsync(months : [String], completion: @escaping (LineChartData) -> ()) {
+    func setChartDataAsync(days : [String], completion: @escaping (LineChartData) -> ()) {
         
         getDataAsync() { postural, resting in
             
