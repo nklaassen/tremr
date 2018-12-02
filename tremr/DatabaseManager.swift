@@ -151,7 +151,7 @@ class DatabaseManager
             // Create the Tremors table
             try db.run(Tremors.create(ifNotExists: true) { t in              // CREATE TABLE "Tremors" (
                 t.column(TID, primaryKey: true)                              //     "TID" INTEGER PRIMARY KEY NOT NULL,
-                //t.column(UID)                                                //     "UID" INTEGER NOT NULL,
+                t.column(UID)                                                //     "UID" INTEGER NOT NULL,
                 t.column(posturalSeverity)                                   //     "posturalSeverity" INT NOT NULL,
                 t.column(restingSeverity)                                    //     "restingSeverity" INT NOT NULL,
                 t.column(date)                                               //     "date" DATETIME NOT NULL

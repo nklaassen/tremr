@@ -9,9 +9,9 @@
 //
 // Known Bugs: N/A
 
+import Charts
 import Foundation
 import UIKit
-import Charts
 
 class WeekContainer: UIViewController {
 
@@ -91,15 +91,14 @@ class WeekContainer: UIViewController {
         self.weekLineChartView.leftAxis.drawGridLinesEnabled = true
         self.weekLineChartView.rightAxis.enabled = false
         
-        //let data = setChartData(months: dates)
-        setChartData(months: dates) { data in
+        setChartDataAsync(months: dates) { data in
             //set data
             self.weekLineChartView.data = data
         }
     }
     
     // set up line chart data for week view
-    func setChartData(months : [String], completion: @escaping (LineChartData) -> ()) {
+    func setChartDataAsync(months : [String], completion: @escaping (LineChartData) -> ()) {
         
         getDataAsync() { postural, resting in
             
