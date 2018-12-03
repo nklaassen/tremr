@@ -29,6 +29,10 @@ class LoginViewController: UIViewController {
             // test if we are already logged in, if so skip this page
             self.performSegue(withIdentifier: "toDashboard", sender: nil)
         }
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
     //log in page: buttons

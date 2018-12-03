@@ -27,6 +27,10 @@ class createAccountViewController: UIViewController {
         
         self.navigationController?.isNavigationBarHidden = true
         // Do any additional setup after loading the view.
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
     //confirm button pressed
