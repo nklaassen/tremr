@@ -34,7 +34,7 @@ class MedicationViewController: UIViewController {
     @IBOutlet weak var confirmationButton: UIButton!
     
     var edittedMedicine : Medicine? = nil
-    
+
     // Add Medicine Page Variables
     var mondayFlag: Bool = false
     var tuesdayFlag: Bool = false
@@ -87,12 +87,11 @@ class MedicationViewController: UIViewController {
         let dosageValue: String = dosageTextField.text!
         var MID : Int64
         if edittedMedicine != nil {
-            db.updateMedicine(
-                MIDToUpdate: (edittedMedicine?.MID)!,
-                name: "\(medicineName)",
-                dosage: "\(dosageValue)",
-                mo: moToggle.isOn, tu: tuToggle.isOn, we: weToggle.isOn, th: thToggle.isOn, fr: frToggle.isOn, sa: saToggle.isOn, su: suToggle.isOn,
-                reminder: reminderToggle.isOn)
+            edittedMedicine?.name = medicineName
+            edittedMedicine?.dosage = dosageValue
+            db.updateMedicineAsync(medToUpdate: edittedMedicine!) {_ in
+                //do stuff here
+            }
             MID = edittedMedicine!.MID
         }
         else {
@@ -176,14 +175,6 @@ class MedicationViewController: UIViewController {
         
         
     }
-    
-    /*
-    @IBAction func queryMedicineDatabase(_ sender: Any) {
-        for medicine in db.getMedicine() {
-            print("\(medicine.UID), \(medicine.MID), \(medicine.name), \(medicine.dosage)", "\(medicine.sa.description)","\(medicine.mo.description)", "\(medicine.tu.description)", "\(medicine.we.description)", "\(medicine.th.description)", "\(medicine.fr.description)",  "\(medicine.su.description)", "\(medicine.reminder.description)", "\(medicine.start_date)", "\(String(describing: medicine.end_date))")
-        }
-    }
-    */
     
     @IBAction func mondayButton(_ sender: Any) {
         //mondayFlag = !mondayFlag

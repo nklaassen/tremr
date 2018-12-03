@@ -550,16 +550,20 @@ class DatabaseManager
     
     
     
-    func getMedicineAsync(completion: @escaping ([Tremor]) -> ()) {
-        Alamofire.request(baseUrl + "meds").validate().responseData { response in
+    func getMedicineAsync(completion: @escaping ([Medicine]) -> ()) {
+        //Retrive jwt for authentication
+        let jwt = UserDefaults.standard.string(forKey: authTokenKey)
+        let Auth_header: HTTPHeaders = [ "Authorization": jwt! ]
+        
+        Alamofire.request(baseUrl + "meds", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Auth_header).validate().responseData { response in
             switch response.result {
             case .success:
                 //print("got valid response")
                 if let data = response.result.value {
                     let decoder = JSONDecoder()
                     decoder.dateDecodingStrategy = .iso8601
-                    if let tremors = try? decoder.decode([Tremor].self, from: data) {
-                        completion(tremors)
+                    if let meds = try? decoder.decode([Medicine].self, from: data) {
+                        completion(meds)
                     }
                 }
             case .failure(let error):
@@ -595,65 +599,6 @@ class DatabaseManager
         }
         return exercises
     }
-    /*
-    //Returns array of all medicines that are scheduled for the day Date that haven't been completed yet
-    func getMedicineDate(date: Date) ->Array<Medicine> {
-        //weekDay is a number. 1-sunday, 2-monday, ... 7-saturday
-        let weekDay = Calendar.current.component(.weekday, from: date)
-        
-        var targetWeekDay :Expression<Bool>
-        switch weekDay {
-        case 1: //Sunday
-            targetWeekDay = sunday
-        case 2: //Monday
-            targetWeekDay = monday
-        case 3: //Tuesday
-            targetWeekDay = tuesday
-        case 4: //Wednesday
-            targetWeekDay = wednesday
-        case 5: //Thursday
-            targetWeekDay = thursday
-        case 6: //Friday
-            targetWeekDay = friday
-        default: //Saturday
-            targetWeekDay = saturday
-        }
-        
-        //Get all taken MIDs from that day
-        let takenMedicineMIDs = getTakenMedicines(searchDate: date).map { $0.MID }
-        
-        let query = Medicines.filter(targetWeekDay == true) // Weekday matches weekday recorded for
-            .filter(start_date <= date)   // Ensure searching within valid timeframe
-            .filter(end_date == nil || end_date >= date)   //If end_date is assigned, then only return when within the timeframe of that medicine
-        
-        var medicines = Array<Medicine>()
-        
-        do {
-            for med in try db.prepare(query) {
-                // Only accept medicines that haven't been taken yet that day
-                if !takenMedicineMIDs.contains(med[self.MID]) {
-                    medicines.append(Medicine(UID: med[self.UID],
-                                              MID: med[self.MID],
-                                              name: med[self.name],
-                                              dosage: med[self.dosage],
-                                              mo: med[self.monday],
-                                              tu: med[self.tuesday],
-                                              we: med[self.wednesday],
-                                              th: med[self.thursday],
-                                              fr: med[self.friday],
-                                              sa: med[self.saturday],
-                                              su: med[self.sunday],
-                                              reminder: med[self.reminder],
-                                              start_date: med[self.start_date],
-                                              end_date:med[self.end_date]))
-                }
-            }
-        } catch {
-            fatalError("Query didn't execute at all \(error)")
-        }
-        return medicines
-    }
-    */
     
     //Returns array of all medicines that are scheduled for the day Date that haven't been completed yet
     func getMedicineDateAsync(date: Date, completion: @escaping ([Medicine]) -> ()) {
@@ -765,6 +710,46 @@ class DatabaseManager
         }
     }
     
+    func updateMedicineAsync(medToUpdate: Medicine, completion: @escaping (Bool)->() ) {
+        let token = UserDefaults.standard.string(forKey: authTokenKey)!
+        let headers : HTTPHeaders = ["Authorization": token]
+        
+        let startdate = ISO8601DateFormatter().string(from: medToUpdate.start_date)
+        var enddate : String
+        if medToUpdate.end_date != nil{
+            enddate = ISO8601DateFormatter().string(from: medToUpdate.end_date!)
+        }
+        else {
+            enddate = ""
+        }
+        
+        let parameters : [String: Any] = [
+            "mid" : medToUpdate.MID,
+            "name" : medToUpdate.name,
+            "dosage" : medToUpdate.dosage,
+            "schedule" : ["mo": medToUpdate.mo, "tu": medToUpdate.tu, "we": medToUpdate.we, "th": medToUpdate.th, "fr": medToUpdate.fr, "sa": medToUpdate.sa, "su": medToUpdate.su],
+            "reminder" : medToUpdate.reminder,
+            "startdate" : startdate,
+            "enddate" : enddate
+        ]
+        
+        Alamofire.request(baseUrl + "meds/" + String(medToUpdate.MID), method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseString() { response in
+            let statusCode = response.response?.statusCode
+            if statusCode == 200 {
+                print("Updated med end date successfully")
+                completion(true)
+            } else {
+                let responseString = response.result.value
+                if responseString != nil {
+                    let responseString = responseString!
+                    print(responseString)
+                }
+                completion(false)
+            }
+        }
+        
+    }
+    
     func updateExercise(EIDToUpdate : Int64, name: String, unit: String,mo: Bool, tu: Bool, we: Bool, th: Bool, fr: Bool, sa: Bool, su: Bool, reminder: Bool) {
         do {
             let exerciseToUpdate = Exercises.filter(EID == EIDToUpdate)
@@ -774,6 +759,7 @@ class DatabaseManager
         }
     }
 
+    /*
     // The medicine table will update MIDs equal to MIDToUpdate. Rows matching this query will
     // have their end_date updated to the current date.
     func updateMedicineEndDate(MIDToUpdate : Int64)
@@ -786,6 +772,68 @@ class DatabaseManager
             try db.run(medicineToUpdate.update(end_date <- currentDate))
         } catch {
             fatalError("Failed to update row with MID: \(MID) with end_date: \(String(describing: currentDate))")
+        }
+    }
+    */
+    func addTremorAsync(restingSeverity : Double, posturalSeverity : Double, completion : @escaping (Bool)->()) {
+        print("Trying to add tremor \(restingSeverity) \(posturalSeverity)")
+        
+        let token = UserDefaults.standard.string(forKey: authTokenKey)!
+        let headers : HTTPHeaders = ["Authorization": token]
+        
+        let parameters : [String: Any] = [
+            "resting" : Int(restingSeverity * 10),
+            "postural" : Int(posturalSeverity * 10)
+        ]
+        
+        Alamofire.request(baseUrl + "tremors", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseString() { response in
+            let statusCode = response.response?.statusCode
+            if statusCode == 200 {
+                print("adding tremor Successful")
+                completion(true)
+            } else {
+                let responseString = response.result.value
+                if responseString != nil {
+                    let responseString = responseString!
+                    print(responseString)
+                }
+                completion(false)
+            }
+        }
+    }
+    
+    // The medicine table will update MIDs equal to MIDToUpdate. Rows matching this query will
+    // have their end_date updated to the current date.
+    func updateMedicineEndDateAsync(medToUpdate : Medicine, completion : @escaping (Bool)->() ) {
+        let token = UserDefaults.standard.string(forKey: authTokenKey)!
+        let headers : HTTPHeaders = ["Authorization": token]
+        
+        let today = ISO8601DateFormatter().string(from: Date())
+        let startdate = ISO8601DateFormatter().string(from: medToUpdate.start_date)
+
+        let parameters : [String: Any] = [
+            "mid" : medToUpdate.MID,
+            "name" : medToUpdate.name,
+            "dosage" : medToUpdate.dosage,
+            "schedule" : ["mo": medToUpdate.mo, "tu": medToUpdate.tu, "we": medToUpdate.we, "th": medToUpdate.th, "fr": medToUpdate.fr, "sa": medToUpdate.sa, "su": medToUpdate.su],
+            "reminder" : medToUpdate.reminder,
+            "startdate" : startdate,
+            "enddate" : today
+        ]
+        
+        Alamofire.request(baseUrl + "meds/" + String(medToUpdate.MID), method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseString() { response in
+            let statusCode = response.response?.statusCode
+            if statusCode == 200 {
+                print("Updated med end date successfully")
+                completion(true)
+            } else {
+                let responseString = response.result.value
+                if responseString != nil {
+                    let responseString = responseString!
+                    print(responseString)
+                }
+                completion(false)
+            }
         }
     }
     

@@ -31,7 +31,7 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
     override func viewWillAppear(_ animated: Bool) {
         
         //load medications into table
-        loadMedications()
+        loadMedicationsAsync()
         
         //Set containing class as the delegate and datasource of the table view
         medTableView.delegate = self
@@ -40,8 +40,6 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
-        
-        medTableView.reloadData()
         
         self.navigationItem.title = "All Medications"
     }
@@ -112,12 +110,14 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
         //Here sender.tag will give you the tapped checkbox/Button index from the cell
 
         //Set entry in database to end today
-        db.updateMedicineEndDate(MIDToUpdate: medications[sender.tag].MID)
-
-        //Update element from array
-        medications.remove(at: sender.tag)
         
-        medTableView.reloadData()
+        db.updateMedicineEndDateAsync(medToUpdate: medications[sender.tag]) {_ in
+            //Update element from array
+            self.medications.remove(at: sender.tag)
+            
+            self.medTableView.reloadData()
+        }
+
         //Delete row from table section 0
         //medTableView.deleteRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
         
@@ -126,8 +126,12 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
 
     
     //MARK: Private methods
-    private func loadMedications() {
+    private func loadMedicationsAsync() {
         //Retrieve medications to be loaded into the table
-        medications = db.getMedicine()
+        db.getMedicineAsync() { meds in
+            self.medications = meds
+            
+            self.medTableView.reloadData()
+        }
     }
 }

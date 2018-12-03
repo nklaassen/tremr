@@ -56,6 +56,16 @@ struct Schedule : Decodable {
     var fr : Bool
     var sa : Bool
     var su : Bool
+    
+    init(mo: Bool, tu: Bool, we: Bool, th: Bool, fr: Bool, sa: Bool, su: Bool ) {
+        self.mo = mo
+        self.tu = tu
+        self.we = we
+        self.th = th
+        self.fr = fr
+        self.sa = sa
+        self.su = su
+    }
 }
 
 struct MedicineFromWeb {
