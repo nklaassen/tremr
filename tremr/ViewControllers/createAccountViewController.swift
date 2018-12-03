@@ -25,8 +25,7 @@ class createAccountViewController: UIViewController {
         super.viewDidLoad()
 
         
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.title = "Create Account"
+        self.navigationController?.isNavigationBarHidden = true
         // Do any additional setup after loading the view.
     }
     
