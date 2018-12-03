@@ -112,7 +112,7 @@ class MonthContainer: UIViewController {
     func getDataAsync(completion: @escaping ([Double], [Double]) -> ()) {
         db.getTremorsForLastMonthAsync() {tremors in
             
-            var counter = tremors.count-1
+            var counter = 27//set to 27 so it just takes the previous 27 values, even if more were recorded
             var rcounter = 0
             
             //array of 28 elements to hold severity values

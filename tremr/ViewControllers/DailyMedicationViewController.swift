@@ -43,7 +43,7 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidLoad()
         
         //load medications into table
-        loadMedications()
+        loadMedicationsAsync()
         
         //Set containing class as the delegate and datasource of the table view
         medTableView.delegate = self
@@ -55,15 +55,14 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
     
     override func viewDidAppear(_ animated: Bool) {
         
-        //load medications into table
-        loadMedications()
-        
         //Set containing class as the delegate and datasource of the table view
         medTableView.delegate = self
         medTableView.dataSource = self
         
-        //reload table
-        medTableView.reloadData()
+
+        //load medications into table
+        loadMedicationsAsync()
+        
     }
     
     // MARK: - Table view data source
@@ -107,28 +106,20 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         
         //if user is on today
         if todayStart == displayDateStart{
+            //Update element from array
+            medications.remove(at: indexPath.row)
+
             // Add medication to list of taken medications
             db.addTakenMedicine(MID : med.MID, date : Date())
-        }
-        
-        //if user is in the future, can delete this loop i guess lol
-        if displayDateStart > todayStart{
-            //nothing should happen cuz u cant do shit in the future
+            
+            // Reload the medications
+            loadMedicationsAsync()
         }
         
         //if user is in the past
         if displayDateStart < todayStart{
             db.addTakenMedicine(MID : med.MID, date : displayDateStart)
         }
-        
-        //Update element from array
-        medications.remove(at: indexPath.row)
-        
-        // Reload the medications
-        loadMedications()
-        
-        // Refresh the table
-        medTableView.reloadData()
     }
     
     
@@ -148,10 +139,16 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
     
     
     //MARK: Private Methods
-    private func loadMedications() {
+    private func loadMedicationsAsync() {
         //Retrieve medications to be loaded into the table
         print("medications loaded")
-        medications = db.getMedicineDate(date: displayDay)
+        print(displayDay)
+        db.getMedicineDateAsync(date: displayDay) { meds in
+            //Set medications
+            self.medications = meds
+            //reload table
+            self.medTableView.reloadData()
+        }
     }
     
     private func incrementDisplayDay(changeValue : Int) {
@@ -170,10 +167,7 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         }
         
         //Load medications for updated day
-        loadMedications()
-        
-        //Reload table
-        medTableView.reloadData()
+        loadMedicationsAsync()
     }
 }
 

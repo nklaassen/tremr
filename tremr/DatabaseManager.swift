@@ -189,15 +189,6 @@ class DatabaseManager
                 t.foreignKey(MID, references: Medicines, MID, delete: .cascade)
                 t.primaryKey(MID, date)
             })
-            
-            // Initialize the DB with some dummy data
-            if getTremors().count == 0 {
-                for i in 0...365 {
-                    addTremor(restingSeverity: Double(arc4random_uniform(50)) / 10.0 + 2.5,
-                              posturalSeverity: Double(arc4random_uniform(50)) / 10.0 + 2.5,
-                              date: Calendar.current.date(byAdding: .day, value: -1 * i, to: Date())!)
-                }
-            }
         } catch {
             print("Failed to init DB: \(error)")
         }
@@ -250,29 +241,6 @@ class DatabaseManager
         }
     }
     
-    // Returns all tremor recording values from the db
-    func getTremors() -> Array<Tremor> {
-        return Array<Tremor>()
-    }
-    
-    func getTremorsAsync(completion: @escaping ([Tremor]) -> ()) {
-        Alamofire.request(baseUrl + "tremors").validate().responseData { response in
-            switch response.result {
-            case .success:
-                print("got valid response")
-                if let data = response.result.value {
-                    let decoder = JSONDecoder()
-                    decoder.dateDecodingStrategy = .iso8601
-                    if let tremors = try? decoder.decode([Tremor].self, from: data) {
-                        completion(tremors)
-                    }
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
     // Returns all missed exercise values from the db
     func getMissedExercises() -> Array<MissedExercise> {
         var exercises = Array<MissedExercise>()
@@ -300,11 +268,6 @@ class DatabaseManager
         }
         return medicines
     }
-
-    func getTremorsForLastWeek() -> [Tremor] {
-        return Array<Tremor>()
-    }
-    
     
     // Description: Retrieve all tremor data from the past week from the database and return in a callback
     // Pre-condition: Connection to remote webserver, valid callback function prepared to recieve callback data
@@ -316,7 +279,7 @@ class DatabaseManager
         let lastWeek = Calendar.current.date(byAdding: components, to: startOfDay)!
         let datestring = ISO8601DateFormatter().string(from: lastWeek)
         let url = baseUrl + "tremors?since=" + datestring
-        print(url)
+        //print(url)
         
         //Retrive jwt for authentication
         let jwt = UserDefaults.standard.string(forKey: authTokenKey)
@@ -327,7 +290,7 @@ class DatabaseManager
             //Ensure valid response before passing data to completion callback
             switch response.result {
             case .success:
-                print("got valid response")
+                //print("got valid response")
                 if let data = response.result.value {
                     //Use JSONDecoder to convert JSON data from webserver into an array of Tremor objects
                     if let tremors = try? JSONDecoder().decode([Tremor].self, from: data) {
@@ -352,7 +315,7 @@ class DatabaseManager
         let lastMonth = Calendar.current.date(byAdding: components, to: startOfDay)!
         let datestring = ISO8601DateFormatter().string(from: lastMonth)
         let url = baseUrl + "tremors?since=" + datestring
-        print(url)
+        //print(url)
         
         //Retrive jwt for authentication
         let jwt = UserDefaults.standard.string(forKey: authTokenKey)
@@ -363,7 +326,7 @@ class DatabaseManager
             //Ensure valid response before passing data to completion callback
             switch response.result {
             case .success:
-                print("got valid response")
+                //print("got valid response")
                 if let data = response.result.value {
                     //Use JSONDecoder to convert JSON data from webserver into an array of Tremor objects
                     if let tremors = try? JSONDecoder().decode([Tremor].self, from: data) {
@@ -378,31 +341,6 @@ class DatabaseManager
         }
     }
 
-    // returns only the tremor recordings from the past month
-    func getTremorsForLastMonth() -> Array<Tremor> {
-        var tremors = Array<Tremor>()
-        let startOfDay = Calendar.current.startOfDay(for: Date())
-        var components = DateComponents()
-        components.day = -27
-        let lastMonth = Calendar.current.date(byAdding: components, to: startOfDay)!
-        let tremorsForLastMonth = Tremors.filter(self.date >= lastMonth).order(self.date.asc)
-        do {
-            for tremor in try db.prepare(tremorsForLastMonth) {
-                tremors.append(
-                    Tremor(
-                        TID: tremor[self.TID],
-                        UID: tremor[self.UID],
-                        posturalSeverity: Double(tremor[self.posturalSeverity]) / 10.0,
-                        restingSeverity: Double(tremor[self.restingSeverity]) / 10.0,
-                        date: tremor[self.date]))
-                print("tremor date ", tremor[self.date])
-            }
-        } catch {
-            print(error)
-        }
-        return tremors
-    }
-    
     // Description: Retrieve all tremor data from the past year from the database and return in a callback
     // Pre-condition: Connection to remote webserver, valid callback function prepared to recieve callback data
     // Post-condition: Tremor data passed to input callback function
@@ -413,7 +351,7 @@ class DatabaseManager
         let lastMonth = Calendar.current.date(byAdding: components, to: startOfDay)!
         let datestring = ISO8601DateFormatter().string(from: lastMonth)
         let url = baseUrl + "tremors?since=" + datestring
-        print(url)
+        //print(url)
         
         //Retrive jwt for authentication
         let jwt = UserDefaults.standard.string(forKey: authTokenKey)
@@ -424,7 +362,7 @@ class DatabaseManager
             //Ensure valid response before passing data to completion callback
             switch response.result {
             case .success:
-                print("got valid response")
+                //print("got valid response")
                 if let data = response.result.value {
                     //Use JSONDecoder to convert JSON data from webserver into an array of Tremor objects
                     if let tremors = try? JSONDecoder().decode([Tremor].self, from: data) {
@@ -561,6 +499,7 @@ class DatabaseManager
 
         do {
             return try db.run(Exercises.insert(self.UID <- UID,
+                                        self.MID <- MID,
                                         self.name <- name,
                                         self.unit <- unit,
                                         self.monday <- mo,
@@ -588,8 +527,8 @@ class DatabaseManager
 
         do {
             for medicine in try db.prepare(query) {
-                medicines.append(Medicine(UID: medicine[self.UID],
-                                          MID: medicine[self.MID],
+                medicines.append(Medicine(uid: medicine[self.UID],
+                                          mid: medicine[self.MID],
                                           name: medicine[self.name],
                                           dosage: medicine[self.dosage],
                                           mo: medicine[self.monday],
@@ -615,7 +554,7 @@ class DatabaseManager
         Alamofire.request(baseUrl + "meds").validate().responseData { response in
             switch response.result {
             case .success:
-                print("got valid response")
+                //print("got valid response")
                 if let data = response.result.value {
                     let decoder = JSONDecoder()
                     decoder.dateDecodingStrategy = .iso8601
@@ -629,26 +568,6 @@ class DatabaseManager
         }
     }
     
-    /*
-     func getTremorsAsync(completion: @escaping ([Tremor]) -> ()) {
-     Alamofire.request(baseUrl + "tremors").validate().responseData { response in
-     switch response.result {
-     case .success:
-     print("got valid response")
-     if let data = response.result.value {
-     let decoder = JSONDecoder()
-     decoder.dateDecodingStrategy = .iso8601
-     if let tremors = try? decoder.decode([Tremor].self, from: data) {
-     completion(tremors)
-     }
-     }
-     case .failure(let error):
-     print(error)
-     }
-     }
-     }
-     */
-    //Returns array of all exercises
     func getExercise() -> Array<Exercise> {
         var exercises = Array<Exercise>()
         
@@ -676,12 +595,12 @@ class DatabaseManager
         }
         return exercises
     }
-    
+    /*
     //Returns array of all medicines that are scheduled for the day Date that haven't been completed yet
     func getMedicineDate(date: Date) ->Array<Medicine> {
         //weekDay is a number. 1-sunday, 2-monday, ... 7-saturday
         let weekDay = Calendar.current.component(.weekday, from: date)
-
+        
         var targetWeekDay :Expression<Bool>
         switch weekDay {
         case 1: //Sunday
@@ -704,8 +623,8 @@ class DatabaseManager
         let takenMedicineMIDs = getTakenMedicines(searchDate: date).map { $0.MID }
         
         let query = Medicines.filter(targetWeekDay == true) // Weekday matches weekday recorded for
-                            .filter(start_date <= date)   // Ensure searching within valid timeframe
-                            .filter(end_date == nil || end_date >= date)   //If end_date is assigned, then only return when within the timeframe of that medicine
+            .filter(start_date <= date)   // Ensure searching within valid timeframe
+            .filter(end_date == nil || end_date >= date)   //If end_date is assigned, then only return when within the timeframe of that medicine
         
         var medicines = Array<Medicine>()
         
@@ -734,6 +653,49 @@ class DatabaseManager
         }
         return medicines
     }
+    */
+    
+    //Returns array of all medicines that are scheduled for the day Date that haven't been completed yet
+    func getMedicineDateAsync(date: Date, completion: @escaping ([Medicine]) -> ()) {
+
+        //Get all taken MIDs from that day
+        let takenMedicineMIDs = getTakenMedicines(searchDate: date).map { $0.MID }
+        
+        let startOfDay = Calendar.current.startOfDay(for: date)
+        let datestring = ISO8601DateFormatter().string(from: startOfDay)
+        let url = baseUrl + "meds?date=" + datestring
+        print(url)
+        
+        //Retrive jwt for authentication
+        let jwt = UserDefaults.standard.string(forKey: authTokenKey)
+        let Auth_header: HTTPHeaders = [ "Authorization": jwt! ]
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Auth_header).validate().responseData { response in
+            //Ensure valid response before passing data to completion callback
+            switch response.result {
+            case .success:
+                //print("got valid response")
+                if let data = response.result.value {
+                    var medsToReturn : [Medicine] = []
+                    //Use JSONDecoder to convert JSON data from webserver into an array of Tremor objects
+                    if let allMedicines = try? JSONDecoder().decode([Medicine].self, from: data) {
+                        //Pass Tremor array to callback completion
+                        for med in allMedicines {
+                            if !takenMedicineMIDs.contains(med.MID) {
+                                medsToReturn.append(med)
+                            }
+                        }
+                    }
+                    completion(medsToReturn)
+                }
+            //Data request failure
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+
     
     //Returns array of all exercises that are scheduled for the day Date
     func getExerciseDate(date: Date) ->Array<Exercise> {
@@ -762,7 +724,7 @@ class DatabaseManager
         let takenExerciseEIDs = getTakenExercises(searchDate: date).map { $0.EID }
 
         
-        var query = Exercises.filter(targetWeekDay == true) // Weekday matches weekday recorded for
+        let query = Exercises.filter(targetWeekDay == true) // Weekday matches weekday recorded for
                             .filter(start_date <= date)   // Ensure searching within valid timeframe
                             .filter(end_date == nil || end_date >= date)   //If end_date is assigned, then only return when within the timeframe of that medicine
         
