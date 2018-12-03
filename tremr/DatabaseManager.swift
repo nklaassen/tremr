@@ -54,18 +54,7 @@ class DatabaseManager
     let EID = Expression<Int64>("EID")
     // let name = Expression<String>("name") We'll use the one defined in Users table
     let unit = Expression<String>("unit")
-    // We'll use the one defined in Medicines table
-    /* let monday = Expression<Bool>("monday")
-    let tuesday = Expression<Bool>("tuesday")
-    let wednesday = Expression<Bool>("wednesday")
-    let thursday = Expression<Bool>("thursday")
-    let friday = Expression<Bool>("friday")
-    let saturday = Expression<Bool>("saturday")
-    let sunday = Expression<Bool>("sunday")
-    let reminder = Expression<Bool>("reminder")
-    let start_date = Expression<Date>("start_date")
-    let end_date = Expression<Date?>("end_date") //optional */
-    
+
     let MissedExercises = Table("MissedExercises")
     //EID
     //date
@@ -218,6 +207,7 @@ class DatabaseManager
         return users
     }
 
+    /*
     // adds tremor recording to the db. Date defaults to the current date/time.
     // Note: will delete all recordings in the db from the same day as the recording being inserted
     func addTremor(restingSeverity : Double, posturalSeverity : Double, date : Date = Date()) {
@@ -241,11 +231,12 @@ class DatabaseManager
         }
     }
     
+    
     // Returns all tremor recording values from the db
     func getTremors() -> Array<Tremor> {
         return Array<Tremor>()
     }
-    
+    */
     func getTremorsAsync(completion: @escaping ([Tremor]) -> ()) {
         Alamofire.request(baseUrl + "tremors").validate().responseData { response in
             switch response.result {
@@ -479,38 +470,6 @@ class DatabaseManager
     }
 
     
-    //Adds a medicine to the Medicines table
-    func addMedicine(UID : Int64, name : String, dosage : String, mo : Bool, tu : Bool, we : Bool, th : Bool, fr : Bool, sa : Bool, su : Bool, reminder : Bool, start_date : Date, end_date : Date?) -> Int64? {
-        print("Trying to add medicine \(name) \(dosage)")
-
-        //Modify start_date and end_date to be the very end of the day and very beginning of the day respectively
-        let modified_start_date = calendar.startOfDay(for: start_date)
-        var modified_end_date :Date? = nil
-        if end_date != nil {
-            modified_end_date = calendar.startOfDay(for: end_date!)
-        }
-        
-        do {
-            //Insert medicine and return the id created by the database
-            return try db.run(Medicines.insert(self.UID <- UID,
-                                      self.name <- name,
-                                      self.dosage <- dosage,
-                                      self.monday <- mo,
-                                      self.tuesday <- tu,
-                                      self.wednesday <- we,
-                                      self.thursday <- th,
-                                      self.friday <- fr,
-                                      self.saturday <- sa,
-                                        self.sunday <- su,
-                                      self.reminder <- reminder,
-                                      self.start_date <- modified_start_date,
-                                      self.end_date <- modified_end_date ))
-        } catch {
-            print("Failed to insert medicine: \(error)")
-            //If the insert fails, return nil for the inserted MID
-            return nil
-        }
-    }
     
     
     func addMedicineAsync(name : String, dosage : String, mo : Bool, tu : Bool, we : Bool, th : Bool, fr : Bool, sa : Bool, su : Bool, reminder : Bool, start_date : Date, end_date : Date?, completion : @escaping (Int64)->()) {
@@ -547,6 +506,39 @@ class DatabaseManager
         }
     }
     
+    func addExerciseAsync(name : String, unit : String, mo : Bool, tu : Bool, we : Bool, th : Bool, fr : Bool, sa : Bool, su : Bool, reminder : Bool, start_date : Date, end_date : Date?, completion : @escaping (Int64)->()) {
+        
+        let token = UserDefaults.standard.string(forKey: authTokenKey)!
+        let headers : HTTPHeaders = ["Authorization": token]
+        
+        let startdate = ISO8601DateFormatter().string(from: start_date)
+        
+        let parameters : [String: Any] = [
+            "name" : name,
+            "unit" : unit,
+            "schedule" : ["mo": mo, "tu": tu, "we": we, "th": th, "fr": fr, "sa": sa, "su": su],
+            "reminder" : reminder,
+            "startdate" : startdate,
+            "enddate" : NSNull() //Always add null as enddate value for new med
+        ]
+        
+        Alamofire.request(baseUrl + "exercises", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseString() { response in
+            let statusCode = response.response?.statusCode
+            if statusCode == 200 {
+                print("adding exercise Successful")
+                let strData = String(data: response.data!, encoding: .utf8)
+                let addedEID = Int64(strData!)
+                completion(addedEID!)
+            } else {
+                let responseString = response.result.value
+                if responseString != nil {
+                    let responseString = responseString!
+                    print(responseString)
+                }
+                completion(-1)
+            }
+        }
+    }
     
     //Adds an exercise to the Exercises table
     func addExercise(UID : Int64, name : String, unit : String, mo : Bool, tu : Bool, we : Bool, th : Bool, fr : Bool, sa : Bool, su : Bool, reminder : Bool, start_date : Date, end_date : Date?) -> Int64? {
@@ -641,6 +633,34 @@ class DatabaseManager
         }
     }
     
+    func getExerciseAsync(completion: @escaping ([Exercise]) -> ()) {
+        //Retrive jwt for authentication
+        let jwt = UserDefaults.standard.string(forKey: authTokenKey)
+        let Auth_header: HTTPHeaders = [ "Authorization": jwt! ]
+        
+        Alamofire.request(baseUrl + "exercises", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Auth_header).validate().responseData { response in
+            switch response.result {
+            case .success:
+                //print("got valid response")
+                if let data = response.result.value {
+                    var exersToReturn : [Exercise] = []
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    if let exers = try? decoder.decode([Exercise].self, from: data) {
+                        for exer in exers {
+                            if exer.end_date == nil { //only add exercises if they don't have an end date
+                                exersToReturn.append(exer)
+                            }
+                        }
+                        completion(exersToReturn)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     func getExercise() -> Array<Exercise> {
         var exercises = Array<Exercise>()
         
@@ -648,8 +668,8 @@ class DatabaseManager
 
         do {
             for exercise in try db.prepare(query) {
-                exercises.append(Exercise(UID: exercise[self.UID],
-                                          EID: exercise[self.EID],
+                exercises.append(Exercise(uid: exercise[self.UID],
+                                          eid: exercise[self.EID],
                                           name: exercise[self.name],
                                           unit: exercise[self.unit],
                                           mo: exercise[self.monday],
@@ -711,6 +731,46 @@ class DatabaseManager
     
 
     
+    //Returns array of all medicines that are scheduled for the day Date that haven't been completed yet
+    func getExerciseDateAsync(date: Date, completion: @escaping ([Exercise]) -> ()) {
+        
+        //Get all taken MIDs from that day
+        let takenExerciseEIDs = getTakenExercises(searchDate: date).map { $0.EID }
+        
+        let startOfDay = Calendar.current.startOfDay(for: date)
+        let datestring = ISO8601DateFormatter().string(from: startOfDay)
+        let url = baseUrl + "exercises?date=" + datestring
+        print(url)
+        
+        //Retrive jwt for authentication
+        let jwt = UserDefaults.standard.string(forKey: authTokenKey)
+        let Auth_header: HTTPHeaders = [ "Authorization": jwt! ]
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Auth_header).validate().responseData { response in
+            //Ensure valid response before passing data to completion callback
+            switch response.result {
+            case .success:
+                //print("got valid response")
+                if let data = response.result.value {
+                    var exersToReturn : [Exercise] = []
+                    //Use JSONDecoder to convert JSON data from webserver into an array of Tremor objects
+                    if let allExercises = try? JSONDecoder().decode([Exercise].self, from: data) {
+                        //Pass Tremor array to callback completion
+                        for exer in allExercises {
+                            if !takenExerciseEIDs.contains(exer.EID) {
+                                exersToReturn.append(exer)
+                            }
+                        }
+                    }
+                    completion(exersToReturn)
+                }
+            //Data request failure
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     //Returns array of all exercises that are scheduled for the day Date
     func getExerciseDate(date: Date) ->Array<Exercise> {
         //weekDay is a number. 1-sunday, 2-monday, ... 7-saturday
@@ -748,8 +808,8 @@ class DatabaseManager
             for exer in try db.prepare(query) {
                 // Only accept exercises that haven't been taken yet that day
                 if !takenExerciseEIDs.contains(exer[self.EID]) {
-                    exercises.append(Exercise(UID: exer[self.UID],
-                                              EID: exer[self.EID],
+                    exercises.append(Exercise(uid: exer[self.UID],
+                                              eid: exer[self.EID],
                                               name: exer[self.name],
                                               unit: exer[self.unit],
                                               mo: exer[self.monday],
@@ -769,17 +829,6 @@ class DatabaseManager
         }
         return exercises
     }
-    
-    /*
-    func updateMedicine(MIDToUpdate : Int64, name: String, dosage: String,mo: Bool, tu: Bool, we: Bool, th: Bool, fr: Bool, sa: Bool, su: Bool, reminder: Bool) {
-        do {
-            let medicineToUpdate = Medicines.filter(MID == MIDToUpdate)
-            try db.run(medicineToUpdate.update(self.name <- name, self.dosage <- dosage, monday <- mo, tuesday <- tu, wednesday <- we, thursday <- th, friday <- fr, saturday <- sa, sunday <- su, self.reminder <- reminder))
-        } catch {
-            fatalError("Failed to update row with MID: \(MID))")
-        }
-    }
-    */
 
     func updateMedicineAsync(medToUpdate: Medicine, completion: @escaping (Bool)->() ) {
         let token = UserDefaults.standard.string(forKey: authTokenKey)!
@@ -807,6 +856,45 @@ class DatabaseManager
             let statusCode = response.response?.statusCode
             if statusCode == 200 {
                 print("Updated med end date successfully")
+                completion(true)
+            } else {
+                let responseString = response.result.value
+                if responseString != nil {
+                    let responseString = responseString!
+                    print(responseString)
+                }
+                completion(false)
+            }
+        }
+        
+    }
+    
+    func updateExerciseAsync(exerToUpdate: Exercise, completion: @escaping (Bool)->() ) {
+        let token = UserDefaults.standard.string(forKey: authTokenKey)!
+        let headers : HTTPHeaders = ["Authorization": token]
+        
+        let startdate = ISO8601DateFormatter().string(from: exerToUpdate.start_date)
+        
+        var parameters : [String: Any] = [
+            "eid" : exerToUpdate.EID,
+            "name" : exerToUpdate.name,
+            "unit" : exerToUpdate.unit,
+            "schedule" : ["mo": exerToUpdate.mo, "tu": exerToUpdate.tu, "we": exerToUpdate.we, "th": exerToUpdate.th, "fr": exerToUpdate.fr, "sa": exerToUpdate.sa, "su": exerToUpdate.su],
+            "reminder" : exerToUpdate.reminder,
+            "startdate" : startdate
+        ]
+        
+        if exerToUpdate.end_date != nil{
+            parameters["enddate"] = ISO8601DateFormatter().string(from: exerToUpdate.end_date!)
+        }
+        else {
+            parameters["enddate"] = NSNull()
+        }
+        
+        Alamofire.request(baseUrl + "exercises/" + String(exerToUpdate.EID), method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseString() { response in
+            let statusCode = response.response?.statusCode
+            if statusCode == 200 {
+                print("Updated exer end date successfully")
                 completion(true)
             } else {
                 let responseString = response.result.value
@@ -879,6 +967,43 @@ class DatabaseManager
             let statusCode = response.response?.statusCode
             if statusCode == 200 {
                 print("Updated med end date successfully")
+                completion(true)
+            } else {
+                let responseString = response.result.value
+                if responseString != nil {
+                    let responseString = responseString!
+                    print(responseString)
+                }
+                completion(false)
+            }
+        }
+    }
+    
+    
+    
+    // The Exercise table will update MIDs equal to MIDToUpdate. Rows matching this query will
+    // have their end_date updated to the current date.
+    func updateExerciseEndDateAsync(exerToUpdate : Exercise, completion : @escaping (Bool)->() ) {
+        let token = UserDefaults.standard.string(forKey: authTokenKey)!
+        let headers : HTTPHeaders = ["Authorization": token]
+        
+        let today = ISO8601DateFormatter().string(from: Date())
+        let startdate = ISO8601DateFormatter().string(from: exerToUpdate.start_date)
+        
+        let parameters : [String: Any] = [
+            "eid" : exerToUpdate.EID,
+            "name" : exerToUpdate.name,
+            "unit" : exerToUpdate.unit,
+            "schedule" : ["mo": exerToUpdate.mo, "tu": exerToUpdate.tu, "we": exerToUpdate.we, "th": exerToUpdate.th, "fr": exerToUpdate.fr, "sa": exerToUpdate.sa, "su": exerToUpdate.su],
+            "reminder" : exerToUpdate.reminder,
+            "startdate" : startdate,
+            "enddate" : NSNull()
+        ]
+        
+        Alamofire.request(baseUrl + "exercises/" + String(exerToUpdate.EID), method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseString() { response in
+            let statusCode = response.response?.statusCode
+            if statusCode == 200 {
+                print("Updated exercise end date successfully")
                 completion(true)
             } else {
                 let responseString = response.result.value

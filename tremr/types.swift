@@ -166,11 +166,51 @@ struct Medicine : Decodable {
     }
 }
 
+struct ExerciseFromWeb {
+    var UID : Int64
+    var EID : Int64
+    var name : String
+    var unit : String
+    var schedule : Schedule
+    var reminder : Bool
+    var start_date : Date
+    var end_date : Date?
+}
 
+extension ExerciseFromWeb: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case EID = "eid"
+        case UID = "uid"
+        case name = "name"
+        case unit = "unit"
+        case schedule = "schedule"
+        case reminder = "reminder"
+        case start_date = "startdate"
+        case end_date = "enddate"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        EID = try values.decode(Int64.self, forKey: .EID)
+        UID = try values.decode(Int64.self, forKey: .UID)
+        name = try values.decode(String.self, forKey: .name)
+        unit = try values.decode(String.self, forKey: .unit)
+        schedule = try values.decode(Schedule.self, forKey: .schedule)
+        reminder = try values.decode(Bool.self, forKey: .reminder)
+        let startdatestring = try values.decode(String.self, forKey: .start_date)
+        start_date = ISO8601DateFormatter().date(from: startdatestring)!
+        //end date is optional, need to allow for that with String? type
+        let enddatestring = try values.decode(String?.self, forKey: .end_date)
+        if enddatestring == nil{
+            end_date = nil
+        }
+        else{
+            end_date = ISO8601DateFormatter().date(from: enddatestring!)
+        }
+    }
+}
 
-
-
-struct Exercise {
+struct Exercise : Decodable {
     var UID : Int64
     var EID : Int64
     var name : String
@@ -185,7 +225,45 @@ struct Exercise {
     var reminder : Bool
     var start_date : Date
     var end_date : Date?
+    
+    init(uid: Int64, eid: Int64, name: String, unit: String, mo: Bool, tu: Bool, we: Bool, th: Bool, fr: Bool, sa: Bool, su: Bool, reminder: Bool, start_date: Date, end_date: Date?) {
+        self.UID         = uid
+        self.EID         = eid
+        self.name        = name
+        self.unit        = unit
+        self.mo          = mo
+        self.tu          = tu
+        self.we          = we
+        self.th          = th
+        self.fr          = fr
+        self.sa          = sa
+        self.su          = su
+        self.reminder    = reminder
+        self.start_date  = start_date
+        self.end_date    = end_date
+    }
+    
+    init(from decoder: Decoder) throws {
+        let exerciseFromWeb = try ExerciseFromWeb(from: decoder)
+        
+        UID = exerciseFromWeb.UID
+        EID = exerciseFromWeb.EID
+        name = exerciseFromWeb.name
+        unit = exerciseFromWeb.unit
+        mo = exerciseFromWeb.schedule.mo
+        tu = exerciseFromWeb.schedule.tu
+        we = exerciseFromWeb.schedule.we
+        th = exerciseFromWeb.schedule.th
+        fr = exerciseFromWeb.schedule.fr
+        sa = exerciseFromWeb.schedule.sa
+        su = exerciseFromWeb.schedule.su
+        reminder = exerciseFromWeb.reminder
+        start_date = exerciseFromWeb.start_date
+        end_date = exerciseFromWeb.end_date
+    }
 }
+
+
 
 struct MissedExercise {
     var EID: Int64
