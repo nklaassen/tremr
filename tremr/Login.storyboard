@@ -245,6 +245,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="e06-AW-jvv"/>
         <segue reference="xsi-HM-aWd"/>
     </inferredMetricsTieBreakers>
 </document>
