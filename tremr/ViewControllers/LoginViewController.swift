@@ -21,9 +21,18 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.title = "Login"
+        self.navigationController?.isNavigationBarHidden = true
         // Do any additional setup after loading the view.
+        
+        let tokenOptional = UserDefaults.standard.string(forKey: authTokenKey)
+        if tokenOptional != nil {
+            // test if we are already logged in, if so skip this page
+            self.performSegue(withIdentifier: "toDashboard", sender: nil)
+        }
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
     //log in page: buttons
@@ -50,6 +59,8 @@ class LoginViewController: UIViewController {
                     // save jwt to persistent storage
                     let defaults = UserDefaults.standard
                     defaults.set(responseString, forKey: authTokenKey)
+                    
+                    self.performSegue(withIdentifier: "toDashboard", sender: nil)
                     
                 } else {
                     print(responseString)

@@ -19,7 +19,7 @@ class RecordRestingViewController: UIViewController {
         disableInput()
         Tremr.recordResting() {
             self.enableInput()
-            self.performSegue(withIdentifier: "RestingDoneRecording", sender: nil)
+            self.performSegue(withIdentifier: "PromptSegue", sender: nil)
         }
         self.navigationController?.isNavigationBarHidden = true
     }

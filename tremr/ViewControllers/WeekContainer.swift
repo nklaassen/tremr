@@ -153,7 +153,22 @@ class WeekContainer: UIViewController {
     // get postural tremor data from the database for the last week
     func getDataAsync(completion: @escaping ([Double], [Double]) -> ()) {
         //var tremors = db.getTremorsForLastWeek() //grab tremors from database
-        db.getTremorsForLastWeekAsync() { tremors in
+        db.getTremorsForLastWeekAsync() { inputTremors in
+            
+            var tremors = [Tremor]()
+            // remove duplicate values from the same day
+            if inputTremors.count > 1 {
+                var index = 0
+                while index < inputTremors.count - 1 {
+                    if !Calendar.current.isDate(inputTremors[index].date, inSameDayAs:inputTremors[index+1].date) {
+                        tremors.append(inputTremors[index])
+                    }
+                    index = index + 1
+                }
+                tremors.append(inputTremors[inputTremors.count - 1])
+            } else {
+                tremors = inputTremors
+            }
             
             //finds the size of the data array tremors and subtracts one to match the index of  the last element
             var size = tremors.count - 1

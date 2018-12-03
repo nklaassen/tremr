@@ -10,129 +10,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="MainViewController" title="Main" id="BYZ-38-t0r" customClass="MainViewController" customModule="tremr" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Lt1-ft-0iZ">
-                                <rect key="frame" x="20" y="84" width="335" height="563"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCN-QQ-5XZ">
-                                        <rect key="frame" x="8" y="8" width="319" height="66"/>
-                                        <color key="backgroundColor" red="0.0" green="0.6588235294117647" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="TREMR">
-                                                <attributes>
-                                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <font key="NSFont" size="72" name="SignPainter-HouseScriptSemibold"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHV-kB-9d0">
-                                        <rect key="frame" x="8" y="74" width="319" height="39"/>
-                                        <state key="normal" title="temp login tester"/>
-                                        <connections>
-                                            <segue destination="21I-wy-kRn" kind="show" id="tLE-BN-1Ri"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OiL-ww-r43">
-                                        <rect key="frame" x="8" y="113" width="319" height="42"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Notification">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="dxr-ti-ZFO" kind="show" id="JsZ-VK-tLV"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZn-eO-Mql">
-                                        <rect key="frame" x="8" y="155" width="319" height="100"/>
-                                        <color key="backgroundColor" red="0.0" green="0.6588235294117647" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="Xmu-Gy-5rg"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Measure"/>
-                                        <connections>
-                                            <segue destination="Ken-eg-4N4" kind="show" id="6YN-XR-auF"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Ij-MNg">
-                                        <rect key="frame" x="8" y="255" width="319" height="100"/>
-                                        <color key="backgroundColor" red="0.0" green="0.6588235294117647" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="gq0-SG-qby"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Exercise"/>
-                                        <connections>
-                                            <segue destination="D1k-0f-wmF" kind="show" id="GiE-xf-84w"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dL-4h-8fV">
-                                        <rect key="frame" x="8" y="355" width="319" height="100"/>
-                                        <color key="backgroundColor" red="0.0" green="0.6588235294117647" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="aqZ-ey-wwu"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Medication"/>
-                                        <connections>
-                                            <segue destination="yuo-ma-Qjc" kind="show" id="ts2-cP-Yrc"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COa-xF-CtB">
-                                        <rect key="frame" x="8" y="455" width="319" height="100"/>
-                                        <color key="backgroundColor" red="0.0" green="0.6588235294117647" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="Kl9-os-wap"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="View Results"/>
-                                        <connections>
-                                            <segue destination="Bkq-on-jAH" kind="show" id="Ymv-hm-zKY"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.098039215690000001" green="0.50196078430000002" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" red="0.098039215690000001" green="0.90196078430000004" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.6588235294117647" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Lt1-ft-0iZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="2ny-fJ-aim"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Lt1-ft-0iZ" secondAttribute="bottom" constant="20" id="4DW-SE-Dky"/>
-                            <constraint firstItem="Lt1-ft-0iZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="kt9-lw-lXO"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lt1-ft-0iZ" secondAttribute="trailing" constant="20" id="xN0-mp-IuE"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Cis-TZ-HfP"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1284" y="-431"/>
-        </scene>
         <!--Notification-->
         <scene sceneID="rUT-EY-sGa">
             <objects>
                 <viewControllerPlaceholder storyboardName="Notification" id="dxr-ti-ZFO" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z9g-eH-q0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2409" y="-606"/>
+            <point key="canvasLocation" x="1732" y="81"/>
         </scene>
         <!--MeasureViewController-->
         <scene sceneID="Wak-st-lpO">
@@ -156,7 +40,7 @@
                 <viewControllerPlaceholder storyboardName="Exercise" id="D1k-0f-wmF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1e-kv-eBL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2640.8000000000002" y="-318.44077961019491"/>
+            <point key="canvasLocation" x="1991" y="519"/>
         </scene>
         <!--ViewData-->
         <scene sceneID="1Qh-ba-b2k">
@@ -172,7 +56,7 @@
                 <viewControllerPlaceholder storyboardName="Medicine" id="yuo-ma-Qjc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EvH-ck-gXm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2422" y="-875"/>
+            <point key="canvasLocation" x="1850" y="355"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="77d-Uc-9yi">
@@ -185,12 +69,114 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="mTS-du-Ss7"/>
+                        <segue destination="cIl-OL-2O5" kind="relationship" relationship="rootViewController" id="ndE-wG-Gsx"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O7Y-GV-KjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="257" y="27"/>
         </scene>
+        <!--Main Menu View Controller-->
+        <scene sceneID="ygP-Dy-X4e">
+            <objects>
+                <viewController id="cIl-OL-2O5" customClass="MainMenuViewController" customModule="tremr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tbp-FM-KS5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOf-vp-7Mr">
+                                <rect key="frame" x="16" y="484" width="174" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Measure" image="icons8-hand-48"/>
+                                <connections>
+                                    <segue destination="Ken-eg-4N4" kind="show" id="4gs-1V-3mt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAz-0t-Frs">
+                                <rect key="frame" x="223" y="608" width="174" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Exercise" image="icons8-running-40">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="D1k-0f-wmF" kind="show" id="4KA-57-ko6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bze-tX-ON5">
+                                <rect key="frame" x="16" y="608" width="174" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Medication" image="icons8-pill-48">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="yuo-ma-Qjc" kind="show" id="jKP-lw-Vd0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5f-EA-UqP">
+                                <rect key="frame" x="224" y="484" width="174" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="View Results" image="icons8-report-card-48">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Bkq-on-jAH" kind="show" id="gZm-EJ-fJS"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffd-TK-bwk">
+                                <rect key="frame" x="37" y="57" width="300" height="117"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="TREMR">
+                                        <attributes>
+                                            <color key="NSColor" red="0.95462233777884509" green="0.8432502171598506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="90" name="MarkerFelt-Wide"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tremr_app" translatesAutoresizingMaskIntoConstraints="NO" id="pV6-zB-Wkh">
+                                <rect key="frame" x="73" y="182" width="261" height="256"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.6588235294" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.0" green="0.6588235294" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n53-hs-S2j">
+                                <rect key="frame" x="305" y="20" width="50" height="50"/>
+                                <state key="normal" image="icons8-settings-filled-50"/>
+                                <connections>
+                                    <segue destination="dxr-ti-ZFO" kind="show" id="Z2m-gN-VOK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.10622993856668472" green="0.47663396596908569" blue="0.75074058771133423" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="n53-hs-S2j" firstAttribute="top" secondItem="tbp-FM-KS5" secondAttribute="top" constant="20" id="7Uo-RV-gl3"/>
+                            <constraint firstItem="n53-hs-S2j" firstAttribute="trailing" secondItem="OMX-0O-IKh" secondAttribute="trailing" constant="-20" id="jSK-zT-gWC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OMX-0O-IKh"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="q0a-hN-WPW"/>
+                    <connections>
+                        <outlet property="Exer" destination="rAz-0t-Frs" id="wYM-iZ-3gs"/>
+                        <outlet property="Measure" destination="qOf-vp-7Mr" id="eef-W0-tJj"/>
+                        <outlet property="Meds" destination="bze-tX-ON5" id="M2H-rU-DNo"/>
+                        <outlet property="Results" destination="S5f-EA-UqP" id="qH9-Lj-H8W"/>
+                        <outlet property="tr" destination="ffd-TK-bwk" id="KHa-0l-RUK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b80-Ay-4Uf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1044" y="406.14692653673166"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="icons8-hand-48" width="48" height="48"/>
+        <image name="icons8-pill-48" width="48" height="48"/>
+        <image name="icons8-report-card-48" width="48" height="48"/>
+        <image name="icons8-running-40" width="40" height="40"/>
+        <image name="icons8-settings-filled-50" width="50" height="50"/>
+        <image name="tremr_app" width="120" height="120"/>
+    </resources>
 </document>

@@ -241,6 +241,29 @@ class DatabaseManager
         }
     }
     
+    // Returns all tremor recording values from the db
+    func getTremors() -> Array<Tremor> {
+        return Array<Tremor>()
+    }
+    
+    func getTremorsAsync(completion: @escaping ([Tremor]) -> ()) {
+        Alamofire.request(baseUrl + "tremors").validate().responseData { response in
+            switch response.result {
+            case .success:
+                print("got valid response")
+                if let data = response.result.value {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    if let tremors = try? decoder.decode([Tremor].self, from: data) {
+                        completion(tremors)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     // Returns all missed exercise values from the db
     func getMissedExercises() -> Array<MissedExercise> {
         var exercises = Array<MissedExercise>()

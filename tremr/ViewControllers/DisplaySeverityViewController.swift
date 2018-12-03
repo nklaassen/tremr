@@ -21,7 +21,7 @@ class DisplaySeverityViewController: UIViewController {
         let resting = Tremr.GetRestingScore()
         posturalLabel.text = String(format: "%.1f", Tremr.GetPosturalScore())
         restingLabel.text = String(format: "%.1f", Tremr.GetRestingScore())
-        db.addTremor(restingSeverity: resting, posturalSeverity: postural)
+        db.addTremorAsync(restingSeverity: resting, posturalSeverity: postural) {_ in}
         
         // debug output
         /*

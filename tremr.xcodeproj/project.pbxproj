@@ -22,6 +22,9 @@
 		55D4D1B2218D9D9A00CB371C /* YearBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D1B1218D9D9A00CB371C /* YearBarContainer.swift */; };
 		55D4D1CE219E0FF100CB371C /* Countdown2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D1CD219E0FF100CB371C /* Countdown2ViewController.swift */; };
 		55F81D6621A0F272005D7554 /* MissedDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F81D6521A0F272005D7554 /* MissedDataTests.swift */; };
+		806F49D821A9F56200C20ABF /* MeasurePromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F49D721A9F56200C20ABF /* MeasurePromptViewController.swift */; };
+		806F49E121AA016100C20ABF /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F49E021AA016100C20ABF /* TimerViewController.swift */; };
+		806F49E321AA1E2800C20ABF /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F49E221AA1E2800C20ABF /* MainMenuViewController.swift */; };
 		80EF89CB21814DA400872F5B /* MotionObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CA21814DA400872F5B /* MotionObserver.swift */; };
 		80EF89CD2181638700872F5B /* InstructionsForTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */; };
 		A50B2529218F9D610033AA48 /* DailyExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50B2528218F9D610033AA48 /* DailyExerciseViewController.swift */; };
@@ -257,6 +260,9 @@
 		55D4D1B1218D9D9A00CB371C /* YearBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearBarContainer.swift; sourceTree = "<group>"; };
 		55D4D1CD219E0FF100CB371C /* Countdown2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown2ViewController.swift; sourceTree = "<group>"; };
 		55F81D6521A0F272005D7554 /* MissedDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissedDataTests.swift; sourceTree = "<group>"; };
+		806F49D721A9F56200C20ABF /* MeasurePromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurePromptViewController.swift; sourceTree = "<group>"; };
+		806F49E021AA016100C20ABF /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		806F49E221AA1E2800C20ABF /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		80EF89CA21814DA400872F5B /* MotionObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionObserver.swift; sourceTree = "<group>"; };
 		80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsForTrackingViewController.swift; sourceTree = "<group>"; };
 		A50B2528218F9D610033AA48 /* DailyExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyExerciseViewController.swift; sourceTree = "<group>"; };
@@ -497,6 +503,9 @@
 				55D4D1CD219E0FF100CB371C /* Countdown2ViewController.swift */,
 				03711BF0219CFC4C008CC9C8 /* NotificationViewController.swift */,
 				A823ABFD21A0EE4E00CB07E2 /* notificationTableViewCell.swift */,
+				806F49D721A9F56200C20ABF /* MeasurePromptViewController.swift */,
+				806F49E021AA016100C20ABF /* TimerViewController.swift */,
+				806F49E221AA1E2800C20ABF /* MainMenuViewController.swift */,
 				03DF565421AB817600223E4B /* LoginViewController.swift */,
 				03DF565A21AB8A4E00223E4B /* createAccountViewController.swift */,
 			);
@@ -811,6 +820,7 @@
 				55D4D192218B7CAF00CB371C /* ViewDataViewController.swift in Sources */,
 				E0BF93E2218692640097767F /* types.swift in Sources */,
 				A50B2533218FAB4D0033AA48 /* AllExerciseViewController.swift in Sources */,
+				806F49E121AA016100C20ABF /* TimerViewController.swift in Sources */,
 				A8FA189421A3777800AFB843 /* NotificationToggleButton.swift in Sources */,
 				A50B2535218FAE920033AA48 /* AllExerciseTableViewCell.swift in Sources */,
 				A81150DE218E53BB005478EE /* AllMedicationViewController.swift in Sources */,
@@ -833,7 +843,9 @@
 				55D4D199218B8AA600CB371C /* WeekContainer.swift in Sources */,
 				55D4D19B218B94AA00CB371C /* WeekBarContainer.swift in Sources */,
 				E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */,
+				806F49D821A9F56200C20ABF /* MeasurePromptViewController.swift in Sources */,
 				A8F8A20E218A59170044342D /* DailyMedicationTableViewCell.swift in Sources */,
+				806F49E321AA1E2800C20ABF /* MainMenuViewController.swift in Sources */,
 				E0BF93E1218692640097767F /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1045,13 +1057,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z2GEL28KXD;
+				DEVELOPMENT_TEAM = T2PYBXKYGS;
 				INFOPLIST_FILE = tremr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = codesign.tremr;
+				PRODUCT_BUNDLE_IDENTIFIER = tremr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -1066,13 +1078,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z2GEL28KXD;
+				DEVELOPMENT_TEAM = T2PYBXKYGS;
 				INFOPLIST_FILE = tremr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = codesign.tremr;
+				PRODUCT_BUNDLE_IDENTIFIER = tremr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

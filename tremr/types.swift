@@ -40,7 +40,8 @@ extension Tremor: Decodable {
         TID = try values.decode(Int64.self, forKey: .TID)
         UID = try values.decode(Int64.self, forKey: .TID)
         posturalSeverity = try values.decode(Double.self, forKey: .posturalSeverity) / 10.0
-        restingSeverity = try values.decode(Double.self, forKey: .restingSeverity) / 10.0 
+        restingSeverity = try values.decode(Double.self, forKey: .restingSeverity) / 10.0
+        
         let datestring = try values.decode(String.self, forKey: .date)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
