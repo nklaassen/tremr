@@ -25,15 +25,12 @@ class AllExerciseViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewWillAppear(_ animated: Bool) {
         
         //load exercises into table
-        loadExercises()
+        loadExercisesAsync()
         
         //Set containing class as the delegate and datasource of the table view
         exerTableView.delegate = self
         exerTableView.dataSource = self
         
-        // Do any additional setup after loading the view.
-        
-        exerTableView.reloadData()
         
         self.navigationItem.title = "All Exericses"
     }
@@ -105,18 +102,27 @@ class AllExerciseViewController: UIViewController, UITableViewDataSource, UITabl
         //Set entry in database to end today
         db.updateExerciseEndDate(EIDToUpdate: exercises[sender.tag].EID)
         
-        //Update element from array
-        exercises.remove(at: sender.tag)
+        db.updateExerciseEndDateAsync(exerToUpdate: exercises[sender.tag]) {_ in
+            //Update element from array
+            self.exercises.remove(at: sender.tag)
+            
+            self.exerTableView.reloadData()
+        }
         
-        exerTableView.reloadData()
         //Delete row from table section 0
         //medTableView.deleteRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
 
     }
     
     //MARK: Private methods
-    private func loadExercises() {
+    private func loadExercisesAsync() {
         //Retrieve exercises to be loaded into the table
+        db.getExerciseAsync() { exers in
+            
+            self.exercises = exers
+            
+            self.exerTableView.reloadData()
+        }
         print("exercises loaded")
         //Get all exercises
         exercises = db.getExercise()

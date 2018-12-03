@@ -89,6 +89,14 @@ class MedicationViewController: UIViewController {
         if edittedMedicine != nil {
             edittedMedicine?.name = medicineName
             edittedMedicine?.dosage = dosageValue
+            edittedMedicine?.mo = moToggle.isOn
+            edittedMedicine?.tu = tuToggle.isOn
+            edittedMedicine?.we = weToggle.isOn
+            edittedMedicine?.th = thToggle.isOn
+            edittedMedicine?.fr = frToggle.isOn
+            edittedMedicine?.sa = saToggle.isOn
+            edittedMedicine?.su = suToggle.isOn
+            edittedMedicine?.reminder = reminderToggle.isOn
             db.updateMedicineAsync(medToUpdate: edittedMedicine!) {_ in
                 //do stuff here
             }
@@ -102,7 +110,7 @@ class MedicationViewController: UIViewController {
                 dosage: "\(dosageValue)",
                 mo: moToggle.isOn, tu: tuToggle.isOn, we: weToggle.isOn, th: thToggle.isOn, fr: frToggle.isOn, sa: saToggle.isOn, su: suToggle.isOn,
                 reminder: reminderToggle.isOn,
-                start_date: Date(),
+                start_date: Calendar.current.startOfDay(for: Date()).addingTimeInterval(-1),//the second before the start of the day
                 end_date: nil) {addedMid in
                     self.addNotification(MID: addedMid, medicineName: medicineName)
             }

@@ -695,7 +695,7 @@ class DatabaseManager
         //Get all taken MIDs from that day
         let takenMedicineMIDs = getTakenMedicines(searchDate: date).map { $0.MID }
         
-        let startOfDay = Calendar.current.startOfDay(for: date)
+        var startOfDay = Calendar.current.startOfDay(for: date)
         let datestring = ISO8601DateFormatter().string(from: startOfDay)
         let url = baseUrl + "meds?date=" + datestring
         print(url)

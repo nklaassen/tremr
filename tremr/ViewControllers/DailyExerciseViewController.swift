@@ -29,7 +29,7 @@ class DailyExerciseViewController: UIViewController , UITableViewDataSource, UIT
         super.viewDidLoad()
         
         //load exercises into table
-        loadExercises()
+        loadExercisesAsync()
         
         //Set containing class as the delegate and datasource of the table view
         exerTableView.delegate = self
@@ -42,14 +42,12 @@ class DailyExerciseViewController: UIViewController , UITableViewDataSource, UIT
     override func viewDidAppear(_ animated: Bool) {
         
         //load exercises into table
-        loadExercises()
+        loadExercisesAsync()
         
         //Set containing class as the delegate and datasource of the table view
         exerTableView.delegate = self
         exerTableView.dataSource = self
         
-        //Reload table
-        exerTableView.reloadData()
     }
     
     //MARK: - Table view data source
@@ -93,28 +91,26 @@ class DailyExerciseViewController: UIViewController , UITableViewDataSource, UIT
         
         //if user is on today
         if todayStart == displayDateStart{
-            // Add medication to list of taken medications
+            // Add exercise to list of taken exercises
             db.addTakenExercise(EID : exer.EID, date : Date())
-        }
-        
-        //if user is in the future, can delete this loop i guess lol
-        if displayDateStart > todayStart{
-            //nothing should happen cuz u cant do shit in the future
+            
+            //Update element from array
+            exercises.remove(at: indexPath.row)
+            
+            // Reload the exercises
+            loadExercisesAsync()
         }
         
         //if user is in the past
         if displayDateStart < todayStart{
             db.addTakenExercise(EID : exer.EID, date : displayDateStart)
+            
+            //Update element from array
+            exercises.remove(at: indexPath.row)
+            
+            // Reload the exercises
+            loadExercisesAsync()
         }
-        
-        //Update element from array
-        exercises.remove(at: indexPath.row)
-        
-        // Reload the medications
-        loadExercises()
-        
-        // Refresh the table
-        exerTableView.reloadData()
     }
 
     //MARK: Actions
@@ -131,10 +127,17 @@ class DailyExerciseViewController: UIViewController , UITableViewDataSource, UIT
     }
     
     //MARK: Private Methods
-    private func loadExercises() {
+    private func loadExercisesAsync() {
         //Retrieve exercises to be loaded into the table
         print("exercises loaded")
-        exercises = db.getExerciseDate(date: displayDay)        
+        
+        db.getExerciseDateAsync(date: displayDay) { exers in
+            //Set exercises
+            self.exercises = exers
+            //reload table
+            self.exerTableView.reloadData()
+        }
+
     }
     
     private func incrementDisplayDay(changeValue : Int) {
@@ -153,9 +156,6 @@ class DailyExerciseViewController: UIViewController , UITableViewDataSource, UIT
         }
         
         //Load exercises for updated day
-        loadExercises()
-        
-        //Reload table
-        exerTableView.reloadData()
+        loadExercisesAsync()
     }
 }

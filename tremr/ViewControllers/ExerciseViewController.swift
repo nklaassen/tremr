@@ -88,27 +88,37 @@ class ExerciseViewController: UIViewController {
     @IBAction func addExerciseButton(_ sender: Any) {
         let exerciseName: String = exerciseTextField.text!
         let unitValue: String = unitTextField.text!
-        var EID : Int64
         if edittedExercise != nil {
-            db.updateExercise(
-                EIDToUpdate: (edittedExercise?.EID)!,
-                name: "\(exerciseName)",
-                unit: "\(unitValue)",
-                mo: moToggle.isOn, tu: tuToggle.isOn, we: weToggle.isOn, th: thToggle.isOn, fr: frToggle.isOn, sa: saToggle.isOn, su: suToggle.isOn,
-                reminder: reminderToggle.isOn)
-            EID = edittedExercise!.EID
+            edittedExercise?.name = exerciseName
+            edittedExercise?.unit = unitValue
+            edittedExercise?.mo = moToggle.isOn
+            edittedExercise?.tu = tuToggle.isOn
+            edittedExercise?.we = weToggle.isOn
+            edittedExercise?.th = thToggle.isOn
+            edittedExercise?.fr = frToggle.isOn
+            edittedExercise?.sa = saToggle.isOn
+            edittedExercise?.su = suToggle.isOn
+            edittedExercise?.reminder = reminderToggle.isOn
+            db.updateExerciseAsync(exerToUpdate: edittedExercise!) {_ in
+                //do stuff here
+            }
+            
+            addNotification(EID: edittedExercise!.EID, exerciseName: exerciseName)
         }
         else {
-            EID = db.addExercise(
-                UID: 1,
+            db.addExerciseAsync(
                 name: "\(exerciseName)",
                 unit: "\(unitValue)",
                 mo: moToggle.isOn, tu: tuToggle.isOn, we: weToggle.isOn, th: thToggle.isOn, fr: frToggle.isOn, sa: saToggle.isOn, su: suToggle.isOn,
                 reminder: reminderToggle.isOn,
-                start_date: Date(),
-                end_date: nil)!
+                start_date: Calendar.current.startOfDay(for: Date()).addingTimeInterval(-1),//the second before the start of the day
+                end_date: nil) {addedEid in
+                    self.addNotification(EID: addedEid, exerciseName: exerciseName)
+            }
         }
-        
+    }
+    
+    private func addNotification(EID: Int64, exerciseName: String) {
         //notification
         if reminderToggle.isOn {
             if moToggle.isOn {
@@ -173,7 +183,6 @@ class ExerciseViewController: UIViewController {
         }
         self.navigationController?.popViewController(animated: true)
     }
-    
 
     /*
     // MARK: - Navigation

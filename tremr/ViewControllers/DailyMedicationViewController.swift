@@ -119,6 +119,10 @@ class DailyMedicationViewController: UIViewController, UITableViewDataSource, UI
         //if user is in the past
         if displayDateStart < todayStart{
             db.addTakenMedicine(MID : med.MID, date : displayDateStart)
+            
+            //Update element from array
+            medications.remove(at: indexPath.row)
+
         }
     }
     
