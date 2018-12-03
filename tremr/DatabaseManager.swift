@@ -786,23 +786,22 @@ class DatabaseManager
         let headers : HTTPHeaders = ["Authorization": token]
         
         let startdate = ISO8601DateFormatter().string(from: medToUpdate.start_date)
-        var enddate : String
-        if medToUpdate.end_date != nil{
-            enddate = ISO8601DateFormatter().string(from: medToUpdate.end_date!)
-        }
-        else {
-            enddate = ""
-        }
         
-        let parameters : [String: Any] = [
+        var parameters : [String: Any] = [
             "mid" : medToUpdate.MID,
             "name" : medToUpdate.name,
             "dosage" : medToUpdate.dosage,
             "schedule" : ["mo": medToUpdate.mo, "tu": medToUpdate.tu, "we": medToUpdate.we, "th": medToUpdate.th, "fr": medToUpdate.fr, "sa": medToUpdate.sa, "su": medToUpdate.su],
             "reminder" : medToUpdate.reminder,
-            "startdate" : startdate,
-            "enddate" : enddate
+            "startdate" : startdate
         ]
+
+        if medToUpdate.end_date != nil{
+            parameters["enddate"] = ISO8601DateFormatter().string(from: medToUpdate.end_date!)
+        }
+        else {
+            parameters["enddate"] = NSNull()
+        }
         
         Alamofire.request(baseUrl + "meds/" + String(medToUpdate.MID), method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseString() { response in
             let statusCode = response.response?.statusCode
