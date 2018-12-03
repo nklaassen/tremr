@@ -126,7 +126,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         cell.bellButton.initBellState(setOn: bellIsOn)
         //Set the bellButton in the cell to refer to deleteButtonClicked when deleteButton is pressed
         //Encode the section and the path row as an even or odd number. If the number is even, section = 0, row = tag/2. If the number is odd, section = 1, row = (tag-1)/2
-        cell.bellButton.tag = 2*indexPath.row + indexPath.section
+        cell.bellButton.tag = 4*indexPath.row + indexPath.section
         cell.bellButton.addTarget(self, action: #selector(self.bellButtonClicked), for: .touchUpInside)
         
         // hide bell button for linked accounts section
@@ -134,13 +134,6 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
             cell.bellButton.isHidden = true
         }
         
-        //Set bell image
-        //if bellIsOn {
-        //    cell.bellButton.setImage(onBellImage, for: UIControlState.normal)
-        //}
-        //else {
-        //    cell.bellButton.setImage(offBellImage, for: UIControlState.normal)
-        //}
         return cell
     }
 
@@ -160,10 +153,26 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     //MARK: Private functions
     //Retrieve exercises and medications to be loaded into the table
     func loadExerMed() {
+        let group = DispatchGroup()//used to coordinate refreshing table when all exercises and meds are loaded
+        
         //Get all active exercises
-        exercises = db.getExercise()
+        group.enter()
+        db.getExerciseAsync(){ exers in
+            self.exercises = exers
+            group.leave()
+        }
+        
         //Get all active medications
-        medications = db.getMedicine()
+        group.enter()
+        db.getMedicineAsync() { meds in
+            self.medications = meds
+            group.leave()
+        }
+        
+        //Run this notify code when group.enter() matches group.leave()
+        group.notify(queue: .main) {
+            self.exerMedTableView.reloadData()
+        }
     }
     
     func loadLinkedAccounts() {
@@ -202,10 +211,13 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     // MARK: Private Methods
     @objc func bellButtonClicked(_ sender: UIButton) {
         //Here sender.tag will give you the tapped checkbox/Button index from the cell
-        if sender.tag % 2 == 0 { //Medication
-            let med = medications[(sender.tag-1)/2]
+        if (sender.tag - 2) % 2 == 0 { //Medication
+            var med = medications[(sender.tag-2)/4]
             print(med.name)
-            db.setMedReminder(Mid: med.MID, setFlag: !med.reminder)
+            med.reminder = !med.reminder //Toggle med reminder
+            db.updateMedicineAsync(medToUpdate: med){ _ in
+                
+            }
             
             //do notification stuff here
             let repeatingMonDate = createDate(weekday: 2, hour: 10, minute: 00 , year: 2018)
@@ -237,9 +249,12 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
             scheduleMedicationNotificationWeekly(at: repeatingSunDate, name: med.name, ID: notificationID)
         }
         else { //Exercise
-            let exer = exercises[(sender.tag-2)/2]
+            var exer = exercises[(sender.tag-3)/4]
             print(exer.name)
-            db.setExerReminder(Eid: exer.EID, setFlag: !exer.reminder)
+            exer.reminder = !exer.reminder
+            db.updateExerciseAsync(exerToUpdate: exer) { _ in
+                
+            }
             
             //do notification stuff here
             let repeatingMonDate = createDate(weekday: 2, hour: 10, minute: 00 , year: 2018)
