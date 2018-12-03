@@ -250,6 +250,33 @@ class DatabaseManager
         }
     }
     
+    func addTremorAsync(restingSeverity : Double, posturalSeverity : Double, completion : @escaping (Bool)->()) {
+        print("Trying to add tremor \(restingSeverity) \(posturalSeverity)")
+        
+        let token = UserDefaults.standard.string(forKey: authTokenKey)!
+        let headers : HTTPHeaders = ["Authorization": token]
+        
+        let parameters : [String: Any] = [
+            "resting" : Int(restingSeverity * 10),
+            "postural" : Int(posturalSeverity * 10)
+        ]
+        
+        Alamofire.request(baseUrl + "tremors", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseString() { response in
+            let statusCode = response.response?.statusCode
+            if statusCode == 200 {
+                print("adding tremor Successful")
+                completion(true)
+            } else {
+                let responseString = response.result.value
+                if responseString != nil {
+                    let responseString = responseString!
+                    print(responseString)
+                }
+                completion(false)
+            }
+        }
+    }
+    
     // Returns all tremor recording values from the db
     func getTremors() -> Array<Tremor> {
         return Array<Tremor>()
