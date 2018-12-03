@@ -10,6 +10,9 @@
 		03711BE9219A016A008CC9C8 /* NotificationFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03711BE8219A0169008CC9C8 /* NotificationFunctions.swift */; };
 		03711BF1219CFC4C008CC9C8 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03711BF0219CFC4C008CC9C8 /* NotificationViewController.swift */; };
 		03711BFA219CFCA2008CC9C8 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03711BF9219CFCA2008CC9C8 /* Notification.storyboard */; };
+		03DF564D21AB810400223E4B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03DF564C21AB810400223E4B /* Login.storyboard */; };
+		03DF565521AB817600223E4B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF565421AB817600223E4B /* LoginViewController.swift */; };
+		03DF565B21AB8A4E00223E4B /* createAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF565A21AB8A4E00223E4B /* createAccountViewController.swift */; };
 		55D4D192218B7CAF00CB371C /* ViewDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D191218B7CAF00CB371C /* ViewDataViewController.swift */; };
 		55D4D194218B813100CB371C /* YearContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D193218B813100CB371C /* YearContainer.swift */; };
 		55D4D196218B888C00CB371C /* MonthContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D195218B888C00CB371C /* MonthContainer.swift */; };
@@ -19,6 +22,9 @@
 		55D4D1B2218D9D9A00CB371C /* YearBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D1B1218D9D9A00CB371C /* YearBarContainer.swift */; };
 		55D4D1CE219E0FF100CB371C /* Countdown2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D1CD219E0FF100CB371C /* Countdown2ViewController.swift */; };
 		55F81D6621A0F272005D7554 /* MissedDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F81D6521A0F272005D7554 /* MissedDataTests.swift */; };
+		806F49D821A9F56200C20ABF /* MeasurePromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F49D721A9F56200C20ABF /* MeasurePromptViewController.swift */; };
+		806F49E121AA016100C20ABF /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F49E021AA016100C20ABF /* TimerViewController.swift */; };
+		806F49E321AA1E2800C20ABF /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F49E221AA1E2800C20ABF /* MainMenuViewController.swift */; };
 		80EF89CB21814DA400872F5B /* MotionObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CA21814DA400872F5B /* MotionObserver.swift */; };
 		80EF89CD2181638700872F5B /* InstructionsForTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */; };
 		A50B2529218F9D610033AA48 /* DailyExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50B2528218F9D610033AA48 /* DailyExerciseViewController.swift */; };
@@ -38,6 +44,8 @@
 		A8F8A206218A56A30044342D /* DailyMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8A205218A56A30044342D /* DailyMedicationViewController.swift */; };
 		A8F8A20E218A59170044342D /* DailyMedicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8A20D218A59170044342D /* DailyMedicationTableViewCell.swift */; };
 		A8FA189421A3777800AFB843 /* NotificationToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FA189321A3777800AFB843 /* NotificationToggleButton.swift */; };
+		E037A43821A0DDF400764869 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E037A42B21A0DD6500764869 /* Alamofire.framework */; };
+		E037A43921A0DDF400764869 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E037A42B21A0DD6500764869 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E04F6FD32182979C000AF2F6 /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */; };
 		E0B1033C218B720D00F0B96E /* libraries in Resources */ = {isa = PBXBuildFile; fileRef = E0B10335218B720D00F0B96E /* libraries */; };
 		E0B10353218B77D500F0B96E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B10343218B724600F0B96E /* Charts.framework */; };
@@ -64,6 +72,62 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E037A42A21A0DD6500764869 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E037A41F21A0DD6500764869 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		E037A42C21A0DD6500764869 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E037A41F21A0DD6500764869 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS Tests";
+		};
+		E037A42E21A0DD6500764869 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E037A41F21A0DD6500764869 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
+			remoteInfo = "Alamofire macOS";
+		};
+		E037A43021A0DD6500764869 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E037A41F21A0DD6500764869 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F829C6B21A7A94F100A2CD59;
+			remoteInfo = "Alamofire macOS Tests";
+		};
+		E037A43221A0DD6500764869 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E037A41F21A0DD6500764869 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CF626EF1BA7CB3E0011A099;
+			remoteInfo = "Alamofire tvOS";
+		};
+		E037A43421A0DD6500764869 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E037A41F21A0DD6500764869 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CF626F81BA7CB3E0011A099;
+			remoteInfo = "Alamofire tvOS Tests";
+		};
+		E037A43621A0DD6500764869 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E037A41F21A0DD6500764869 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4202FE01B667AA100C997FB;
+			remoteInfo = "Alamofire watchOS";
+		};
+		E037A43A21A0DDF400764869 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E037A41F21A0DD6500764869 /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
 		E0B10342218B724600F0B96E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E0B1033D218B724600F0B96E /* Charts.xcodeproj */;
@@ -172,6 +236,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				E0BF93E5218692870097767F /* SQLite.framework in Embed Frameworks */,
+				E037A43921A0DDF400764869 /* Alamofire.framework in Embed Frameworks */,
 				E0B10354218B77D500F0B96E /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -183,6 +248,9 @@
 		03711BE8219A0169008CC9C8 /* NotificationFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFunctions.swift; sourceTree = "<group>"; };
 		03711BF0219CFC4C008CC9C8 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		03711BF9219CFCA2008CC9C8 /* Notification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
+		03DF564C21AB810400223E4B /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		03DF565421AB817600223E4B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		03DF565A21AB8A4E00223E4B /* createAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createAccountViewController.swift; sourceTree = "<group>"; };
 		55D4D191218B7CAF00CB371C /* ViewDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDataViewController.swift; sourceTree = "<group>"; };
 		55D4D193218B813100CB371C /* YearContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearContainer.swift; sourceTree = "<group>"; };
 		55D4D195218B888C00CB371C /* MonthContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthContainer.swift; sourceTree = "<group>"; };
@@ -192,6 +260,9 @@
 		55D4D1B1218D9D9A00CB371C /* YearBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearBarContainer.swift; sourceTree = "<group>"; };
 		55D4D1CD219E0FF100CB371C /* Countdown2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown2ViewController.swift; sourceTree = "<group>"; };
 		55F81D6521A0F272005D7554 /* MissedDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissedDataTests.swift; sourceTree = "<group>"; };
+		806F49D721A9F56200C20ABF /* MeasurePromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurePromptViewController.swift; sourceTree = "<group>"; };
+		806F49E021AA016100C20ABF /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		806F49E221AA1E2800C20ABF /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		80EF89CA21814DA400872F5B /* MotionObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionObserver.swift; sourceTree = "<group>"; };
 		80EF89CC2181638700872F5B /* InstructionsForTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsForTrackingViewController.swift; sourceTree = "<group>"; };
 		A50B2528218F9D610033AA48 /* DailyExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyExerciseViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +282,7 @@
 		A8F8A205218A56A30044342D /* DailyMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMedicationViewController.swift; sourceTree = "<group>"; };
 		A8F8A20D218A59170044342D /* DailyMedicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMedicationTableViewCell.swift; sourceTree = "<group>"; };
 		A8FA189321A3777800AFB843 /* NotificationToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToggleButton.swift; sourceTree = "<group>"; };
+		E037A41F21A0DD6500764869 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = libraries/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		E04F6FD22182979C000AF2F6 /* CountdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
 		E0B10335218B720D00F0B96E /* libraries */ = {isa = PBXFileReference; lastKnownFileType = folder; path = libraries; sourceTree = "<group>"; };
 		E0B1033D218B724600F0B96E /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = libraries/charts/Charts.xcodeproj; sourceTree = "<group>"; };
@@ -246,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0BF93E4218692870097767F /* SQLite.framework in Frameworks */,
+				E037A43821A0DDF400764869 /* Alamofire.framework in Frameworks */,
 				E0B10353218B77D500F0B96E /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,9 +364,24 @@
 			path = SubClasses;
 			sourceTree = "<group>";
 		};
+		E037A42021A0DD6500764869 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E037A42B21A0DD6500764869 /* Alamofire.framework */,
+				E037A42D21A0DD6500764869 /* Alamofire iOS Tests.xctest */,
+				E037A42F21A0DD6500764869 /* Alamofire.framework */,
+				E037A43121A0DD6500764869 /* Alamofire macOS Tests.xctest */,
+				E037A43321A0DD6500764869 /* Alamofire.framework */,
+				E037A43521A0DD6500764869 /* Alamofire tvOS Tests.xctest */,
+				E037A43721A0DD6500764869 /* Alamofire.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E0BF93AD21868DBE0097767F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E037A41F21A0DD6500764869 /* Alamofire.xcodeproj */,
 				E0B1033D218B724600F0B96E /* Charts.xcodeproj */,
 				E0BF93C7218691E10097767F /* SQLite.xcodeproj */,
 			);
@@ -358,6 +446,7 @@
 				E0FEE128217EB76D00C72D7C /* LaunchScreen.storyboard */,
 				E0FEE12B217EB76D00C72D7C /* Info.plist */,
 				80EF89CA21814DA400872F5B /* MotionObserver.swift */,
+				03DF564C21AB810400223E4B /* Login.storyboard */,
 			);
 			path = tremr;
 			sourceTree = "<group>";
@@ -414,6 +503,11 @@
 				55D4D1CD219E0FF100CB371C /* Countdown2ViewController.swift */,
 				03711BF0219CFC4C008CC9C8 /* NotificationViewController.swift */,
 				A823ABFD21A0EE4E00CB07E2 /* notificationTableViewCell.swift */,
+				806F49D721A9F56200C20ABF /* MeasurePromptViewController.swift */,
+				806F49E021AA016100C20ABF /* TimerViewController.swift */,
+				806F49E221AA1E2800C20ABF /* MainMenuViewController.swift */,
+				03DF565421AB817600223E4B /* LoginViewController.swift */,
+				03DF565A21AB8A4E00223E4B /* createAccountViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -452,6 +546,7 @@
 			dependencies = (
 				E0BF93E7218692870097767F /* PBXTargetDependency */,
 				E0B10356218B77D500F0B96E /* PBXTargetDependency */,
+				E037A43B21A0DDF400764869 /* PBXTargetDependency */,
 			);
 			name = tremr;
 			productName = tremr;
@@ -530,6 +625,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = E037A42021A0DD6500764869 /* Products */;
+					ProjectRef = E037A41F21A0DD6500764869 /* Alamofire.xcodeproj */;
+				},
+				{
 					ProductGroup = E0FF3F04218F9B4600877FE4 /* Products */;
 					ProjectRef = E0B1033D218B724600F0B96E /* Charts.xcodeproj */;
 				},
@@ -548,6 +647,55 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		E037A42B21A0DD6500764869 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = E037A42A21A0DD6500764869 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E037A42D21A0DD6500764869 /* Alamofire iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire iOS Tests.xctest";
+			remoteRef = E037A42C21A0DD6500764869 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E037A42F21A0DD6500764869 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = E037A42E21A0DD6500764869 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E037A43121A0DD6500764869 /* Alamofire macOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire macOS Tests.xctest";
+			remoteRef = E037A43021A0DD6500764869 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E037A43321A0DD6500764869 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = E037A43221A0DD6500764869 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E037A43521A0DD6500764869 /* Alamofire tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire tvOS Tests.xctest";
+			remoteRef = E037A43421A0DD6500764869 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E037A43721A0DD6500764869 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = E037A43621A0DD6500764869 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		E0B10343218B724600F0B96E /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -633,6 +781,7 @@
 				A5B4C6A12183D63B00A71E9B /* Measure.storyboard in Resources */,
 				A5B4C6A82183D68000A71E9B /* Medicine.storyboard in Resources */,
 				E0B1033C218B720D00F0B96E /* libraries in Resources */,
+				03DF564D21AB810400223E4B /* Login.storyboard in Resources */,
 				A5B4C6A62183D67000A71E9B /* ViewData.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -658,6 +807,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03DF565B21AB8A4E00223E4B /* createAccountViewController.swift in Sources */,
+				03DF565521AB817600223E4B /* LoginViewController.swift in Sources */,
 				55D4D1B2218D9D9A00CB371C /* YearBarContainer.swift in Sources */,
 				E0FEE14E217ECB4300C72D7C /* MeasureViewController.swift in Sources */,
 				03711BF1219CFC4C008CC9C8 /* NotificationViewController.swift in Sources */,
@@ -669,6 +820,7 @@
 				55D4D192218B7CAF00CB371C /* ViewDataViewController.swift in Sources */,
 				E0BF93E2218692640097767F /* types.swift in Sources */,
 				A50B2533218FAB4D0033AA48 /* AllExerciseViewController.swift in Sources */,
+				806F49E121AA016100C20ABF /* TimerViewController.swift in Sources */,
 				A8FA189421A3777800AFB843 /* NotificationToggleButton.swift in Sources */,
 				A50B2535218FAE920033AA48 /* AllExerciseTableViewCell.swift in Sources */,
 				A81150DE218E53BB005478EE /* AllMedicationViewController.swift in Sources */,
@@ -691,7 +843,9 @@
 				55D4D199218B8AA600CB371C /* WeekContainer.swift in Sources */,
 				55D4D19B218B94AA00CB371C /* WeekBarContainer.swift in Sources */,
 				E0FEE120217EB76B00C72D7C /* AppDelegate.swift in Sources */,
+				806F49D821A9F56200C20ABF /* MeasurePromptViewController.swift in Sources */,
 				A8F8A20E218A59170044342D /* DailyMedicationTableViewCell.swift in Sources */,
+				806F49E321AA1E2800C20ABF /* MainMenuViewController.swift in Sources */,
 				E0BF93E1218692640097767F /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -719,6 +873,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E037A43B21A0DDF400764869 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Alamofire iOS";
+			targetProxy = E037A43A21A0DDF400764869 /* PBXContainerItemProxy */;
+		};
 		E0B10356218B77D500F0B96E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Charts;
@@ -898,13 +1057,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z2GEL28KXD;
+				DEVELOPMENT_TEAM = T2PYBXKYGS;
 				INFOPLIST_FILE = tremr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = codesign.tremr;
+				PRODUCT_BUNDLE_IDENTIFIER = tremr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -919,13 +1078,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z2GEL28KXD;
+				DEVELOPMENT_TEAM = T2PYBXKYGS;
 				INFOPLIST_FILE = tremr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = codesign.tremr;
+				PRODUCT_BUNDLE_IDENTIFIER = tremr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
