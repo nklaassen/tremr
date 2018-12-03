@@ -395,6 +395,7 @@ class DatabaseManager
         }
         return missedExercises
     }
+ 
     
     // returns only the missed medicines from the past week
     func getMissedMedicinesForLastWeek() -> Array<MissedMedicine> {
@@ -434,6 +435,7 @@ class DatabaseManager
         return missedExercises
     }
     
+    
     // returns only the missed medicines from the past month
     func getMissedMedicinesForLastMonth() -> Array<MissedMedicine> {
         var missedMedicines = Array<MissedMedicine>()
@@ -453,6 +455,7 @@ class DatabaseManager
         return missedMedicines
     }
 
+    
     //Adds a medicine to the Medicines table
     func addMedicine(UID : Int64, name : String, dosage : String, mo : Bool, tu : Bool, we : Bool, th : Bool, fr : Bool, sa : Bool, su : Bool, reminder : Bool, start_date : Date, end_date : Date?) -> Int64? {
         print("Trying to add medicine \(name) \(dosage)")
@@ -475,7 +478,7 @@ class DatabaseManager
                                       self.thursday <- th,
                                       self.friday <- fr,
                                       self.saturday <- sa,
-                                      self.sunday <- su,
+                                        self.sunday <- su,
                                       self.reminder <- reminder,
                                       self.start_date <- modified_start_date,
                                       self.end_date <- modified_end_date ))
@@ -485,6 +488,42 @@ class DatabaseManager
             return nil
         }
     }
+    
+    
+    func addMedicineAsync(name : String, dosage : String, mo : Bool, tu : Bool, we : Bool, th : Bool, fr : Bool, sa : Bool, su : Bool, reminder : Bool, start_date : Date, end_date : Date?, completion : @escaping (Int64)->()) {
+        
+        let token = UserDefaults.standard.string(forKey: authTokenKey)!
+        let headers : HTTPHeaders = ["Authorization": token]
+        
+        let startdate = ISO8601DateFormatter().string(from: start_date)
+        
+        let parameters : [String: Any] = [
+            "name" : name,
+            "dosage" : dosage,
+            "schedule" : ["mo": mo, "tu": tu, "we": we, "th": th, "fr": fr, "sa": sa, "su": su],
+            "reminder" : reminder,
+            "startdate" : startdate,
+            "enddate" : NSNull() //Always add null as enddate value for new med
+        ]
+        
+        Alamofire.request(baseUrl + "meds", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseString() { response in
+            let statusCode = response.response?.statusCode
+            if statusCode == 200 {
+                print("adding medication Successful")
+                let strData = String(data: response.data!, encoding: .utf8)
+                let addedMID = Int64(strData!)
+                completion(addedMID!)
+            } else {
+                let responseString = response.result.value
+                if responseString != nil {
+                    let responseString = responseString!
+                    print(responseString)
+                }
+                completion(-1)
+            }
+        }
+    }
+    
     
     //Adds an exercise to the Exercises table
     func addExercise(UID : Int64, name : String, unit : String, mo : Bool, tu : Bool, we : Bool, th : Bool, fr : Bool, sa : Bool, su : Bool, reminder : Bool, start_date : Date, end_date : Date?) -> Int64? {
@@ -519,6 +558,7 @@ class DatabaseManager
         }
     }
 
+    
     //Returns array of all medicines
     func getMedicine() -> Array<Medicine> {
         var medicines = Array<Medicine>()
@@ -560,10 +600,16 @@ class DatabaseManager
             case .success:
                 //print("got valid response")
                 if let data = response.result.value {
+                    var medsToReturn : [Medicine] = []
                     let decoder = JSONDecoder()
                     decoder.dateDecodingStrategy = .iso8601
                     if let meds = try? decoder.decode([Medicine].self, from: data) {
-                        completion(meds)
+                        for med in meds {
+                            if med.end_date == nil { //only add medications if they don't have an end date
+                                medsToReturn.append(med)
+                            }
+                        }
+                        completion(medsToReturn)
                     }
                 }
             case .failure(let error):
@@ -701,6 +747,7 @@ class DatabaseManager
         return exercises
     }
     
+    /*
     func updateMedicine(MIDToUpdate : Int64, name: String, dosage: String,mo: Bool, tu: Bool, we: Bool, th: Bool, fr: Bool, sa: Bool, su: Bool, reminder: Bool) {
         do {
             let medicineToUpdate = Medicines.filter(MID == MIDToUpdate)
@@ -709,7 +756,8 @@ class DatabaseManager
             fatalError("Failed to update row with MID: \(MID))")
         }
     }
-    
+    */
+
     func updateMedicineAsync(medToUpdate: Medicine, completion: @escaping (Bool)->() ) {
         let token = UserDefaults.standard.string(forKey: authTokenKey)!
         let headers : HTTPHeaders = ["Authorization": token]
@@ -759,22 +807,6 @@ class DatabaseManager
         }
     }
 
-    /*
-    // The medicine table will update MIDs equal to MIDToUpdate. Rows matching this query will
-    // have their end_date updated to the current date.
-    func updateMedicineEndDate(MIDToUpdate : Int64)
-    {
-        let currentDate = Date.init()
-        
-        // UPDATE "Medicines" SET end_date to the current date
-        do {
-            let medicineToUpdate = Medicines.filter(MID == MIDToUpdate)
-            try db.run(medicineToUpdate.update(end_date <- currentDate))
-        } catch {
-            fatalError("Failed to update row with MID: \(MID) with end_date: \(String(describing: currentDate))")
-        }
-    }
-    */
     func addTremorAsync(restingSeverity : Double, posturalSeverity : Double, completion : @escaping (Bool)->()) {
         print("Trying to add tremor \(restingSeverity) \(posturalSeverity)")
         

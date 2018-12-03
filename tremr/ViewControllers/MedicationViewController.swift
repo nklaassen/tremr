@@ -93,18 +93,25 @@ class MedicationViewController: UIViewController {
                 //do stuff here
             }
             MID = edittedMedicine!.MID
+            
+            addNotification(MID: MID, medicineName: medicineName)
         }
         else {
-            MID = db.addMedicine(
-                UID: 1,
+            db.addMedicineAsync(
                 name: "\(medicineName)",
                 dosage: "\(dosageValue)",
                 mo: moToggle.isOn, tu: tuToggle.isOn, we: weToggle.isOn, th: thToggle.isOn, fr: frToggle.isOn, sa: saToggle.isOn, su: suToggle.isOn,
                 reminder: reminderToggle.isOn,
                 start_date: Date(),
-                end_date: nil)!
+                end_date: nil) {addedMid in
+                    self.addNotification(MID: addedMid, medicineName: medicineName)
+            }
         }
         
+        
+    }
+    
+    private func addNotification(MID: Int64, medicineName: String){
         //notification
         if reminderToggle.isOn {
             if moToggle.isOn {
@@ -164,18 +171,16 @@ class MedicationViewController: UIViewController {
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Su\(MID)"])
             }
         }
-
+        
         
         
         self.navigationController?.popViewController(animated: true)
-
+        
         if reminderToggle.isOn == false{
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Mo\(MID)", "Tu\(MID)", "We\(MID)", "Th\(MID)", "Fr\(MID)", "Sa\(MID)", "Su\(MID)"])
         }
         
-        
     }
-    
     @IBAction func mondayButton(_ sender: Any) {
         //mondayFlag = !mondayFlag
     }

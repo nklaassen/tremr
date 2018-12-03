@@ -129,6 +129,7 @@ class AllMedicationViewController: UIViewController, UITableViewDataSource, UITa
     private func loadMedicationsAsync() {
         //Retrieve medications to be loaded into the table
         db.getMedicineAsync() { meds in
+
             self.medications = meds
             
             self.medTableView.reloadData()
