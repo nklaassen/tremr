@@ -22,8 +22,10 @@ class MonthBarContainer: UIViewController {
         super.viewDidLoad()
         
         let dates = ["Week 1", "Week 2", "Week 3", "Week 4", ""]
-        let medication = getMedicineData()
-        let exercise = getExerciseData()
+        //let medication = getMedicineData()
+        let medication = [5.0, 2.0, 6.0, 5.0, 3.0]
+        //let exercise = getExerciseData()
+        let exercise = [7.0, 8.0, 5.0, 6.0, 3.0]
         
         //format chart
         self.monthBarChartView.chartDescription?.text = ""
@@ -135,7 +137,10 @@ class MonthBarContainer: UIViewController {
         let exercises4 = numExercises[21]+numExercises[22]+numExercises[23]+numExercises[24]+numExercises[25]+numExercises[26]+numExercises[27]
         
         //sets the values for the array used in the graph for yearly view
-        let exercises = [exercises1, exercises2, exercises3, exercises4, 0]
+        //let exercises = [exercises1, exercises2, exercises3, exercises4, 0]
+        
+        let exercises = [4.0, 5.0, 8.0, 4.0, 6.0]
+        
         return(exercises)
     }
     
@@ -186,6 +191,7 @@ class MonthBarContainer: UIViewController {
         
         //sets the values for the array used in the graph for yearly view
         let medicines = [med1, med2, med3, med4, 0]
+        
         return(medicines)
     }
 }

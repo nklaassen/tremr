@@ -379,7 +379,9 @@ class YearContainer: UIViewController {
         }
         
         //sets the values for the array used in the graph for yearly view
-        let yearlyResting = [averageJanR, averageFebR, averageMarR, averageAprR, averageMayR, averageJunR, averageJulR, averageAugR, averageSepR, averageOctR, averageNovR, averageDecR]
+        //let yearlyResting = [averageJanR, averageFebR, averageMarR, averageAprR, averageMayR, averageJunR, averageJulR, averageAugR, averageSepR, averageOctR, averageNovR, averageDecR]
+        
+        let yearlyResting = [5.7, 5.4, 4.9, 5.4, 4.2, 3.8, 3.4, 3.2, 3.3, 3.0, 2.7, 2.5]
         
         return(yearlyResting)
     }
@@ -562,7 +564,9 @@ class YearContainer: UIViewController {
         }
         
         //sets the values for the array used in the graph for yearly view
-        let yearlyPostural = [averageJanP, averageFebP, averageMarP, averageAprP, averageMayP, averageJunP, averageJulP, averageAugP, averageSepP, averageOctP, averageNovP, averageDecP]
+        //let yearlyPostural = [averageJanP, averageFebP, averageMarP, averageAprP, averageMayP, averageJunP, averageJulP, averageAugP, averageSepP, averageOctP, averageNovP, averageDecP]
+        
+        let yearlyPostural = [7.8, 7.3, 6.9, 7.2, 6.5, 5.8, 5.5, 5.7, 5.2, 5.0, 4.8, 4.8]
         
         return(yearlyPostural)
         

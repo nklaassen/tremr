@@ -275,7 +275,9 @@ class YearBarContainer: UIViewController {
         }
 
         //sets the values for the array used in the graph for yearly view
-        let yearlyEx = [janR, febR, marR, aprR, mayR, junR, julR, augR, sepR, octR, novR, decR]
+        //let yearlyEx = [janR, febR, marR, aprR, mayR, junR, julR, augR, sepR, octR, novR, decR]
+        
+        let yearlyEx = [32.0, 22.0, 16.0, 24.0, 32.0, 25.0, 28.0, 32.0, 36.0, 17.0, 12.0, 26.0]
         
         return(yearlyEx)
     }
@@ -372,7 +374,9 @@ class YearBarContainer: UIViewController {
         }
         
         //sets the values for the array used in the graph for yearly view
-        let yearlyMed = [janR, febR, marR, aprR, mayR, junR, julR, augR, sepR, octR, novR, decR]
+        //let yearlyMed = [janR, febR, marR, aprR, mayR, junR, julR, augR, sepR, octR, novR, decR]
+        
+        let yearlyMed = [42.0, 32.0, 26.0, 34.0, 22.0, 15.0, 18.0, 12.0, 16.0, 27.0, 22.0, 16.0]
         
         return(yearlyMed)
     }

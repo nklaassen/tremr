@@ -143,8 +143,11 @@ class MonthContainer: UIViewController {
         let weekFourPostural = (Postural[21]+Postural[22]+Postural[23]+Postural[24]+Postural[25]+Postural[26]+Postural[27]) / 7.0
         
         //sets the values for the array used in the graph for yearly view
-        let postural = [weekOnePostural, weekTwoPostural, weekThreePostural, weekFourPostural]
-        print("week 1: ", postural[0], "week 2: " , postural[1], "week 3: ", postural[2], "week 4: " , postural[3])
+        //let postural = [weekOnePostural, weekTwoPostural, weekThreePostural, weekFourPostural]
+        //print("week 1: ", postural[0], "week 2: " , postural[1], "week 3: ", postural[2], "week 4: " , postural[3])
+        
+        let postural = [5.4, 5.7, 4.8, 5.2]
+        
         return(postural)
     }
     
@@ -182,8 +185,9 @@ class MonthContainer: UIViewController {
         let weekThreeResting = (Resting[14]+Resting[15]+Resting[16]+Resting[17]+Resting[18]+Resting[19]+Resting[20]) / 7.0
         let weekFourResting = (Resting[21]+Resting[22]+Resting[23]+Resting[24]+Resting[25]+Resting[26]+Resting[27]) / 7.0
         
-        let resting = [weekOneResting, weekTwoResting, weekThreeResting, weekFourResting]
+        //let resting = [weekOneResting, weekTwoResting, weekThreeResting, weekFourResting]
         
+        let resting = [2.2, 3.3, 2.8, 2.3]
         
         return(resting)
     }
